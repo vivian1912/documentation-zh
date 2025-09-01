@@ -1652,10 +1652,10 @@
 <h1 id="toolkitjava-tron">Toolkit：Java-tron节点维护工具集<a class="headerlink" href="#toolkitjava-tron" title="Permanent link">&para;</a></h1>
 <p>TRON Toolkit 是一个集成了多种 <code>java-tron</code> 周边工具的实用程序，旨在简化节点维护和管理任务。未来，我们将持续为其添加更多功能，以提升开发者的使用体验。目前，Toolkit 提供了以下核心功能：</p>
 <ul>
-<li><a href="#_3">数据存储分区</a> - 解决链上数据增长带来的存储压力</li>
-<li><a href="#_10">轻节点数据裁剪</a> - 轻节点数据定期剪裁</li>
-<li><a href="#_13">数据拷贝</a> - 实现数据库快速拷贝</li>
-<li><a href="#_15">数据转换</a> - 支持 LevelDB 到 RocksDB 的数据库格式转换</li>
+<li><a href="#_2">数据存储分区</a> - 解决链上数据增长带来的存储压力</li>
+<li><a href="#_5">轻节点数据裁剪</a> - 轻节点数据定期剪裁</li>
+<li><a href="#_11">数据拷贝</a> - 实现数据库快速拷贝</li>
+<li><a href="#_13">数据转换</a> - 支持 LevelDB 到 RocksDB 的数据库格式转换</li>
 <li><a href="#leveldb">LevelDB启动优化</a> - 加快数据库类型为LevelDB的节点启动速度</li>
 </ul>
 <p>本文将详细介绍如何获取和使用 TRON Toolkit。</p>
@@ -1667,14 +1667,12 @@
    <div class="highlight"><pre><span></span><code>$ git clone https://github.com/tronprotocol/java-tron.git
 $ git checkout -t origin/master
 </code></pre></div></li>
-<li><strong>编译项目</strong>：</li>
-</ol>
-<div class="highlight"><pre><span></span><code>$ cd java-tron
+<li><strong>编译项目</strong>：
+   <div class="highlight"><pre><span></span><code>$ cd java-tron
 $ ./gradlew clean build -x test
-</code></pre></div>
-<div class="codehilite"><pre><span></span><code>编译成功后，`Toolkit.jar` 文件将生成在 `java-tron/build/libs/` 目录下。
-</code></pre></div>
-
+</code></pre></div></li>
+</ol>
+<p>编译成功后，<code>Toolkit.jar</code> 文件将生成在 <code>java-tron/build/libs/</code> 目录下。</p>
 <h2 id="_2">数据存储分区工具<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>随着 TRON 链上数据的持续增长（目前主网全节点数据已达 2TB，每日增长约 1.2GB），节点的数据存储压力日益增大。为了解决单个磁盘容量不足的问题，TRON Toolkit 引入了<strong>数据库存储分区工具</strong>。该工具允许您根据配置将部分数据库迁移到其他存储盘，从而在磁盘空间不足时，无需更换原有磁盘，只需增加新的存储设备即可。</p>
 <h3 id="_3">命令与参数<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
@@ -1693,10 +1691,10 @@ java -jar Toolkit.jar db mv -c config.conf -d /data/tron/output-directory
 <h3 id="_4">使用步骤<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>请按照以下步骤使用数据库存储分区工具：</p>
 <ol>
-<li><a href="#fullnode">停止 FullNode 服务</a></li>
-<li><a href="#_4">配置数据库存储迁移</a></li>
-<li><a href="#_5">执行数据库迁移</a></li>
-<li><a href="#fullnode_1">重新启动 FullNode 服务</a></li>
+<li><a href="#1-fullnode">停止 FullNode 服务</a></li>
+<li><a href="#2">配置数据库存储迁移</a></li>
+<li><a href="#3">执行数据库迁移</a></li>
+<li><a href="#4-fullnode">重新启动 FullNode 服务</a></li>
 </ol>
 <h4 id="1-fullnode">1. 停止 FullNode 服务<a class="headerlink" href="#1-fullnode" title="Permanent link">&para;</a></h4>
 <p>在执行数据库迁移之前，<strong>必须</strong>停止当前运行的 FullNode 服务。您可以使用以下命令查找 FullNode 进程 ID（PID）并终止进程：
@@ -1803,8 +1801,8 @@ java -jar Toolkit.jar db mv -c config.conf -d /data/tron/output-directory
 <h4 id="_8">切分快照数据集<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>此功能可将全节点数据转换为轻节点数据，也可用于定期裁剪轻节点数据。步骤如下：</p>
 <p>首先，停止节点，然后执行以下命令：</p>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1"># 简单起见，将快照数据集存放在`/tmp`目录下</span>
-<span class="w">    </span>java<span class="w"> </span>-jar<span class="w"> </span>Toolkit.jar<span class="w"> </span>db<span class="w"> </span>lite<span class="w"> </span>-o<span class="w"> </span>split<span class="w"> </span>-t<span class="w"> </span>snapshot<span class="w"> </span>--fn-data-path<span class="w"> </span>output-directory/database<span class="w"> </span>--dataset-path<span class="w"> </span>/tmp
+<div class="highlight"><pre><span></span><code># 简单起见，将快照数据集存放在`/tmp`目录下
+java -jar Toolkit.jar db lite -o split -t snapshot --fn-data-path output-directory/database --dataset-path /tmp
 </code></pre></div>
 <ul>
 <li><code>--fn-data-path</code>： 待剪裁数据目录，即节点数据目录</li>
