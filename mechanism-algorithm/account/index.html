@@ -904,15 +904,6 @@
   
 </li>
         
-          <li class="md-nav__item ">
-  <a href="#_8" class="md-nav__link" >
-    <span class="md-ellipsis">
-      算法
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1595,8 +1586,12 @@
 <ul>
 <li><strong>唯一标识</strong>：每个账户的唯一标识是其地址 (Address)，通常以 <code>T</code> 开头。</li>
 <li><strong>权限控制</strong>：对账户的任何操作（如转账）都需要对应的<strong>私钥</strong>进行签名。</li>
-<li><strong>账户资产与能力</strong>：每个账户可以拥有和管理多种资源，包括：</li>
-<li><strong>资产</strong>：TRX、TRC-10、TRC-20、TRC-721/TRC-1155 NFT 等。</li>
+<li>
+<p><strong>账户资产与能力</strong>：每个账户可以拥有和管理多种资源，包括：</p>
+</li>
+<li>
+<p><strong>资产</strong>：TRX、TRC-10、TRC-20、TRC-721/TRC-1155 NFT 等。</p>
+</li>
 <li><strong>网络资源</strong>：带宽和能量。</li>
 <li><strong>权限与活动</strong>：发起交易、部署和调用智能合约、参与超级代表选举（投票或成为候选人）等。</li>
 </ul>
@@ -1670,18 +1665,26 @@
 </code></pre></div>
 <h3 id="_7">签名验证<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>Fullnode 节点收到交易后，会使用交易中的哈希和签名，通过 ECDSA 的恢复机制（ecrecover）计算出一个公钥，并由此推算出地址。如果该地址与交易中指定的发起方地址匹配，则验签通过。</p>
-<h3 id="_8">算法<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="_8">算法<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <ol>
 <li>恢复公钥点 K：通过签名中的 v 和 r 可以唯一恢复出临时公钥点 K。</li>
-<li>推导公钥 P：</li>
-<li>已知签名方程：
-      <code>s = k⁻¹(hash + d × r) mod n</code></li>
+<li>
+<p>推导公钥 P：</p>
+</li>
+<li>
+<p>已知签名方程：
+      <code>s = k⁻¹(hash + d × r) mod n</code></p>
+</li>
 <li>两边同乘 k：
       <code>s × k = (hash + d × r) mod n</code></li>
 <li>两边再同乘曲线的基点 G（利用 <code>K = k × G</code> 和 <code>P = d × G</code>）：
       <code>s × K = hash × G + r × P</code></li>
-<li>因 <code>s、K、hash、G、r</code> 均已知，可求得 <code>P</code></li>
-<li>生成 TRON 地址：<a href="#tron">同 TRON 地址的生成</a>。</li>
+<li>
+<p>因 <code>s、K、hash、G、r</code> 均已知，可求得 <code>P</code></p>
+</li>
+<li>
+<p>生成 TRON 地址：<a href="#tron">同 TRON 地址的生成</a>。</p>
+</li>
 <li>地址验证：比对生成的 TRON 地址与交易合约中的地址是否一致。</li>
 </ol>
 <h4 id="_9">示例<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
