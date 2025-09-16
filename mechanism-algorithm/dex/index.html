@@ -1769,7 +1769,7 @@
 <p><strong>2. 分页查询交易对列表：</strong> <code>GetPaginatedExchangeList</code></p>
 <p><strong>3. 查询指定交易对详情：</strong> <code>GetExchangeById</code></p>
 <p>详细 API 文档参考：
-波场 <a href="https://github.com/tronprotocol/documentation-zh/blob/master/docs/api/rpc.md">RPC-API 接口文档</a></p>
+<a href="https://tronprotocol.github.io/documentation-zh/api/rpc/">RPC-API 接口文档</a></p>
 <h3 id="_11">价格计算<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>假设交易对中：</p>
 <ul>
@@ -1788,7 +1788,7 @@
 <li><code>sellTokenQuant</code>：出售的 <code>first_token</code> 数量；</li>
 <li><code>buyTokenQuant</code>：兑换获得的 <code>second_token</code> 数量；</li>
 <li><code>balance</code>：当前交易对中 <code>second_token</code> 的余额；</li>
-<li><code>supply = 1,000,000,000,000,000,000L</code></li>
+<li><code>supply</code>：Bancor 协议公式中使用的固定常数 <code>10^18</code>。</li>
 </ul>
 <p>计算流程如下：</p>
 <div class="highlight"><pre><span></span><code>supplyQuant = -supply * (1.0 - Math.pow(1.0 + (double) sellTokenQuant / (firstTokenBalance + sellTokenQuant), 0.0005));
@@ -1797,7 +1797,7 @@ buyTokenQuant = (long)(balance * (Math.pow(1.0 + (double) supplyQuant / supply, 
 <blockquote>
 <p><strong>注意</strong>: 市场价格会因网络中其他交易行为实时波动。</p>
 </blockquote>
-<p>更多接口详情，请参考：<a href="https://github.com/tronprotocol/documentation-zh/blob/master/docs/api/http.md">HTTP API 文档</a>。</p>
+<p>更多接口详情，请参考：<a href="https://tronprotocol.github.io/documentation-zh/api/http/">HTTP API 文档</a>。</p>
 
 
 

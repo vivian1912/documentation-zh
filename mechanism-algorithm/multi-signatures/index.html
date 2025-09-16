@@ -1812,21 +1812,21 @@
 </ul>
 <h3 id="witness"><code>witness</code> 权限（出块权限）<a class="headerlink" href="#witness" title="Permanent link">&para;</a></h3>
 <ul>
-<li>仅超级代表账户可用；</li>
+<li>仅超级代表，超级代表合伙人和超级代表候选人地址可用；</li>
 <li>控制出块节点，不具备资金转出等操作权限；</li>
 <li>可将出块权限授权给其他地址以提升账户安全性。</li>
 </ul>
 <h4 id="_6">超级代表节点配置示例：<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p><div class="highlight"><pre><span></span><code># config.conf
-//localWitnessAccountAddress =
+//localWitnessAccountAddress = TMK5c1jd...m6FXFXEz  # TRON 地址
 localwitness = [
-  xxx  # 被授权地址的私钥
+  xxx  # TMK5c1jd...m6FXFXEz 地址的私钥
 ]
 </code></pre></div>
 若修改了 <code>witness</code> 权限，则：
-<div class="highlight"><pre><span></span><code>localWitnessAccountAddress = &lt;witness账户地址&gt;
+<div class="highlight"><pre><span></span><code>localWitnessAccountAddress = TSMC4YzU...PBebBk2E
 localwitness = [
-  yyy  # 被授权账户的私钥
+  yyy  # TSMC4YzU...PBebBk2E 地址的私钥
 ]
 </code></pre></div></p>
 <blockquote>
@@ -1917,7 +1917,7 @@ System.out.println(ByteArray.toHexString(operations));
 <li>...</li>
 <li>最后一个用户签名后广播；</li>
 <li>节点验证签名权重总和是否 ≥ <code>threshold</code>，若是则接受交易。<blockquote>
-<p>示例代码参考：<a href="https://github.com/tronprotocol/wallet-cli/commit/ff9122f2236f1ce19cbb9ba9f0494c8923a3d10c#diff-a63fa7484f62fe1d8fb27276c991a4e3R211">wallet-cli 用例</a></p>
+<p>示例代码参考：<a href="https://github.com/tronprotocol/wallet-cli/blob/develop/src/main/java/org/tron/common/utils/TransactionUtils.java">wallet-cli 用例</a></p>
 </blockquote>
 </li>
 </ol>
