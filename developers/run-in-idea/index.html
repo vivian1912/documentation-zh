@@ -1657,7 +1657,7 @@
 <p>在开始配置之前，请确保您的开发环境满足以下条件：</p>
 <ul>
 <li>操作系统为 <code>Linux</code> 或 <code>MacOS</code></li>
-<li>已安装 <strong>Oracle JDK 1.8</strong></li>
+<li>已安装 Oracle JDK 1.8</li>
 <li>已安装 <code>git</code></li>
 <li>已安装 <a href="https://www.jetbrains.com/idea/download/">IntelliJ IDEA</a></li>
 </ul>
@@ -1667,14 +1667,14 @@
 <ol>
 <li>打开 IntelliJ IDEA，导航至 <code>Preferences</code> -&gt; <code>Plugins</code>。</li>
 <li>在市场（Marketplace）中搜索 <code>Lombok</code>。</li>
-<li>点击 <code>Install</code> 进行安装，并根据提示重启 IDE。</li>
+<li>点击 “Install” 进行安装，并根据提示重启 IDE。</li>
 </ol>
 <h3 id="2">步骤 2：启用注解处理<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
 <p>为了让 Lombok 的注解生效，必须启用注解处理器。</p>
 <ol>
 <li>导航至 <code>Preferences</code> -&gt; <code>Build, Execution, Deployment</code> -&gt; <code>Compiler</code> -&gt; <code>Annotation Processors</code>。</li>
 <li>勾选 <code>Enable annotation processing</code> 复选框。</li>
-<li>点击 <strong>Apply</strong> 保存设置。</li>
+<li>点击 “Apply” 保存设置。</li>
 </ol>
 <p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/IDE_annotation.png" /></p>
 <h3 id="3-jdk">步骤 3：验证并统一 JDK 版本<a class="headerlink" href="#3-jdk" title="Permanent link">&para;</a></h3>
@@ -1736,12 +1736,12 @@ git checkout -t origin/develop
 <li>在 <code>Configuration File</code> 面板中，点击 <code>+</code> 号添加一个新的配置。
 <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/IDE_checkStyleAll.png" /></li>
 <li>在弹出的窗口中，设置 <code>Description</code> 为 <code>tron-checkstyle</code>，并选择刚刚下载的 <code>checkStyleAll.xml</code> 文件。</li>
-<li>勾选新添加的 <code>tron-checkstyle</code> 规则，并点击 <strong>Apply</strong> 和 <strong>OK</strong>。</li>
+<li>勾选新添加的 <code>tron-checkstyle</code> 规则，并点击 “Apply” 和 “OK”。</li>
 </ol>
 <p>配置完成后，您即可使用 <code>Checkstyle</code> 插件对代码进行风格检查。它支持多种检查范围，可以对整个项目、单个模块，或是当前正在编辑的文件进行分析。最常用的操作是检查当前文件：</p>
 <ol>
 <li>在代码编辑器中右键单击。</li>
-<li>选择 <strong>Check Current File</strong>。</li>
+<li>选择 “Check Current File”。</li>
 </ol>
 <p>如果检测出代码风格问题，<code>Checkstyle</code> 会在下方窗口列出提示。请根据这些提示逐一修改，确保在提交代码前修复所有问题，以维护代码库的统一规范。</p>
 <p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/IDE_stylecheck.png" /></p>
@@ -1755,7 +1755,7 @@ git checkout -t origin/develop
 <p><strong>重要提示</strong>：java-tron 会在此目录下寻找 <code>config.conf</code> 配置文件。在启动节点前，请确保您已经将正确的配置文件放置在该目录中。</p>
 </blockquote>
 <h3 id="2_1">步骤 2：配置运行/调试选项<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
-<p>接下来，在 IntelliJ IDEA 中创建一个运行配置，告诉 IDE如何启动 java-tron 应用程序。</p>
+<p>接下来，在 IntelliJ IDEA 中创建一个运行配置，用于指定 java-tron 应用程序的启动方式。</p>
 <ol>
 <li>在 IDEA 右上角，点击 <code>Add Configuration...</code>。</li>
 <li>点击 <code>+</code> -&gt; <code>Application</code>，创建一个新的运行配置。</li>
@@ -1768,7 +1768,7 @@ git checkout -t origin/develop
 <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/IDE_RunDebug.png" /></li>
 </ul>
 </li>
-<li>点击 <strong>Apply</strong> 保存配置。</li>
+<li>点击 “Apply” 保存配置。</li>
 </ol>
 <h3 id="3">步骤 3: 启动节点<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
 <p>现在，您可以通过 IDEA 启动 java-tron 节点：</p>

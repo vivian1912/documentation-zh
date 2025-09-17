@@ -1679,7 +1679,7 @@ $ git checkout -b release_vx.x.x
 <p>为确保服务的高可用性，主备节点的升级应采用滚动升级（Rolling Upgrade）策略。</p>
 <ol>
 <li><strong>升级备用节点 (Backup Node)</strong> <ul>
-<li>首先，在<strong>备用节点</strong>上完整执行上述 <a href="#标准节点升级流程">标准节点升级流程</a> 中的所有步骤。</li>
+<li>首先，在<strong>备用节点</strong>上完整执行上述 <a href="#standard_process">标准节点升级流程</a> 中的所有步骤。</li>
 </ul>
 </li>
 <li><strong>执行切换</strong><ul>
@@ -1688,7 +1688,7 @@ $ git checkout -b release_vx.x.x
 </ul>
 </li>
 <li><strong>升级原主节点</strong><ul>
-<li>在确认新的主节点（原备用节点）稳定运行后，对原主节点执行 <a href="#标准节点升级流程">标准节点升级流程</a> 进行升级。</li>
+<li>在确认新的主节点（原备用节点）稳定运行后，对原主节点执行 <a href="#standard_process">标准节点升级流程</a> 进行升级。</li>
 <li><strong>异常处理</strong>：如果在此期间，新的主节点出现故障，应立即停止对其的升级操作，并重新启动原主节点以恢复服务。同时，请保存故障节点的完整日志，以供问题排查。以便进行问题排查。如需进一步支持，请携带相关日志在 Github 提交 Issue 或通过社区反馈。</li>
 </ul>
 </li>
