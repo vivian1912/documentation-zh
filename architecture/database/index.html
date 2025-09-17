@@ -1602,7 +1602,7 @@
 <h2 id="x86-leveldb-rocksdb">x86 平台从 LevelDB 迁移至 RocksDB<a class="headerlink" href="#x86-leveldb-rocksdb" title="Permanent link">&para;</a></h2>
 <p>LevelDB 与 RocksDB 的数据格式不兼容，节点间不支持直接切换存储引擎。若需从 LevelDB 迁移到 RocksDB，需使用官方提供的转换工具 <code>Toolkit.jar</code>。</p>
 <h3 id="1">1. 数据转换步骤<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>cd java-tron                                   #源码根目录
+<div class="highlight"><pre><span></span><code>cd java-tron                                   # 源码根目录
 ./gradlew build -xtest -xcheck                 # 编译项目                        
 java -jar build/libs/Toolkit.jar db convert    # 执行数据转换
 </code></pre></div>

@@ -1728,9 +1728,10 @@
 }
 </code></pre></div>
 特别的：
-    * 主网：<code>version=11111</code>
-    * Nile测试网：<code>version = 201910292</code>
-    * 私链网络：自定义，设置成其它值</p>
+- 主网：<code>version=11111</code>
+- Nile 测试网：<code>version = 201910292</code>
+- Shasta 测试网：<code>version = 1</code>
+- 私链网络：自定义，设置成其它值</p>
 <h3 id="genesis-block">创世块（Genesis Block）<a class="headerlink" href="#genesis-block" title="Permanent link">&para;</a></h3>
 <p>需保证创世块 <code>genesis.block</code> 的设置与网络中其它节点的相同，否则无法和其他节点建立连接。主网的 <code>genesis.block</code> 配置如下：
 <div class="highlight"><pre><span></span><code>genesis.block = {
@@ -1906,7 +1907,7 @@
 }
 </code></pre></div></p>
 <h3 id="_4">引导节点<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>java-tron 使用 <a href="https://zh.wikipedia.org/wiki/Kademlia">Kademlia</a> 协议发现其他节点。节点发现需要引导节点(boot 节点)，借助引导节点发现 TRON 网络中的其他节点。引导节点由两部分组成，一部分是种子节点，一部分是配置的主动连接节点。</p>
+<p>java-tron 使用 <a href="https://zh.wikipedia.org/wiki/Kademlia">Kademlia</a> 协议发现其他节点。节点发现需要引导节点 (boot 节点)，借助引导节点发现 TRON 网络中的其他节点。引导节点由两部分组成，一部分是种子节点，一部分是配置的主动连接节点，详情见<a href="#active-peers">主动连接</a>。</p>
 <p>种子节点也由两部分组成：</p>
 <h4 id="seednode">配置的 <code>seed.node</code><a class="headerlink" href="#seednode" title="Permanent link">&para;</a></h4>
 <p>使用 <code>seed.node</code> 初始化网络连接。应设置为在线稳定的全节点。</p>
@@ -2052,13 +2053,13 @@ Generate block 79336 success, trxs:0, pendingCount: 0, rePushCount: 0, postponed
 <p>遇到节点无法连接网络时，可参考以下问题排查：</p>
 <ul>
 <li><strong>本地时钟偏差</strong>
-使用以下命令同步系统时间：
-<div class="highlight"><pre><span></span><code>sudo ntpdate -s time.nist.gov
+    使用以下命令同步系统时间：
+    <div class="highlight"><pre><span></span><code>sudo ntpdate -s time.nist.gov
 </code></pre></div></li>
 <li><strong>UDP 被防火墙阻挡</strong>
-节点发现协议依赖 UDP，如被防火墙阻断，可改用 <code>node.active</code> 指定固定节点。</li>
+    节点发现协议依赖 UDP，如被防火墙阻断，可改用 <code>node.active</code> 指定固定节点。</li>
 <li><strong>未被动接受连接</strong>
-使用 <code>node.passive</code> 接收来自可信节点的主动连接。</li>
+    使用 <code>node.passive</code> 接收来自可信节点的主动连接。</li>
 <li><strong>Shasta 测试网不支持新节点加入</strong>，请选择 Nile 测试网。</li>
 </ul>
 <h2 id="_17">连接私链网络<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
@@ -2069,7 +2070,7 @@ Generate block 79336 success, trxs:0, pendingCount: 0, rePushCount: 0, postponed
 </ul>
 <h3 id="_19">搭建参考：<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <ul>
-<li>请参考文档 <a href="https://github.com/tronprotocol/documentation-zh/blob/master/docs/using_javatron/private_network.md">私链网络搭建指南</a> 获取完整的私链部署说明。</li>
+<li>请参考文档 <a href="https://tronprotocol.github.io/documentation-zh/using_javatron/private_network/">私链网络</a> 获取完整的私链部署说明。</li>
 </ul>
 
 
