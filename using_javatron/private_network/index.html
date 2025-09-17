@@ -1686,9 +1686,11 @@ $ java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  -c fullnode.con
 <ul>
 <li>创建提案：Witness 使用 <a href="https://developers.tron.network/reference/proposalcreate">proposalcreate API</a>，通过参数序号指定要修改的参数及其新值（参数序号列表)。</li>
 <li>批准提案：Witness 使用 <a href="https://developers.tron.network/reference/proposalapprove">proposalapprove API</a>对提案进行投票(仅支持投赞成票，SR不投票意味着不同意该提案)。</li>
-<li>相关接口：</li>
+<li>相关接口：<ul>
 <li>获取所有提议：<a href="https://developers.tron.network/reference/wallet-listproposals">listproposals</a></li>
 <li>根据 ID 获取提议：<a href="https://developers.tron.network/reference/getproposalbyid">getproposalbyid</a></li>
+</ul>
+</li>
 </ul>
 <p><strong>示例代码 (使用 TronWeb)：</strong></p>
 <p>以下代码片段演示了如何创建一个提案来修改两个网络参数，并对其进行投票。在 <a href="https://developers.tron.network/reference/proposalcreate">proposalcreate</a> 中，动态参数用序号表示，动态参数的序号和名称之间的映射可以在 <a href="https://developers.tron.network/reference/wallet-getchainparameters">此处</a> 查看。</p>
