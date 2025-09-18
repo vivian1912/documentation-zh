@@ -1727,11 +1727,13 @@
   ...
 }
 </code></pre></div>
-特别的：
-- 主网：<code>version=11111</code>
-- Nile 测试网：<code>version = 201910292</code>
-- Shasta 测试网：<code>version = 1</code>
-- 私链网络：自定义，设置成其它值</p>
+特别的：</p>
+<ul>
+<li>主网：<code>version=11111</code></li>
+<li>Nile 测试网：<code>version = 201910292</code></li>
+<li>Shasta 测试网：<code>version = 1</code></li>
+<li>私链网络：自定义，设置成其它值</li>
+</ul>
 <h3 id="genesis-block">创世块（Genesis Block）<a class="headerlink" href="#genesis-block" title="Permanent link">&para;</a></h3>
 <p>需保证创世块 <code>genesis.block</code> 的设置与网络中其它节点的相同，否则无法和其他节点建立连接。主网的 <code>genesis.block</code> 配置如下：
 <div class="highlight"><pre><span></span><code>genesis.block = {
@@ -2052,15 +2054,17 @@ Generate block 79336 success, trxs:0, pendingCount: 0, rePushCount: 0, postponed
 <h2 id="_16">常见连接问题排查<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
 <p>遇到节点无法连接网络时，可参考以下问题排查：</p>
 <ul>
-<li><strong>本地时钟偏差</strong>
-    使用以下命令同步系统时间：
-    <div class="highlight"><pre><span></span><code>sudo ntpdate -s time.nist.gov
-</code></pre></div></li>
-<li><strong>UDP 被防火墙阻挡</strong>
-    节点发现协议依赖 UDP，如被防火墙阻断，可改用 <code>node.active</code> 指定固定节点。</li>
-<li><strong>未被动接受连接</strong>
-    使用 <code>node.passive</code> 接收来自可信节点的主动连接。</li>
-<li><strong>Shasta 测试网不支持新节点加入</strong>，请选择 Nile 测试网。</li>
+<li>
+<p><strong>本地时钟偏差</strong></p>
+<p>使用以下命令同步系统时间：
+<div class="highlight"><pre><span></span><code>sudo ntpdate -s time.nist.gov
+</code></pre></div>
+- <strong>UDP 被防火墙阻挡</strong></p>
+<p>节点发现协议依赖 UDP，如被防火墙阻断，可改用 <code>node.active</code> 指定固定节点。
+- <strong>未被动接受连接</strong></p>
+<p>使用 <code>node.passive</code> 接收来自可信节点的主动连接。
+- <strong>Shasta 测试网不支持新节点加入</strong>，请选择 Nile 测试网。</p>
+</li>
 </ul>
 <h2 id="_17">连接私链网络<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
 <p>开发者可通过搭建私有 TRON 网络，获得更大的测试灵活性和控制能力。</p>
