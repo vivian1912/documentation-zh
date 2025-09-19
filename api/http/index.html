@@ -1815,6 +1815,7 @@
 }
 </code></pre></div>
 返回值中的 block_identifier 表示账户余额发生变化的区块</p>
+<p><strong>注意</strong>：只有在配置文件里设置了<code>storage.balance.history.lookup= true</code>的节点才支持查询账户历史余额。支持此接口的官方节点可在<a href="../../using_javatron/backup_restore/#fullnode">此处</a>查阅。</p>
 <h4 id="walletsetaccountid">wallet/setaccountid<a class="headerlink" href="#walletsetaccountid" title="Permanent link">&para;</a></h4>
 <p>作用：设置一个账户的accountID
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/setaccountid -d &#39;{

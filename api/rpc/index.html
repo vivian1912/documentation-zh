@@ -2200,6 +2200,8 @@ Nodes: FullNode </p>
 <p><div class="highlight"><pre><span></span><code>rpc GetAccountBalance (AccountBalanceRequest) returns (AccountBalanceResponse){}; 
 </code></pre></div>
 Nodes: FullNode </p>
+<p><strong>注意</strong>：只有在配置文件里设置了<code>storage.balance.history.lookup= true</code>的节点才支持查
+询账户历史余额。支持此接口的官方节点可在<a href="../../using_javatron/backup_restore/#fullnode">此处</a>查阅。</p>
 <h2 id="fetch-all-balance-changing-transactions-in-a-block">fetch all balance-changing transactions in a block<a class="headerlink" href="#fetch-all-balance-changing-transactions-in-a-block" title="Permanent link">&para;</a></h2>
 <p><div class="highlight"><pre><span></span><code>rpc GetBlockBalanceTrace (BlockBalanceTrace.BlockIdentifier) returns (BlockBalanceTrace) {}; 
 </code></pre></div>
