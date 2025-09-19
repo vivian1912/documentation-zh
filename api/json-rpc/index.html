@@ -1956,7 +1956,7 @@
 <h3 id="eth_accounts">eth_accounts<a class="headerlink" href="#eth_accounts" title="Permanent link">&para;</a></h3>
 <p><em>返回客户端拥有的地址列表。</em></p>
 <p><strong>参数：</strong>  无</p>
-<p><strong>返回值：</strong>  空列表</p>
+<p><strong>返回值：</strong>空列表</p>
 <p><strong>注意</strong>: 与 Geth 等以太坊客户端不同，TRON 节点不负责管理私钥或账户。因此，此接口仅为兼容性而存在，不具备实际功能。</p>
 <p><strong>示例</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;
@@ -1967,8 +1967,8 @@
 </code></pre></div>
 <h3 id="eth_blocknumber">eth_blockNumber<a class="headerlink" href="#eth_blocknumber" title="Permanent link">&para;</a></h3>
 <p><em>返回节点已同步的最新区块的高度。</em></p>
-<p><strong>参数：</strong>  无</p>
-<p><strong>返回值：</strong> QUANTITY - 最新的区块号。</p>
+<p><strong>参数：</strong>无</p>
+<p><strong>返回值：</strong><code>QUANTITY</code> - 最新的区块号。</p>
 <p><strong>示例</strong>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_blockNumber&quot;,&quot;params&quot;:[],&quot;id&quot;:64}&#39;
 
@@ -1976,11 +1976,11 @@
 {&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:64,&quot;result&quot;:&quot;0x20e0cf0&quot;}
 </code></pre></div></p>
 <h3 id="eth_call">eth_call<a class="headerlink" href="#eth_call" title="Permanent link">&para;</a></h3>
-<p><em>在节点上本地模拟执行一笔交易，但不会将其广播上链。主要用于调用智能合约的view或pure函数，或在发送前预估交易结果。</em></p>
+<p><em>在节点上本地模拟执行一笔交易，但不会将其广播上链。主要用于调用智能合约的 <code>view</code> 或 <code>pure</code> 函数，或在发送前预估交易结果。</em></p>
 <p><strong>参数：</strong></p>
 <ol>
-<li>Object - 交易调用对象，包含以下字段：</li>
-</ol>
+<li>
+<p><code>Object</code> - 交易调用对象，包含以下字段：</p>
 <table>
 <thead>
 <tr>
@@ -1991,41 +1991,43 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">from</td>
+<td style="text-align: left;"><code>from</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
-<td style="text-align: left;">调用者地址。十六进制格式地址，为了兼容eth，所有地址既可以是TRON 十六进制地址，也可以是eth地址</td>
+<td style="text-align: left;">调用者地址。十六进制格式地址，为了兼容 ETH，所有地址既可以是 TRON 十六进制地址，也可以是 ETH 地址</td>
 </tr>
 <tr>
-<td style="text-align: left;">to</td>
+<td style="text-align: left;"><code>to</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
 <td style="text-align: left;">合约地址。十六进制格式地址</td>
 </tr>
 <tr>
-<td style="text-align: left;">gas</td>
+<td style="text-align: left;"><code>gas</code></td>
 <td style="text-align: left;">QUANTITY</td>
-<td style="text-align: left;">不支持。值为 0x0</td>
+<td style="text-align: left;">不支持。值为 <code>0x0</code></td>
 </tr>
 <tr>
-<td style="text-align: left;">gasPrice</td>
+<td style="text-align: left;"><code>gasPrice</code></td>
 <td style="text-align: left;">QUANTITY</td>
-<td style="text-align: left;">不支持。值为 0x0</td>
+<td style="text-align: left;">不支持。值为 <code>0x0</code></td>
 </tr>
 <tr>
-<td style="text-align: left;">value</td>
+<td style="text-align: left;"><code>value</code></td>
 <td style="text-align: left;">QUANTITY</td>
-<td style="text-align: left;">不支持。值为 0x0</td>
+<td style="text-align: left;">不支持。值为 <code>0x0</code></td>
 </tr>
 <tr>
-<td style="text-align: left;">data</td>
+<td style="text-align: left;"><code>data</code></td>
 <td style="text-align: left;">DATA</td>
 <td style="text-align: left;">方法签名和编码参数的哈希。</td>
 </tr>
 </tbody>
 </table>
-<ol>
-<li>QUANTITY|TAG - 区块标识符，目前仅支持 "latest"。</li>
+</li>
+<li>
+<p><code>QUANTITY|TAG</code> - 区块标识符，目前仅支持 "latest"。</p>
+</li>
 </ol>
-<p><strong>返回值：</strong> DATA - 合约函数执行的返回值，经过ABI编码。</p>
+<p><strong>返回值：</strong> <code>DATA</code> - 合约函数执行的返回值，经过 <code>ABI</code> 编码。</p>
 <p><strong>示例</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -2045,9 +2047,9 @@
 {&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x&quot;}
 </code></pre></div>
 <h3 id="eth_chainid">eth_chainId<a class="headerlink" href="#eth_chainid" title="Permanent link">&para;</a></h3>
-<p><em>返回TRON网络的chainId，即创世区块哈希的最后四个字节。</em></p>
-<p><strong>参数：</strong>  无</p>
-<p><strong>返回值：</strong>  DATA - TRON网络的chainId</p>
+<p><em>返回 TRON 网络的 <code>chainId</code>，即创世区块哈希的最后四个字节。</em></p>
+<p><strong>参数：</strong>无</p>
+<p><strong>返回值：</strong><code>DATA</code> - TRON 网络的 <code>chainId</code></p>
 <p><strong>示例</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_chainId&quot;,&quot;params&quot;:[],&quot;id&quot;:79}&#39;
 
@@ -2056,8 +2058,8 @@
 </code></pre></div>
 <h3 id="eth_coinbase">eth_coinbase<a class="headerlink" href="#eth_coinbase" title="Permanent link">&para;</a></h3>
 <p><em>返回当前节点的超级代表地址。</em></p>
-<p><strong>参数：</strong>  无</p>
-<p><strong>返回值：</strong>  DATA - 节点的超级代表地址。（注意：如果配置了多个超级代表地址，则返回第一个地址；如果没有有效地址或地址未生成任何区块，则返回错误，错误信息为“etherbase must be explicitly specified”。）</p>
+<p><strong>参数：</strong>无</p>
+<p><strong>返回值：</strong><code>DATA</code> - 节点的超级代表地址。（注意：如果配置了多个超级代表地址，则返回第一个地址；如果没有有效地址或地址未生成任何区块，则返回错误，错误信息为 <code>etherbase must be explicitly specified</code>。）</p>
 <p><strong>示例</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;id&quot;: 1, &quot;method&quot;: &quot;eth_coinbase&quot;, &quot;params&quot;: []}&#39;
 
@@ -2068,8 +2070,8 @@
 <p><em>预估执行一笔交易所需要消耗的能量 (Energy)。</em></p>
 <p><strong>参数</strong>  </p>
 <ol>
-<li>object - 交易调用对象，包含以下项：</li>
-</ol>
+<li>
+<p><code>object</code> - 交易调用对象，包含以下项：</p>
 <table>
 <thead>
 <tr>
@@ -2080,38 +2082,40 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">from</td>
+<td style="text-align: left;"><code>from</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
 <td style="text-align: left;">发送方地址</td>
 </tr>
 <tr>
-<td style="text-align: left;">to</td>
+<td style="text-align: left;"><code>to</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
 <td style="text-align: left;">接收方地址或合约地址</td>
 </tr>
 <tr>
-<td style="text-align: left;">gas</td>
+<td style="text-align: left;"><code>gas</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">未使用</td>
 </tr>
 <tr>
-<td style="text-align: left;">gasPrice</td>
+<td style="text-align: left;"><code>gasPrice</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">未使用</td>
 </tr>
 <tr>
-<td style="text-align: left;">value</td>
+<td style="text-align: left;"><code>value</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">交易发送的TRX数量 (单位: sun)。</td>
 </tr>
 <tr>
-<td style="text-align: left;">data</td>
+<td style="text-align: left;"><code>data</code></td>
 <td style="text-align: left;">DATA</td>
 <td style="text-align: left;">方法签名和编码参数的哈希</td>
 </tr>
 </tbody>
 </table>
-<p><strong>返回值：</strong>  QUANTITY - 预估消耗的能量 (Energy) 数量。</p>
+</li>
+</ol>
+<p><strong>返回值：</strong>  <code>QUANTITY</code> - 预估消耗的能量 (Energy) 数量。</p>
 <p><strong>示例</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -2132,8 +2136,8 @@
 </code></pre></div>
 <h3 id="eth_gasprice">eth_gasPrice<a class="headerlink" href="#eth_gasprice" title="Permanent link">&para;</a></h3>
 <p><em>返回当前网络中能量 (Energy) 的价格（单位：sun）。</em></p>
-<p><strong>参数：</strong>  无</p>
-<p><strong>返回值：</strong>  QUANTITY - 当前的能量价格，单位为 sun。</p>
+<p><strong>参数：</strong>无</p>
+<p><strong>返回值：</strong><code>QUANTITY</code> - 当前的能量价格，单位为 sun。</p>
 <p><strong>示例</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;id&quot;: 1, &quot;method&quot;: &quot;eth_gasPrice&quot;, &quot;params&quot;: []}&#39;
 
@@ -2144,10 +2148,10 @@
 <p><em>返回指定地址的TRX余额。</em></p>
 <p><strong>参数：</strong></p>
 <ol>
-<li>DATA, 20 Bytes - 要查询余额的账户地址。</li>
-<li>QUANTITY|TAG - 区块标识符，目前仅支持 "latest"。</li>
+<li><code>DATA</code>, 20 Bytes - 要查询余额的账户地址。</li>
+<li><code>QUANTITY|TAG</code> - 区块标识符，目前仅支持 "latest"。</li>
 </ol>
-<p><strong>返回值：</strong> QUANTITY - 指定地址的 TRX 余额，单位为 sun。</p>
+<p><strong>返回值：</strong> <code>QUANTITY</code> - 指定地址的 TRX 余额，单位为 sun。</p>
 <p><strong>示例</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -2163,8 +2167,8 @@
 <p><em>通过区块哈希返回区块的详细信息。</em></p>
 <p><strong>参数：</strong></p>
 <ol>
-<li>DATA, 32 Bytes - 区块的哈希。</li>
-<li>Boolean - <code>true</code> 表示返回完整的交易对象列表；<code>false</code> 表示仅返回交易的哈希列表。</li>
+<li><code>DATA</code>, 32 Bytes - 区块的哈希。</li>
+<li><code>Boolean</code> - <code>true</code> 表示返回完整的交易对象列表；<code>false</code> 表示仅返回交易的哈希列表。</li>
 </ol>
 <p><strong>返回值：</strong> <code>Object</code> - 区块对象。如果未找到区块，则返回 <code>null</code>。
 区块对象包含以下项:</p>
@@ -2178,97 +2182,97 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">number</td>
+<td style="text-align: left;"><code>number</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">区块号</td>
 </tr>
 <tr>
-<td style="text-align: left;">hash</td>
+<td style="text-align: left;"><code>hash</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">区块哈希</td>
 </tr>
 <tr>
-<td style="text-align: left;">parentHash</td>
+<td style="text-align: left;"><code>parentHash</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">父区块哈希</td>
 </tr>
 <tr>
-<td style="text-align: left;">nonce</td>
+<td style="text-align: left;"><code>nonce</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">未使用</td>
 </tr>
 <tr>
-<td style="text-align: left;">sha3Uncles</td>
+<td style="text-align: left;"><code>sha3Uncles</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">仅用于兼容以太坊 JSON-RPC 接口，无实际意义</td>
 </tr>
 <tr>
-<td style="text-align: left;">logsBloom</td>
+<td style="text-align: left;"><code>logsBloom</code></td>
 <td style="text-align: left;">DATA, 256 Bytes</td>
 <td style="text-align: left;">仅用于兼容以太坊 JSON-RPC 接口，无实际意义</td>
 </tr>
 <tr>
-<td style="text-align: left;">transactionsRoot</td>
+<td style="text-align: left;"><code>transactionsRoot</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">区块交易树的根</td>
 </tr>
 <tr>
-<td style="text-align: left;">stateRoot</td>
+<td style="text-align: left;"><code>stateRoot</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">目前无实际意义</td>
 </tr>
 <tr>
-<td style="text-align: left;">receiptsRoot</td>
+<td style="text-align: left;"><code>receiptsRoot</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">目前无实际意义</td>
 </tr>
 <tr>
-<td style="text-align: left;">miner</td>
+<td style="text-align: left;"><code>miner</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
 <td style="text-align: left;">生产这个区块的 SR 地址</td>
 </tr>
 <tr>
-<td style="text-align: left;">difficulty</td>
+<td style="text-align: left;"><code>difficulty</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">目前无实际意义</td>
 </tr>
 <tr>
-<td style="text-align: left;">totalDifficulty</td>
+<td style="text-align: left;"><code>totalDifficulty</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">目前无实际意义</td>
 </tr>
 <tr>
-<td style="text-align: left;">extraData</td>
+<td style="text-align: left;"><code>extraData</code></td>
 <td style="text-align: left;">DATA</td>
 <td style="text-align: left;">目前无实际意义</td>
 </tr>
 <tr>
-<td style="text-align: left;">size</td>
+<td style="text-align: left;"><code>size</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">该区块的大小（单位：字节）</td>
 </tr>
 <tr>
-<td style="text-align: left;">gasLimit</td>
+<td style="text-align: left;"><code>gasLimit</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">该区块允许的最大 gas</td>
 </tr>
 <tr>
-<td style="text-align: left;">gasUsed</td>
+<td style="text-align: left;"><code>gasUsed</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">该区块中所有交易使用的总 gas</td>
 </tr>
 <tr>
-<td style="text-align: left;">timestamp</td>
+<td style="text-align: left;"><code>timestamp</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">区块创建时的 Unix 时间戳，单位为秒。</td>
 </tr>
 <tr>
-<td style="text-align: left;">transactions</td>
+<td style="text-align: left;"><code>transactions</code></td>
 <td style="text-align: left;">Array</td>
 <td style="text-align: left;">交易对象数组，或根据最后一个参数返回的 32 字节交易哈希。</td>
 </tr>
 <tr>
-<td style="text-align: left;">uncles</td>
+<td style="text-align: left;"><code>uncles</code></td>
 <td style="text-align: left;">Array</td>
 <td style="text-align: left;">目前无实际意义</td>
 </tr>
@@ -2289,10 +2293,10 @@
 <p><em>通过区块高度返回区块的详细信息。</em></p>
 <p><strong>参数：</strong></p>
 <ol>
-<li>QUANTITY|TAG - 区块高度，或标签 "earliest", "latest"。</li>
-<li>Boolean - true 表示返回完整的交易对象列表；false 表示仅返回交易的哈希列表。</li>
+<li><code>QUANTITY|TAG</code> - 区块高度，或标签 "earliest", "latest"。</li>
+<li><code>Boolean</code> - <code>true</code> 表示返回完整的交易对象列表；<code>false</code> 表示仅返回交易的哈希列表。</li>
 </ol>
-<p><strong>返回值：</strong>  Object - 区块对象。如果未找到区块，则返回 null。结构参见 <a href="https://developers.tron.network/reference#eth_getblockbyhash">eth_getBlockByHash</a></p>
+<p><strong>返回值：</strong>  <code>Object</code> - 区块对象。如果未找到区块，则返回 <code>null</code>。结构参见 <a href="https://developers.tron.network/reference#eth_getblockbyhash">eth_getBlockByHash</a></p>
 <p><strong>示例</strong>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -2306,8 +2310,8 @@
 </code></pre></div></p>
 <h3 id="eth_getblocktransactioncountbyhash">eth_getBlockTransactionCountByHash<a class="headerlink" href="#eth_getblocktransactioncountbyhash" title="Permanent link">&para;</a></h3>
 <p><em>返回指定区块哈希中的交易数量。</em></p>
-<p><strong>参数：</strong> DATA, 32 Bytes - 区块的哈希。</p>
-<p><strong>返回值：</strong> QUANTITY - 该区块中的交易数量。</p>
+<p><strong>参数：</strong><code>DATA</code>, 32 Bytes - 区块的哈希。</p>
+<p><strong>返回值：</strong><code>QUANTITY</code> - 该区块中的交易数量。</p>
 <p><strong>示例</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -2321,8 +2325,8 @@
 </code></pre></div>
 <h3 id="eth_getblocktransactioncountbynumber">eth_getBlockTransactionCountByNumber<a class="headerlink" href="#eth_getblocktransactioncountbynumber" title="Permanent link">&para;</a></h3>
 <p><em>返回指定区块高度中的交易数量。</em></p>
-<p><strong>参数：</strong>  QUANTITY|TAG - 区块高度，或标签 <code>"earliest"</code>, <code>"latest"</code>。</p>
-<p><strong>返回值：</strong>  QUANTITY - 该区块中的交易数量。</p>
+<p><strong>参数：</strong><code>QUANTITY|TAG</code> - 区块高度，或标签 <code>"earliest"</code>, <code>"latest"</code>。</p>
+<p><strong>返回值：</strong><code>QUANTITY</code> - 该区块中的交易数量。</p>
 <p><strong>示例</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -2363,7 +2367,7 @@
 <li><code>QUANTITY|TAG</code> - 区块标识符，目前仅支持 <code>"latest"</code>。</li>
 </ol>
 <p><strong>返回值：</strong>
-<code>DATA</code> - 该存储槽位置的32字节数据。</p>
+<code>DATA</code> - 该存储槽位置的 32 字节数据。</p>
 <p><strong>示例</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -2395,77 +2399,77 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">blockHash</td>
+<td style="text-align: left;"><code>blockHash</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">交易所在区块的哈希</td>
 </tr>
 <tr>
-<td style="text-align: left;">blockNumber</td>
+<td style="text-align: left;"><code>blockNumber</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">交易所在区块的区块号</td>
 </tr>
 <tr>
-<td style="text-align: left;">from</td>
+<td style="text-align: left;"><code>from</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
 <td style="text-align: left;">发送方地址</td>
 </tr>
 <tr>
-<td style="text-align: left;">gas</td>
+<td style="text-align: left;"><code>gas</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">交易消耗的能量（Energy）</td>
 </tr>
 <tr>
-<td style="text-align: left;">gasPrice</td>
+<td style="text-align: left;"><code>gasPrice</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">能量 (Energy)价格</td>
 </tr>
 <tr>
-<td style="text-align: left;">hash</td>
+<td style="text-align: left;"><code>hash</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">交易哈希</td>
 </tr>
 <tr>
-<td style="text-align: left;">input</td>
+<td style="text-align: left;"><code>input</code></td>
 <td style="text-align: left;">DATA</td>
 <td style="text-align: left;">随交易发送的数据</td>
 </tr>
 <tr>
-<td style="text-align: left;">nonce</td>
+<td style="text-align: left;"><code>nonce</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">未使用</td>
 </tr>
 <tr>
-<td style="text-align: left;">to</td>
+<td style="text-align: left;"><code>to</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
 <td style="text-align: left;">接收方地址</td>
 </tr>
 <tr>
-<td style="text-align: left;">transactionIndex</td>
+<td style="text-align: left;"><code>transactionIndex</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">交易在区块中的索引位置</td>
 </tr>
 <tr>
-<td style="text-align: left;">type</td>
+<td style="text-align: left;"><code>type</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">交易类型，当前TRON网络上的交易都是普通交易，值为0</td>
 </tr>
 <tr>
-<td style="text-align: left;">value</td>
+<td style="text-align: left;"><code>value</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">转账金额（单位：sun）</td>
 </tr>
 <tr>
-<td style="text-align: left;">v</td>
+<td style="text-align: left;"><code>v</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">ECDSA 恢复 id</td>
 </tr>
 <tr>
-<td style="text-align: left;">r</td>
+<td style="text-align: left;"><code>r</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">ECDSA 签名 r</td>
 </tr>
 <tr>
-<td style="text-align: left;">s</td>
+<td style="text-align: left;"><code>s</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">ECDSA 签名 s</td>
 </tr>
@@ -2576,72 +2580,72 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">transactionHash</td>
+<td style="text-align: left;"><code>transactionHash</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">交易哈希</td>
 </tr>
 <tr>
-<td style="text-align: left;">transactionIndex</td>
+<td style="text-align: left;"><code>transactionIndex</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">交易在区块中的索引位置</td>
 </tr>
 <tr>
-<td style="text-align: left;">blockHash</td>
+<td style="text-align: left;"><code>blockHash</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">交易所在区块的哈希</td>
 </tr>
 <tr>
-<td style="text-align: left;">blockNumber</td>
+<td style="text-align: left;"><code>blockNumber</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">交易所在区块的区块号</td>
 </tr>
 <tr>
-<td style="text-align: left;">from</td>
+<td style="text-align: left;"><code>from</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
 <td style="text-align: left;">发送方地址</td>
 </tr>
 <tr>
-<td style="text-align: left;">to</td>
+<td style="text-align: left;"><code>to</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
 <td style="text-align: left;">接收方地址</td>
 </tr>
 <tr>
-<td style="text-align: left;">cumulativeGasUsed</td>
+<td style="text-align: left;"><code>cumulativeGasUsed</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">当前区块在执行完该交易时，当前区块所消耗的总能量</td>
 </tr>
 <tr>
-<td style="text-align: left;">gasUsed</td>
+<td style="text-align: left;"><code>gasUsed</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">该交易消耗的能量(Energy)总量</td>
 </tr>
 <tr>
-<td style="text-align: left;">contractAddress</td>
+<td style="text-align: left;"><code>contractAddress</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
 <td style="text-align: left;">如果交易是合约创建，则为创建的合约地址，否则为 <code>null</code>。</td>
 </tr>
 <tr>
-<td style="text-align: left;">logs</td>
+<td style="text-align: left;"><code>logs</code></td>
 <td style="text-align: left;">Array</td>
 <td style="text-align: left;">该交易生成的日志对象数组</td>
 </tr>
 <tr>
-<td style="text-align: left;">logsBloom</td>
+<td style="text-align: left;"><code>logsBloom</code></td>
 <td style="text-align: left;">DATA, 256 Bytes</td>
 <td style="text-align: left;">用于轻客户端快速检索相关日志的布隆过滤器</td>
 </tr>
 <tr>
-<td style="text-align: left;">root</td>
+<td style="text-align: left;"><code>root</code></td>
 <td style="text-align: left;">DATA</td>
 <td style="text-align: left;">交易后的状态根（Byzantium 之前）</td>
 </tr>
 <tr>
-<td style="text-align: left;">status</td>
+<td style="text-align: left;"><code>status</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">1（成功）或 0（失败）</td>
 </tr>
 <tr>
-<td style="text-align: left;">type</td>
+<td style="text-align: left;"><code>type</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">交易类型，当前 TRON 网络上的交易都是普通交易，值为 0</td>
 </tr>
@@ -2679,7 +2683,7 @@
 </code></pre></div>
 <h3 id="eth_getwork">eth_getWork<a class="headerlink" href="#eth_getwork" title="Permanent link">&para;</a></h3>
 <p><em>返回当前区块的哈希。</em></p>
-<p><strong>参数：</strong>  无</p>
+<p><strong>参数：</strong>无</p>
 <p><strong>返回值：</strong><br />
 <code>Array</code> - 包含三个元素的数组，只有第一个元素（区块哈希）有效。</p>
 <p><strong>示例</strong></p>
@@ -2698,9 +2702,9 @@
 }
 </code></pre></div>
 <h3 id="eth_protocolversion">eth_protocolVersion<a class="headerlink" href="#eth_protocolversion" title="Permanent link">&para;</a></h3>
-<p><em>返回节点的TRON协议版本。</em></p>
-<p><strong>参数：</strong>  无</p>
-<p><strong>返回值：</strong>  <code>String</code> - 当前协议的版本号。</p>
+<p><em>返回节点的 TRON 协议版本。</em></p>
+<p><strong>参数：</strong>无</p>
+<p><strong>返回值：</strong><code>String</code> - 当前协议的版本号。</p>
 <p><strong>示例</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_protocolVersion&quot;,&quot;params&quot;:[],&quot;id&quot;:64}&#39;
 
@@ -2709,35 +2713,14 @@
 </code></pre></div>
 <h3 id="eth_syncing">eth_syncing<a class="headerlink" href="#eth_syncing" title="Permanent link">&para;</a></h3>
 <p><em>返回节点的同步状态。</em></p>
-<p><strong>参数：</strong>  无</p>
+<p><strong>参数：</strong>无</p>
 <p><strong>返回值：</strong>  </p>
-<p><code>Object</code> 或 <code>Boolean</code> -  如果节点正在同步，返回一个包含 <code>startingBlock</code>, <code>currentBlock</code>, 和 <code>highestBlock</code> 的对象。如果已同步完成，返回 <code>false</code>，详细项介绍：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;"></th>
-<th style="text-align: left;"></th>
-<th style="text-align: left;"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">startingBlock</td>
-<td style="text-align: left;">QUANTITY</td>
-<td style="text-align: left;">当前开始同步的起始区块</td>
-</tr>
-<tr>
-<td style="text-align: left;">currentBlock</td>
-<td style="text-align: left;">QUANTITY</td>
-<td style="text-align: left;">当前区块</td>
-</tr>
-<tr>
-<td style="text-align: left;">highestBlock</td>
-<td style="text-align: left;">QUANTITY</td>
-<td style="text-align: left;">预估的最高区块</td>
-</tr>
-</tbody>
-</table>
+<p><code>Object</code> 或 <code>Boolean</code> -  如果节点正在同步，返回一个包含 <code>startingBlock</code>, <code>currentBlock</code>, 和 <code>highestBlock</code> 的对象。如果已同步完成，返回 <code>false</code>，详细项介绍：
+| 字段     | 类型                  | 描述                                                               |
+| :------------ | :------- | :------------------------------------------------------------------------------------------ |
+| <code>startingBlock</code> | QUANTITY | 当前开始同步的起始区块 |
+| <code>currentBlock</code>  | QUANTITY | 当前区块                                                                           |
+| <code>highestBlock</code>  | QUANTITY | 预估的最高区块                                                                 |</p>
 <p><strong>示例</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_syncing&quot;,&quot;params&quot;:[],&quot;id&quot;:64}&#39;
 
@@ -2768,22 +2751,22 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">fromBlock</td>
+<td style="text-align: left;"><code>fromBlock</code></td>
 <td style="text-align: left;">QUANTITY|TAG</td>
 <td style="text-align: left;">整数区块号，或 "latest"，或 "earliest"</td>
 </tr>
 <tr>
-<td style="text-align: left;">toBlock</td>
+<td style="text-align: left;"><code>toBlock</code></td>
 <td style="text-align: left;">QUANTITY|TAG</td>
 <td style="text-align: left;">整数区块号，或 "latest"，或 "earliest"</td>
 </tr>
 <tr>
-<td style="text-align: left;">address</td>
+<td style="text-align: left;"><code>address</code></td>
 <td style="text-align: left;">DATA|Array, 20 Bytes</td>
 <td style="text-align: left;">要监听的合约地址，可以是单个地址或地址数组，用于过滤来源于这些地址的日志</td>
 </tr>
 <tr>
-<td style="text-align: left;">topics</td>
+<td style="text-align: left;"><code>topics</code></td>
 <td style="text-align: left;">Array of DATA</td>
 <td style="text-align: left;">用于过滤事件的主题数组，每个主题为 32 字节的 DATA。主题的顺序很重要。每个主题位置也可以是一个 DATA 数组，表示"或"的关系（匹配数组中任意一个值）</td>
 </tr>
@@ -2824,47 +2807,47 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">removed</td>
+<td style="text-align: left;"><code>removed</code></td>
 <td style="text-align: left;">TAG</td>
-<td style="text-align: left;">如果日志由于链重组被移除则为 true。如果是有效日志则为 false。</td>
+<td style="text-align: left;">如果日志由于链重组被移除则为 <code>true</code>。如果是有效日志则为 <code>false</code>。</td>
 </tr>
 <tr>
-<td style="text-align: left;">logIndex</td>
+<td style="text-align: left;"><code>logIndex</code></td>
 <td style="text-align: left;">QUANTITY</td>
-<td style="text-align: left;">日志在区块中的索引位置。如果是待处理日志则为 null。</td>
+<td style="text-align: left;">日志在区块中的索引位置。如果是待处理日志则为 <code>null</code>。</td>
 </tr>
 <tr>
-<td style="text-align: left;">transactionIndex</td>
+<td style="text-align: left;"><code>transactionIndex</code></td>
 <td style="text-align: left;">QUANTITY</td>
-<td style="text-align: left;">创建日志的交易索引位置。如果是待处理日志则为 null。</td>
+<td style="text-align: left;">创建日志的交易索引位置。如果是待处理日志则为 <code>null</code>。</td>
 </tr>
 <tr>
-<td style="text-align: left;">transactionHash</td>
+<td style="text-align: left;"><code>transactionHash</code></td>
 <td style="text-align: left;">DATA, 32Bytes</td>
 <td style="text-align: left;">创建日志的交易哈希。</td>
 </tr>
 <tr>
-<td style="text-align: left;">blockHash</td>
+<td style="text-align: left;"><code>blockHash</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
-<td style="text-align: left;">日志所在区块的哈希。如果是待处理日志则为 null。</td>
+<td style="text-align: left;">日志所在区块的哈希。如果是待处理日志则为 <code>null</code>。</td>
 </tr>
 <tr>
-<td style="text-align: left;">blockNumber</td>
+<td style="text-align: left;"><code>blockNumber</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">日志所在区块的区块号。</td>
 </tr>
 <tr>
-<td style="text-align: left;">address</td>
+<td style="text-align: left;"><code>address</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">日志来源的地址。</td>
 </tr>
 <tr>
-<td style="text-align: left;">data</td>
+<td style="text-align: left;"><code>data</code></td>
 <td style="text-align: left;">DATA</td>
 <td style="text-align: left;">包含一个或多个 32 字节的非索引日志参数。</td>
 </tr>
 <tr>
-<td style="text-align: left;">topics</td>
+<td style="text-align: left;"><code>topics</code></td>
 <td style="text-align: left;">DATA[]</td>
 <td style="text-align: left;">事件主题和索引参数。</td>
 </tr>
@@ -2896,7 +2879,7 @@
 <h3 id="eth_getfilterlogs">eth_getFilterLogs<a class="headerlink" href="#eth_getfilterlogs" title="Permanent link">&para;</a></h3>
 <p><em>返回指定日志过滤器的所有历史匹配日志。</em></p>
 <p><strong>参数</strong><br />
-<code>QUANTITY</code> - 由 <code>eth_newFilter</code> 创建的过滤器ID。</p>
+<code>QUANTITY</code> - 由 <code>eth_newFilter</code> 创建的过滤器 ID。</p>
 <p><strong>返回值</strong>
 <code>Array</code> - 事件日志对象数组，参见 <a href="#eth_getfilterchanges">eth_getFilterChanges</a>。</p>
 <p><strong>示例</strong></p>
@@ -2955,27 +2938,27 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">fromBlock</td>
+<td style="text-align: left;"><code>fromBlock</code></td>
 <td style="text-align: left;">QUANTITY|TAG</td>
 <td style="text-align: left;">（可选，默认："latest"）整数区块号，或 "latest" 表示最新的区块</td>
 </tr>
 <tr>
-<td style="text-align: left;">toBlock</td>
+<td style="text-align: left;"><code>toBlock</code></td>
 <td style="text-align: left;">QUANTITY|TAG</td>
 <td style="text-align: left;">（可选，默认："latest"）整数区块号，或 "latest" 表示最新的区块</td>
 </tr>
 <tr>
-<td style="text-align: left;">address</td>
+<td style="text-align: left;"><code>address</code></td>
 <td style="text-align: left;">DATA|Array, 20 Bytes</td>
 <td style="text-align: left;">（可选）合约地址或日志应源自的地址列表。</td>
 </tr>
 <tr>
-<td style="text-align: left;">topics</td>
+<td style="text-align: left;"><code>topics</code></td>
 <td style="text-align: left;">Array of DATA</td>
 <td style="text-align: left;">（可选）32 字节 DATA 主题数组。主题是顺序相关的。每个主题也可以是具有 "or" 选项的 DATA 数组。</td>
 </tr>
 <tr>
-<td style="text-align: left;">blockhash</td>
+<td style="text-align: left;"><code>blockhash</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">（可选）区块哈希 ，注意：blockHash和fromBlock/toBlock不可以同时指定，否则报错：<code>cannot specify both BlockHash and FromBlock/ToBlock, choose one or the other</code></td>
 </tr>
@@ -2996,15 +2979,15 @@
 <h2 id="net">net<a class="headerlink" href="#net" title="Permanent link">&para;</a></h2>
 <h3 id="net_listening">net_listening<a class="headerlink" href="#net_listening" title="Permanent link">&para;</a></h3>
 <p><em>检查节点是否正在监听网络连接。</em></p>
-<p><strong>参数：</strong>  无</p>
+<p><strong>参数：</strong>无</p>
 <p><strong>返回值：</strong><br />
 <code>Boolean</code> - 如果正在监听，则为 <code>true</code>，否则为 <code>false</code>。</p>
-<p><strong>示例</strong></p>
+<p><strong>示例</strong>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;net_listening&quot;,&quot;params&quot;:[],&quot;id&quot;:64}&#39;
 
 #返回
 {&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:64,&quot;result&quot;:true}
-</code></pre></div>
+</code></pre></div></p>
 <h3 id="net_peercount">net_peerCount<a class="headerlink" href="#net_peercount" title="Permanent link">&para;</a></h3>
 <p><em>返回当前连接的对等节点（Peers）数量。</em></p>
 <p><strong>参数：</strong>  无</p>
@@ -3044,7 +3027,7 @@
 <p><strong>参数</strong><br />
 <code>DATA</code> - 要进行哈希运算的数据。</p>
 <p><strong>返回</strong><br />
-<code>DATA</code> - 32字节的Keccak-256哈希结果。</p>
+<code>DATA</code> - 32 字节的 Keccak-256 哈希结果。</p>
 <p><strong>示例</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;id&quot;: 1, &quot;method&quot;: &quot;web3_sha3&quot;, &quot;params&quot;: [&quot;0x68656c6c6f20776f726c64&quot;]}&#39;
 
@@ -3052,17 +3035,38 @@
 {&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x47173285a8d7341e5e972fc677286384f802f8ef42a5ec5f03bbfa254cb01fad&quot;}
 </code></pre></div>
 <h2 id="buildtransaction">buildTransaction<a class="headerlink" href="#buildtransaction" title="Permanent link">&para;</a></h2>
-<p><em>这是一个TRON</em><em>自定义</em><em>的 RPC 方法，用于便捷地创建 TRON 原生交易，返回未签名的交易对象，不同类型的交易具有不同的参数。</em></p>
+<p><em>这是一个 TRON </em><em>自定义</em><em>的 RPC 方法，用于便捷地创建 TRON 原生交易，返回未签名的交易对象，不同类型的交易具有不同的参数。</em></p>
 <h3 id="transfercontract-trx">TransferContract (TRX 转账)<a class="headerlink" href="#transfercontract-trx" title="Permanent link">&para;</a></h3>
 <p><strong>参数：</strong><br />
-<code>Object</code> - 包含以下字段:
-| 参数名称 | 数据类型      | 描述                                 |
-| :--------- | :------------- | :------------------------------------------ |
-| from       | DATA, 20 字节 | 交易发送方的地址。   |
-| to         | DATA, 20 字节 | 交易接收方的地址。 |
-| value      | DATA           |  转账金额，单位为 sun。                        |</p>
+<code>Object</code> - 包含以下字段:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">参数名称</th>
+<th style="text-align: left;">数据类型</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>from</code></td>
+<td style="text-align: left;">DATA, 20 字节</td>
+<td style="text-align: left;">交易发送方的地址。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>to</code></td>
+<td style="text-align: left;">DATA, 20 字节</td>
+<td style="text-align: left;">交易接收方的地址。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>value</code></td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">转账金额，单位为 sun。</td>
+</tr>
+</tbody>
+</table>
 <p><strong>返回值：</strong>
-<code>Object</code> - 包含未签名<code>TransferContract</code>交易的对象。</p>
+<code>Object</code> - 包含未签名 <code>TransferContract</code> 交易的对象。</p>
 <p><strong>示例</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;id&quot;: 1337,
@@ -3091,29 +3095,29 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">from</td>
+<td style="text-align: left;"><code>from</code></td>
 <td style="text-align: left;">DATA, 20 字节</td>
 <td style="text-align: left;">交易发送方的地址</td>
 </tr>
 <tr>
-<td style="text-align: left;">to</td>
+<td style="text-align: left;"><code>to</code></td>
 <td style="text-align: left;">DATA, 20 字节</td>
 <td style="text-align: left;">交易接收方的地址</td>
 </tr>
 <tr>
-<td style="text-align: left;">tokenId</td>
+<td style="text-align: left;"><code>tokenId</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">代币 ID</td>
 </tr>
 <tr>
-<td style="text-align: left;">tokenValue</td>
+<td style="text-align: left;"><code>tokenValue</code></td>
 <td style="text-align: left;">QUANTITY</td>
-<td style="text-align: left;">TRC-10代币的转账金额。</td>
+<td style="text-align: left;">TRC-10 代币的转账金额。</td>
 </tr>
 </tbody>
 </table>
 <p><strong>返回</strong>
-<code>Object</code> - 包含未签名<code>TransferAssetContract</code>交易的对象。</p>
+<code>Object</code> - 包含未签名 <code>TransferAssetContract</code> 交易的对象。</p>
 <p><strong>示例</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;method&quot;: &quot;buildTransaction&quot;,
@@ -3134,19 +3138,68 @@
 </code></pre></div>
 <h3 id="createsmartcontract">CreateSmartContract (部署合约)<a class="headerlink" href="#createsmartcontract" title="Permanent link">&para;</a></h3>
 <p><strong>参数</strong><br />
-<code>Object</code> - 包含以下字段:
-| 参数名称 | 数据类型      | 描述                                 |
-| :------------------------- | :------------- | :--------------------------------------- |
-| from                       | DATA, 20 字节 | 交易发送方的地址 |
-| name                       | DATA           | 智能合约的名称         |
-| gas                        | DATA           | 费用限制                                |
-| abi                        | DATA           | 智能合约的 ABI           |
-| data                       | DATA           | 智能合约的字节码     |
-| consumeUserResourcePercent | QUANTITY       | 用户资源消耗百分比       |
-| originEnergyLimit          | QUANTITY       | 初始能量限制               |
-| value                      | DATA           | 转入合约的TRX数额      |
-| tokenId                    | QUANTITY       | 代币 ID                                 |
-| tokenValue                 | QUANTITY       | TRC-10 代币的转账金额             |</p>
+<code>Object</code> - 包含以下字段:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">参数名称</th>
+<th style="text-align: left;">数据类型</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>from</code></td>
+<td style="text-align: left;">DATA, 20 字节</td>
+<td style="text-align: left;">交易发送方的地址</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>name</code></td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">智能合约的名称</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>gas</code></td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">费用限制</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>abi</code></td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">智能合约的 ABI</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>data</code></td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">智能合约的字节码</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>consumeUserResourcePercent</code></td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">用户资源消耗百分比</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>originEnergyLimit</code></td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">初始能量限制</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>value</code></td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">转入合约的TRX数额</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tokenId</code></td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">代币 ID</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tokenValue</code></td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">TRC-10 代币的转账金额</td>
+</tr>
+</tbody>
+</table>
 <p><strong>返回</strong>
 <code>Object</code> - 未签名的 <code>CreateSmartContract</code> 交易或错误</p>
 <p><strong>示例：</strong>
@@ -3186,37 +3239,37 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">from</td>
+<td style="text-align: left;"><code>from</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
 <td style="text-align: left;">交易发送方的地址</td>
 </tr>
 <tr>
-<td style="text-align: left;">to</td>
+<td style="text-align: left;"><code>to</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
 <td style="text-align: left;">智能合约的地址</td>
 </tr>
 <tr>
-<td style="text-align: left;">data</td>
+<td style="text-align: left;"><code>data</code></td>
 <td style="text-align: left;">DATA</td>
 <td style="text-align: left;">调用的合约函数和参数</td>
 </tr>
 <tr>
-<td style="text-align: left;">gas</td>
+<td style="text-align: left;"><code>gas</code></td>
 <td style="text-align: left;">DATA</td>
 <td style="text-align: left;">Fee limit</td>
 </tr>
 <tr>
-<td style="text-align: left;">value</td>
+<td style="text-align: left;"><code>value</code></td>
 <td style="text-align: left;">DATA</td>
 <td style="text-align: left;">转入合约的 TRX 数额</td>
 </tr>
 <tr>
-<td style="text-align: left;">tokenId</td>
+<td style="text-align: left;"><code>tokenId</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">代币 ID</td>
 </tr>
 <tr>
-<td style="text-align: left;">tokenValue</td>
+<td style="text-align: left;"><code>tokenValue</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">TRC-10 代币的转账金额</td>
 </tr>
