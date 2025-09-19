@@ -22,7 +22,7 @@ node.jsonrpc {
 
 在 JSON-RPC 交互中，所有数据均通过十六进制字符串传递，但遵循两种不同的格式化规则：
 
-* **QUANTITIES (数值类型)**
+- **QUANTITIES (数值类型)**
 
    - 描述: 用于表示整数，如区块号、余额、数量等。
    - 格式: 以 `0x` 为前缀的十六进制，采用最紧凑的表示法（即没有前导零）。唯一的例外是零，必须表示为 `0x0`.
@@ -32,7 +32,7 @@ node.jsonrpc {
        -  错误: `0x0400` (不允许前导零)
        -  错误: `ff` (必须有 `0x` 前缀)
 
-* **UNFORMATTED DATA (非格式化数据)**
+- **UNFORMATTED DATA (非格式化数据)**
 
   - 描述: 用于表示字节数组，如地址、哈希、字节码等。
   - 格式: 以 `0x` 为前缀，每个字节由两个十六进制字符表示。
@@ -51,13 +51,13 @@ node.jsonrpc {
 
 **参数：**  无
 
-**返回值：**  空列表
+**返回值：**空列表
 
 **注意**: 与 Geth 等以太坊客户端不同，TRON 节点不负责管理私钥或账户。因此，此接口仅为兼容性而存在，不具备实际功能。
  
 **示例**
 
-``` curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '
 {"jsonrpc": "2.0", "id": 1, "method": "eth_accounts", "params": []}'
 
@@ -70,12 +70,12 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '
 
 *返回节点已同步的最新区块的高度。*
 
-**参数：**  无
+**参数：**无
 
-**返回值：** QUANTITY - 最新的区块号。
+**返回值：**`QUANTITY` - 最新的区块号。
 
 **示例**
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":64}'
 
 #返回
@@ -85,28 +85,28 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 
 ### eth_call
 
-*在节点上本地模拟执行一笔交易，但不会将其广播上链。主要用于调用智能合约的view或pure函数，或在发送前预估交易结果。*
+*在节点上本地模拟执行一笔交易，但不会将其广播上链。主要用于调用智能合约的 `view` 或 `pure` 函数，或在发送前预估交易结果。*
 
 **参数：**
 
-1. Object - 交易调用对象，包含以下字段：
+1. `Object` - 交易调用对象，包含以下字段：
 
-| 项名称 | 数据类型      | 描述                                                   |
-| :-------- | :------------- | :------------------------------------------------------------ |
-| from      | DATA, 20 Bytes | 调用者地址。十六进制格式地址，为了兼容eth，所有地址既可以是TRON 十六进制地址，也可以是eth地址    |
-| to        | DATA, 20 Bytes | 合约地址。十六进制格式地址 |
-| gas       | QUANTITY       | 不支持。值为 0x0                               |
-| gasPrice  | QUANTITY       | 不支持。值为 0x0                               |
-| value     | QUANTITY       | 不支持。值为 0x0                               |
-| data      | DATA           | 方法签名和编码参数的哈希。          |
+    | 项名称 | 数据类型      | 描述                                                   |
+    | :-------- | :------------- | :------------------------------------------------------------ |
+    | `from`      | DATA, 20 Bytes | 调用者地址。十六进制格式地址，为了兼容 ETH，所有地址既可以是 TRON 十六进制地址，也可以是 ETH 地址    |
+    | `to`        | DATA, 20 Bytes | 合约地址。十六进制格式地址 |
+    | `gas`       | QUANTITY       | 不支持。值为 `0x0`                               |
+    | `gasPrice`  | QUANTITY       | 不支持。值为 `0x0`                               |
+    | `value`     | QUANTITY       | 不支持。值为 `0x0`                               |
+    | `data`      | DATA           | 方法签名和编码参数的哈希。          |
 
-2. QUANTITY|TAG - 区块标识符，目前仅支持 "latest"。
+2. `QUANTITY|TAG` - 区块标识符，目前仅支持 "latest"。
 
-**返回值：** DATA - 合约函数执行的返回值，经过ABI编码。
+**返回值：** `DATA` - 合约函数执行的返回值，经过 `ABI` 编码。
 
 **示例**
 
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 	"jsonrpc": "2.0",
 	"method": "eth_call",
@@ -123,21 +123,19 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 #返回
 {"jsonrpc":"2.0","id":1,"result":"0x"}
-
 ```
-
 
 ### eth_chainId
 
-*返回TRON网络的chainId，即创世区块哈希的最后四个字节。*
+*返回 TRON 网络的 `chainId`，即创世区块哈希的最后四个字节。*
 
-**参数：**  无
+**参数：**无
 
-**返回值：**  DATA - TRON网络的chainId
+**返回值：**`DATA` - TRON 网络的 `chainId`
 
 **示例**
 
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":79}'
 
 #返回
@@ -145,24 +143,22 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 
 ```
 
-
 ### eth_coinbase
 
 *返回当前节点的超级代表地址。*
 
-**参数：**  无
+**参数：**无
 
-**返回值：**  DATA - 节点的超级代表地址。（注意：如果配置了多个超级代表地址，则返回第一个地址；如果没有有效地址或地址未生成任何区块，则返回错误，错误信息为“etherbase must be explicitly specified”。）
+**返回值：**`DATA` - 节点的超级代表地址。（注意：如果配置了多个超级代表地址，则返回第一个地址；如果没有有效地址或地址未生成任何区块，则返回错误，错误信息为 `etherbase must be explicitly specified`。）
 
 **示例**
 
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc": "2.0", "id": 1, "method": "eth_coinbase", "params": []}'
 
 #返回
 {"jsonrpc":"2.0","id":1,"error":{"code":-32000,"message":"etherbase must be explicitly specified","data":"{}"}}
 ```
-
 
 ### eth_estimateGas
 
@@ -170,22 +166,22 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc": "2.0",
 
 **参数**  
 
-1. object - 交易调用对象，包含以下项：
+1. `object` - 交易调用对象，包含以下项：
 
-| 项名称 | 数据类型      | 描述                                          |
-| :-------- | :------------- | :--------------------------------------------------- |
-| from      | DATA, 20 Bytes | 发送方地址                                |
-| to        | DATA, 20 Bytes | 接收方地址或合约地址                              |
-| gas       | QUANTITY       | 未使用                                              |
-| gasPrice  | QUANTITY       | 未使用                                              |
-| value     | QUANTITY       | 交易发送的TRX数量 (单位: sun)。      |
-| data      | DATA           | 方法签名和编码参数的哈希 |
+    | 项名称 | 数据类型      | 描述                                          |
+    | :-------- | :------------- | :--------------------------------------------------- |
+    | `from`      | DATA, 20 Bytes | 发送方地址                                |
+    | `to`        | DATA, 20 Bytes | 接收方地址或合约地址                              |
+    | `gas`       | QUANTITY       | 未使用                                              |
+    | `gasPrice`  | QUANTITY       | 未使用                                              |
+    | `value`     | QUANTITY       | 交易发送的TRX数量 (单位: sun)。      |
+    | `data`      | DATA           | 方法签名和编码参数的哈希 |
 
-**返回值：**  QUANTITY - 预估消耗的能量 (Energy) 数量。
+**返回值：**  `QUANTITY` - 预估消耗的能量 (Energy) 数量。
 
 **示例**
 
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 	"jsonrpc": "2.0",
 	"id": 1,
@@ -209,13 +205,13 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 *返回当前网络中能量 (Energy) 的价格（单位：sun）。*
 
-**参数：**  无
+**参数：**无
 
-**返回值：**  QUANTITY - 当前的能量价格，单位为 sun。
+**返回值：**`QUANTITY` - 当前的能量价格，单位为 sun。
 
 **示例**
 
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc": "2.0", "id": 1, "method": "eth_gasPrice", "params": []}'
 
 #返回
@@ -228,14 +224,14 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc": "2.0",
 
 **参数：**
 
-1. DATA, 20 Bytes - 要查询余额的账户地址。
-2. QUANTITY|TAG - 区块标识符，目前仅支持 "latest"。
+1. `DATA`, 20 Bytes - 要查询余额的账户地址。
+2. `QUANTITY|TAG` - 区块标识符，目前仅支持 "latest"。
 
-**返回值：** QUANTITY - 指定地址的 TRX 余额，单位为 sun。
+**返回值：** `QUANTITY` - 指定地址的 TRX 余额，单位为 sun。
 
 **示例**
 
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 	"jsonrpc": "2.0",
 	"method": "eth_getBalance",
@@ -254,36 +250,37 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 **参数：**
 
-1. DATA, 32 Bytes - 区块的哈希。
-2. Boolean - `true` 表示返回完整的交易对象列表；`false` 表示仅返回交易的哈希列表。
+1. `DATA`, 32 Bytes - 区块的哈希。
+2. `Boolean` - `true` 表示返回完整的交易对象列表；`false` 表示仅返回交易的哈希列表。
 
 **返回值：** `Object` - 区块对象。如果未找到区块，则返回 `null`。
 区块对象包含以下项:
 
-| 项名称        | 数据类型       | 描述                                                                                         |
-| :--------------- | :-------------- | :-------------------------------------------------------------------------------------------------- |
-| number           | QUANTITY        | 区块号                                                                                        |
-| hash             | DATA, 32 Bytes  | 区块哈希                                                                                   |
-| parentHash       | DATA, 32 Bytes  | 父区块哈希                                                                            |
-| nonce            | QUANTITY        | 未使用                                                                                              |
-| sha3Uncles       | DATA, 32 Bytes  | 仅用于兼容以太坊 JSON-RPC 接口，无实际意义 |
-| logsBloom        | DATA, 256 Bytes | 仅用于兼容以太坊 JSON-RPC 接口，无实际意义                  |
-| transactionsRoot | DATA, 32 Bytes  | 区块交易树的根                                                       |
-| stateRoot        | DATA, 32 Bytes  | 目前无实际意义                                                      |
-| receiptsRoot     | DATA, 32 Bytes  | 目前无实际意义                                                       |
-| miner            | DATA, 20 Bytes  | 生产这个区块的 SR 地址                               |
-| difficulty       | QUANTITY        | 目前无实际意义                                                       |
-| totalDifficulty  | QUANTITY        | 目前无实际意义                                      |
-| extraData        | DATA            | 目前无实际意义                                                                |
-| size             | QUANTITY        | 该区块的大小（单位：字节）                                                             |
-| gasLimit         | QUANTITY        | 该区块允许的最大 gas                                                               |
-| gasUsed          | QUANTITY        | 该区块中所有交易使用的总 gas                                                |
-| timestamp        | QUANTITY        | 区块创建时的 Unix 时间戳，单位为秒。                              |
-| transactions     | Array           | 交易对象数组，或根据最后一个参数返回的 32 字节交易哈希。 |
-| uncles           | Array           | 目前无实际意义                                                                             |
+| 项名称            | 数据类型        | 描述                                                                    |
+| :---------------- | :-------------- | :---------------------------------------------------------------------- |
+| `number`          | QUANTITY        | 区块号                                                                  |
+| `hash`            | DATA, 32 Bytes  | 区块哈希                                                                |
+| `parentHash`      | DATA, 32 Bytes  | 父区块哈希                                                              |
+| `nonce`           | QUANTITY        | 未使用                                                                  |
+| `sha3Uncles`      | DATA, 32 Bytes  | 仅用于兼容以太坊 JSON-RPC 接口，无实际意义                                |
+| `logsBloom`       | DATA, 256 Bytes | 仅用于兼容以太坊 JSON-RPC 接口，无实际意义                              |
+| `transactionsRoot`| DATA, 32 Bytes  | 区块交易树的根                                                          |
+| `stateRoot`       | DATA, 32 Bytes  | 目前无实际意义                                                          |
+| `receiptsRoot`    | DATA, 32 Bytes  | 目前无实际意义                                                          |
+| `miner`           | DATA, 20 Bytes  | 生产这个区块的 SR 地址                                                  |
+| `difficulty`      | QUANTITY        | 目前无实际意义                                                          |
+| `totalDifficulty` | QUANTITY        | 目前无实际意义                                                          |
+| `extraData`       | DATA            | 目前无实际意义                                                          |
+| `size`            | QUANTITY        | 该区块的大小（单位：字节）                                              |
+| `gasLimit`        | QUANTITY        | 该区块允许的最大 gas                                                    |
+| `gasUsed`         | QUANTITY        | 该区块中所有交易使用的总 gas                                            |
+| `timestamp`       | QUANTITY        | 区块创建时的 Unix 时间戳，单位为秒。                                    |
+| `transactions`    | Array           | 交易对象数组，或根据最后一个参数返回的 32 字节交易哈希。                |
+| `uncles`          | Array           | 目前无实际意义                                                          |
+
 
 **示例**
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 	"jsonrpc": "2.0",
 	"method": "eth_getBlockByHash",
@@ -302,13 +299,13 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 **参数：**
 
-1. QUANTITY|TAG - 区块高度，或标签 "earliest", "latest"。
-2. Boolean - true 表示返回完整的交易对象列表；false 表示仅返回交易的哈希列表。
+1. `QUANTITY|TAG` - 区块高度，或标签 "earliest", "latest"。
+2. `Boolean` - `true` 表示返回完整的交易对象列表；`false` 表示仅返回交易的哈希列表。
 
-**返回值：**  Object - 区块对象。如果未找到区块，则返回 null。结构参见 [eth_getBlockByHash](https://developers.tron.network/reference#eth_getblockbyhash)
+**返回值：**  `Object` - 区块对象。如果未找到区块，则返回 `null`。结构参见 [eth_getBlockByHash](https://developers.tron.network/reference#eth_getblockbyhash)
 
 **示例**
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 	"jsonrpc": "2.0",
 	"method": "eth_getBlockByNumber",
@@ -320,18 +317,17 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 {"jsonrpc":"2.0","id":1,"result":null}
 ```
 
-
 ### eth_getBlockTransactionCountByHash
 
 *返回指定区块哈希中的交易数量。*
 
-**参数：** DATA, 32 Bytes - 区块的哈希。
+**参数：**`DATA`, 32 Bytes - 区块的哈希。
 
-**返回值：** QUANTITY - 该区块中的交易数量。
+**返回值：**`QUANTITY` - 该区块中的交易数量。
 
 **示例**
 
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 	"jsonrpc": "2.0",
 	"id": 1,
@@ -348,13 +344,13 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 *返回指定区块高度中的交易数量。*
 
-**参数：**  QUANTITY|TAG - 区块高度，或标签 `"earliest"`, `"latest"`。
+**参数：**`QUANTITY|TAG` - 区块高度，或标签 `"earliest"`, `"latest"`。
 
-**返回值：**  QUANTITY - 该区块中的交易数量。
+**返回值：**`QUANTITY` - 该区块中的交易数量。
 
 **示例**
 
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 	"jsonrpc": "2.0",
 	"method": "eth_getBlockTransactionCountByNumber",
@@ -381,7 +377,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 **示例**
 
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 	"jsonrpc": "2.0",
 	"method": "eth_getCode",
@@ -404,11 +400,11 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 3. `QUANTITY|TAG` - 区块标识符，目前仅支持 `"latest"`。
 
 **返回值：**
-`DATA` - 该存储槽位置的32字节数据。
+`DATA` - 该存储槽位置的 32 字节数据。
 
 **示例**
 
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 	"jsonrpc": "2.0",
 	"method": "eth_getStorageAt",
@@ -434,23 +430,23 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 `Object` - 交易对象。如果未找到，则返回 `null`。
 交易对象包含以下项：
 
-| 项名称        | 数据类型      | 描述                                             |
-| :--------------- | :------------- | :------------------------------------------------------ |
-| blockHash        | DATA, 32 Bytes | 交易所在区块的哈希        |
-| blockNumber      | QUANTITY       | 交易所在区块的区块号             |
-| from             | DATA, 20 Bytes | 发送方地址                                   |
-| gas              | QUANTITY       | 交易消耗的能量（Energy）                                                |
-| gasPrice         | QUANTITY       | 能量 (Energy)价格                                            |
-| hash             | DATA, 32 Bytes | 交易哈希                                 |
-| input            | DATA           | 随交易发送的数据                |
-| nonce            | QUANTITY       | 未使用                                                  |
-| to               | DATA, 20 Bytes | 接收方地址                                 |
-| transactionIndex | QUANTITY       | 交易在区块中的索引位置 |
-| type | QUANTITY       | 交易类型，当前TRON网络上的交易都是普通交易，值为0  |
-| value            | QUANTITY       | 转账金额（单位：sun）                                |
-| v                | QUANTITY       | ECDSA 恢复 id                                       |
-| r                | DATA, 32 Bytes | ECDSA 签名 r                                       |
-| s                | DATA, 32 Bytes | ECDSA 签名 s                                       |
+| 项名称             | 数据类型       | 描述                                                       |
+| :----------------- | :------------- | :--------------------------------------------------------- |
+| `blockHash`        | DATA, 32 Bytes | 交易所在区块的哈希                                         |
+| `blockNumber`      | QUANTITY       | 交易所在区块的区块号                                       |
+| `from`             | DATA, 20 Bytes | 发送方地址                                                 |
+| `gas`              | QUANTITY       | 交易消耗的能量（Energy）                                   |
+| `gasPrice`         | QUANTITY       | 能量 (Energy)价格                                          |
+| `hash`             | DATA, 32 Bytes | 交易哈希                                                   |
+| `input`            | DATA           | 随交易发送的数据                                           |
+| `nonce`            | QUANTITY       | 未使用                                                     |
+| `to`               | DATA, 20 Bytes | 接收方地址                                                 |
+| `transactionIndex` | QUANTITY       | 交易在区块中的索引位置                                     |
+| `type`             | QUANTITY       | 交易类型，当前TRON网络上的交易都是普通交易，值为0          |
+| `value`            | QUANTITY       | 转账金额（单位：sun）                                      |
+| `v`                | QUANTITY       | ECDSA 恢复 id                                              |
+| `r`                | DATA, 32 Bytes | ECDSA 签名 r                                               |
+| `s`                | DATA, 32 Bytes | ECDSA 签名 s                                               |
 
 **示例**
 
@@ -485,7 +481,6 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 	}
 }
 ```
-
 
 ### eth_getTransactionByBlockNumberAndIndex
 
@@ -524,7 +519,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 `Object` - 交易对象。如果未找到，则返回 `null`。交易对象结构参见 [eth_getTransactionByBlockHashAndIndex](#eth_gettransactionbyblockhashandindex)
 
 **示例**
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 	"jsonrpc": "2.0",
 	"method": "eth_getTransactionByHash",
@@ -568,26 +563,26 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 `Object` - 交易收据对象。如果交易未确认或不存在，则返回 `null`。
 交易收据对象包含以下项：
 
-| 项名称         | 数据类型       | 描述                                                                               |
-| :---------------- | :-------------- | :---------------------------------------------------------------------------------------- |
-| transactionHash   | DATA, 32 Bytes  | 交易哈希                                                                   |
-| transactionIndex  | QUANTITY        | 交易在区块中的索引位置                                   |
-| blockHash         | DATA, 32 Bytes  | 交易所在区块的哈希                                          |
-| blockNumber       | QUANTITY        | 交易所在区块的区块号                                               |
-| from              | DATA, 20 Bytes  | 发送方地址                                                                     |
-| to                | DATA, 20 Bytes  | 接收方地址                                                                   |
-| cumulativeGasUsed | QUANTITY        | 当前区块在执行完该交易时，当前区块所消耗的总能量             |
-| gasUsed           | QUANTITY        | 该交易消耗的能量(Energy)总量                                |
-| contractAddress   | DATA, 20 Bytes  | 如果交易是合约创建，则为创建的合约地址，否则为 `null`。 |
-| logs              | Array           | 该交易生成的日志对象数组                                   |
-| logsBloom         | DATA, 256 Bytes | 用于轻客户端快速检索相关日志的布隆过滤器                          |
-| root              | DATA            | 交易后的状态根（Byzantium 之前）                                    |
-| status            | QUANTITY        | 1（成功）或 0（失败）                                                         |
-| type            | QUANTITY        | 交易类型，当前 TRON 网络上的交易都是普通交易，值为 0                   |
+| 项名称            | 数据类型        | 描述                                                                    |
+| :---------------- | :-------------- | :---------------------------------------------------------------------- |
+| `transactionHash`   | DATA, 32 Bytes  | 交易哈希                                                                |
+| `transactionIndex`  | QUANTITY        | 交易在区块中的索引位置                                                  |
+| `blockHash`         | DATA, 32 Bytes  | 交易所在区块的哈希                                                      |
+| `blockNumber`       | QUANTITY        | 交易所在区块的区块号                                                    |
+| `from`              | DATA, 20 Bytes  | 发送方地址                                                              |
+| `to`                | DATA, 20 Bytes  | 接收方地址                                                              |
+| `cumulativeGasUsed` | QUANTITY        | 当前区块在执行完该交易时，当前区块所消耗的总能量                        |
+| `gasUsed`           | QUANTITY        | 该交易消耗的能量(Energy)总量                                            |
+| `contractAddress`   | DATA, 20 Bytes  | 如果交易是合约创建，则为创建的合约地址，否则为 `null`。                 |
+| `logs`              | Array           | 该交易生成的日志对象数组                                                |
+| `logsBloom`         | DATA, 256 Bytes | 用于轻客户端快速检索相关日志的布隆过滤器                                |
+| `root`              | DATA            | 交易后的状态根（Byzantium 之前）                                        |
+| `status`            | QUANTITY        | 1（成功）或 0（失败）                                                   |
+| `type`              | QUANTITY        | 交易类型，当前 TRON 网络上的交易都是普通交易，值为 0                    |
 
 **示例**
 
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 	"jsonrpc": "2.0",
 	"method": "eth_getTransactionReceipt",
@@ -618,19 +613,18 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 }
 ```
 
-
 ### eth_getWork
 
 *返回当前区块的哈希。*
 
-**参数：**  无
+**参数：**无
 
 **返回值：**  
 `Array` - 包含三个元素的数组，只有第一个元素（区块哈希）有效。
 
 **示例**
 
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 	"jsonrpc": "2.0",
 	"method": "eth_getWork",
@@ -649,15 +643,15 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 ### eth_protocolVersion
 
-*返回节点的TRON协议版本。*
+*返回节点的 TRON 协议版本。*
 
-**参数：**  无
+**参数：**无
 
-**返回值：**  `String` - 当前协议的版本号。
+**返回值：**`String` - 当前协议的版本号。
 
 **示例**
 
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","method":"eth_protocolVersion","params":[],"id":64}'
 
 #返回
@@ -669,21 +663,20 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 
 *返回节点的同步状态。*
 
-**参数：**  无
+**参数：**无
 
 **返回值：**  
 
 `Object` 或 `Boolean` -  如果节点正在同步，返回一个包含 `startingBlock`, `currentBlock`, 和 `highestBlock` 的对象。如果已同步完成，返回 `false`，详细项介绍：
-
-|               |          |                                                                                             |
+| 字段     | 类型                  | 描述                                                               |
 | :------------ | :------- | :------------------------------------------------------------------------------------------ |
-| startingBlock | QUANTITY | 当前开始同步的起始区块 |
-| currentBlock  | QUANTITY | 当前区块                                                                           |
-| highestBlock  | QUANTITY | 预估的最高区块                                                                 |
+| `startingBlock` | QUANTITY | 当前开始同步的起始区块 |
+| `currentBlock`  | QUANTITY | 当前区块                                                                           |
+| `highestBlock`  | QUANTITY | 预估的最高区块                                                                 |
 
 **示例**
 
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":64}'
 
 #返回
@@ -709,18 +702,17 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 
 | 字段     | 类型                  | 描述                                                               |
 | :-------- | :-------------------- | :------------------------------------------------------------------------ |
-| fromBlock | QUANTITY\|TAG         | 整数区块号，或 "latest"，或 "earliest"                                         |
-| toBlock   | QUANTITY\|TAG         | 整数区块号，或 "latest"，或 "earliest"                                         |
-| address   | DATA\|Array, 20 Bytes | 要监听的合约地址，可以是单个地址或地址数组，用于过滤来源于这些地址的日志 |
-| topics    | Array of DATA         | 用于过滤事件的主题数组，每个主题为 32 字节的 DATA。主题的顺序很重要。每个主题位置也可以是一个 DATA 数组，表示"或"的关系（匹配数组中任意一个值）                                                                 |
+| `fromBlock` | QUANTITY\|TAG         | 整数区块号，或 "latest"，或 "earliest"                                         |
+| `toBlock`   | QUANTITY\|TAG         | 整数区块号，或 "latest"，或 "earliest"                                         |
+| `address`   | DATA\|Array, 20 Bytes | 要监听的合约地址，可以是单个地址或地址数组，用于过滤来源于这些地址的日志 |
+| `topics`    | Array of DATA         | 用于过滤事件的主题数组，每个主题为 32 字节的 DATA。主题的顺序很重要。每个主题位置也可以是一个 DATA 数组，表示"或"的关系（匹配数组中任意一个值）                                                                 |
 
 **返回值：**  
 `QUANTITY` - 新创建的过滤器 ID。
 
 **示例**
 
-```curl
-
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","method":"eth_newFilter","params":[{"address":["cc2e32f2388f0096fae9b055acffd76d4b3e5532","E518C608A37E2A262050E10BE0C9D03C7A0877F3"],"fromBlock":"0x989680","toBlock":"0x9959d0","topics":["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",null,["0x0000000000000000000000001806c11be0f9b9af9e626a58904f3e5827b67be7","0x0000000000000000000000003c8fb6d064ceffc0f045f7b4aee6b3a4cefb4758"]]}],"id":1}'
 
 #返回
@@ -739,13 +731,12 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 
 **示例**
 
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","method":"eth_newBlockFilter","params":[],"id":1}'
 
 #返回
 {"jsonrpc":"2.0","id":1,"result":"0x2bab51aee6345d2748e0a4a3f4569d80"}
 ```
-
 
 ### eth_getFilterChanges
 
@@ -759,21 +750,21 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 
 | 字段            | 类型           | 描述                                                                                 |
 | :--------------- | :------------- | :------------------------------------------------------------------------------------------ |
-| removed          | TAG            | 如果日志由于链重组被移除则为 true。如果是有效日志则为 false。     |
-| logIndex         | QUANTITY       | 日志在区块中的索引位置。如果是待处理日志则为 null。                  |
-| transactionIndex | QUANTITY       | 创建日志的交易索引位置。如果是待处理日志则为 null。 |
-| transactionHash  | DATA, 32Bytes  | 创建日志的交易哈希。                                         |
-| blockHash        | DATA, 32 Bytes | 日志所在区块的哈希。如果是待处理日志则为 null。                             |
-| blockNumber      | QUANTITY       | 日志所在区块的区块号。                                                     |
-| address          | DATA, 32 Bytes | 日志来源的地址。                                                     |
-| data             | DATA           | 包含一个或多个 32 字节的非索引日志参数。                             |
-| topics           | DATA\[]        | 事件主题和索引参数。                                                          |
+| `removed`          | TAG            | 如果日志由于链重组被移除则为 `true`。如果是有效日志则为 `false`。     |
+| `logIndex`         | QUANTITY       | 日志在区块中的索引位置。如果是待处理日志则为 `null`。                  |
+| `transactionIndex` | QUANTITY       | 创建日志的交易索引位置。如果是待处理日志则为 `null`。 |
+| `transactionHash`  | DATA, 32Bytes  | 创建日志的交易哈希。                                         |
+| `blockHash`        | DATA, 32 Bytes | 日志所在区块的哈希。如果是待处理日志则为 `null`。                             |
+| `blockNumber`      | QUANTITY       | 日志所在区块的区块号。                                                     |
+| `address`          | DATA, 32 Bytes | 日志来源的地址。                                                     |
+| `data`             | DATA           | 包含一个或多个 32 字节的非索引日志参数。                             |
+| `topics`           | DATA\[]        | 事件主题和索引参数。                                                          |
 
 - 对于使用 `eth_newBlockFilter` 创建的过滤器，返回区块哈希列表。
 
 **示例**
 
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
     "jsonrpc": "2.0",
     "method": "eth_getFilterChanges",
@@ -800,14 +791,14 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 *返回指定日志过滤器的所有历史匹配日志。*
 
 **参数**  
-`QUANTITY` - 由 `eth_newFilter` 创建的过滤器ID。
+`QUANTITY` - 由 `eth_newFilter` 创建的过滤器 ID。
 
 **返回值**
 `Array` - 事件日志对象数组，参见 [eth_getFilterChanges](#eth_getfilterchanges)。
 
 **示例**
 
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
     "jsonrpc": "2.0",
     "method": "eth_getFilterLogs",
@@ -841,7 +832,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 **示例**
 
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
     "jsonrpc": "2.0",
     "method": "eth_uninstallFilter",
@@ -868,18 +859,18 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 | 字段     | 类型                  | 描述                                                                                                                      |
 | :-------- | :-------------------- | :------------------------------------------------------------------------------------------------------------------------------- |
-| fromBlock | QUANTITY\|TAG         | （可选，默认："latest"）整数区块号，或 "latest" 表示最新的区块                                          |
-| toBlock   | QUANTITY\|TAG         | （可选，默认："latest"）整数区块号，或 "latest" 表示最新的区块                                          |
-| address   | DATA\|Array, 20 Bytes | （可选）合约地址或日志应源自的地址列表。                                             |
-| topics    | Array of DATA         | （可选）32 字节 DATA 主题数组。主题是顺序相关的。每个主题也可以是具有 "or" 选项的 DATA 数组。 |
-| blockhash | DATA, 32 Bytes        | （可选）区块哈希 ，注意：blockHash和fromBlock/toBlock不可以同时指定，否则报错：`cannot specify both BlockHash and FromBlock/ToBlock, choose one or the other`                                                                                                          |
+| `fromBlock` | QUANTITY\|TAG         | （可选，默认："latest"）整数区块号，或 "latest" 表示最新的区块                                          |
+| `toBlock`   | QUANTITY\|TAG         | （可选，默认："latest"）整数区块号，或 "latest" 表示最新的区块                                          |
+| `address`   | DATA\|Array, 20 Bytes | （可选）合约地址或日志应源自的地址列表。                                             |
+| `topics`    | Array of DATA         | （可选）32 字节 DATA 主题数组。主题是顺序相关的。每个主题也可以是具有 "or" 选项的 DATA 数组。 |
+| `blockhash` | DATA, 32 Bytes        | （可选）区块哈希 ，注意：blockHash和fromBlock/toBlock不可以同时指定，否则报错：`cannot specify both BlockHash and FromBlock/ToBlock, choose one or the other`                                                                                                          |
 
 **返回值**
 `Array` - 事件日志对象数组，参见 [eth_getFilterChanges](#eth_getfilterchanges)。
 
 **示例**
 
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","method":"eth_getLogs","params":[{"address":["cc2e32f2388f0096fae9b055acffd76d4b3e5532","E518C608A37E2A262050E10BE0C9D03C7A0877F3"],"fromBlock":"0x989680","toBlock":"0x9959d0","topics":["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",null,["0x0000000000000000000000001806c11be0f9b9af9e626a58904f3e5827b67be7","0x0000000000000000000000003c8fb6d064ceffc0f045f7b4aee6b3a4cefb4758"]]}],"id":1}'
 
 #返回
@@ -896,14 +887,13 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 
 *检查节点是否正在监听网络连接。*
 
-**参数：**  无
+**参数：**无
 
 **返回值：**  
 `Boolean` - 如果正在监听，则为 `true`，否则为 `false`。
 
 **示例**
-
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","method":"net_listening","params":[],"id":64}'
 
 #返回
@@ -922,7 +912,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 
 **示例**
 
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":64}'
 
 #返回
@@ -941,7 +931,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 
 **示例**
 
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","method":"net_version","params":[],"id":64}'
 
 #返回
@@ -961,7 +951,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 
 **示例**
 
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc": "2.0", "id": 1, "method": "web3_clientVersion", "params": []}'
 
 #返回
@@ -977,11 +967,11 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc": "2.0",
 `DATA` - 要进行哈希运算的数据。
 
 **返回**  
-`DATA` - 32字节的Keccak-256哈希结果。
+`DATA` - 32 字节的 Keccak-256 哈希结果。
 
 **示例**
 
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc": "2.0", "id": 1, "method": "web3_sha3", "params": ["0x68656c6c6f20776f726c64"]}'
 
 #返回
@@ -990,24 +980,25 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc": "2.0",
 
 ## buildTransaction
 
-*这是一个TRON**自定义**的 RPC 方法，用于便捷地创建 TRON 原生交易，返回未签名的交易对象，不同类型的交易具有不同的参数。*
+*这是一个 TRON **自定义**的 RPC 方法，用于便捷地创建 TRON 原生交易，返回未签名的交易对象，不同类型的交易具有不同的参数。*
 
 ### TransferContract (TRX 转账)
 
 **参数：**  
 `Object` - 包含以下字段:
+
 | 参数名称 | 数据类型      | 描述                                 |
 | :--------- | :------------- | :------------------------------------------ |
-| from       | DATA, 20 字节 | 交易发送方的地址。   |
-| to         | DATA, 20 字节 | 交易接收方的地址。 |
-| value      | DATA           |  转账金额，单位为 sun。                        |
+| `from`       | DATA, 20 字节 | 交易发送方的地址。   |
+| `to`         | DATA, 20 字节 | 交易接收方的地址。 |
+| `value`      | DATA           |  转账金额，单位为 sun。                        |
 
 **返回值：**
-`Object` - 包含未签名`TransferContract`交易的对象。
+`Object` - 包含未签名 `TransferContract` 交易的对象。
 
 **示例**
 
-```curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
     "id": 1337,
     "jsonrpc": "2.0",
@@ -1031,13 +1022,13 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 | 参数名称 | 数据类型      | 描述                                 |
 | :--------- | :------------- | :----------------------------------------- |
-| from       | DATA, 20 字节 | 交易发送方的地址   |
-| to         | DATA, 20 字节 | 交易接收方的地址 |
-| tokenId    | QUANTITY       | 代币 ID                                   |
-| tokenValue | QUANTITY       | TRC-10代币的转账金额。               |
+| `from`       | DATA, 20 字节 | 交易发送方的地址   |
+| `to`         | DATA, 20 字节 | 交易接收方的地址 |
+| `tokenId`    | QUANTITY       | 代币 ID                                   |
+| `tokenValue` | QUANTITY       | TRC-10 代币的转账金额。               |
 
 **返回**
-`Object` - 包含未签名`TransferAssetContract`交易的对象。
+`Object` - 包含未签名 `TransferAssetContract` 交易的对象。
 
 **示例**
 
@@ -1064,18 +1055,19 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 **参数**  
 `Object` - 包含以下字段:
+
 | 参数名称 | 数据类型      | 描述                                 |
 | :------------------------- | :------------- | :--------------------------------------- |
-| from                       | DATA, 20 字节 | 交易发送方的地址 |
-| name                       | DATA           | 智能合约的名称         |
-| gas                        | DATA           | 费用限制                                |
-| abi                        | DATA           | 智能合约的 ABI           |
-| data                       | DATA           | 智能合约的字节码     |
-| consumeUserResourcePercent | QUANTITY       | 用户资源消耗百分比       |
-| originEnergyLimit          | QUANTITY       | 初始能量限制               |
-| value                      | DATA           | 转入合约的TRX数额      |
-| tokenId                    | QUANTITY       | 代币 ID                                 |
-| tokenValue                 | QUANTITY       | TRC-10 代币的转账金额             |
+| `from`                       | DATA, 20 字节 | 交易发送方的地址 |
+| `name`                       | DATA           | 智能合约的名称         |
+| `gas`                        | DATA           | 费用限制                                |
+| `abi`                        | DATA           | 智能合约的 ABI           |
+| `data`                       | DATA           | 智能合约的字节码     |
+| `consumeUserResourcePercent` | QUANTITY       | 用户资源消耗百分比       |
+| `originEnergyLimit`          | QUANTITY       | 初始能量限制               |
+| `value`                      | DATA           | 转入合约的TRX数额      |
+| `tokenId`                    | QUANTITY       | 代币 ID                                 |
+| `tokenValue`                 | QUANTITY       | TRC-10 代币的转账金额             |
 
 **返回**
 `Object` - 未签名的 `CreateSmartContract` 交易或错误
@@ -1114,13 +1106,13 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 | 参数名称 | 类型      | 描述                                |
 | :------------------------- | :------------- | :--------------------------------------- |
-| from | DATA, 20 Bytes | 交易发送方的地址 |
-| to | DATA, 20 Bytes | 智能合约的地址 |
-| data | DATA | 调用的合约函数和参数|
-| gas | DATA | Fee limit|
-| value | DATA |转入合约的 TRX 数额 |
-| tokenId | QUANTITY | 代币 ID |
-| tokenValue | QUANTITY | TRC-10 代币的转账金额 |
+| `from` | DATA, 20 Bytes | 交易发送方的地址 |
+| `to` | DATA, 20 Bytes | 智能合约的地址 |
+| `data` | DATA | 调用的合约函数和参数|
+| `gas` | DATA | Fee limit|
+| `value` | DATA |转入合约的 TRX 数额 |
+| `tokenId` | QUANTITY | 代币 ID |
+| `tokenValue` | QUANTITY | TRC-10 代币的转账金额 |
 
 **返回值:** 
 `Object` - 未签名的 `TriggerSmartContract` 交易或者错误。
