@@ -302,7 +302,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 1. `QUANTITY|TAG` - 区块高度，或标签 "earliest", "latest"。
 2. `Boolean` - `true` 表示返回完整的交易对象列表；`false` 表示仅返回交易的哈希列表。
 
-**返回值：**  `Object` - 区块对象。如果未找到区块，则返回 `null`。结构参见 [eth_getBlockByHash](https://developers.tron.network/reference#eth_getblockbyhash)
+**返回值：**  `Object` - 区块对象。如果未找到区块，则返回 `null`。结构参见 [eth_getBlockByHash](#eth_getblockbyhash)。
 
 **示例**
 ```
@@ -492,7 +492,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 2. `QUANTITY` - 交易在区块中的索引。
 
 **返回值：**
-`Object` - 交易对象。如果未找到，则返回 `null`。交易对象结构参见 [eth_getTransactionByBlockHashAndIndex](#eth_gettransactionbyblockhashandindex)
+`Object` - 交易对象。如果未找到，则返回 `null`。交易对象结构参见 [eth_getTransactionByBlockHashAndIndex](#eth_gettransactionbyblockhashandindex)。
 
 **示例**
 ```
@@ -516,7 +516,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 `DATA, 32 Bytes` - 交易的哈希。
 
 **返回值：**
-`Object` - 交易对象。如果未找到，则返回 `null`。交易对象结构参见 [eth_getTransactionByBlockHashAndIndex](#eth_gettransactionbyblockhashandindex)
+`Object` - 交易对象。如果未找到，则返回 `null`。交易对象结构参见 [eth_getTransactionByBlockHashAndIndex](#eth_gettransactionbyblockhashandindex)。
 
 **示例**
 ```
@@ -554,7 +554,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 ### eth_getTransactionReceipt
 
-*通过交易哈希返回交易的收据信息。收据包含了交易的执行结果、事件日志、消耗的资源等。请参考 http api: [wallet/gettransactioninfobyid](#walletgettransactioninfobyid)*
+*通过交易哈希返回交易的收据信息。收据包含了交易的执行结果、事件日志、消耗的资源等。请参考 HTTP api: [wallet/gettransactioninfobyid](http/#walletgettransactioninfobyid)*。
 
 **参数：**
 `DATA, 32 Bytes` - 交易的哈希。
@@ -668,6 +668,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 **返回值：**  
 
 `Object` 或 `Boolean` -  如果节点正在同步，返回一个包含 `startingBlock`, `currentBlock`, 和 `highestBlock` 的对象。如果已同步完成，返回 `false`，详细项介绍：
+
 | 字段     | 类型                  | 描述                                                               |
 | :------------ | :------- | :------------------------------------------------------------------------------------------ |
 | `startingBlock` | QUANTITY | 当前开始同步的起始区块 |
@@ -707,8 +708,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 | `address`   | DATA\|Array, 20 Bytes | 要监听的合约地址，可以是单个地址或地址数组，用于过滤来源于这些地址的日志 |
 | `topics`    | Array of DATA         | 用于过滤事件的主题数组，每个主题为 32 字节的 DATA。主题的顺序很重要。每个主题位置也可以是一个 DATA 数组，表示"或"的关系（匹配数组中任意一个值）                                                                 |
 
-**返回值：**  
-`QUANTITY` - 新创建的过滤器 ID。
+**返回值：** `QUANTITY` - 新创建的过滤器 ID。
 
 **示例**
 
@@ -726,8 +726,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 
 **参数：**  无。
 
-**返回值：**  
-`QUANTITY` - 新创建的过滤器 ID。
+**返回值：**`QUANTITY` - 新创建的过滤器 ID。
 
 **示例**
 
@@ -790,11 +789,9 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 *返回指定日志过滤器的所有历史匹配日志。*
 
-**参数**  
-`QUANTITY` - 由 `eth_newFilter` 创建的过滤器 ID。
+**参数：** `QUANTITY` - 由 `eth_newFilter` 创建的过滤器 ID。
 
-**返回值**
-`Array` - 事件日志对象数组，参见 [eth_getFilterChanges](#eth_getfilterchanges)。
+**返回值：** `Array` - 事件日志对象数组，参见 [eth_getFilterChanges](#eth_getfilterchanges)。
 
 **示例**
 
