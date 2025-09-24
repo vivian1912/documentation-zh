@@ -1,190 +1,248 @@
 # 智能合约
 
-## 介绍
+## 概述
 
-智能合约是一种能自动执行其条款的计算化交易协议。智能合约和普通合约一样，定义了参与者相关的条款和奖惩机制。一旦合约被启动，便能按照设定的条款执行，并自动检查所承诺的条款实施情形。
-TRON兼容以太坊（Ethereum）上采用Solidity编写的智能合约。你可以在[TRON solidity 代码库](https://github.com/tronprotocol/solidity/releases)中了解最新的版本。合约编写、编译完成后，部署到TRON公链上。部署后的合约，被触发时，就会在公链的各个节点上自动执行。
+智能合约是一种旨在自动执行合约条款的计算化交易协议。智能合约和普通合约一样，定义了参与者相关的条款和奖惩机制。一旦合约被启动，便能按照设定的条款执行，并自动检查所承诺的条款实施情形。
 
-## 特性
+TRON 完全兼容以太坊（Ethereum）的智能合约生态，支持使用 Solidity 语言编写的合约。开发流程如下：
+1. 在本地或在线 IDE 中编写并编译 Solidity 合约。
+2. 将合约部署到 TRON 公链。
+3. 部署后的合约会在被触发时于 TRON 网络的所有节点上自动执行。
 
-TRON virtual machine 基于以太坊 solidity 语言实现，兼容以太坊虚拟机的特性，但基于tron自身属性也有部分的区别。
+您可以在 [TRON Solidity 代码库](https://github.com/tronprotocol/solidity/releases) 中获取最新版本。
+ 
+
+## TRON 智能合约特性
+
+TRON 虚拟机（TRON Virtual Machine, 简称 TVM）基于以太坊 Solidity 语言实现，在兼容以太坊虚拟机（Ethereum Virtual Machine，简称 EVM）功能的基础上，结合 TRON 自身特性存在部分差异。
 
 ### 智能合约的定义
 
-波场虚拟机运行的智能合约兼容以太坊智能合约特性，以protobuf的形式定义合约内容：
+TVM 运行的智能合约兼容以太坊合约特性。TRON 协议采用 **Protocol Buffers** 来封装和描述一个智能合约，其数据结构定义如下：
 
-    message SmartContract {
-      message ABI {
-        message Entry {
-          enum EntryType {
-            UnknownEntryType = 0;
-            Constructor = 1;
-            Function = 2;
-            Event = 3;
-            Fallback = 4;
-            Receive = 5;
-            Error = 6;
-          }
-          message Param {
-            bool indexed = 1;
-            string name = 2;
-            string type = 3;
-          }
-          enum StateMutabilityType {
-            UnknownMutabilityType = 0;
-            Pure = 1;
-            View = 2;
-            Nonpayable = 3;
-            Payable = 4;
-          }
-
-          bool anonymous = 1;
-          bool constant = 2;
-          string name = 3;
-          repeated Param inputs = 4;
-          repeated Param outputs = 5;
-          EntryType type = 6;
-          bool payable = 7;
-          StateMutabilityType stateMutability = 8;
-        }
-        repeated Entry entrys = 1;
+```
+message SmartContract {
+  message ABI {
+    message Entry {
+      enum EntryType {
+        UnknownEntryType = 0;
+        Constructor = 1;
+        Function = 2;
+        Event = 3;
+        Fallback = 4;
+        Receive = 5;
+        Error = 6;
       }
-      bytes origin_address = 1;
-      bytes contract_address = 2;
-      ABI abi = 3;
-      bytes bytecode = 4;
-      int64 call_value = 5;
-      int64 consume_user_resource_percent = 6;
-      string name = 7;
-      int64 origin_energy_limit = 8;
-      bytes code_hash = 9;
-      bytes trx_hash = 10;
+      message Param {
+        bool indexed = 1;
+        string name = 2;
+        string type = 3;
+      }
+      enum StateMutabilityType {
+        UnknownMutabilityType = 0;
+        Pure = 1;
+        View = 2;
+        Nonpayable = 3;
+        Payable = 4;
+      }
+
+      bool anonymous = 1;
+      bool constant = 2;
+      string name = 3;
+      repeated Param inputs = 4;
+      repeated Param outputs = 5;
+      EntryType type = 6;
+      bool payable = 7;
+      StateMutabilityType stateMutability = 8;
     }
+    repeated Entry entrys = 1;
+  }
+  bytes origin_address = 1;
+  bytes contract_address = 2;
+  ABI abi = 3;
+  bytes bytecode = 4;
+  int64 call_value = 5;
+  int64 consume_user_resource_percent = 6;
+  string name = 7;
+  int64 origin_energy_limit = 8;
+  bytes code_hash = 9;
+  bytes trx_hash = 10;
+}
+```
+字段说明：
 
-- origin_address: 合约创建者地址
-- contract_address: 合约地址
-- abi:合约所有函数的接口信息
-- bytecode：合约字节码
-- call_value：随合约调用传入的trx金额
-- consume_user_resource_percent：开发者设置的调用者的资源扣费百分比
-- name：合约名称
-- origin_energy_limit: 开发者设置的在一次合约调用过程中自己消耗的energy的上限，必须大于0。对于之前老的合约，deploy的时候没有提供设置该值的参数，会存成0，但是会按照1000万energy上限计算，开发者可以通过updateEnergyLimit接口重新设置该值，设置新值时也必须大于0
+  - `origin_address`: 合约创建者地址
+  - `contract_address`: 合约地址
+  - `abi`: 合约中所有函数的接口信息
+  - `bytecode`: 合约字节码
+  - `call_value`: 调用合约时传入的 TRX 数量（以 sun 为单位）
+  - `consume_user_resource_percent`: 开发者设定的、调用者需承担的资源消耗百分比
+  - `name`: 合约名称
+  - `origin_energy_limit`: 开发者设定的、部署者为单笔交易承担的能量（Energy）上限。该值必须大于 0。对于在部署时未提供能量上限参数的旧合约，其 `origin_energy_limit` 值会存储为 `0`，但在计算资源时，系统仍会按照 1000 万的能量上限来处理。开发者后续可以通过调用 `updateEnergyLimit` 接口来明确设定此值，且新值必须大于 0。
 
-通过另外两个grpc message类型 CreateSmartContract 和 TriggerSmartContract 来创建和使用smart contract
+开发者可以通过 `CreateSmartContract` 和 `TriggerSmartContract` 这两种 gRPC 消息类型来创建和调用智能合约。
 
 ### 合约函数的使用
 
-* constant function和非constant function
+#### Constant 函数与非 Constant 函数
 
-函数调用从对链上属性是否有更改可分为两种：constant function 和 非constant function。
-Constant function 是指用 view/pure/constant 修饰的函数。会在调用的节点上直接返回结果，并不以一笔交易的形式广播出去。
-非constant function是指需要依托一笔交易的形式被广播的方法调用。函数会改变链上数据的内容，比如转账，改变合约内部变量的值等等。
+根据是否更改链上状态，合约函数可分为两类：
 
-注意: 如果在合约内部使用create指令（CREATE instruction），即使用view/pure/constant来修饰这个动态创建的合约合约方法，这个合约方法仍会被当作非constant function，以交易的形式来处理。
+  - **Constant 函数**: 使用 `view`、`pure` 或 `constant` 修饰的函数。这类调用在节点本地执行并直接返回结果，不会产生交易广播。
+  - **非 Constant 函数**: 会修改链上状态的函数，例如执行转账或更改合约内部变量。这类调用必须通过提交一笔交易来完成，并由网络共识确认。
 
-* 消息调用（message calls）
+> **注意**：若在合约内部使用 `CREATE` 指令（动态创建合约），即使该函数被 `view` 或 `pure` 等关键字修饰，仍会被视为非 constant 函数，并以交易的形式处理。
 
-消息调用可以向其他的合约发起函数调用，也可以向合约的账户或非合约的账户转帐trx。 与普通的波场triggercontract类似， 消息调用也有调用的发起者，接受者，数据，转账金额，扣费，以及返回值等属性。每一个消息调用都可以递归的生成新的消息调用。
-合约可以决定在其内部的消息调用中，对于剩余的 energy ，应发送和保留多少。如果在内部消息调用时发生了OutOfEnergyException
-异常（或其他任何异常）,会返回false，但不会以异常的形式抛出。此时，只有与该内部消息调用一起发送的gas会被消耗掉，如果不表明消息调用所传入的费用call.value(energy)，则会扣掉所有的剩余energy。
+#### 消息调用 (Message Calls)
 
-* 委托调用/代码调用和库 (delegatecall/callcode/libary)
+在合约执行期间，可以通过消息调用与其他合约交互，或向任何账户（合约或非合约）转帐 TRX。每次消息调用都包含发起者、接收者、数据、转账金额、扣费，以及返回值等属性，并可以递归生成新的消息调用。
 
-有一种特殊类型的消息调用，被称为 委托调用(delegatecall) 。它和一般的消息调用的区别在于，目标地址的代码将在发起调用的合约的上下文中执行，并且msg.sender 和msg.value 不变。 这意味着一个合约可以在运行时从另外一个地址动态加载代码。存储、当前地址和余额都指向发起调用的合约，只有代码是从被调用地址获取的。 这使得 Solidity 可以实现”库“能力：可复用的代码库可以放在一个合约的存储上，如用来实现复杂的数据结构的库。
+当合约发起内部消息调用时，可以灵活控制能量分配：
 
-* CREATE 指令（CREATE instruction）
+* 为该调用指定可使用的能量上限；
+* 为当前合约的后续执行预留部分能量。
 
-另一个与合约调用相关的是调用指令集的时候使用CREATE指令。这个指令将会创建一个新的合约并生成新的地址。与以太坊的创建唯一的不同在于波场新生成的地址使用的是传入的本次智能合约交易id与调用的nonce的哈希组合。和以太坊不同，这个nonce的定义为本次根调用开始创建的合约序号。即如果有多次的 CREATE指令调用，从1开始，顺序编号每次调用的合约。详细请参考代码。还需注意，与deploycontract的grpc调用创建合约不同，CREATE的合约并不会保存合约的abi。
+通常使用 `{gas: gasleft() - 预留能量}` 的方式来设定该次内部调用可消耗的能量上限。
 
-* 内置功能
+如果在调用过程中发生异常（例如 `OutOfEnergyException`）：
 
-```shell
-1）TVM兼容solidity语言的转账形式，包括：
-伴随constructor调用转账
-伴随合约内函数调用转账
-transfer/send/call/callcode/delegatecall函数调用转账
+* 调用会返回 `false`，但不会抛出异常；
+* 若为该调用设置了能量上限，则最多只会消耗分配给它的能量。若未显式设定，则该调用会消耗掉执行合约时剩余的全部能量。
 
-注意，波场的智能合约与波场系统合约的逻辑不同，如果转账的目标地址账户不存在，不能通过智能合约转账的形式创建目标地址账户。这也是与以太坊的不同点。
 
-2）为超级节点投票 
-3）质押
-4）资源代理
-5）兼容所有以太坊内置函数
+#### 委托调用/代码调用与库（`delegatecall`/`callcode`/Library）
+
+委托调用 (`delegatecall`) 是一种特殊类型的消息调用。它和一般的消息调用的区别在于，目标地址的合约代码在**发起者合约的上下文**中执行，且 `msg.sender` 和 `msg.value` 保持不变。这使得合约可在运行时动态加载外部代码，同时保持自身存储、地址和余额都指向发起调用的合约，只有代码是从被调用地址获取。
+
+这种机制使得 Solidity 可以实现 **库（Library）** 的能力。开发者可以将可复用的代码部署为独立的库合约，然后通过 `delegatecall` 在调用合约的上下文中执行这些代码。一个典型的应用是使用库来实现复杂的数据结构（如链表、集合等），从而让多个主合约共享同一套功能逻辑，同时避免代码冗余。
+
+#### `CREATE` 指令
+
+`CREATE` 指令用于在合约内部动态地创建新的合约并生成新地址。与以太坊不同，TVM 生成新地址的方式是**基于当前智能合约的交易 ID 与一个内部调用计数器（`nonce`）的哈希组合**。其中，`nonce` 定义为**根调用下的创建序号**，即在一次合约执行中，每次使用 `CREATE` 指令都会生成一个递增的编号：第一次为 1，第二次为 2，以此类推。
+
+> **注意**：通过 `CREATE` 指令创建的合约并不会自动保存 ABI，如果需要记录 ABI，则应使用 gRPC 接口 `deploycontract` 来部署合约。
+
+#### TVM 内置功能
+
+TRON 智能合约内置了多种功能，以支持常见的链上操作。最常见的是 **转账**，它可以出现在不同场景中，例如：
+
+- 在构造函数（`constructor`）执行时随交易进行转账
+- 在合约函数调用的过程中进行转账
+- 使用 `transfer`、`send`、`call`、`callcode`、`delegatecall` 等方式进行转账
+
+> 注意：在 TRON 智能合约中，在 TRON 智能合约中，如果转账目标地址尚未激活，不能通过智能合约转账的形式激活目标地址账户。这一点既不同于以太坊的处理方式，也不同于 TRON 系统合约的逻辑。
+
+除了转账功能外，合约还可以执行更复杂的链上操作，包括：
+
+- 为超级节点投票
+- 质押（Stake）TRX
+- 资源代理
+
+TVM 同时保持了对以太坊大部分内置函数的兼容性，使开发者能够在已有经验的基础上快速迁移和开发合约。
+
+## Solidity 中的 TRON 地址使用规范
+
+在 Solidity 中正确处理地址是在 TRON 上开发智能合约的关键。核心需要理解的是 TRON 地址与以太坊地址在字节长度上的差异，以及 TRON 虚拟机（TVM）为兼容 Solidity 而做的内部处理。
+
+**核心差异：20字节 vs 21字节**
+
+- 以太坊地址：是一个 20 字节（40 个十六进制字符）的值。
+- TRON 地址：是一个 21 字节的值。它由一个字节的地址前缀（通常是 `0x41`）和后面 20 字节的核心地址组成。
+
+在 Solidity 中处理 TRON 地址时，需要遵循以下规范。
+
+#### 地址转换
+
+当您需要将一个 TRON 地址传入合约时，推荐的做法是将其作为一个 `uint256` 整数传入，然后在合约内部转换为 `address` 类型。
+
 ```
-
-### 合约地址在solidity语言的使用
-
-以太坊虚拟机地址为是20字节，而波场虚拟机解析地址为21字节。
-* 地址转换
-
-在solidity中使用的时候需要对波场地址做如下处理（推荐）：
-
-```solidity
 /**
-  *  @dev    convert uint256 (HexString add 0x at beginning) TRON address to solidity address type
-  *  @param  tronAddress uint256 tronAddress, begin with 0x, followed by HexString
-  *  @return Solidity address type
-  */
-
-    function convertFromTronInt(uint256 tronAddress) public view returns(address){
-        return address(tronAddress);
-    }
+ * @dev 将 uint256 格式的 TRON 地址转换为 Solidity 的 address 类型。
+ * @param tronAddress uint256 格式的 TRON 地址，以 0x 开头，后接 HexString
+ * @return address Solidity 的地址类型。
+ */
+function convertFromTronInt(uint256 tronAddress) public view returns(address) {
+    return address(tronAddress);
+}
 ```
+这个和在以太坊中其他类型转换成 `address` 类型语法相同。
 
-这个和在以太坊中其他类型转换成address类型语法相同。
 
-* 地址判断
+#### 地址判断
 
-solidity中有地址常量判断，如果写的是21字节地址编译器会报错，只用写20字节地址即可，如：
+在 Solidity 中进行地址常量的比较时，必须使用 20 字节的格式，否则将导致编译器报错。TVM 在执行时会自动处理前缀 `0x41`。例如：
 
-```solidity
-function compareAddress(address tronAddress) public view returns (uint256){
-        // if (tronAddress == 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c) { // compile error
-        if (tronAddress == 0xca35b7d915458ef540ade6068dfe2f44e8fa733c) { // right
-            return 1;
-        } else {
-            return 0;
-        }
-    }
 ```
+function compareAddress(address tronAddress) public view returns (uint256) {
+    // 错误写法：包含 0x41 前缀，会导致编译器报错。
+    // if (tronAddress == 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c) { ... }
 
-tronAddress从wallet-cli传入是0000000000000000000041ca35b7d915458ef540ade6068dfe2f44e8fa733c这个21字节地址，即正常的波场地址时，是会返回1的，判断正确。
-
-* 地址赋值
-
-solidity中有地址常量的赋值，如果写的是21字节地址编译器会报错，只用写20字节地址即可，solidity中后续操作直接利用这个20位地址，波场虚拟机内部做了补位操作。如：
-
-```solidity
-function assignAddress() public view {
-        // address newAddress = 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c; // compile error
-        address newAddress = 0xca35b7d915458ef540ade6068dfe2f44e8fa733c;
-        // do something
+    // 正确写法：使用 20 字节的地址格式。
+    if (tronAddress == 0xca35b7d915458ef540ade6068dfe2f44e8fa733c) {
+        return 1;
+    } else {
+        return 0;
     }
+}
 ```
+> **说明**：虽然代码中常量为 20 字节，但当 `tronAddress` 参数从外部（如 `wallet-cli`）传入一个完整的 21 字节 TRON 地址时，TVM 依然能正确完成判断，即依然能正确返回 `1`。
 
-如果想直接使用string 类型的波场地址（如TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm）请参考内置函数的两种地址转换方式（见II-4-7,II-4-8）。
+#### 地址赋值
 
-### 与以太坊有区别的特殊常量
+与地址判断类似，在为 `address` 类型的变量赋常量值时，也必须省略 `0x41` 前缀，使用 20 字节的格式。例如：
 
-#### 货币
+```
+function assignAddress() public pure {
+    // 错误写法：包含 0x41 前缀，会导致编译器报错。
+    // address newAddress = 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c;
 
-类似于solidity对ether的支持，波场虚拟机的代码支持的货币单位有trx和sun，其中1trx = 1000000 sun，大小写敏感，只支持小写。目前tron-studio支持trx和sun，在remix中，不支持trx和sun，如果使用ether、finney等单位时，注意换算(可能会发生溢出错误)。
-我们推荐使用tron-studio代替remix进行tron智能合约的编写。
+    // 正确写法：
+    address newAddress = 0xca35b7d915458ef540ade6068dfe2f44e8fa733c;
+    // ... 后续操作
+}
+```
+> 说明：
+> - 当使用 `newAddress` 变量进行转账等链上操作时，TVM 会自动为其补上 `0x41` 前缀，以构成一个有效的 TRON 地址。
+> - `TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm` 此类 Base58 格式的地址是钱包等客户端使用的字符串地址，不能直接在 Solidity 代码中使用，需要先解码为十六进制格式（HexString）。
 
-#### 区块相关
 
-- block.blockhash(uint blockNumber) returns (bytes32)：指定区块的区块哈希——仅可用于最新的 256 个区块且不包括当前区块；而 blocks 从 0.4.22 版本开始已经不推荐使用，由 blockhash(uint blockNumber) 代替
-- block.coinbase (address): 产当前区块的超级节点地址
-- block.difficulty (uint): 当前区块难度，波场不推荐使用，设置恒为0
-- block.gaslimit (uint): 当前区块 gas 限额，波场暂时不支持使用, 暂时设置为0
-- block.number (uint): 当前区块号
-- block.timestamp (uint): 当前区块以秒计的时间戳
-- gasleft() returns (uint256)：剩余的 gas
-- msg.data (bytes): 完整的 calldata
-- msg.gas (uint): 剩余 gas - 自 0.4.21 版本开始已经不推荐使用，由 gesleft() 代替
-- msg.sender (address): 消息发送者（当前调用）
-- msg.sig (bytes4): calldata 的前 4 字节（也就是函数标识符）
-- msg.value (uint): 随消息发送的 sun 的数量
-- now (uint): 目前区块时间戳（block.timestamp）
-- tx.gasprice (uint): 交易的 gas 价格，波场不推荐使用，设置值恒为0
-- tx.origin (address): 交易发起者
+## 全局变量与单位
+
+在 Solidity 智能合约中，可以使用一系列全局变量来获取关于区块链、交易和调用的信息。
+
+#### 货币单位
+
+类似于 Solidity 对 `ether` 的支持，TVM 原生支持 `trx` 和 `sun` 两个货币单位，换算关系为 `1 trx = 1,000,000 sun`。这两个单位均为小写且大小写敏感。
+
+  * 我们推荐使用 **TronIDE** 或 **TronBox** 进行 TRON 智能合约的开发，这两款工具均完整支持 `trx` 和 `sun` 单位。
+
+
+
+
+#### 区块与交易相关的全局变量
+
+以下是在 TRON 智能合约中常用的全局变量和函数，其中部分变量的行为与以太坊有所不同。
+
+**区块信息**
+
+  - `block.blockhash(uint blockNumber) returns (bytes32)`: 获取指定区块的哈希值。仅对最近的 256 个区块有效（不含当前区块）
+  - `block.coinbase (address)`: 产出当前区块的超级节点地址
+  - `block.number (uint)`：当前区块的高度（即区块号）
+  - `block.timestamp (uint)`：当前区块的时间戳（以秒为单位）
+  - `now (uint)`：当前区块的时间戳，与 `block.timestamp` 等价
+
+**调用与交易信息**
+
+- `msg.data (bytes)`：完整的调用数据 (`calldata`)
+- `msg.sender (address)`：消息的发送者（当前调用的发起者）
+- `msg.sig (bytes4)`：`calldata` 的前 4 字节，即函数标识符
+- `msg.value (uint)`：随消息发送的 `sun` 的数量
+- `tx.origin (address)`：交易的原始发起者
+
+**Gas 与特殊变量**
+
+- `gasleft() returns (uint256)`：剩余的 gas
+- `block.difficulty (uint)`：当前区块的难度。在 TRON 网络中，此值恒定为 0，不推荐使用
+- `block.gaslimit (uint)`：当前区块的 gas 限额。在 TRON 网络中不支持使用，暂时设置为 0
+- `tx.gasprice (uint)`：交易的 gas 价格。在 TRON 网络中，此值恒定为 0，不推荐使用
+
