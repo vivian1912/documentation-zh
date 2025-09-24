@@ -882,316 +882,361 @@
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
-        <li class="md-nav__item ">
+        <li class="md-nav__item has-children">
+  <a href="#1" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      1. 账户管理合约
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 账户管理合约" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
   <a href="#accountcreatecontract" class="md-nav__link" >
     <span class="md-ellipsis">
-      创建账户 AccountCreateContract
+      AccountCreateContract
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#trx-transfercontract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      TRX转账 TransferContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#trc-10-transferassetcontract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      TRC-10代币转账 TransferAssetContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#votewitnesscontract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      投票超级节点 VoteWitnessContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#witnesscreatecontract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      创建超级节点候选人 WitnessCreateContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#trc-10-assetissuecontract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      发布TRC-10代币 AssetIssueContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#url-witnessupdatecontract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      更新超级节点候选人URL WitnessUpdateContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#trc-10-participateassetissuecontract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      购买TRC-10代币 ParticipateAssetIssueContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
+        
+          <li class="md-nav__item ">
   <a href="#accountupdatecontract" class="md-nav__link" >
     <span class="md-ellipsis">
-      更新账户 AccountUpdateContract
+      AccountUpdateContract
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#stake10-freezebalancecontract" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#setaccountidcontract" class="md-nav__link" >
     <span class="md-ellipsis">
-      （已废弃）Stake1.0质押 FreezeBalanceContract
+      SetAccountIdContract
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
-        <li class="md-nav__item ">
-  <a href="#stake10-unfreezebalancecontract" class="md-nav__link" >
+        <li class="md-nav__item has-children">
+  <a href="#2-trx" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      解质押Stake1.0阶段质押的资产 UnfreezeBalanceContract
+      2. TRX 转账与资源合约
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#withdrawbalancecontract" class="md-nav__link" >
+    <nav class="md-nav" aria-label="2. TRX 转账与资源合约" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#transfercontract" class="md-nav__link" >
     <span class="md-ellipsis">
-      提取奖励 WithdrawBalanceContract
+      TransferContract
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#token-unfreezeassetcontract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      解锁发布的Token UnfreezeAssetContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#updateassetcontract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      更新通证参数 UpdateAssetContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#proposalcreatecontract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      创建提议 ProposalCreateContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#proposalapprovecontract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      赞成提议 ProposalApproveContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#proposaldeletecontract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      删除提议 ProposalDeleteContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#id-setaccountidcontract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      设置账户ID SetAccountIdContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#createsmartcontract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      创建智能合约 CreateSmartContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#triggersmartcontract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      触发智能合约 TriggerSmartContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#updatesettingcontract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      更新合约 UpdateSettingContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#exchangecreatecontract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      创建交易所 ExchangeCreateContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#exchangeinjectcontract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      给交易所注资 ExchangeInjectContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#exchangewithdrawcontract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      从交易所撤资 ExchangeWithdrawContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#exchangetransactioncontract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      在交易所交易 ExchangeTransactionContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#shieldedtransfercontract" class="md-nav__link" >
-    <span class="md-ellipsis">
-      匿名交易 ShieldedTransferContract
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#_2" class="md-nav__link" >
-    <span class="md-ellipsis">
-      账户权限管理
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#abi" class="md-nav__link" >
-    <span class="md-ellipsis">
-      清除ABI合约
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#_3" class="md-nav__link" >
-    <span class="md-ellipsis">
-      更新分红比例合约
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#_4" class="md-nav__link" >
-    <span class="md-ellipsis">
-      调整能量上限合约
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
+        
+          <li class="md-nav__item ">
   <a href="#freezebalancev2contract" class="md-nav__link" >
     <span class="md-ellipsis">
-      质押资产 FreezeBalanceV2Contract
+      FreezeBalanceV2Contract
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
+        
+          <li class="md-nav__item ">
   <a href="#unfreezebalancev2contract" class="md-nav__link" >
     <span class="md-ellipsis">
-      解质押资产 UnfreezeBalanceV2Contract
+      UnfreezeBalanceV2Contract
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
+        
+          <li class="md-nav__item ">
   <a href="#withdrawexpireunfreezecontract" class="md-nav__link" >
     <span class="md-ellipsis">
-      提取解质押本金 WithdrawExpireUnfreezeContract
+      WithdrawExpireUnfreezeContract
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
+        
+          <li class="md-nav__item ">
   <a href="#delegateresourcecontract" class="md-nav__link" >
     <span class="md-ellipsis">
-      资源代理 DelegateResourceContract
+      DelegateResourceContract
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
+        
+          <li class="md-nav__item ">
   <a href="#undelegateresourcecontract" class="md-nav__link" >
     <span class="md-ellipsis">
-      取消资源代理 UnDelegateResourceContract
+      UnDelegateResourceContract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#freezebalancecontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      （已废弃） FreezeBalanceContract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#unfreezebalancecontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      （已废弃） UnfreezeBalanceContract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#withdrawbalancecontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      WithdrawBalanceContract
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#3-trc-10" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      3. TRC-10 代币合约
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. TRC-10 代币合约" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#transferassetcontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      TransferAssetContract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#assetissuecontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      AssetIssueContract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#participateassetissuecontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      ParticipateAssetIssueContract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#unfreezeassetcontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      UnfreezeAssetContract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#updateassetcontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      UpdateAssetContract
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#4" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      4. 超级代表与投票合约
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 超级代表与投票合约" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#votewitnesscontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      VoteWitnessContract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#witnesscreatecontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      WitnessCreateContract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#witnessupdatecontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      WitnessUpdateContract
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#5" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      5. 提议与治理合约
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 提议与治理合约" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#proposalcreatecontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      ProposalCreateContract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#proposalapprovecontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      ProposalApproveContract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#proposaldeletecontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      ProposalDeleteContract
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#6" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      6. 智能合约管理合约
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 智能合约管理合约" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#createsmartcontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      CreateSmartContract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#triggersmartcontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      TriggerSmartContract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#updatesettingcontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      UpdateSettingContract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#updateenergylimitcontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      UpdateEnergyLimitContract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#clearabicontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      ClearABIContract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#updatebrokeragecontract" class="md-nav__link" >
+    <span class="md-ellipsis">
+      UpdateBrokerageContract
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#7" class="md-nav__link" >
+    <span class="md-ellipsis">
+      7. 账户权限管理
     </span>
   </a>
   
@@ -1803,506 +1848,441 @@
 
 
 <h1 id="_1">系统合约<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>TRON网络支持多种不同类型的交易，比如TRX转账交易、TRC10转账交易、创建智能合约交易、触发智能合约交易、质押TRX交易等等。创建不同类型的交易，需要调用不同的API接口， 例如部署合约交易的类型是<code>CreateSmartContract</code>，需要调用<code>wallet/deploycontractAPI</code>来创建交易；质押TRX获取资源交易的类型是<code>FreezeBalanceV2Contract</code>，需要调用 <code>wallet/freezebalancev2API</code>来创建交易，我们将这些不同的交易类型的实现统称为系统合约，下面为系统合约类型及其包含的内容：</p>
-<h2 id="accountcreatecontract">创建账户 AccountCreateContract<a class="headerlink" href="#accountcreatecontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="kd">message</span><span class="w"> </span><span class="nc">AccountCreateContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">account_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">       </span><span class="n">AccountType</span><span class="w"> </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+<p>TRON 网络支持多种多样的交易类型，例如 TRX 转账、TRC-10 代币转账、智能合约部署与调用，以及 TRX 质押等。每种交易类型都由一个特定的系统合约来定义和执行。开发者可以通过调用不同的 API 接口来创建这些交易。</p>
+<p>举例来说，部署智能合约需要调用 <code>wallet/deploycontract</code> 接口，其对应的合约类型为 <code>CreateSmartContract</code>。而质押 TRX 获取资源则需调用 <code>wallet/freezebalancev2</code> 接口，其合约类型为 <code>FreezeBalanceV2Contract</code>。</p>
+<p>本文档将详细介绍 TRON 网络中主要的系统合约类型及其包含的参数。</p>
+<h2 id="1">1. 账户管理合约<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h3 id="accountcreatecontract">AccountCreateContract<a class="headerlink" href="#accountcreatecontract" title="Permanent link">&para;</a></h3>
+<p><em>创建新账户</em></p>
+<div class="highlight"><pre><span></span><code>message AccountCreateContract {
+   bytes owner_address = 1;
+   bytes account_address = 2;
+   AccountType type = 3;
+}
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
-<li><code>account_address</code>： 将要创建的账户地址。</li>
-<li><code>type</code>：账户类型。0代表普通账户，1代表创世块中初始账号，2代表智能合约账户。</li>
+<li><code>owner_address</code>: 合约发起人地址。</li>
+<li><code>account_address</code>: 待创建的账户地址。</li>
+<li><code>type</code>: 账户类型。<ul>
+<li><code>0</code>: 普通账户。</li>
+<li><code>1</code>: 创世块中的初始账户。</li>
+<li><code>2</code>: 智能合约账户。</li>
 </ul>
-<h2 id="trx-transfercontract">TRX转账 TransferContract<a class="headerlink" href="#trx-transfercontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">TransferContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">to_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
+</li>
+</ul>
+<h3 id="accountupdatecontract">AccountUpdateContract<a class="headerlink" href="#accountupdatecontract" title="Permanent link">&para;</a></h3>
+<p><em>更新账户名称</em></p>
+<div class="highlight"><pre><span></span><code>// Update account name. Account name is unique now.
+message AccountUpdateContract {
+   bytes account_name = 1;
+   bytes owner_address = 2;
+}
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
-<li><code>to_address</code>： 目标账户地址。</li>
-<li><code>amount</code>：转账金额，单位为 sun。</li>
+<li><code>owner_address</code>: 合约发起人地址。</li>
+<li><code>account_name</code>: 账户名称。</li>
 </ul>
-<h2 id="trc-10-transferassetcontract">TRC-10代币转账 TransferAssetContract<a class="headerlink" href="#trc-10-transferassetcontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">TransferAssetContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">asset_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">to_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
+<h3 id="setaccountidcontract">SetAccountIdContract<a class="headerlink" href="#setaccountidcontract" title="Permanent link">&para;</a></h3>
+<p><em>设置账户 ID</em></p>
+<div class="highlight"><pre><span></span><code>// Set account id if the account has no id. Account id is unique and case insensitive.
+message SetAccountIdContract {
+   bytes account_id = 1;
+   bytes owner_address = 2;
+}
 </code></pre></div>
 <ul>
-<li><code>asset_name</code>：TRC-10的id。</li>
-<li><code>owner_address</code>：合约持有人地址。</li>
-<li><code>to_address</code>： 目标账户地址。</li>
-<li><code>amount</code>：转账代币的数量。</li>
+<li><code>owner_address</code>: 合约发起人地址。</li>
+<li><code>account_id</code>: 账户 ID，唯一且不区分大小写。</li>
 </ul>
-<h2 id="votewitnesscontract">投票超级节点  VoteWitnessContract<a class="headerlink" href="#votewitnesscontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">VoteWitnessContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kd">message</span><span class="w"> </span><span class="nc">Vote</span><span class="w"> </span><span class="p">{</span>
-<span class="w">         </span><span class="kt">bytes</span><span class="w"> </span><span class="na">vote_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">         </span><span class="kt">int64</span><span class="w"> </span><span class="na">vote_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">       </span><span class="p">}</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="k">repeated</span><span class="w"> </span><span class="n">Vote</span><span class="w"> </span><span class="na">votes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bool</span><span class="w"> </span><span class="na">support</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
+<h2 id="2-trx">2. TRX 转账与资源合约<a class="headerlink" href="#2-trx" title="Permanent link">&para;</a></h2>
+<h3 id="transfercontract">TransferContract<a class="headerlink" href="#transfercontract" title="Permanent link">&para;</a></h3>
+<p><em>TRX 转账</em></p>
+<div class="highlight"><pre><span></span><code>message TransferContract {
+   bytes owner_address = 1;
+   bytes to_address = 2;
+   int64 amount = 3;
+}
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
-<li><code>vote_address</code>： 超级节点候选人的地址。</li>
-<li><code>vote_count</code>：投给超级节点候选人的票数。</li>
-<li><code>support</code>：是否支持，这里应该是恒为true，暂未使用该参数。</li>
+<li><code>owner_address</code>: 合约发起人地址。</li>
+<li><code>to_address</code>: 目标账户地址。</li>
+<li><code>amount</code>: 转账金额，单位为 <strong>sun</strong> (1 TRX = 1,000,000 sun)。</li>
 </ul>
-<h2 id="witnesscreatecontract">创建超级节点候选人 WitnessCreateContract<a class="headerlink" href="#witnesscreatecontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">WitnessCreateContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
+<h3 id="freezebalancev2contract">FreezeBalanceV2Contract<a class="headerlink" href="#freezebalancev2contract" title="Permanent link">&para;</a></h3>
+<p><em>质押 TRX 获取资源（Stake 2.0）</em></p>
+<div class="highlight"><pre><span></span><code>message FreezeBalanceV2Contract {
+   bytes owner_address = 1;
+   int64 frozen_balance = 2;
+   ResourceCode resource = 3; // 类型可以是 Bandwidth 或 Energy
+}
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
-<li><code>url</code>：超级节点的网址。</li>
+<li><code>owner_address</code>: 质押者地址。</li>
+<li><code>frozen_balance</code>: 质押的 TRX 数量。</li>
+<li><code>resource</code>: 质押 TRX 以获取的资源类型。</li>
 </ul>
-<h2 id="trc-10-assetissuecontract">发布TRC-10代币 AssetIssueContract<a class="headerlink" href="#trc-10-assetissuecontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="kd">message</span><span class="w"> </span><span class="nc">AssetIssueContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kd">message</span><span class="w"> </span><span class="nc">FrozenSupply</span><span class="w"> </span><span class="p">{</span>
-<span class="w">         </span><span class="kt">int64</span><span class="w"> </span><span class="na">frozen_amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">         </span><span class="kt">int64</span><span class="w"> </span><span class="na">frozen_days</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">       </span><span class="p">}</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">abbr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">total_supply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
-<span class="w">       </span><span class="k">repeated</span><span class="w"> </span><span class="n">FrozenSupply</span><span class="w"> </span><span class="na">frozen_supply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int32</span><span class="w"> </span><span class="na">trx_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int32</span><span class="w"> </span><span class="na">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">start_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">end_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">11</span><span class="p">;</span><span class="w"> </span><span class="c1">// the order of tokens of the same name</span>
-<span class="w">       </span><span class="kt">int32</span><span class="w"> </span><span class="na">vote_score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">21</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">free_asset_net_limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">22</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">public_free_asset_net_limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">23</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">public_free_asset_net_usage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">24</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">public_latest_free_net_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">25</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
+<h3 id="unfreezebalancev2contract">UnfreezeBalanceV2Contract<a class="headerlink" href="#unfreezebalancev2contract" title="Permanent link">&para;</a></h3>
+<p><em>解质押 TRX（Stake 2.0）</em></p>
+<div class="highlight"><pre><span></span><code>message UnfreezeBalanceV2Contract {
+   bytes owner_address = 1;
+   int64 unfreeze_balance = 2;
+   ResourceCode resource = 3;
+}
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
-<li><code>name</code>：发布Token的名称。</li>
-<li><code>abbr</code>：Token缩写。</li>
-<li><code>total_supply</code>：发行总的token数量。</li>
-<li><code>frozen_supply</code>：质押Token的数量和质押时间列表。</li>
-<li><code>trx_num</code>：对应TRX数量。</li>
-<li><code>num</code>： 对应的自定义资产数目。</li>
-<li><code>start_time</code>：ICO开始时间。</li>
-<li><code>end_time</code>：ICO结束时间。</li>
-<li><code>order</code>：已废弃。</li>
-<li><code>vote_score</code>：已废弃。</li>
-<li><code>description</code>：Token的描述。</li>
-<li><code>url</code>：Token的url地址链接。</li>
-<li><code>free_asset_net_limit</code>：每个账户可以使用的免费带宽（转移该资产时使用）。</li>
-<li><code>public_free_asset_net_limit</code>：所有账户可以使用的免费带宽（转移该资产时使用）。</li>
-<li><code>public_free_asset_net_usage</code>：所有账户使用免费带宽（转移该资产时使用）。</li>
-<li><code>public_latest_free_net_time</code>：最近一次转移该Token使用免费带宽的时间。</li>
+<li><code>owner_address</code>: 解质押者地址。</li>
+<li><code>unfreeze_balance</code>: 解质押的 TRX 数量。</li>
+<li><code>resource</code>: 解质押的资源类型。</li>
 </ul>
-<h2 id="url-witnessupdatecontract">更新超级节点候选人URL WitnessUpdateContract<a class="headerlink" href="#url-witnessupdatecontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">WitnessUpdateContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">update_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
+<h3 id="withdrawexpireunfreezecontract">WithdrawExpireUnfreezeContract<a class="headerlink" href="#withdrawexpireunfreezecontract" title="Permanent link">&para;</a></h3>
+<p><em>提取已到期解质押的 TRX 本金</em></p>
+<div class="highlight"><pre><span></span><code>message WithdrawExpireUnfreezeContract {
+   bytes owner_address = 1;
+}
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
-<li><code>update_url</code>：超级节点网站的url。</li>
+<li><code>owner_address</code>: 提取本金的账户地址。</li>
 </ul>
-<h2 id="trc-10-participateassetissuecontract">购买TRC-10代币 ParticipateAssetIssueContract<a class="headerlink" href="#trc-10-participateassetissuecontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">ParticipateAssetIssueContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">to_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">asset_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
+<h3 id="delegateresourcecontract">DelegateResourceContract<a class="headerlink" href="#delegateresourcecontract" title="Permanent link">&para;</a></h3>
+<p><em>代理资源（委托）</em></p>
+<div class="highlight"><pre><span></span><code>message DelegateResourceContract {
+   bytes owner_address = 1;
+   ResourceCode resource = 2;
+   int64 balance = 3;
+   bytes receiver_address = 4;
+   bool  lock = 5;
+   int64 lock_period = 6;
+}
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
-<li><code>to_address</code>：发行Token所有者地址。</li>
-<li><code>asset_name</code>： 发行Token的id。</li>
-<li><code>amount</code>：购买发行Token使用TRX的数量，单位是 sun。</li>
+<li><code>owner_address</code>: 资源代理者地址。</li>
+<li><code>resource</code>: 代理的资源类型。</li>
+<li><code>balance</code>: 代理的资源份额，单位为 <strong>sun</strong>。</li>
+<li><code>receiver_address</code>: 资源接收者地址。</li>
+<li><code>lock</code>: 是否将代理操作锁定 3 天。</li>
+<li><code>lock_period</code>: 代理锁定期。可以是 (0, 86400] 之间的任何时间，单位是区块个数。仅当 <code>lock</code> 为 <code>true</code> 时生效。</li>
 </ul>
-<h2 id="accountupdatecontract">更新账户 AccountUpdateContract<a class="headerlink" href="#accountupdatecontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">// Update account name. Account name is unique now.</span>
-<span class="w">     </span><span class="kd">message</span><span class="w"> </span><span class="nc">AccountUpdateContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">account_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
+<h3 id="undelegateresourcecontract">UnDelegateResourceContract<a class="headerlink" href="#undelegateresourcecontract" title="Permanent link">&para;</a></h3>
+<p><em>取消资源代理（取消委托）</em></p>
+<div class="highlight"><pre><span></span><code>message UnDelegateResourceContract {
+   bytes owner_address = 1;
+   ResourceCode resource = 2;
+   int64 balance = 3;
+   bytes receiver_address = 4;
+}
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
-<li><code>account_name</code>： 账户名称。</li>
+<li><code>owner_address</code>: 取消代理发起者地址。</li>
+<li><code>resource</code>: 解除代理的资源类型。</li>
+<li><code>balance</code>: 解除代理的资源份额。</li>
+<li><code>receiver_address</code>: 资源接收者地址。</li>
 </ul>
-<h2 id="stake10-freezebalancecontract">（已废弃）Stake1.0质押 FreezeBalanceContract<a class="headerlink" href="#stake10-freezebalancecontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">FreezeBalanceContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">frozen_balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">frozen_duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">       </span><span class="n">ResourceCode</span><span class="w"> </span><span class="na">resource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">receiver_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
+<h3 id="freezebalancecontract"><em>（已废弃）</em> FreezeBalanceContract<a class="headerlink" href="#freezebalancecontract" title="Permanent link">&para;</a></h3>
+<p><em>质押 TRX 获取资源（Stake 1.0）</em></p>
+<div class="highlight"><pre><span></span><code>message FreezeBalanceContract {
+   bytes owner_address = 1;
+   int64 frozen_balance = 2;
+   int64 frozen_duration = 3;
+   ResourceCode resource = 10;
+   bytes receiver_address = 15;
+}
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
-<li><code>frozen_balance</code>：质押资产的数量。</li>
-<li><code>frozen_duration</code>：质押资产的时间段。</li>
-<li><code>resource</code>： 质押TRX获取资源的类型。</li>
-<li><code>receiver_address</code>：接收资源的账户。</li>
+<li><code>owner_address</code>: 合约发起人地址。</li>
+<li><code>frozen_balance</code>: 质押的 TRX 数量。</li>
+<li><code>frozen_duration</code>: 质押时间（单位：天）。</li>
+<li><code>resource</code>: 质押 TRX 获取的资源类型。</li>
+<li><code>receiver_address</code>: 接收资源的账户地址。</li>
 </ul>
-<h2 id="stake10-unfreezebalancecontract">解质押Stake1.0阶段质押的资产 UnfreezeBalanceContract<a class="headerlink" href="#stake10-unfreezebalancecontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">UnfreezeBalanceContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="n">ResourceCode</span><span class="w"> </span><span class="na">resource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">receiver_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">13</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
+<h3 id="unfreezebalancecontract"><em>（已废弃）</em> UnfreezeBalanceContract<a class="headerlink" href="#unfreezebalancecontract" title="Permanent link">&para;</a></h3>
+<p><em>解质押 TRX（Stake 1.0）</em></p>
+<div class="highlight"><pre><span></span><code>message UnfreezeBalanceContract {
+   bytes owner_address = 1;
+   ResourceCode resource = 10;
+   bytes receiver_address = 13;
+}
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
-<li><code>resource</code>： 解锁资源的类型。</li>
-<li><code>receiver_address</code>：接收资源的账户。</li>
+<li><code>owner_address</code>: 合约发起人地址。</li>
+<li><code>resource</code>: 解锁资源的类型。</li>
+<li><code>receiver_address</code>: 接收资源的账户地址。</li>
 </ul>
-<h2 id="withdrawbalancecontract">提取奖励 WithdrawBalanceContract<a class="headerlink" href="#withdrawbalancecontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">WithdrawBalanceContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
+<h3 id="withdrawbalancecontract">WithdrawBalanceContract<a class="headerlink" href="#withdrawbalancecontract" title="Permanent link">&para;</a></h3>
+<p><em>提取超级代表奖励</em></p>
+<div class="highlight"><pre><span></span><code>message WithdrawBalanceContract {
+   bytes owner_address = 1;
+}
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
+<li><code>owner_address</code>: 合约发起人地址。</li>
 </ul>
-<h2 id="token-unfreezeassetcontract">解锁发布的Token UnfreezeAssetContract<a class="headerlink" href="#token-unfreezeassetcontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">UnfreezeAssetContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
+<h2 id="3-trc-10">3. TRC-10 代币合约<a class="headerlink" href="#3-trc-10" title="Permanent link">&para;</a></h2>
+<h3 id="transferassetcontract">TransferAssetContract<a class="headerlink" href="#transferassetcontract" title="Permanent link">&para;</a></h3>
+<p><em>TRC-10 代币转账</em></p>
+<div class="highlight"><pre><span></span><code>message TransferAssetContract {
+   bytes asset_name = 1;
+   bytes owner_address = 2;
+   bytes to_address = 3;
+   int64 amount = 4;
+}
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
+<li><code>asset_name</code>: TRC-10 代币 ID。</li>
+<li><code>owner_address</code>: 合约发起人地址。</li>
+<li><code>to_address</code>: 目标账户地址。</li>
+<li><code>amount</code>: 转账的代币数量。</li>
 </ul>
-<h2 id="updateassetcontract">更新通证参数 UpdateAssetContract<a class="headerlink" href="#updateassetcontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">UpdateAssetContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">new_limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">new_public_limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
+<h3 id="assetissuecontract">AssetIssueContract<a class="headerlink" href="#assetissuecontract" title="Permanent link">&para;</a></h3>
+<p><em>发行 TRC-10 代币</em></p>
+<div class="highlight"><pre><span></span><code>message AssetIssueContract {
+   message FrozenSupply {
+     int64 frozen_amount = 1;
+     int64 frozen_days = 2;
+   }
+   bytes owner_address = 1;
+   bytes name = 2;
+   bytes abbr = 3;
+   int64 total_supply = 4;
+   repeated FrozenSupply frozen_supply = 5;
+   int32 trx_num = 6;
+   int32 num = 8;
+   int64 start_time = 9;
+   int64 end_time = 10;
+   int64 order = 11; // the order of tokens of the same name
+   int32 vote_score = 16;
+   bytes description = 20;
+   bytes url = 21;
+   int64 free_asset_net_limit = 22;
+   int64 public_free_asset_net_limit = 23;
+   int64 public_free_asset_net_usage = 24;
+   int64 public_latest_free_net_time = 25;
+}
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
-<li><code>description</code>： 通证的描述。</li>
-<li><code>url</code>：通证的网址的Url。</li>
-<li><code>new_limit</code>：每个调用者可以消耗Bandwidth point的限制。</li>
-<li><code>new_public_limit</code>： 所有调用者可以消耗Bandwidth points的限制。</li>
+<li><code>owner_address</code>: 代币发行者地址。</li>
+<li><code>name</code>: 代币名称。</li>
+<li><code>abbr</code>: 代币缩写。</li>
+<li><code>total_supply</code>: 发行总量。</li>
+<li><code>frozen_supply</code>: 质押的代币数量和质押天数列表。</li>
+<li><code>trx_num</code>: 1 TRX 可兑换的代币数量。</li>
+<li><code>num</code>: 兑换 1 TRX 所需的代币数量。</li>
+<li><code>start_time</code>: ICO 开始时间。</li>
+<li><code>end_time</code>: ICO 结束时间。</li>
+<li><code>order</code>: <em>（已废弃）</em>。</li>
+<li><code>vote_score</code>: <em>（已废弃）</em>。</li>
+<li><code>description</code>: 代币描述。</li>
+<li><code>url</code>: 代币官方网址。</li>
+<li><code>free_asset_net_limit</code>: 每个账户使用该代币时的免费带宽额度。</li>
+<li><code>public_free_asset_net_limit</code>: 所有账户共享的免费带宽总额度。</li>
+<li><code>public_free_asset_net_usage</code>: 所有账户已使用的免费带宽。</li>
+<li><code>public_latest_free_net_time</code>: 最近一次使用共享免费带宽的时间。</li>
 </ul>
-<h2 id="proposalcreatecontract">创建提议  ProposalCreateContract<a class="headerlink" href="#proposalcreatecontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">ProposalCreateContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="n">map</span><span class="p">&lt;</span><span class="kt">int64</span><span class="p">,</span><span class="w"> </span><span class="kt">int64</span><span class="p">&gt;</span><span class="w"> </span><span class="na">parameters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
+<h3 id="participateassetissuecontract">ParticipateAssetIssueContract<a class="headerlink" href="#participateassetissuecontract" title="Permanent link">&para;</a></h3>
+<p><em>参与 TRC-10 代币 ICO</em></p>
+<div class="highlight"><pre><span></span><code>message ParticipateAssetIssueContract {
+   bytes owner_address = 1;
+   bytes to_address = 2;
+   bytes asset_name = 3;
+   int64 amount = 4;
+}
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
-<li><code>parameters</code>： 提议。</li>
+<li><code>owner_address</code>: 购买者地址。</li>
+<li><code>to_address</code>: 代币发行者地址。</li>
+<li><code>asset_name</code>: 代币 ID。</li>
+<li><code>amount</code>: 用于购买代币的 TRX 数量，单位为 <strong>sun</strong>。</li>
 </ul>
-<h2 id="proposalapprovecontract">赞成提议 ProposalApproveContract<a class="headerlink" href="#proposalapprovecontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">ProposalApproveContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">proposal_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bool</span><span class="w"> </span><span class="na">is_add_approval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// add or remove approval</span>
-<span class="w">     </span><span class="p">}</span>
+<h3 id="unfreezeassetcontract">UnfreezeAssetContract<a class="headerlink" href="#unfreezeassetcontract" title="Permanent link">&para;</a></h3>
+<p><em>解除已发布的代币质押</em></p>
+<div class="highlight"><pre><span></span><code>message UnfreezeAssetContract {
+   bytes owner_address = 1;
+}
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
-<li><code>proposal_id</code>： 提议的Id。</li>
-<li><code>is_add_approval</code>：是否赞成提议。</li>
+<li><code>owner_address</code>: 代币发行者地址。</li>
 </ul>
-<h2 id="proposaldeletecontract">删除提议 ProposalDeleteContract<a class="headerlink" href="#proposaldeletecontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">     </span><span class="kd">message</span><span class="w"> </span><span class="nc">ProposalDeleteContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">proposal_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
+<h3 id="updateassetcontract">UpdateAssetContract<a class="headerlink" href="#updateassetcontract" title="Permanent link">&para;</a></h3>
+<p><em>更新通证参数</em></p>
+<div class="highlight"><pre><span></span><code>message UpdateAssetContract {
+   bytes owner_address = 1;
+   bytes description = 2;
+   bytes url = 3;
+   int64 new_limit = 4;
+   int64 new_public_limit = 5;
+}
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
-<li><code>proposal_id</code>： 提议ID。</li>
+<li><code>owner_address</code>: 通证发行者地址。</li>
+<li><code>description</code>: 通证的新描述。</li>
+<li><code>url</code>: 通证的新网址。</li>
+<li><code>new_limit</code>: 单个调用者可消耗的新带宽上限。</li>
+<li><code>new_public_limit</code>: 所有调用者可消耗的新公共带宽上限。</li>
 </ul>
-<h2 id="id-setaccountidcontract">设置账户ID SetAccountIdContract<a class="headerlink" href="#id-setaccountidcontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">// Set account id if the account has no id. Account id is unique and case insensitive.</span>
-<span class="w">     </span><span class="kd">message</span><span class="w"> </span><span class="nc">SetAccountIdContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">account_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
+<h2 id="4">4. 超级代表与投票合约<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="votewitnesscontract">VoteWitnessContract<a class="headerlink" href="#votewitnesscontract" title="Permanent link">&para;</a></h3>
+<p><em>为超级代表候选人投票</em></p>
+<div class="highlight"><pre><span></span><code>message VoteWitnessContract {
+   message Vote {
+     bytes vote_address = 1;
+     int64 vote_count = 2;
+   }
+   bytes owner_address = 1;
+   repeated Vote votes = 2;
+   bool support = 3;
+}
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
-<li><code>account_id</code>： 账户Id。</li>
+<li><code>owner_address</code>: 投票人地址。</li>
+<li><code>votes</code>: 投票列表。<ul>
+<li><code>vote_address</code>: 超级代表候选人地址。</li>
+<li><code>vote_count</code>: 投给该候选人的票数。</li>
 </ul>
-<h2 id="createsmartcontract">创建智能合约 CreateSmartContract<a class="headerlink" href="#createsmartcontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">     </span><span class="kd">message</span><span class="w"> </span><span class="nc">CreateSmartContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="n">SmartContract</span><span class="w"> </span><span class="na">new_contract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">call_token_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">token_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
+</li>
+<li><code>support</code>: 是否支持。该参数目前恒为 <code>true</code>。</li>
+</ul>
+<h3 id="witnesscreatecontract">WitnessCreateContract<a class="headerlink" href="#witnesscreatecontract" title="Permanent link">&para;</a></h3>
+<p><em>创建超级代表候选人</em></p>
+<div class="highlight"><pre><span></span><code>message WitnessCreateContract {
+   bytes owner_address = 1;
+   bytes url = 2;
+}
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
-<li><code>new_contract</code>： 智能合约。</li>
-<li><code>call_token_value</code>：转入TRC-10数目。</li>
-<li><code>token_id</code>：转入TRC-10的id。</li>
+<li><code>owner_address</code>: 候选人地址。</li>
+<li><code>url</code>: 候选人网站地址。</li>
 </ul>
-<h2 id="triggersmartcontract">触发智能合约 TriggerSmartContract<a class="headerlink" href="#triggersmartcontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">TriggerSmartContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">contract_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">call_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">call_token_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">token_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
+<h3 id="witnessupdatecontract">WitnessUpdateContract<a class="headerlink" href="#witnessupdatecontract" title="Permanent link">&para;</a></h3>
+<p><em>更新超级代表候选人网址</em></p>
+<div class="highlight"><pre><span></span><code>message WitnessUpdateContract {
+   bytes owner_address = 1;
+   bytes update_url = 12;
+}
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
-<li><code>contract_address</code>： 合约地址。</li>
-<li><code>call_value</code>：传入合约的TRX的值。</li>
-<li><code>data</code>：操作参数。</li>
-<li><code>call_token_value</code>：转入TRC-10数目。</li>
-<li><code>token_id</code>：转入TRC-10的id。</li>
+<li><code>owner_address</code>: 候选人地址。</li>
+<li><code>update_url</code>: 新的网站地址。</li>
 </ul>
-<h2 id="updatesettingcontract">更新合约 UpdateSettingContract<a class="headerlink" href="#updatesettingcontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">UpdateSettingContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">contract_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">consume_user_resource_percent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
+<h2 id="5">5. 提议与治理合约<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h3 id="proposalcreatecontract">ProposalCreateContract<a class="headerlink" href="#proposalcreatecontract" title="Permanent link">&para;</a></h3>
+<p><em>创建提议（Proposal）</em></p>
+<div class="highlight"><pre><span></span><code>message ProposalCreateContract {
+   bytes owner_address = 1;
+   map&lt;int64, int64&gt; parameters = 2;
+}
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
-<li><code>contract_address</code>： 合约地址。</li>
-<li><code>consume_user_resource_percent</code>：将要更新的账户消耗资源的百分比。</li>
+<li><code>owner_address</code>: Proposal 发起人地址。</li>
+<li><code>parameters</code>: Proposal 内容，以键值对形式表示。</li>
 </ul>
-<h2 id="exchangecreatecontract">创建交易所 ExchangeCreateContract<a class="headerlink" href="#exchangecreatecontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">ExchangeCreateContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">first_token_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">first_token_balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">second_token_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">second_token_balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
+<h3 id="proposalapprovecontract">ProposalApproveContract<a class="headerlink" href="#proposalapprovecontract" title="Permanent link">&para;</a></h3>
+<p><em>为 Proposal 投票。投票为赞同，不投即为不赞同。</em></p>
+<div class="highlight"><pre><span></span><code>message ProposalApproveContract {
+   bytes owner_address = 1;
+   int64 proposal_id = 2;
+   bool is_add_approval = 3; // add or remove approval
+}
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
-<li><code>first_token_id</code>： 第1种token的id。</li>
-<li><code>first_token_balance</code>：第1种token的balance。</li>
-<li><code>second_token_id</code>：第2种token的id。</li>
-<li><code>second_token_balance</code>：第2种token的balance。</li>
+<li><code>owner_address</code>: 投票人地址。</li>
+<li><code>proposal_id</code>: Proposal ID。</li>
+<li><code>is_add_approval</code>: 是否赞成 Proposal。<code>true</code> 表示赞成，<code>false</code> 表示取消赞成。</li>
 </ul>
-<h2 id="exchangeinjectcontract">给交易所注资 ExchangeInjectContract<a class="headerlink" href="#exchangeinjectcontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">ExchangeInjectContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">exchange_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">token_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">quant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
+<h3 id="proposaldeletecontract">ProposalDeleteContract<a class="headerlink" href="#proposaldeletecontract" title="Permanent link">&para;</a></h3>
+<p><em>删除 Proposal</em></p>
+<div class="highlight"><pre><span></span><code>message ProposalDeleteContract {
+   bytes owner_address = 1;
+   int64 proposal_id = 2;
+}
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
-<li><code>exchange_id</code>： 交易对的id。</li>
-<li><code>token_id</code>：要注资的token的id。</li>
-<li><code>quant</code>：要注资的token的数量。</li>
+<li><code>owner_address</code>: Proposal 删除人地址。</li>
+<li><code>proposal_id</code>: Proposal ID。</li>
 </ul>
-<h2 id="exchangewithdrawcontract">从交易所撤资 ExchangeWithdrawContract<a class="headerlink" href="#exchangewithdrawcontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">ExchangeWithdrawContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">exchange_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">token_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">quant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
+<h2 id="6">6. 智能合约管理合约<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<h3 id="createsmartcontract">CreateSmartContract<a class="headerlink" href="#createsmartcontract" title="Permanent link">&para;</a></h3>
+<p><em>创建智能合约</em></p>
+<div class="highlight"><pre><span></span><code>message CreateSmartContract {
+   bytes owner_address = 1;
+   SmartContract new_contract = 2;
+   int64 call_token_value = 3;
+   int64 token_id = 4;
+}
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
-<li><code>exchange_id</code>： 交易对的id。</li>
-<li><code>token_id</code>：要撤资的token的id。</li>
-<li><code>quant</code>：要撤资的token的数量。</li>
+<li><code>owner_address</code>: 合约发起人地址。</li>
+<li><code>new_contract</code>: 智能合约的 ABI 和字节码等信息。</li>
+<li><code>call_token_value</code>: 随合约部署转入的 TRC-10 代币数量。</li>
+<li><code>token_id</code>: 转入的 TRC-10 代币 ID。</li>
 </ul>
-<h2 id="exchangetransactioncontract">在交易所交易 ExchangeTransactionContract<a class="headerlink" href="#exchangetransactioncontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">ExchangeTransactionContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">exchange_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">token_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">quant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">expected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
+<h3 id="triggersmartcontract">TriggerSmartContract<a class="headerlink" href="#triggersmartcontract" title="Permanent link">&para;</a></h3>
+<p><em>触发智能合约</em></p>
+<div class="highlight"><pre><span></span><code>message TriggerSmartContract {
+   bytes owner_address = 1;
+   bytes contract_address = 2;
+   int64 call_value = 3;
+   bytes data = 4;
+   int64 call_token_value = 5;
+   int64 token_id = 6;
+}
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
-<li><code>exchange_id</code>： 交易对的id。</li>
-<li><code>token_id</code>：要卖出的token的id。</li>
-<li><code>quant</code>：要卖出的token的数量。</li>
-<li><code>expected</code>：期望买入token的数量，如果计算出来的实际可以买到的token数量小于这个值，则交易失败。</li>
+<li><code>owner_address</code>: 合约发起人地址。</li>
+<li><code>contract_address</code>: 目标合约地址。</li>
+<li><code>call_value</code>: 随合约调用转入的 TRX 数量，单位为 <strong>sun</strong>。</li>
+<li><code>data</code>: 合约方法的编码参数。</li>
+<li><code>call_token_value</code>: 随合约调用转入的 TRC-10 代币数量。</li>
+<li><code>token_id</code>: 转入的 TRC-10 代币 ID。</li>
 </ul>
-<h2 id="shieldedtransfercontract">匿名交易 ShieldedTransferContract<a class="headerlink" href="#shieldedtransfercontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="kd">message</span><span class="w"> </span><span class="nc">ShieldedTransferContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">transparent_from_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">from_amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">       </span><span class="k">repeated</span><span class="w"> </span><span class="n">SpendDescription</span><span class="w"> </span><span class="na">spend_description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">       </span><span class="k">repeated</span><span class="w"> </span><span class="n">ReceiveDescription</span><span class="w"> </span><span class="na">receive_description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">binding_signature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">transparent_to_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">to_amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+<h3 id="updatesettingcontract">UpdateSettingContract<a class="headerlink" href="#updatesettingcontract" title="Permanent link">&para;</a></h3>
+<p><em>更新智能合约的资源消耗百分比</em></p>
+<div class="highlight"><pre><span></span><code>message UpdateSettingContract {
+   bytes owner_address = 1;
+   bytes contract_address = 2;
+   int64 consume_user_resource_percent = 3;
+}
 </code></pre></div>
 <ul>
-<li><code>transparent_from_address</code>：交易发送方透明地址，如果交易发送方是匿名的，则该参数为空。</li>
-<li><code>from_amount</code>：交易发送方转账金额，正整数；如果交易发送方是匿名的，则该参数为0。</li>
-<li><code>spend_description</code>：交易发送方note的SpendDescription，最多一个，该参数类型具体描述见下文；如果发送方是透明地址，则该参数为空。</li>
-<li><code>receive_description</code>：交易接收方note的ReceiveDescription，最多两个，该参数类型具体描述见下文。</li>
-<li><code>binding_signature</code>：交易的绑定签名，证明交易双方金额平衡。</li>
-<li><code>transparent_to_address</code>：交易接收方透明地址，如果交易接收方都是匿名的，则该参数为空。</li>
-<li><code>to_amount</code>：交易接收方转账金额，正整数；如果交易接收方是匿名的，则该参数为0。</li>
+<li><code>owner_address</code>: 合约发起人地址。</li>
+<li><code>contract_address</code>: 目标合约地址。</li>
+<li><code>consume_user_resource_percent</code>: 更新后的用户资源消耗百分比。</li>
 </ul>
-<div class="highlight"><pre><span></span><code>     message SpendDescription {
-       bytes value_commitment = 1;
-       bytes anchor = 2;
-       bytes nullifier = 3;
-       bytes rk = 4;
-       bytes zkproof = 5;
-       bytes spend_authority_signature = 6;
-     }
+<h3 id="updateenergylimitcontract">UpdateEnergyLimitContract<a class="headerlink" href="#updateenergylimitcontract" title="Permanent link">&para;</a></h3>
+<p><em>调整智能合约的能量上限</em></p>
+<div class="highlight"><pre><span></span><code>message UpdateEnergyLimitContract {
+   bytes owner_address = 1;
+   bytes contract_address = 2;
+   int64 origin_energy_limit = 3;
+}
 </code></pre></div>
 <ul>
-<li><code>value_commitment</code>：对交易发送方转账金额的承诺。</li>
-<li><code>anchor</code>：交易发送方note commitment所在Merkle树的根hash。</li>
-<li><code>nullifier</code>：交易发送方note的作废证明，防止双花。</li>
-<li><code>rk</code>：验证交易发送方Spend Authorization签名的公钥。</li>
-<li><code>zkproof</code>：交易发送方note的零知识证明，证明要花费的note存在，且可以被花费。</li>
-<li><code>spend_authority_signature</code>：交易发送方的Spend Authorization签名。</li>
+<li><code>owner_address</code>: 合约发起人地址。</li>
+<li><code>contract_address</code>: 目标合约地址。</li>
+<li><code>origin_energy_limit</code>: 调整后合约部署者提供的能量上限值。</li>
 </ul>
-<div class="highlight"><pre><span></span><code>     message ReceiveDescription {
-       bytes value_commitment = 1;
-       bytes note_commitment = 2;
-       bytes epk = 3;
-       bytes c_enc = 4;
-       bytes c_out = 5;
-       bytes zkproof = 6;
-     }
+<h3 id="clearabicontract">ClearABIContract<a class="headerlink" href="#clearabicontract" title="Permanent link">&para;</a></h3>
+<p><em>清除智能合约的 ABI</em></p>
+<div class="highlight"><pre><span></span><code>message ClearABIContract {
+   bytes owner_address = 1;
+   bytes contract_address = 2;
+}
 </code></pre></div>
 <ul>
-<li><code>value_commitment</code>：对交易接收方转账金额的承诺。</li>
-<li><code>note_commitment</code>：对交易接收方note的承诺。</li>
-<li><code>epk</code>：临时公钥，用于生成解密note密钥。</li>
-<li><code>c_enc</code>：note加密结果的一部分，是对（Diversifier, 转账金额v, 生成note_commitment的随机数rcm, Memo）的加密结果。</li>
-<li><code>c_out</code>：note加密结果的另一部分，是对（接收方公钥，临时私钥）的加密结果。</li>
-<li><code>zkproof</code>：交易接收方note存在的零知识证明。</li>
+<li><code>owner_address</code>: 合约发起人地址。</li>
+<li><code>contract_address</code>: 待清除 ABI 的合约地址。</li>
 </ul>
-<h2 id="_2">账户权限管理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p><a href="../multi-signatures/">账户权限管理</a></p>
-<h2 id="abi">清除ABI合约<a class="headerlink" href="#abi" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">     </span><span class="kd">message</span><span class="w"> </span><span class="nc">ClearABIContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">contract_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
+<h3 id="updatebrokeragecontract">UpdateBrokerageContract<a class="headerlink" href="#updatebrokeragecontract" title="Permanent link">&para;</a></h3>
+<p><em>更新超级代表分红比例</em></p>
+<div class="highlight"><pre><span></span><code>message UpdateBrokerageContract {
+   bytes owner_address = 1;
+   int32 brokerage = 2;
+}
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
-<li><code>contract_address</code>：需要清除ABI的合约。</li>
+<li><code>owner_address</code>: 超级代表地址。</li>
+<li><code>brokerage</code>: 新的分红比例，范围从 0 到 100，表示百分比。</li>
 </ul>
-<h2 id="_3">更新分红比例合约<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">     </span><span class="kd">message</span><span class="w"> </span><span class="nc">UpdateBrokerageContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int32</span><span class="w"> </span><span class="na">brokerage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
-</code></pre></div>
-<ul>
-<li><code>owner_address</code>：合约持有人地址。</li>
-<li><code>brokerage</code>: 分红比例，从0到100，1代表1%。</li>
-</ul>
-<h2 id="_4">调整能量上限合约<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="w">     </span><span class="kd">message</span><span class="w"> </span><span class="nc">UpdateEnergyLimitContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">contract_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">origin_energy_limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">     </span><span class="p">}</span>
-</code></pre></div>
-* <code>owner_address</code>：合约持有人地址。
-* <code>contract_address</code>：需要调整的合约地址。
-* <code>origin_energy_limit</code>：调整后智能合约部署者提供的能量上限值。</p>
-<h2 id="freezebalancev2contract">质押资产 FreezeBalanceV2Contract<a class="headerlink" href="#freezebalancev2contract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">     </span><span class="kd">message</span><span class="w"> </span><span class="nc">FreezeBalanceV2Contract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">      </span><span class="kt">int64</span><span class="w"> </span><span class="na">frozen_balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">      </span><span class="n">ResourceCode</span><span class="w"> </span><span class="na">resource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">      </span><span class="p">}</span>
-</code></pre></div>
-<ul>
-<li><code>owner_address</code>：质押者地址。</li>
-<li><code>frozen_balance</code>：质押资产的数量。</li>
-<li><code>resource</code>： 质押TRX获取资源的类型。</li>
-</ul>
-<h2 id="unfreezebalancev2contract">解质押资产 UnfreezeBalanceV2Contract<a class="headerlink" href="#unfreezebalancev2contract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">UnfreezeBalanceV2Contract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">       </span><span class="kt">int64</span><span class="w"> </span><span class="na">unfreeze_balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">       </span><span class="n">ResourceCode</span><span class="w"> </span><span class="na">resource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">      </span><span class="p">}</span>
-</code></pre></div>
-<ul>
-<li><code>owner_address</code>：解质押者地址。</li>
-<li><code>unfreeze_balance</code>：解质押数额。</li>
-<li><code>resource</code>： 解锁资源的类型。</li>
-</ul>
-<h2 id="withdrawexpireunfreezecontract">提取解质押本金 WithdrawExpireUnfreezeContract<a class="headerlink" href="#withdrawexpireunfreezecontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">WithdrawExpireUnfreezeContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">      </span><span class="p">}</span>
-</code></pre></div>
-<ul>
-<li><code>owner_address</code>：提取本金账户地址。</li>
-</ul>
-<h2 id="delegateresourcecontract">资源代理 DelegateResourceContract<a class="headerlink" href="#delegateresourcecontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">DelegateResourceContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">      </span><span class="n">ResourceCode</span><span class="w"> </span><span class="na">resource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">      </span><span class="kt">int64</span><span class="w"> </span><span class="na">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">      </span><span class="kt">bytes</span><span class="w"> </span><span class="na">receiver_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
-<span class="w">      </span><span class="kt">bool</span><span class="w">  </span><span class="na">lock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
-<span class="w">      </span><span class="p">}</span>
-</code></pre></div>
-<ul>
-<li><code>owner_address</code>：代理人地址。</li>
-<li><code>resource</code>： 代理的资源的类型。</li>
-<li><code>balance</code>： 代理的资源的份额，单位为sun。</li>
-<li><code>receiver_address</code>：资源接收者地址。</li>
-<li><code>lock</code>：是否将代理操作锁定3天。</li>
-</ul>
-<h2 id="undelegateresourcecontract">取消资源代理 UnDelegateResourceContract<a class="headerlink" href="#undelegateresourcecontract" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kd">message</span><span class="w"> </span><span class="nc">UnDelegateResourceContract</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">      </span><span class="n">ResourceCode</span><span class="w"> </span><span class="na">resource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">      </span><span class="kt">int64</span><span class="w"> </span><span class="na">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">      </span><span class="kt">bytes</span><span class="w"> </span><span class="na">receiver_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
-<span class="w">      </span><span class="p">}</span>
-</code></pre></div>
-<ul>
-<li><code>owner_address</code>：解代理发起地址</li>
-<li><code>resource</code>： 解锁资源的类型。</li>
-<li><code>balance</code>：解代理资源份额。</li>
-<li><code>receiver_address</code>：资源接收地址。</li>
-</ul>
+<h2 id="7">7. 账户权限管理<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<p>如需了解账户权限管理的详细信息，请参考 <a href="https://tronprotocol.github.io/documentation-zh/mechanism-algorithm/multi-signatures/">账户权限管理</a>。</p>
 
 
 

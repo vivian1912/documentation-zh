@@ -2296,7 +2296,7 @@
 <li><code>QUANTITY|TAG</code> - 区块高度，或标签 "earliest", "latest"。</li>
 <li><code>Boolean</code> - <code>true</code> 表示返回完整的交易对象列表；<code>false</code> 表示仅返回交易的哈希列表。</li>
 </ol>
-<p><strong>返回值：</strong>  <code>Object</code> - 区块对象。如果未找到区块，则返回 <code>null</code>。结构参见 <a href="https://developers.tron.network/reference#eth_getblockbyhash">eth_getBlockByHash</a></p>
+<p><strong>返回值：</strong>  <code>Object</code> - 区块对象。如果未找到区块，则返回 <code>null</code>。结构参见 <a href="#eth_getblockbyhash">eth_getBlockByHash</a>。</p>
 <p><strong>示例</strong>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -2514,7 +2514,7 @@
 <li><code>QUANTITY</code> - 交易在区块中的索引。</li>
 </ol>
 <p><strong>返回值：</strong>
-<code>Object</code> - 交易对象。如果未找到，则返回 <code>null</code>。交易对象结构参见 <a href="#eth_gettransactionbyblockhashandindex">eth_getTransactionByBlockHashAndIndex</a></p>
+<code>Object</code> - 交易对象。如果未找到，则返回 <code>null</code>。交易对象结构参见 <a href="#eth_gettransactionbyblockhashandindex">eth_getTransactionByBlockHashAndIndex</a>。</p>
 <p><strong>示例</strong>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -2531,7 +2531,7 @@
 <p><strong>参数：</strong>
 <code>DATA, 32 Bytes</code> - 交易的哈希。</p>
 <p><strong>返回值：</strong>
-<code>Object</code> - 交易对象。如果未找到，则返回 <code>null</code>。交易对象结构参见 <a href="#eth_gettransactionbyblockhashandindex">eth_getTransactionByBlockHashAndIndex</a></p>
+<code>Object</code> - 交易对象。如果未找到，则返回 <code>null</code>。交易对象结构参见 <a href="#eth_gettransactionbyblockhashandindex">eth_getTransactionByBlockHashAndIndex</a>。</p>
 <p><strong>示例</strong>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -2564,7 +2564,7 @@
 }
 </code></pre></div></p>
 <h3 id="eth_gettransactionreceipt">eth_getTransactionReceipt<a class="headerlink" href="#eth_gettransactionreceipt" title="Permanent link">&para;</a></h3>
-<p><em>通过交易哈希返回交易的收据信息。收据包含了交易的执行结果、事件日志、消耗的资源等。请参考 http api: <a href="#walletgettransactioninfobyid">wallet/gettransactioninfobyid</a></em></p>
+<p><em>通过交易哈希返回交易的收据信息。收据包含了交易的执行结果、事件日志、消耗的资源等。请参考 HTTP api: <a href="http/#walletgettransactioninfobyid">wallet/gettransactioninfobyid</a></em>。</p>
 <p><strong>参数：</strong>
 <code>DATA, 32 Bytes</code> - 交易的哈希。</p>
 <p><strong>返回值：</strong>
@@ -2715,12 +2715,33 @@
 <p><em>返回节点的同步状态。</em></p>
 <p><strong>参数：</strong>无</p>
 <p><strong>返回值：</strong>  </p>
-<p><code>Object</code> 或 <code>Boolean</code> -  如果节点正在同步，返回一个包含 <code>startingBlock</code>, <code>currentBlock</code>, 和 <code>highestBlock</code> 的对象。如果已同步完成，返回 <code>false</code>，详细项介绍：
-| 字段     | 类型                  | 描述                                                               |
-| :------------ | :------- | :------------------------------------------------------------------------------------------ |
-| <code>startingBlock</code> | QUANTITY | 当前开始同步的起始区块 |
-| <code>currentBlock</code>  | QUANTITY | 当前区块                                                                           |
-| <code>highestBlock</code>  | QUANTITY | 预估的最高区块                                                                 |</p>
+<p><code>Object</code> 或 <code>Boolean</code> -  如果节点正在同步，返回一个包含 <code>startingBlock</code>, <code>currentBlock</code>, 和 <code>highestBlock</code> 的对象。如果已同步完成，返回 <code>false</code>，详细项介绍：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">字段</th>
+<th style="text-align: left;">类型</th>
+<th style="text-align: left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>startingBlock</code></td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">当前开始同步的起始区块</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>currentBlock</code></td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">当前区块</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>highestBlock</code></td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">预估的最高区块</td>
+</tr>
+</tbody>
+</table>
 <p><strong>示例</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_syncing&quot;,&quot;params&quot;:[],&quot;id&quot;:64}&#39;
 
@@ -2772,8 +2793,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>返回值：</strong><br />
-<code>QUANTITY</code> - 新创建的过滤器 ID。</p>
+<p><strong>返回值：</strong> <code>QUANTITY</code> - 新创建的过滤器 ID。</p>
 <p><strong>示例</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_newFilter&quot;,&quot;params&quot;:[{&quot;address&quot;:[&quot;cc2e32f2388f0096fae9b055acffd76d4b3e5532&quot;,&quot;E518C608A37E2A262050E10BE0C9D03C7A0877F3&quot;],&quot;fromBlock&quot;:&quot;0x989680&quot;,&quot;toBlock&quot;:&quot;0x9959d0&quot;,&quot;topics&quot;:[&quot;0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef&quot;,null,[&quot;0x0000000000000000000000001806c11be0f9b9af9e626a58904f3e5827b67be7&quot;,&quot;0x0000000000000000000000003c8fb6d064ceffc0f045f7b4aee6b3a4cefb4758&quot;]]}],&quot;id&quot;:1}&#39;
 
@@ -2783,8 +2803,7 @@
 <h3 id="eth_newblockfilter">eth_newBlockFilter<a class="headerlink" href="#eth_newblockfilter" title="Permanent link">&para;</a></h3>
 <p><em>创建一个用于监听新区块的过滤器。</em></p>
 <p><strong>参数：</strong>  无。</p>
-<p><strong>返回值：</strong><br />
-<code>QUANTITY</code> - 新创建的过滤器 ID。</p>
+<p><strong>返回值：</strong><code>QUANTITY</code> - 新创建的过滤器 ID。</p>
 <p><strong>示例</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_newBlockFilter&quot;,&quot;params&quot;:[],&quot;id&quot;:1}&#39;
 
@@ -2878,10 +2897,8 @@
 </code></pre></div>
 <h3 id="eth_getfilterlogs">eth_getFilterLogs<a class="headerlink" href="#eth_getfilterlogs" title="Permanent link">&para;</a></h3>
 <p><em>返回指定日志过滤器的所有历史匹配日志。</em></p>
-<p><strong>参数</strong><br />
-<code>QUANTITY</code> - 由 <code>eth_newFilter</code> 创建的过滤器 ID。</p>
-<p><strong>返回值</strong>
-<code>Array</code> - 事件日志对象数组，参见 <a href="#eth_getfilterchanges">eth_getFilterChanges</a>。</p>
+<p><strong>参数：</strong> <code>QUANTITY</code> - 由 <code>eth_newFilter</code> 创建的过滤器 ID。</p>
+<p><strong>返回值：</strong> <code>Array</code> - 事件日志对象数组，参见 <a href="#eth_getfilterchanges">eth_getFilterChanges</a>。</p>
 <p><strong>示例</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
