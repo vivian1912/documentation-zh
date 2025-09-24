@@ -122,7 +122,7 @@ event.subscribe = {
 *   `path`：插件的绝对路径，例如 `"/deploy/fullnode/event-plugin/build/plugins/plugin-mongodb-1.0.0.zip"`。
 *   `server`：目标服务器地址，即MongoDB 的地址和端口，例如 `"127.0.0.1:27017"`。
 *   `dbconfig`：MongoDB 数据库配置，格式为：`数据库名|用户名|密码`，例如 `"eventlog|tron|123456"`。
-*   `topics`：目前支持七种事件类型：`block`、`transaction`、`contractevent`、 `contractlog`、`solidity`、`solidityevent` 和 `soliditylog`。详细信息请参考 [事件类型]() 章节。
+*   `topics`：目前支持七种事件类型：`block`、`transaction`、`contractevent`、 `contractlog`、`solidity`、`solidityevent` 和 `soliditylog`。详细信息请参考 [事件类型](../event/#_4) 章节。
     *   `triggerName`：触发器名称，不可修改。
     *   `enable`：是否启用该事件订阅。`true` 为开启，`false` 为禁用。
     *   `topic`：MongoDB 中接收事件的集合名称，可修改。
