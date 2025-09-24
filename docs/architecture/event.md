@@ -238,8 +238,8 @@ event.subscribe.version = 1 # 1 表示 V2.0，0 表示 V1.0
 
 新版插件的配置方式与旧版基本一致。你可以参考官方文档进行部署：
 
-  - [事件插件部署(MongoDB)](use-mongodb)
-  - [事件插件部署(Kafka)](use-kafka)
+  - [事件插件部署(MongoDB)](/documentation-zh/architecture/use-mongodb/)
+  - [事件插件部署(Kafka)](/documentation-zh/architecture/use-kafka/)
 
 #### 步骤 4（可选）：配置历史事件同步起点
 
