@@ -1828,7 +1828,7 @@ bin/kafka-server-start.sh config/server.properties &amp;
 <li><code>enable</code>: 如果设置为 <code>true</code>，则开启对 <code>block</code> 事件的订阅。</li>
 <li><code>topic</code>: Kafka 接收事件对应的主题名称。您需要在 Kafka 中提前创建此主题。</li>
 </ul>
-<p>更多关于事件订阅类型的说明请参考 <a href="">事件类型</a> 章节。</p>
+<p>更多关于事件订阅类型的说明请参考 <a href="../event/#_4">事件类型</a> 章节。</p>
 <h3 id="_5">配置事件过滤<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p><code>filter</code> 字段用于对所订阅事件进行过滤，可以指定区块范围 (<code>fromblock</code> - <code>toblock</code>)、特定合约地址 (<code>contractAddress</code>) 或特定合约主题 (<code>contractTopic</code>)，为开发者提供更高效、更精准的事件订阅服务。</p>
 <div class="highlight"><pre><span></span><code>filter = {

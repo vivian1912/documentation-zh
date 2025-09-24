@@ -1733,23 +1733,27 @@
 <p>TRON 提供了两种主要的事件订阅方式，以满足不同场景下的需求。</p>
 <h3 id="1">1. 本地事件插件订阅（推荐）<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
 <p>该方式基于可扩展的插件架构，可将链上事件实时或批量持久化到外部系统，如 <strong>MongoDB</strong> 数据库或 <strong>Kafka</strong> 消息队列。此方案专为对事件可靠性、持久化和数据分析有较高要求的生产环境而设计。</p>
-<p>这种方式有如下优势：
-- <strong>多样化的插件支持：</strong> 目前支持 Kafka 和 MongoDB。
-- <strong>丰富的数据类型：</strong> 可订阅区块、交易、智能合约事件及日志。
-- <strong>支持复杂过滤：</strong> 可根据特定条件过滤事件。
-- <strong>历史事件回溯：</strong> V2.0 框架支持从指定区块高度开始同步历史事件。
-- <strong>生产级可靠性：</strong> 推荐用于需要数据完整性和可靠性的场景。</p>
+<p>这种方式有如下优势：</p>
+<ul>
+<li><strong>多样化的插件支持：</strong> 目前支持 Kafka 和 MongoDB。</li>
+<li><strong>丰富的数据类型：</strong> 可订阅区块、交易、智能合约事件及日志。</li>
+<li><strong>支持复杂过滤：</strong> 可根据特定条件过滤事件。</li>
+<li><strong>历史事件回溯：</strong> V2.0 框架支持从指定区块高度开始同步历史事件。</li>
+<li><strong>生产级可靠性：</strong> 推荐用于需要数据完整性和可靠性的场景。</li>
+</ul>
 <blockquote>
 <p><strong>注意：</strong> 在网络分叉等极端情况下，未固化（non-solidified）的事件可能会被回滚。因此，在对数据可靠性要求较高的场景中，强烈建议订阅<strong>固化事件（solidified events）</strong>。</p>
 </blockquote>
 <h3 id="2-zeromq">2. 内置消息队列订阅（ZeroMQ）<a class="headerlink" href="#2-zeromq" title="Permanent link">&para;</a></h3>
-<p>java-tron 节点内置 <strong>ZeroMQ</strong> 消息队列，提供轻量级的事件推送能力。这种方式无需部署额外插件，适用于对实时性要求较高，但不需要存储或回溯事件的简单场景，例如快速开发和测试。</p>
-<p>这种方式有如下优势：
-- <strong>无需部署插件：</strong> 直接连接 TRON 节点即可订阅。
-- <strong>高实时性：</strong> 专为实时事件推送而设计。
-- <strong>轻量级：</strong> 适合快速原型开发和测试环境。</p>
+<p>Java-tron 节点内置 <strong>ZeroMQ</strong> 消息队列，提供轻量级的事件推送能力。这种方式无需部署额外插件，适用于对实时性要求较高，但不需要存储或回溯事件的简单场景，例如快速开发和测试。</p>
+<p>这种方式有如下优势：</p>
+<ul>
+<li><strong>无需部署插件：</strong> 直接连接 TRON 节点即可订阅。</li>
+<li><strong>高实时性：</strong> 专为实时事件推送而设计。</li>
+<li><strong>轻量级：</strong> 适合快速原型开发和测试环境。</li>
+</ul>
 <h2 id="_3">事件服务框架（基于本地插件）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>java-tron 当前支持两个事件服务框架版本：<code>V1.0</code> 和 <code>V2.0</code>。</p>
+<p>Java-tron 当前支持两个事件服务框架版本：<code>V1.0</code> 和 <code>V2.0</code>。</p>
 <ul>
 <li><strong>V1.0：</strong> 仅支持新区块产生时的实时事件推送。</li>
 <li><strong>V2.0：</strong> <strong>推荐使用</strong>，新增了历史事件回溯功能，允许从任意区块高度开始同步。</li>
@@ -1906,8 +1910,8 @@ git checkout master
 <h4 id="3_1">步骤 3：配置事件插件<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h4>
 <p>新版插件的配置方式与旧版基本一致。你可以参考官方文档进行部署：</p>
 <ul>
-<li><a href="">事件插件部署(MongoDB)</a></li>
-<li><a href="">事件插件部署(Kafka)</a></li>
+<li><a href="../use-mongodb/">事件插件部署(MongoDB)</a></li>
+<li><a href="../use-kafka">事件插件部署(Kafka)</a></li>
 </ul>
 <h4 id="4_1">步骤 4（可选）：配置历史事件同步起点<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h4>
 <p>如果你需要从指定区块高度开始同步历史事件，请在配置文件中加入以下配置。</p>

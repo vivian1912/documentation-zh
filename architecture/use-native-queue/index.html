@@ -1637,16 +1637,16 @@
   
 
 
-<h1 id="java-tron">使用 java-tron 内置消息队列进行事件订阅<a class="headerlink" href="#java-tron" title="Permanent link">&para;</a></h1>
-<p>TRON 提供了灵活的事件订阅功能，开发者既可以通过 <strong>事件插件</strong> 获取链上事件，也可以使用 java-tron 内置的 <strong>ZeroMQ 消息队列</strong> 实现轻量级订阅。</p>
+<h1 id="java-tron">使用 Java-tron 内置消息队列进行事件订阅<a class="headerlink" href="#java-tron" title="Permanent link">&para;</a></h1>
+<p>TRON 提供了灵活的事件订阅功能，开发者既可以通过 <strong>事件插件</strong> 获取链上事件，也可以使用 Java-tron 内置的 <strong>ZeroMQ 消息队列</strong> 实现轻量级订阅。</p>
 <p>二者的核心区别在于：</p>
 <ul>
 <li><strong>事件插件</strong> 需要单独部署，适用于将事件推送至外部系统（如 MongoDB、Kafka）进行落库、分析或异步处理；</li>
-<li><strong>ZeroMQ 消息队列</strong> 是 java-tron 内置实现，无需额外部署。事件订阅方只需连接节点的发布端口并配置订阅主题，即可实时接收事件。但该方式不支持事件持久化存储，仅适用于短期监听和即时处理场景。</li>
+<li><strong>ZeroMQ 消息队列</strong> 是 Java-tron 内置实现，无需额外部署。事件订阅方只需连接节点的发布端口并配置订阅主题，即可实时接收事件。但该方式不支持事件持久化存储，仅适用于短期监听和即时处理场景。</li>
 </ul>
-<p>因此，当您希望以最小成本、快速接入事件流，并不依赖持久化能力时，使用 <strong>内置 ZeroMQ 消息队列</strong> 将是更轻便、直接的选择。本指南将详细介绍如何通过 java-tron 内置的消息队列来订阅事件。</p>
+<p>因此，当您希望以最小成本、快速接入事件流，并不依赖持久化能力时，使用 <strong>内置 ZeroMQ 消息队列</strong> 将是更轻便、直接的选择。本指南将详细介绍如何通过 Java-tron 内置的消息队列来订阅事件。</p>
 <h3 id="_1">配置节点<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>要通过 java-tron 内置的 ZeroMQ 实现事件订阅，需在节点的配置文件中启用内置消息队列功能。具体操作如下：</p>
+<p>要通过 Java-tron 内置的 ZeroMQ 实现事件订阅，需在节点的配置文件中启用内置消息队列功能。具体操作如下：</p>
 <div class="highlight"><pre><span></span><code>event.subscribe = {
   native = {
     useNativeQueue = true 
@@ -1670,7 +1670,7 @@
 <li><code>native.useNativeQueue</code>: <code>true</code> 为使用内置消息队列，<code>false</code> 为使用事件插件</li>
 <li><code>native.bindport</code>: ZeroMQ 发布者绑定端口。本例中为 <code>5555</code>，所以订阅者应连接的发布者地址为<code>"tcp://127.0.0.1:5555"</code></li>
 <li><code>native.sendqueuelength</code>: 发送队列的长度，即当订阅者接收消息较慢的情况下，TCP 缓冲区最多容纳的发布者发布的消息数量，超过则丢弃</li>
-<li><code>topics</code>: 订阅的 <a href="#_3">事件类型</a>，包括区块类型、交易类型等</li>
+<li><code>topics</code>: 订阅的 <a href="../event/#_4">事件类型</a>，包括区块类型、交易类型等</li>
 </ul>
 <h3 id="_2">启动节点<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>事件订阅服务默认为关闭状态，需要通过配置命令行参数 <code>--es</code> 的方式来启用。开启事件订阅服务的节点的启动命令如下：
