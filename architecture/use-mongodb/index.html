@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://tronprotocol.github.io/documentation-zh/using_javatron/backup_restore/">
+        <link rel="canonical" href="https://tronprotocol.github.io/documentation-zh/architecture/use-mongodb/">
       
       
-        <link rel="prev" href="../installing_javatron/">
+        <link rel="prev" href="../use-native-queue/">
       
       
-        <link rel="next" href="../litefullnode/">
+        <link rel="next" href="../use-kafka/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>备份和恢复 - java-tron</title>
+        <title>Mongodb 事件订阅插件 - java-tron</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#tron-mongodb" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              备份和恢复
+              Mongodb 事件订阅插件
             
           </span>
         </div>
@@ -365,11 +365,161 @@
   
   
     <li class="md-nav__item">
-      <a href="../installing_javatron/" class="md-nav__link">
+      <a href="../../using_javatron/installing_javatron/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     部署
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_javatron/backup_restore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    备份和恢复
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_javatron/litefullnode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    轻节点
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_javatron/private_network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    私链网络
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    事件订阅
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            事件订阅
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    概览
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../use-native-queue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    内置消息队列订阅
     
   </span>
   
@@ -400,7 +550,7 @@
           
   
   <span class="md-ellipsis">
-    备份和恢复
+    Mongodb 事件订阅插件
     
   </span>
   
@@ -412,7 +562,7 @@
         
   
   <span class="md-ellipsis">
-    备份和恢复
+    Mongodb 事件订阅插件
     
   </span>
   
@@ -435,46 +585,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item ">
-  <a href="#_2" class="md-nav__link" >
+  <a href="#_1" class="md-nav__link" >
     <span class="md-ellipsis">
-      数据备份
+      推荐系统配置
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item ">
-  <a href="#_3" class="md-nav__link" >
+  <a href="#_2" class="md-nav__link" >
     <span class="md-ellipsis">
-      数据恢复
+      系统架构与工作机制
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item has-children">
-  <a href="#_4" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#_3" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      公共备份数据
+      部署事件订阅插件
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="公共备份数据" hidden>
+    <nav class="md-nav" aria-label="部署事件订阅插件" hidden>
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#_5" class="md-nav__link" >
+  <a href="#_4" class="md-nav__link" >
     <span class="md-ellipsis">
-      主网数据快照
+      构建插件
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#nile" class="md-nav__link" >
+  <a href="#32-fullnode" class="md-nav__link" >
     <span class="md-ellipsis">
-      Nile测试网数据快照
+      3.2 FullNode 节点配置
     </span>
   </a>
   
@@ -482,6 +632,159 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#mongodb" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      安装与配置 MongoDB
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="安装与配置 MongoDB" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#mongodb_1" class="md-nav__link" >
+    <span class="md-ellipsis">
+      安装 MongoDB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#_5" class="md-nav__link" >
+    <span class="md-ellipsis">
+      设置环境变量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#mongodb_2" class="md-nav__link" >
+    <span class="md-ellipsis">
+      配置 MongoDB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#44-mongodb" class="md-nav__link" >
+    <span class="md-ellipsis">
+      4.4 启动 MongoDB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#45" class="md-nav__link" >
+    <span class="md-ellipsis">
+      4.5 创建管理员用户和数据库用户
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#event-query-service" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      部署事件查询服务（Event Query Service）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="部署事件查询服务（Event Query Service）" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#1" class="md-nav__link" >
+    <span class="md-ellipsis">
+      步骤 1：下载源码
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#2" class="md-nav__link" >
+    <span class="md-ellipsis">
+      步骤 2：构建服务
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#3-tron-event-query-service" class="md-nav__link" >
+    <span class="md-ellipsis">
+      步骤 3：启动 TRON Event Query Service
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#_6" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      启动服务与验证数据
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="启动服务与验证数据" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#fullnode" class="md-nav__link" >
+    <span class="md-ellipsis">
+      启动 FullNode 节点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#_7" class="md-nav__link" >
+    <span class="md-ellipsis">
+      验证插件加载
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#mongodb_3" class="md-nav__link" >
+    <span class="md-ellipsis">
+      验证数据是否存入 MongoDB
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#api" class="md-nav__link" >
+    <span class="md-ellipsis">
+      调用 API 查询事件
+    </span>
+  </a>
   
 </li>
       
@@ -501,155 +804,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../litefullnode/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    轻节点
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../private_network/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    私链网络
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    事件订阅
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_5">
-            <span class="md-nav__icon md-icon"></span>
-            事件订阅
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/event/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    概览
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-native-queue/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    内置消息队列订阅
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-mongodb/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Mongodb 事件订阅插件
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../architecture/use-kafka/" class="md-nav__link">
+      <a href="../use-kafka/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -679,7 +834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/database/" class="md-nav__link">
+      <a href="../database/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -701,7 +856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../connecting_to_tron/" class="md-nav__link">
+      <a href="../../using_javatron/connecting_to_tron/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -723,7 +878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../metrics/" class="md-nav__link">
+      <a href="../../using_javatron/metrics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -745,7 +900,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../toolkit/" class="md-nav__link">
+      <a href="../../using_javatron/toolkit/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1650,103 +1805,244 @@
   
 
 
-<h1 id="_1">数据备份和恢复<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>java-tron会将持久化存储的数据写入到数据目录，默认的数据目录为：<code>/output-directory/</code>，如需指定其它目录，可以在java-tron节点启动命令中加入 <code>-d</code> 或者 <code>--output-directory</code> 参数来指定数据存储位置。
-<div class="highlight"><pre><span></span><code>$ java -jar fullnode.jar -d ./outputdir
-</code></pre></div></p>
-<h2 id="_2">数据备份<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>对节点数据进行备份之前，请先关闭节点进程。具体请参考如下步骤：</p>
-<p>首先，使用命令<code>$ ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'</code> 获取java-tron的进程id，然后使用命令<code>kill -15 进程id</code> 关闭进程。或者使用如下的停止脚本：</p>
-<div class="highlight"><pre><span></span><code>#!/bin/bash
-while true; do
-  pid=`ps -ef |grep FullNode.jar |grep -v grep |awk &#39;{print $2}&#39;`
-  if [ -n &quot;$pid&quot; ]; then
-    kill -15 $pid
-    echo &quot;The java-tron process is exiting, it may take some time, forcing the exit may cause damage to the database, please wait patiently...&quot;
-    sleep 1
-  else
-    echo &quot;java-tron killed successfully!&quot;
-    break
-  fi
-done
-</code></pre></div>
-<p>然后，当关闭了java-tron进程后，可通过如下命令进行数据的备份。</p>
-<div class="highlight"><pre><span></span><code>$ tar cvzf output-directory.`date &quot;+%Y%m%d%H%M%S&quot;`.etgz output-directory
-</code></pre></div>
-<h2 id="_3">数据恢复<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>当恢复数据时，只需将相应的数据拷贝到节点目录下即可。假如数据库备份文件名为<code>output-directory.20220628152402.etgz</code>，则恢复数据库文件的命令为：</p>
-<div class="highlight"><pre><span></span><code>$ tar xzvf output-directory.20220628152402.etgz
-</code></pre></div>
-<h2 id="_4">公共备份数据<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>对于主网和nile测试网，由于新节点启动后，需要同步的数据量较大，因此同步数据需要较长的时间。为了方便开发者进行快速的节点部署，社区定期提供数据快照。数据快照是TRON网络节点某一时刻的数据库备份的压缩文件，开发者可以通过下载并使用数据快照加快节点同步过程。</p>
-<h3 id="_5">主网数据快照<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<h4 id="fullnode">FullNode数据快照<a class="headerlink" href="#fullnode" title="Permanent link">&para;</a></h4>
-<p>下表为Fullnode数据快照的下载地址，请根据所在地和节点数据库类型，以及是否需要查询历史内部交易等需求选择适合的数据快照。</p>
-<table>
-<thead>
-<tr>
-<th>Fullnode节点数据源</th>
-<th>下载地址</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>官方数据源(美洲:美国弗吉尼亚)</td>
-<td><a href="http://34.86.86.229/">http://34.86.86.229/</a></td>
-<td>LevelDB数据，不包含内部交易</td>
-</tr>
-<tr>
-<td>官方数据源(亚洲:新加坡)</td>
-<td><a href="http://34.143.247.77/">http://34.143.247.77/</a></td>
-<td>LevelDB数据，不包含内部交易</td>
-</tr>
-<tr>
-<td>官方数据源(美洲:美国)</td>
-<td><a href="http://35.197.17.205/">http://35.197.17.205/</a></td>
-<td>RocksDB数据，不包含内部交易</td>
-</tr>
-<tr>
-<td>官方数据源(亚洲:新加坡)</td>
-<td><a href="http://35.247.128.170/">http://35.247.128.170/</a></td>
-<td>LevelDB数据，包含内部交易</td>
-</tr>
-<tr>
-<td>官方数据源(美洲:美国弗吉尼亚)</td>
-<td><a href="http://34.48.6.163/">http://34.48.6.163/</a></td>
-<td>LevelDB数据，不包含内部交易，包含账户历史余额</td>
-</tr>
-</tbody>
-</table>
-<p>注意：LevelDB和RocksDB的数据不允许混用。FullNode的数据库类型通过配置文件的配置项<code>db.engine</code> 进行指定，可选值为<code>LEVELDB</code>或者<code>ROCKSDB</code>。</p>
-<h4 id="lite-fullnode">Lite FullNode数据快照<a class="headerlink" href="#lite-fullnode" title="Permanent link">&para;</a></h4>
-<p>TRON网络从GreatVoyage-V4.1.0版本开始，支持Lite FullNode类型的节点。相比于普通的FullNode，Lite FullNode不但数据库小，而且启动速度快，它只需要状态数据和必要的历史数据就可以启动。下表为Lite Fullnode数据快照的下载地址。</p>
-<table>
-<thead>
-<tr>
-<th>Lite Fullnode节点数据源</th>
-<th>下载地址</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>官方数据源(亚洲:新加坡)</td>
-<td><a href="http://34.143.247.77/">http://34.143.247.77/</a></td>
-<td>LevelDB数据</td>
-</tr>
-</tbody>
-</table>
-<p>小提示：如果用户已经有Fullnode的全量数据，可以使用<a href="../toolkit/#_6">Lite FullNode数据剪裁工具</a>自行将fullnode数据切分成Lite fullnode数据。</p>
-<h4 id="_6">数据快照的使用<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>无论是Fullnode数据快照还是lite Fullnode数据快照，使用步骤相同，具体如下：</p>
+<h1 id="tron-mongodb">TRON MongoDB 事件订阅插件：部署与使用指南<a class="headerlink" href="#tron-mongodb" title="Permanent link">&para;</a></h1>
+<p>本指南旨在帮助开发者快速部署和使用 TRON MongoDB 事件订阅插件，实现链上事件的实时数据采集、持久化存储与查询。文档涵盖系统环境配置、插件部署、数据库安装、查询服务构建及接口调用等全流程。</p>
+<p>本指南将带您从环境准备到接口调用，一步步完成 TRON MongoDB 事件订阅服务的完整部署与使用。主要流程包括：</p>
+<ul>
+<li><a href="#1">检查系统配置</a></li>
+<li><a href="#2">了解系统架构</a></li>
+<li><a href="#3">部署事件订阅插件</a></li>
+<li><a href="#4">安装并配置 MongoDB</a></li>
+<li><a href="#5">部署事件查询服务</a></li>
+<li><a href="#6">启动服务并验证数据</a></li>
+<li><a href="#7">调用 API 查询事件</a></li>
+</ul>
+<p><a id="1"></a> </p>
+<h2 id="_1">推荐系统配置<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>为了确保 TRON 节点与事件服务的高效稳定运行，推荐以下配置：</p>
+<ul>
+<li><strong>CPU</strong>：16 核及以上</li>
+<li><strong>RAM</strong>：32 GB 或更高</li>
+<li><strong>SSD</strong>：2.5 TB 以上</li>
+<li><strong>操作系统</strong>：Linux 或 macOS</li>
+</ul>
+<p><a id="2"></a> </p>
+<h2 id="_2">系统架构与工作机制<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>TRON MongoDB 事件订阅系统包含三大核心模块：</p>
 <ol>
-<li>根据自己需求下载相应压缩备份数据库。</li>
-<li>解压备份数据库压缩文件至output-directory目录，或者根据自己需求指定解压的目标目录。</li>
-<li>启动节点。节点默认读取output-directory目录，如需指定其他目录，请在节点启动时，添加参数 -d 数据库目录名</li>
+<li>事件订阅插件：连接 TRON 节点，捕获事件数据，然后写入 MongoDB。</li>
+<li>MongoDB 数据库：事件数据持久化存储层。</li>
+<li>事件查询服务：提供 HTTP API，供外部查询事件数据。</li>
 </ol>
-<h3 id="nile">Nile测试网数据快照<a class="headerlink" href="#nile" title="Permanent link">&para;</a></h3>
-<p>关于Nile测试网数据快照的详细信息，请参照<a href="https://nileex.io/">官网</a>，使用方法同<a href="#_6">主网</a>。</p>
+<h2 id="_3">部署事件订阅插件<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="_4">构建插件<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><div class="highlight"><pre><span></span><code>git clone https://github.com/tronprotocol/event-plugin.git
+cd event-plugin
+./gradlew build
+</code></pre></div>
+构建完成后，生成的插件文件：
+<div class="highlight"><pre><span></span><code>event-plugin/build/plugins/plugin-mongodb-*.zip
+</code></pre></div></p>
+<h3 id="32-fullnode">3.2 FullNode 节点配置<a class="headerlink" href="#32-fullnode" title="Permanent link">&para;</a></h3>
+<p>在 FullNode 配置文件 <code>config.conf</code> 中添加如下内容：</p>
+<div class="highlight"><pre><span></span><code><span class="nx">event</span><span class="p">.</span><span class="nx">subscribe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="w">  </span>
+<span class="w">  </span><span class="nx">startSyncBlockNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span>
+
+<span class="w">  </span><span class="kr">native</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">useNativeQueue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nx">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/deploy/fullnode/event-plugin/build/plugins/plugin-mongodb-1.0.0.zip&quot;</span><span class="w"> </span>
+<span class="w">  </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;127.0.0.1:27017&quot;</span><span class="w"> </span>
+<span class="w">  </span><span class="nx">dbconfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;eventlog|tron|123456&quot;</span><span class="w"> </span>
+<span class="w">  </span><span class="nx">topics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;block&quot;</span><span class="w"> </span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;block&quot;</span><span class="w"> </span>
+<span class="w">      </span><span class="nx">solidified</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;transaction&quot;</span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;transaction&quot;</span>
+<span class="w">      </span><span class="nx">solidified</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">ethCompatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;contractevent&quot;</span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;contractevent&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;contractlog&quot;</span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;contractlog&quot;</span>
+<span class="w">      </span><span class="nx">redundancy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;solidity&quot;</span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">  </span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;solidity&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;solidityevent&quot;</span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;solidityevent&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;soliditylog&quot;</span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;soliditylog&quot;</span>
+<span class="w">      </span><span class="nx">redundancy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+
+<span class="w">  </span><span class="nx">filter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fromblock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>
+<span class="w">    </span><span class="nx">toblock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>
+<span class="w">    </span><span class="nx">contractAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span><span class="nx">contractTopic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>字段解析</strong>：</p>
+<ul>
+<li><code>version</code>：事件服务框架版本。<code>1</code> 表示使用 V2.0 版本，<code>0</code> 表示使用 V1.0 版本。若未配置，默认使用 V1.0。</li>
+<li><code>startSyncBlockNum</code>：V2.0 版本新增支持从本地历史区块中处理并推送事件，可满足用户对历史数据的订阅需求。当 <code>startSyncBlockNum &lt;= 0</code> 时，表示关闭历史事件同步功能；当 <code>startSyncBlockNum &gt; 0</code> 时，表示开启该功能，并从指定区块高度开始同步历史事件。<strong>注意</strong>：启用该功能时建议使用最新版本的事件插件。</li>
+<li><code>native.useNativeQueue</code>：是否使用内置消息队列（ZeroMQ）订阅事件。<code>true</code> 表示使用内置消息队列，<code>false</code> 表示使用插件订阅事件。这里需设置成 <code>false</code>。</li>
+<li><code>path</code>：插件的绝对路径，例如 <code>"/deploy/fullnode/event-plugin/build/plugins/plugin-mongodb-1.0.0.zip"</code>。</li>
+<li><code>server</code>：目标服务器地址，即MongoDB 的地址和端口，例如 <code>"127.0.0.1:27017"</code>。</li>
+<li><code>dbconfig</code>：MongoDB 数据库配置，格式为：<code>数据库名|用户名|密码</code>，例如 <code>"eventlog|tron|123456"</code>。</li>
+<li><code>topics</code>：目前支持七种事件类型：<code>block</code>、<code>transaction</code>、<code>contractevent</code>、 <code>contractlog</code>、<code>solidity</code>、<code>solidityevent</code> 和 <code>soliditylog</code>。详细信息请参考 <a href="">事件类型</a> 章节。<ul>
+<li><code>triggerName</code>：触发器名称，不可修改。</li>
+<li><code>enable</code>：是否启用该事件订阅。<code>true</code> 为开启，<code>false</code> 为禁用。</li>
+<li><code>topic</code>：MongoDB 中接收事件的集合名称，可修改。</li>
+</ul>
+</li>
+<li><code>filter</code>：事件过滤条件。<ul>
+<li><code>fromblock</code>：查询范围的起始区块号，可以是""、<code>"earliest"</code> （从创世区块开始查询） 或指定的区块号。</li>
+<li><code>toblock</code>：查询范围的结束区块号，可以是""、<code>"latest"</code> （最新区块） 或指定的区块号。</li>
+<li><code>contractAddress</code>：您希望订阅的合约地址列表。如果设置为空字符串，将接收所有合约地址的日志/事件。</li>
+<li><code>contractTopic</code>：您希望订阅的合约主题列表。如果设置为空字符串，将接收所有合约主题的日志/事件。</li>
+</ul>
+</li>
+</ul>
+<p><a id="4"></a> </p>
+<h2 id="mongodb">安装与配置 MongoDB<a class="headerlink" href="#mongodb" title="Permanent link">&para;</a></h2>
+<p>MongoDB 将用于存储 TRON 事件数据。请按照以下步骤安装和配置 MongoDB：</p>
+<h3 id="mongodb_1">安装 MongoDB<a class="headerlink" href="#mongodb_1" title="Permanent link">&para;</a></h3>
+<p>首先，创建 MongoDB 的安装目录，并下载、解压 MongoDB 安装包：</p>
+<div class="highlight"><pre><span></span><code>mkdir /home/java-tron
+cd /home/java-tron
+curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.4.tgz
+tar zxvf mongodb-linux-x86_64-4.0.4.tgz
+mv mongodb-linux-x86_64-4.0.4 mongodb
+</code></pre></div>
+<h3 id="_5">设置环境变量<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>为了便于后续操作，请设置 MongoDB 的环境变量：</p>
+<div class="highlight"><pre><span></span><code>export MONGOPATH=/home/java-tron/mongodb/
+export PATH=$PATH:$MONGOPATH/bin
+</code></pre></div>
+<h3 id="mongodb_2">配置 MongoDB<a class="headerlink" href="#mongodb_2" title="Permanent link">&para;</a></h3>
+<p>创建 MongoDB 的日志和数据目录，并创建配置文件 <code>mgdb.conf</code>：</p>
+<div class="highlight"><pre><span></span><code>mkdir -p /home/java-tron/mongodb/{log,data}
+cd /home/java-tron/mongodb/log/ &amp;&amp; touch mongodb.log &amp;&amp; cd -
+vim /home/java-tron/mongodb/mgdb.conf
+</code></pre></div>
+<p>将以下内容写入 <code>mgdb.conf</code> 文件中，请确保 <code>dbpath</code> 和 <code>logpath</code> 使用绝对路径：</p>
+<div class="highlight"><pre><span></span><code>dbpath=/home/java-tron/mongodb/data
+logpath=/home/java-tron/mongodb/log/mongodb.log
+port=27017
+logappend=true
+fork=true
+bind_ip=0.0.0.0
+auth=true
+wiredTigerCacheSizeGB=2
+</code></pre></div>
+<p><strong>重要配置说明</strong>：</p>
+<ul>
+<li><code>bind_ip=0.0.0.0</code>：必须配置为 <code>0.0.0.0</code>，否则将拒绝远程连接。</li>
+<li><code>wiredTigerCacheSizeGB</code>：必须配置此参数以防止内存溢出 (OOM) 问题。</li>
+</ul>
+<h3 id="44-mongodb">4.4 启动 MongoDB<a class="headerlink" href="#44-mongodb" title="Permanent link">&para;</a></h3>
+<p>使用配置文件启动 MongoDB 服务：</p>
+<div class="highlight"><pre><span></span><code>mongod --config /home/java-tron/mongodb/mgdb.conf &amp;
+</code></pre></div>
+<h3 id="45">4.5 创建管理员用户和数据库用户<a class="headerlink" href="#45" title="Permanent link">&para;</a></h3>
+<p>连接到 MongoDB 并创建管理员用户，然后创建用于事件订阅的数据库和用户：</p>
+<div class="highlight"><pre><span></span><code>mongo
+use admin
+db.createUser({user:&quot;root&quot;,pwd:&quot;admin&quot;,roles:[{role:&quot;root&quot;,db:&quot;admin&quot;}]})
+
+db.auth(&quot;root&quot;, &quot;admin&quot;)
+use eventlog
+db.createUser({user:&quot;tron&quot;,pwd:&quot;123456&quot;,roles:[{role:&quot;dbOwner&quot;,db:&quot;eventlog&quot;}]})
+</code></pre></div>
+<p><a id="5"></a> </p>
+<h2 id="event-query-service">部署事件查询服务（Event Query Service）<a class="headerlink" href="#event-query-service" title="Permanent link">&para;</a></h2>
+<p>事件查询服务提供 HTTP 接口，用于查询 MongoDB 中存储的事件数据。该服务依赖 Java 环境。</p>
+<p><strong>注意</strong>：请确保 JDK 使用的是 <strong>Oracle JDK 8</strong>，而不是 Open JDK 8。</p>
+<h3 id="1">步骤 1：下载源码<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>克隆 <code>tron-eventquery</code> 项目源码：</p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/tronprotocol/tron-eventquery.git
+cd tron-eventquery
+</code></pre></div>
+<h3 id="2">步骤 2：构建服务<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>下载 Maven 并使用 Maven 构建 <code>tron-eventquery</code> 服务：</p>
+<div class="highlight"><pre><span></span><code>wget https://mirrors.cnnic.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz --no-check-certificate
+tar zxvf apache-maven-3.5.4-bin.tar.gz
+export M2_HOME=$HOME/maven/apache-maven-3.5.4
+export PATH=$PATH:$M2_HOME/bin
+mvn --version
+mvn package
+</code></pre></div>
+<p>命令执行成功后，将在 <code>tron-eventquery/target</code> 目录下生成 JAR 包，并在 <code>tron-eventquery/</code>目录下生成配置文件<code>config.conf</code>。配置文件内容示例如下：</p>
+<div class="highlight"><pre><span></span><code>mongo.host=IP
+mongo.port=27017
+mongo.dbname=eventlog
+mongo.username=tron
+mongo.password=123456
+mongo.connectionsPerHost=8
+mongo.threadsAllowedToBlockForConnectionMultiplier=4
+</code></pre></div>
+<p>请根据您的 MongoDB 配置修改 <code>mongo.host</code>、<code>mongo.port</code>、<code>mongo.dbname</code>、<code>mongo.username</code> 和 <code>mongo.password</code>。</p>
+<h3 id="3-tron-event-query-service">步骤 3：启动 TRON Event Query Service<a class="headerlink" href="#3-tron-event-query-service" title="Permanent link">&para;</a></h3>
+<p>启动 <code>tron-eventquery</code> 服务并插入索引：</p>
+<div class="highlight"><pre><span></span><code>sh deploy.sh
+sh insertIndex.sh
+</code></pre></div>
+<p><strong>注意</strong>：默认端口为 <code>8080</code>。如需修改，请编辑 <code>deploy.sh</code> 脚本，例如：</p>
+<div class="highlight"><pre><span></span><code>nohup java -jar -Dserver.port=8081 target/troneventquery-1.0.0-SNAPSHOT.jar 2&gt;&amp;1 &amp;
+</code></pre></div>
+<p><a id="6"></a> </p>
+<h2 id="_6">启动服务与验证数据<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>完成上述部署步骤后，您可以启动 TRON FullNode 节点并验证事件订阅服务是否正常工作。</p>
+<h3 id="fullnode">启动 FullNode 节点<a class="headerlink" href="#fullnode" title="Permanent link">&para;</a></h3>
+<p><strong>重要提示</strong>：在启动 FullNode 节点之前，请确保 MongoDB 服务已成功启动。</p>
+<p>启动 FullNode 节点的命令如下：</p>
+<div class="highlight"><pre><span></span><code>java -jar FullNode.jar -c config.conf --es
+</code></pre></div>
+<p>有关 FullNode 节点的安装，请参考 <a href="https://tronprotocol.github.io/documentation-zh/using_javatron/installing_javatron/">部署 FullNode</a> 文档。</p>
+<h3 id="_7">验证插件加载<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>您可以通过查看 FullNode 日志来验证事件插件是否成功加载：</p>
+<div class="highlight"><pre><span></span><code>tail -f logs/tron.log | grep -i eventplugin
+</code></pre></div>
+<p>如果看到类似以下字样，则表示插件已成功加载：</p>
+<div class="highlight"><pre><span></span><code>o.t.c.l.EventPluginLoader &#39;your plugin path/plugin-kafka-1.0.0.zip&#39; loaded
+</code></pre></div>
+<h3 id="mongodb_3">验证数据是否存入 MongoDB<a class="headerlink" href="#mongodb_3" title="Permanent link">&para;</a></h3>
+<p>连接到 MongoDB 并查询数据，以验证事件数据是否已从节点获取并通过事件订阅存储到 MongoDB 中：</p>
+<div class="highlight"><pre><span></span><code>mongo 47.90.245.68:27017
+use eventlog
+db.auth(&quot;tron&quot;, &quot;123456&quot;)
+show collections
+db.block.find()
+</code></pre></div>
+<p>如果有返回信息，则说明数据已成功存储。否则，请查看 FullNode 日志逐步排查问题。</p>
+<p><a id="7"></a> </p>
+<h2 id="api">调用 API 查询事件<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<p>TRON Event Query Service 提供了一系列 HTTP API 接口，用于查询 MongoDB 中存储的事件数据。具体 API 及其用法请参考<a href="https://github.com/tronprotocol/tron-eventquery?tab=readme-ov-file#main-http-service">Event Query Service HTTP API</a>。</p>
 
 
 
@@ -1767,7 +2063,7 @@ done
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../installing_javatron/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 部署">
+          <a href="../use-native-queue/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 内置消息队列订阅">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1777,20 +2073,20 @@ done
                 Previous
               </span>
               <div class="md-ellipsis">
-                部署
+                内置消息队列订阅
               </div>
             </div>
           </a>
         
         
           
-          <a href="../litefullnode/" class="md-footer__link md-footer__link--next" aria-label="Next: 轻节点">
+          <a href="../use-kafka/" class="md-footer__link md-footer__link--next" aria-label="Next: Kafka 事件订阅插件">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                轻节点
+                Kafka 事件订阅插件
               </div>
             </div>
             <div class="md-footer__button md-icon">
