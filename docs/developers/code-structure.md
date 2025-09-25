@@ -35,7 +35,6 @@
 |-- protos
     |-- api
     |   |-- api.proto
-    |   |-- zksnark.proto
     |-- core
         |-- Discover.proto
         |-- Tron.proto
@@ -127,7 +126,6 @@ chainbase 模块源代码位于 [java-tron 仓库的 chainbase 目录](https://g
     |   |   |-- leveldb
     |   |   |-- rocksdb
     |   |-- utils
-    |   |-- zksnark
     |-- core
         |-- actuator
         |-- capsule
@@ -258,11 +256,9 @@ chainbase 模块源代码位于 [java-tron 仓库的 chainbase 目录](https://g
     |-- cryptohash
     |-- jce
     |-- sm2
-    |-- zksnark
 ```
 
 *   `sm2` 和 `jce`：分别实现了 SM2 和 ECKey 加密与签名算法，广泛用于交易签名、身份验证等核心安全场景。
-*   `zksnark`：引入零知识证明（`Zero-Knowledge Proof`）算法，为更高级别的隐私保护能力奠定基础。
 
 该模块为整个 TRON 网络提供了安全基础，确保交易数据的完整性、不可抵赖性与隐私性，是支撑链上信任的重要支柱。
 
@@ -287,7 +283,6 @@ chainbase 模块源代码位于 [java-tron 仓库的 chainbase 目录](https://g
     |   |   |-- message
     |   |   |-- server
     |   |-- runtime
-    |   |-- zksnark
     |-- core
     |   |-- Wallet.java
     |   |-- capsule
