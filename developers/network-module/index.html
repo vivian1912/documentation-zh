@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://tronprotocol.github.io/documentation-zh/contracts/contract/">
+        <link rel="canonical" href="https://tronprotocol.github.io/documentation-zh/developers/network-module/">
       
       
-        <link rel="prev" href="../../mechanism-algorithm/resource/">
+        <link rel="prev" href="../chainbase-module/">
       
       
-        <link rel="next" href="../../mechanism-algorithm/system-contracts/">
+        <link rel="next" href="../../contracts/tools/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>智能合约 - java-tron</title>
+        <title>网络 - java-tron</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#tron-p2p" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              智能合约
+              网络
             
           </span>
         </div>
@@ -791,8 +791,6 @@
       
   
   
-    
-  
   
   
     
@@ -804,11 +802,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
@@ -823,7 +821,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             核心协议
@@ -922,31 +920,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    智能合约
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../contracts/contract/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -956,86 +933,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item ">
-  <a href="#_2" class="md-nav__link" >
-    <span class="md-ellipsis">
-      概述
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item has-children">
-  <a href="#tron" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
-    <span class="md-ellipsis">
-      TRON 智能合约特性
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="TRON 智能合约特性" hidden>
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item ">
-  <a href="#_3" class="md-nav__link" >
-    <span class="md-ellipsis">
-      智能合约的定义
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item ">
-  <a href="#_4" class="md-nav__link" >
-    <span class="md-ellipsis">
-      合约函数的使用
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#solidity-tron" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Solidity 中的 TRON 地址使用规范
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#_8" class="md-nav__link" >
-    <span class="md-ellipsis">
-      全局变量与单位
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1118,8 +1015,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -1129,11 +1028,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
@@ -1148,7 +1047,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             java-tron开发
@@ -1162,7 +1061,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/java-tron/" class="md-nav__link">
+      <a href="../java-tron/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1184,7 +1083,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/tips/" class="md-nav__link">
+      <a href="../tips/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1206,7 +1105,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/issue-workflow/" class="md-nav__link">
+      <a href="../issue-workflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1228,7 +1127,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/governance/" class="md-nav__link">
+      <a href="../governance/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1250,7 +1149,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/run-in-idea/" class="md-nav__link">
+      <a href="../run-in-idea/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1272,7 +1171,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/demo/" class="md-nav__link">
+      <a href="../demo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1291,6 +1190,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1299,11 +1200,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" checked>
         
           
           <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
@@ -1318,7 +1219,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_7">
             <span class="md-nav__icon md-icon"></span>
             核心模块
@@ -1332,7 +1233,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/code-structure/" class="md-nav__link">
+      <a href="../code-structure/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1354,7 +1255,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/chainbase-module/" class="md-nav__link">
+      <a href="../chainbase-module/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1373,10 +1274,31 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../developers/network-module/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    网络
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1386,6 +1308,176 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item has-children">
+  <a href="#p2p" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      P2P 网络概述
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="P2P 网络概述" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#p2p_1" class="md-nav__link" >
+    <span class="md-ellipsis">
+      区块链与 P2P
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#_1" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      节点发现
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="节点发现" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#kademlia" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Kademlia 算法原理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#_2" class="md-nav__link" >
+    <span class="md-ellipsis">
+      节点发现协议消息
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#_3" class="md-nav__link" >
+    <span class="md-ellipsis">
+      节点发现流程
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#_4" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      节点连接
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="节点连接" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#_5" class="md-nav__link" >
+    <span class="md-ellipsis">
+      节点分类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#tcp" class="md-nav__link" >
+    <span class="md-ellipsis">
+      建立 TCP 连接
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#_6" class="md-nav__link" >
+    <span class="md-ellipsis">
+      握手与保活
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#_7" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      区块同步
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="区块同步" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#_8" class="md-nav__link" >
+    <span class="md-ellipsis">
+      链摘要与缺失区块清单
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#_11" class="md-nav__link" >
+    <span class="md-ellipsis">
+      区块与交易广播
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#_12" class="md-nav__link" >
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1454,7 +1546,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/" class="md-nav__link">
+      <a href="../../contracts/tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1749,211 +1841,192 @@
   
 
 
-<h1 id="_1">智能合约<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<h2 id="_2">概述<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>智能合约是一种旨在自动执行合约条款的计算化交易协议。智能合约和普通合约一样，定义了参与者相关的条款和奖惩机制。一旦合约被启动，便能按照设定的条款执行，并自动检查所承诺的条款实施情形。</p>
-<p>TRON 完全兼容以太坊（Ethereum）的智能合约生态，支持使用 Solidity 语言编写的合约。开发流程如下：
-1. 在本地或在线 IDE 中编写并编译 Solidity 合约。
-2. 将合约部署到 TRON 公链。
-3. 部署后的合约会在被触发时于 TRON 网络的所有节点上自动执行。</p>
-<p>您可以在 <a href="https://github.com/tronprotocol/solidity/releases">TRON Solidity 代码库</a> 中获取最新版本。</p>
-<h2 id="tron">TRON 智能合约特性<a class="headerlink" href="#tron" title="Permanent link">&para;</a></h2>
-<p>TRON 虚拟机（TRON Virtual Machine, 简称 TVM）基于以太坊 Solidity 语言实现，在兼容以太坊虚拟机（Ethereum Virtual Machine，简称 EVM）功能的基础上，结合 TRON 自身特性存在部分差异。</p>
-<h3 id="_3">智能合约的定义<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>TVM 运行的智能合约兼容以太坊合约特性。TRON 协议采用 <strong>Protocol Buffers</strong> 来封装和描述一个智能合约，其数据结构定义如下：</p>
-<p><div class="highlight"><pre><span></span><code>message SmartContract {
-  message ABI {
-    message Entry {
-      enum EntryType {
-        UnknownEntryType = 0;
-        Constructor = 1;
-        Function = 2;
-        Event = 3;
-        Fallback = 4;
-        Receive = 5;
-        Error = 6;
-      }
-      message Param {
-        bool indexed = 1;
-        string name = 2;
-        string type = 3;
-      }
-      enum StateMutabilityType {
-        UnknownMutabilityType = 0;
-        Pure = 1;
-        View = 2;
-        Nonpayable = 3;
-        Payable = 4;
-      }
-
-      bool anonymous = 1;
-      bool constant = 2;
-      string name = 3;
-      repeated Param inputs = 4;
-      repeated Param outputs = 5;
-      EntryType type = 6;
-      bool payable = 7;
-      StateMutabilityType stateMutability = 8;
-    }
-    repeated Entry entrys = 1;
-  }
-  bytes origin_address = 1;
-  bytes contract_address = 2;
-  ABI abi = 3;
-  bytes bytecode = 4;
-  int64 call_value = 5;
-  int64 consume_user_resource_percent = 6;
-  string name = 7;
-  int64 origin_energy_limit = 8;
-  bytes code_hash = 9;
-  bytes trx_hash = 10;
-}
-</code></pre></div>
-字段说明：</p>
+<h1 id="tron-p2p">TRON P2P 网络架构与核心机制<a class="headerlink" href="#tron-p2p" title="Permanent link">&para;</a></h1>
+<p>TRON 网络的核心是其高效、去中心化的 <strong>P2P（对等）网络</strong> 架构。作为 TRON 区块链的最底层模块，P2P 网络的设计与实现直接决定了整个系统的稳定性和性能。本文档将深入解析 TRON P2P 网络的四大核心功能：节点发现、节点连接、区块同步以及区块和交易广播。</p>
+<h2 id="p2p">P2P 网络概述<a class="headerlink" href="#p2p" title="Permanent link">&para;</a></h2>
+<p>P2P 网络是一种分布式网络，其参与者在不依赖中心化服务器的情况下，直接共享计算、存储和网络连接等硬件资源。在 P2P 网络中，每个节点既是信息的提供者，又是信息的消费者，这种模式极大地提高了资源的利用率和网络的鲁棒性。</p>
+<h3 id="p2p_1">区块链与 P2P<a class="headerlink" href="#p2p_1" title="Permanent link">&para;</a></h3>
+<p>P2P 是区块链架构中的 <strong>网络层</strong>。它为节点间的去中心化信息传播、验证和通信提供了基础。每个节点通过维护一份共同的区块链数据副本来保持同步，从而确保了整个网络的共识。</p>
+<p>这种去中心化的 P2P 架构为 TRON 网络带来了显著优势：</p>
 <ul>
-<li><code>origin_address</code>: 合约创建者地址</li>
-<li><code>contract_address</code>: 合约地址</li>
-<li><code>abi</code>: 合约中所有函数的接口信息</li>
-<li><code>bytecode</code>: 合约字节码</li>
-<li><code>call_value</code>: 调用合约时传入的 TRX 数量（以 sun 为单位）</li>
-<li><code>consume_user_resource_percent</code>: 开发者设定的、调用者需承担的资源消耗百分比</li>
-<li><code>name</code>: 合约名称</li>
-<li><code>origin_energy_limit</code>: 开发者设定的、部署者为单笔交易承担的能量（Energy）上限。该值必须大于 0。对于在部署时未提供能量上限参数的旧合约，其 <code>origin_energy_limit</code> 值会存储为 <code>0</code>，但在计算资源时，系统仍会按照 1000 万的能量上限来处理。开发者后续可以通过调用 <code>updateEnergyLimit</code> 接口来明确设定此值，且新值必须大于 0。</li>
+<li><strong>防止单点攻击</strong>: 网络中没有中心化的故障点。</li>
+<li><strong>高容错性</strong>: 即使部分节点宕机，网络仍能正常运行。</li>
+<li><strong>良好的可扩展性</strong>: 网络的扩展能力不受中心化服务器的限制。</li>
 </ul>
-<p>开发者可以通过 <code>CreateSmartContract</code> 和 <code>TriggerSmartContract</code> 这两种 gRPC 消息类型来创建和调用智能合约。</p>
-<h3 id="_4">合约函数的使用<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="constant-constant">Constant 函数与非 Constant 函数<a class="headerlink" href="#constant-constant" title="Permanent link">&para;</a></h4>
-<p>根据是否更改链上状态，合约函数可分为两类：</p>
+<p>TRON架构图如下：</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/network_architecture.png" /></p>
+<p>TRON 网络的 P2P 模块可分为以下四个主要功能：</p>
+<ol>
+<li><a href="#node-discovery">节点发现</a></li>
+<li><a href="#node-connection">节点连接</a></li>
+<li><a href="#block-sync">区块同步</a></li>
+<li><a href="#broadcasting">区块和交易广播</a></li>
+</ol>
+<p><a id="node-discovery"></a></p>
+<h2 id="_1">节点发现<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>节点发现是新节点加入 TRON 网络的第一步。TRON 采用一种基于 <strong>Kademlia 算法</strong> 的结构化 P2P 网络。这种算法能够让节点在没有中心化目录的情况下，快速高效地找到其他节点。</p>
+<h3 id="kademlia">Kademlia 算法原理<a class="headerlink" href="#kademlia" title="Permanent link">&para;</a></h3>
+<p>Kademlia 是一种分布式哈希表（<strong>DHT</strong>）实现，它通过计算节点 ID 的异或距离来确定节点间的“远近”，并以此组织路由表。</p>
+<p>TRON 对 Kademlia 算法的实现要点包括：</p>
 <ul>
-<li><strong>Constant 函数</strong>: 使用 <code>view</code>、<code>pure</code> 或 <code>constant</code> 修饰的函数。这类调用在节点本地执行并直接返回结果，不会产生交易广播。</li>
-<li><strong>非 Constant 函数</strong>: 会修改链上状态的函数，例如执行转账或更改合约内部变量。这类调用必须通过提交一笔交易来完成，并由网络共识确认。</li>
+<li><strong>节点 ID</strong>: 每个节点启动时会随机生成一个 512 位的 ID。</li>
+<li><strong>节点距离</strong>: 两个节点间的距离是通过它们 ID 的异或运算计算得出的。公式为：<code>距离 = 256 - 节点ID异或结果的前导零个数</code>。如果计算结果为负数，距离等于0。</li>
+<li><strong>K 桶</strong>: 节点的路由表，用于存储远端节点信息。根据与本节点的距离远近，将远端节点划分为 256 个“桶”，每个桶最多容纳 16 个节点。</li>
 </ul>
-<blockquote>
-<p><strong>注意</strong>：若在合约内部使用 <code>CREATE</code> 指令（动态创建合约），即使该函数被 <code>view</code> 或 <code>pure</code> 等关键字修饰，仍会被视为非 constant 函数，并以交易的形式处理。</p>
-</blockquote>
-<h4 id="message-calls">消息调用 (Message Calls)<a class="headerlink" href="#message-calls" title="Permanent link">&para;</a></h4>
-<p>在合约执行期间，可以通过消息调用与其他合约交互，或向任何账户（合约或非合约）转帐 TRX。每次消息调用都包含发起者、接收者、数据、转账金额、扣费，以及返回值等属性，并可以递归生成新的消息调用。</p>
-<p>当合约发起内部消息调用时，可以灵活控制能量分配：</p>
+<h3 id="_2">节点发现协议消息<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>TRON 节点发现协议基于 <strong>UDP</strong>，使用以下四种消息类型进行通信：</p>
 <ul>
-<li>为该调用指定可使用的能量上限；</li>
-<li>为当前合约的后续执行预留部分能量。</li>
+<li><code>DISCOVER_PING</code>: 用于探测目标节点是否在线。</li>
+<li><code>DISCOVER_PONG</code>: 对 <code>DISCOVER_PING</code> 的响应。</li>
+<li><code>DISCOVER_FIND_NODE</code>: 用于查找距离特定目标 ID 最近的其他节点。</li>
+<li><code>DISCOVER_NEIGHBORS</code>: 对 <code>DISCOVER_FIND_NODE</code> 的响应，最多返回 16 个节点。</li>
 </ul>
-<p>通常使用 <code>{gas: gasleft() - 预留能量}</code> 的方式来设定该次内部调用可消耗的能量上限。</p>
-<p>如果在调用过程中发生异常（例如 <code>OutOfEnergyException</code>）：</p>
+<h3 id="_3">节点发现流程<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="1-k">1. 初始化 K 桶<a class="headerlink" href="#1-k" title="Permanent link">&para;</a></h4>
+<p>节点启动时，会读取配置文件中配置的种子节点（<code>seed nodes</code>）和数据库中已知的对等节点，向它们发送 <code>DISCOVER_PING</code> 消息。如果收到 <code>DISCOVER_PONG</code> 响应，节点会将其添加到对应的 K 桶中。如果 K 桶已满，则会向 K 桶中最旧的节点发起挑战，成功后用新节点替换旧节点。</p>
+<h4 id="2">2. 定期发现更多节点<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<p>TRON 节点发现服务会周期性地执行两个定时任务来持续更新 K 桶：</p>
 <ul>
-<li>调用会返回 <code>false</code>，但不会抛出异常；</li>
-<li>若为该调用设置了能量上限，则最多只会消耗分配给它的能量。若未显式设定，则该调用会消耗掉执行合约时剩余的全部能量。</li>
+<li><strong><code>DiscoverTask</code></strong>: 每 <strong>30 秒</strong> 执行一次，用于发现更多距离本节点较近的节点。执行流程如下图所示:
+<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/network_discovertask.png" /></li>
+<li><strong><code>RefreshTask</code></strong>: 每 <strong>7.2 秒</strong> 执行一次，通过查找距离一个随机 ID 最近的节点来扩充本地 K 桶。执行流程如下图所示:
+<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/network_refreshtask.png" /></li>
 </ul>
-<h4 id="delegatecallcallcodelibrary">委托调用/代码调用与库（<code>delegatecall</code>/<code>callcode</code>/Library）<a class="headerlink" href="#delegatecallcallcodelibrary" title="Permanent link">&para;</a></h4>
-<p>委托调用 (<code>delegatecall</code>) 是一种特殊类型的消息调用。它和一般的消息调用的区别在于，目标地址的合约代码在<strong>发起者合约的上下文</strong>中执行，且 <code>msg.sender</code> 和 <code>msg.value</code> 保持不变。这使得合约可在运行时动态加载外部代码，同时保持自身存储、地址和余额都指向发起调用的合约，只有代码是从被调用地址获取。</p>
-<p>这种机制使得 Solidity 可以实现 <strong>库（Library）</strong> 的能力。开发者可以将可复用的代码部署为独立的库合约，然后通过 <code>delegatecall</code> 在调用合约的上下文中执行这些代码。一个典型的应用是使用库来实现复杂的数据结构（如链表、集合等），从而让多个主合约共享同一套功能逻辑，同时避免代码冗余。</p>
-<h4 id="create"><code>CREATE</code> 指令<a class="headerlink" href="#create" title="Permanent link">&para;</a></h4>
-<p><code>CREATE</code> 指令用于在合约内部动态地创建新的合约并生成新地址。与以太坊不同，TVM 生成新地址的方式是<strong>基于当前智能合约的交易 ID 与一个内部调用计数器（<code>nonce</code>）的哈希组合</strong>。其中，<code>nonce</code> 定义为<strong>根调用下的创建序号</strong>，即在一次合约执行中，每次使用 <code>CREATE</code> 指令都会生成一个递增的编号：第一次为 1，第二次为 2，以此类推。</p>
-<blockquote>
-<p><strong>注意</strong>：通过 <code>CREATE</code> 指令创建的合约并不会自动保存 ABI，如果需要记录 ABI，则应使用 gRPC 接口 <code>deploycontract</code> 来部署合约。</p>
-</blockquote>
-<h4 id="tvm">TVM 内置功能<a class="headerlink" href="#tvm" title="Permanent link">&para;</a></h4>
-<p>TRON 智能合约内置了多种功能，以支持常见的链上操作。最常见的是 <strong>转账</strong>，它可以出现在不同场景中，例如：</p>
+<p>这两个任务在每次运行时，会执行8轮节点发现，每轮会向 K 桶中距离目标 ID 最近的 <strong>3 个</strong> 节点发送 <code>DISCOVER_FIND_NODE</code> 消息，以请求更多邻居节点。</p>
+<h4 id="3-k">3. 接收并更新 K 桶<a class="headerlink" href="#3-k" title="Permanent link">&para;</a></h4>
+<p>当节点收到远端节点回复的 <code>DISCOVER_NEIGHBORS</code> 消息后，它会依次向收到回复的邻居节点发送 <code>DISCOVER_PING</code>。如果成功收到 <code>DISCOVER_PONG</code> 响应，节点会尝试将这个新节点加入到相应的 K 桶中。如果 K 桶已满，会向桶中某个节点发起挑战（即发送 <code>DISCOVER_PING</code>），如果挑战成功（没有收到 <code>PONG</code> 响应），则将旧节点移除，加入新节点。</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/network_updatek.png" /></p>
+<p>通过这些周期性的任务，每个节点都能持续构建和维护一个动态的、健康的路由表。</p>
+<p><a id="node-connection"></a></p>
+<h2 id="_4">节点连接<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>在发现潜在节点后，下一步是建立 <strong>TCP 连接</strong>。TRON 网络对节点进行分类管理，以实现高效稳定的连接。</p>
+<h3 id="_5">节点分类<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>TRON 节点将对等节点（<code>peers</code>）分为以下几类：</p>
 <ul>
-<li>在构造函数（<code>constructor</code>）执行时随交易进行转账</li>
-<li>在合约函数调用的过程中进行转账</li>
-<li>使用 <code>transfer</code>、<code>send</code>、<code>call</code>、<code>callcode</code>、<code>delegatecall</code> 等方式进行转账</li>
+<li><strong>Active Nodes</strong>: 在配置文件中指定，节点启动后会主动尝试与其建立连接。如果连接建立失败，则在每个TCP连接定时任务中都会重新尝试与其建立连接。</li>
+<li><strong>Passive Nodes</strong>: 在配置文件中指定，被动接受这些节点的连接请求。</li>
+<li><strong>Trust Nodes</strong>: 包括 <code>Active</code> 和 <code>Passive</code> 节点。TRON 会优先信任这些节点，跳过部分连接检查。</li>
+<li><strong>Bad Nodes</strong>: 被列入黑名单的节点。当收到异常协议报文时，该节点会被标记为 <code>badNodes</code>，有效期为 <strong>1 小时</strong>。</li>
+<li><strong>Recently Disconnected Nodes</strong>: 30 秒内断开连接的节点，用于防止短时间内重复连接。</li>
+</ul>
+<h3 id="tcp">建立 TCP 连接<a class="headerlink" href="#tcp" title="Permanent link">&para;</a></h3>
+<p>TRON 节点会定期运行一个名为 <code>poolLoopExecutor</code> 的定时任务，用于建立 TCP 连接。其工作流程如下：</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/network_connect.png" /></p>
+<ol>
+<li><strong>确定连接列表</strong>: 首先检查 <code>active nodes</code> 中尚未成功连接的节点，并将其加入列表。</li>
+<li><strong>筛选邻居节点</strong>: 计算还需要连接的数量，并从已发现的邻居列表中，根据 <strong>节点过滤策略</strong> 和 <strong>节点打分策略</strong> 筛选出最佳的节点。</li>
+<li><strong>建立连接</strong>: 向最终列表中的节点发起 TCP 连接。</li>
+</ol>
+<h4 id="1">1. 节点过滤策略<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+<p>在尝试连接之前，会过滤掉不符合条件的节点，包括：</p>
+<ul>
+<li>自身节点。</li>
+<li>位于 <code>recentlyDisconnectedNodes</code> 或 <code>badNodes</code> 列表中的节点。</li>
+<li>已建立连接的节点。</li>
+<li>IP 连接数达到上限（<code>maxConnectionsWithSameIp</code>）的节点。</li>
 </ul>
 <blockquote>
-<p>注意：在 TRON 智能合约中，在 TRON 智能合约中，如果转账目标地址尚未激活，不能通过智能合约转账的形式激活目标地址账户。这一点既不同于以太坊的处理方式，也不同于 TRON 系统合约的逻辑。</p>
+<p><strong>注意</strong>: <code>trust nodes</code> 会忽略部分过滤规则，始终被优先考虑建立连接。</p>
 </blockquote>
-<p>除了转账功能外，合约还可以执行更复杂的链上操作，包括：</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/network_filterrule.png" /></p>
+<h4 id="2_1">2. 节点打分策略<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h4>
+<p>节点会根据多个维度对潜在的连接对象进行打分，分数越高，优先级越高。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">维度</th>
+<th style="text-align: left;">评分规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>丢包率</strong></td>
+<td style="text-align: left;">丢包率越低，分数越高。最高 <strong>100</strong> 分。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>网络延迟</strong></td>
+<td style="text-align: left;">延迟越低，分数越高。最高 <strong>20</strong> 分。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TCP 流量</strong></td>
+<td style="text-align: left;">流量越大，分数越高。最高 <strong>20</strong> 分。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>断开连接次数</strong></td>
+<td style="text-align: left;">次数越多，分数越低（负分）。一次断开连接扣 <strong>10</strong> 分。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>握手成功次数</strong></td>
+<td style="text-align: left;">曾成功握手过的节点得 <strong>20</strong> 分，否则为 <strong>0</strong>。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>处罚状态</strong></td>
+<td style="text-align: left;">若节点处于处罚状态（如断开连接时间不足 60 秒、在 <code>badNodes</code> 列表中、链信息不一致），则直接得 <strong>0</strong> 分。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">握手与保活<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>当 TCP 连接建立成功后，双方会进行握手，交换 <code>P2P_HELLO</code> 消息，以验证彼此的区块链信息（如 <code>p2p version</code>、<code>genesis block</code> 等）。若所有检查通过，握手成功，连接将进入区块同步或数据广播阶段；否则，连接将被断开。</p>
+<p>为了保持信道活跃，节点会定期发送 <code>P2P_PING</code> 消息。如果在超时时间内没有收到 <code>P2P_PONG</code> 响应，连接将被断开。</p>
+<p><a id="block-sync"></a></p>
+<h2 id="_7">区块同步<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>新节点在成功连接并握手后，如果发现远端节点的区块链比本地的更长，根据最长链原则，会触发区块同步的处理流程<code>syncService.startSync</code>。同步过程中的报文交互如下图：</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/network_syncflow.png" /></p>
+<ol>
+<li><strong>请求链摘要</strong>: 节点 A 向节点 B 发送 <code>SYNC_BLOCK_CHAIN</code> 消息，包含本地链的摘要信息（如最高固化块、最高非固化块等）。</li>
+<li><strong>返回缺失清单</strong>: 节点 B 收到摘要后，与自己的链进行比对，计算出节点 A 缺失的区块 ID 列表，并通过 <code>BLOCK_CHAIN_INVENTORY</code> 消息返回，每次最多携带 <strong>2000 个</strong> 区块 ID。</li>
+<li><strong>请求缺失区块</strong>: 节点 A 收到清单后，通过 <code>FETCH_INV_DATA</code> 消息异步请求缺失的区块，每次最多请求 <strong>100 个</strong>。如果还有剩余区块，将触发新一轮同步。</li>
+<li><strong>发送区块</strong>: 节点 B 收到 <code>FETCH_INV_DATA</code> 请求后，通过 <code>BLOCK</code> 消息将区块数据发送给节点 A。</li>
+<li><strong>处理</strong>: 节点 A 收到 <code>BLOCK</code> 消息后，异步处理该区块。</li>
+</ol>
+<h3 id="_8">链摘要与缺失区块清单<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>节点在区块同步时，会通过<strong>链摘要</strong>和<strong>缺失区块清单</strong>来确定需要拉取的区块。</p>
 <ul>
-<li>为超级节点投票</li>
-<li>质押（Stake）TRX</li>
-<li>资源代理</li>
+<li><strong>链摘要</strong>：由一组有序的区块 blockID 构成，通常包括最高固化块、最高非固化块，以及二分方式选取的中间区块。</li>
+<li><strong>缺失区块清单</strong>：邻居节点根据链摘要与自身链进行对比，识别出对方缺失的区块，返回连续的区块 blockID 以及剩余块数。</li>
 </ul>
-<p>TVM 同时保持了对以太坊大部分内置函数的兼容性，使开发者能够在已有经验的基础上快速迁移和开发合约。</p>
-<h2 id="solidity-tron">Solidity 中的 TRON 地址使用规范<a class="headerlink" href="#solidity-tron" title="Permanent link">&para;</a></h2>
-<p>在 Solidity 中正确处理地址是在 TRON 上开发智能合约的关键。核心需要理解的是 TRON 地址与以太坊地址在字节长度上的差异，以及 TRON 虚拟机（TVM）为兼容 Solidity 而做的内部处理。</p>
-<p><strong>核心差异：20字节 vs 21字节</strong></p>
+<p>下面根据几个不同的区块同步场景示例，说明链摘要和节点缺少的区块清单的生成。</p>
+<h4 id="_9">普通场景<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>本地头块高度为 <strong>1018</strong>，固化块高度为 <strong>1000</strong>。
+由于节点 A 与节点 B 初次建立连接，共同块高度为 <strong>0</strong>。
+节点 A 通过二分法生成的链摘要为：<code>1000、1010、1015、1017、1018</code>。</p>
+<p>节点 B 收到链摘要后，与自身链对比，发现节点 A 缺少区块：<code>1018、1019、1020、1021</code>。
+随后，节点 A 根据缺失区块清单，请求同步 <code>1019、1020、1021</code>。</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/network_sync1.png" /></p>
+<h4 id="_10">切链场景<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p><strong>场景一</strong>
+本地主链头块高度为 <strong>1018</strong>，固化块高度为 <strong>1000</strong>，共同块高度为 <strong>0</strong>。
+节点 A 的链摘要为：<code>1000、1010、1015、1017、1018</code>。</p>
+<p>节点 B 收到后发现链分叉，对比后确认共同块为 <strong>1015</strong>。
+因此节点 A 缺少的区块清单为：<code>1015、1016'、1017'、1018'、1019'</code>。
+节点 A 随后请求同步 <code>1018'、1019'</code>。</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/network_sync2.png" /></p>
+<p><strong>场景二</strong>
+本地主链头块高度为 <strong>1018</strong>，固化块高度为 <strong>1000</strong>，共同块高度为 <strong>1017'</strong>（位于分叉链上）。
+节点 A 的链摘要为：<code>1000、1009、1014、1016'、1017'</code>。</p>
+<p>节点 B 对比后生成缺失区块清单：<code>1017'、1018'、1019'</code>。
+节点 A 随后请求同步 <code>1018'、1019'</code>。</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/network_sync3.png" /></p>
+<p><a id="broadcasting"></a></p>
+<h2 id="_11">区块与交易广播<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>当超级代表节点生成新区块，或节点收到新的交易时，会发起广播流程。广播和转发的流程基本一致。报文交互如下图所示：</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/network_broadcastflow.png" /></p>
+<p>其中涉及到的消息类型包括：</p>
 <ul>
-<li>以太坊地址：是一个 20 字节（40 个十六进制字符）的值。</li>
-<li>TRON 地址：是一个 21 字节的值。它由一个字节的地址前缀（通常是 <code>0x41</code>）和后面 20 字节的核心地址组成。</li>
+<li><code>INVENTORY</code>: 包含区块或交易 ID 的广播清单。</li>
+<li><code>FETCH_INV_DATA</code>: 请求获取清单中的数据。</li>
+<li><code>BLOCK</code>: 区块数据。</li>
+<li><code>TRXS</code>: 交易数据。</li>
 </ul>
-<p>在 Solidity 中处理 TRON 地址时，需要遵循以下规范。</p>
-<h4 id="_5">地址转换<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>当您需要将一个 TRON 地址传入合约时，推荐的做法是将其作为一个 <code>uint256</code> 整数传入，然后在合约内部转换为 <code>address</code> 类型。</p>
-<p><div class="highlight"><pre><span></span><code>/**
- * @dev 将 uint256 格式的 TRON 地址转换为 Solidity 的 address 类型。
- * @param tronAddress uint256 格式的 TRON 地址，以 0x 开头，后接 HexString
- * @return address Solidity 的地址类型。
- */
-function convertFromTronInt(uint256 tronAddress) public view returns(address) {
-    return address(tronAddress);
-}
-</code></pre></div>
-这个和在以太坊中其他类型转换成 <code>address</code> 类型语法相同。</p>
-<h4 id="_6">地址判断<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>在 Solidity 中进行地址常量的比较时，必须使用 20 字节的格式，否则将导致编译器报错。TVM 在执行时会自动处理前缀 <code>0x41</code>。例如：</p>
-<div class="highlight"><pre><span></span><code>function compareAddress(address tronAddress) public view returns (uint256) {
-    // 错误写法：包含 0x41 前缀，会导致编译器报错。
-    // if (tronAddress == 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c) { ... }
-
-    // 正确写法：使用 20 字节的地址格式。
-    if (tronAddress == 0xca35b7d915458ef540ade6068dfe2f44e8fa733c) {
-        return 1;
-    } else {
-        return 0;
-    }
-}
-</code></pre></div>
-<blockquote>
-<p><strong>说明</strong>：虽然代码中常量为 20 字节，但当 <code>tronAddress</code> 参数从外部（如 <code>wallet-cli</code>）传入一个完整的 21 字节 TRON 地址时，TVM 依然能正确完成判断，即依然能正确返回 <code>1</code>。</p>
-</blockquote>
-<h4 id="_7">地址赋值<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>与地址判断类似，在为 <code>address</code> 类型的变量赋常量值时，也必须省略 <code>0x41</code> 前缀，使用 20 字节的格式。例如：</p>
-<div class="highlight"><pre><span></span><code>function assignAddress() public pure {
-    // 错误写法：包含 0x41 前缀，会导致编译器报错。
-    // address newAddress = 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c;
-
-    // 正确写法：
-    address newAddress = 0xca35b7d915458ef540ade6068dfe2f44e8fa733c;
-    // ... 后续操作
-}
-</code></pre></div>
-<blockquote>
-<p>说明：
-- 当使用 <code>newAddress</code> 变量进行转账等链上操作时，TVM 会自动为其补上 <code>0x41</code> 前缀，以构成一个有效的 TRON 地址。
-- <code>TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm</code> 此类 Base58 格式的地址是钱包等客户端使用的字符串地址，不能直接在 Solidity 代码中使用，需要先解码为十六进制格式（HexString）。</p>
-</blockquote>
-<h2 id="_8">全局变量与单位<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<p>在 Solidity 智能合约中，可以使用一系列全局变量来获取关于区块链、交易和调用的信息。</p>
-<h4 id="_9">货币单位<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>类似于 Solidity 对 <code>ether</code> 的支持，TVM 原生支持 <code>trx</code> 和 <code>sun</code> 两个货币单位，换算关系为 <code>1 trx = 1,000,000 sun</code>。这两个单位均为小写且大小写敏感。</p>
-<ul>
-<li>我们推荐使用 <strong>TronIDE</strong> 或 <strong>TronBox</strong> 进行 TRON 智能合约的开发，这两款工具均完整支持 <code>trx</code> 和 <code>sun</code> 单位。</li>
-</ul>
-<h4 id="_10">区块与交易相关的全局变量<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>以下是在 TRON 智能合约中常用的全局变量和函数，其中部分变量的行为与以太坊有所不同。</p>
-<p><strong>区块信息</strong></p>
-<ul>
-<li><code>block.blockhash(uint blockNumber) returns (bytes32)</code>: 获取指定区块的哈希值。仅对最近的 256 个区块有效（不含当前区块）</li>
-<li><code>block.coinbase (address)</code>: 产出当前区块的超级节点地址</li>
-<li><code>block.number (uint)</code>：当前区块的高度（即区块号）</li>
-<li><code>block.timestamp (uint)</code>：当前区块的时间戳（以秒为单位）</li>
-<li><code>now (uint)</code>：当前区块的时间戳，与 <code>block.timestamp</code> 等价</li>
-</ul>
-<p><strong>调用与交易信息</strong></p>
-<ul>
-<li><code>msg.data (bytes)</code>：完整的调用数据 (<code>calldata</code>)</li>
-<li><code>msg.sender (address)</code>：消息的发送者（当前调用的发起者）</li>
-<li><code>msg.sig (bytes4)</code>：<code>calldata</code> 的前 4 字节，即函数标识符</li>
-<li><code>msg.value (uint)</code>：随消息发送的 <code>sun</code> 的数量</li>
-<li><code>tx.origin (address)</code>：交易的原始发起者</li>
-</ul>
-<p><strong>Gas 与特殊变量</strong></p>
-<ul>
-<li><code>gasleft() returns (uint256)</code>：剩余的 gas</li>
-<li><code>block.difficulty (uint)</code>：当前区块的难度。在 TRON 网络中，此值恒定为 0，不推荐使用</li>
-<li><code>block.gaslimit (uint)</code>：当前区块的 gas 限额。在 TRON 网络中不支持使用，暂时设置为 0</li>
-<li><code>tx.gasprice (uint)</code>：交易的 gas 价格。在 TRON 网络中，此值恒定为 0，不推荐使用</li>
-</ul>
+<p>具体流程如下：</p>
+<ol>
+<li><strong>发送清单</strong>: 节点 A 将待广播的区块或交易 ID 打包成 <code>INVENTORY</code> 消息，发送给邻居节点 B。</li>
+<li><strong>放入队列</strong>: 节点 B 收到 <code>INVENTORY</code> 后，需要检查对方节点的状态，如果可以接收该消息，则将清单中的区块/交易 ID 放入待获取队列 <code>invToFetch</code>。如果是区块清单，会立即发送 <code>FETCH_INV_DATA</code> 消息请求数据。</li>
+<li><strong>发送数据</strong>: 节点 A 收到 <code>FETCH_INV_DATA</code> 后，会检查是否发送过清单消息给对方，如果发送过，则根据清单数据，将具体的区块（<code>BLOCK</code>）或交易（<code>TRXS</code>）数据发送给节点 B。</li>
+<li><strong>处理与转发、</strong>: 节点 B 收到数据后，处理并验证，然后触发转发流程，将其广播给自己的邻居节点。</li>
+</ol>
+<h2 id="_12">总结<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>本文详细介绍了 TRON P2P 网络的底层实现细节，涵盖了节点发现、连接、区块同步以及数据广播的核心机制。通过对这些模块的深入理解，开发者能够更好地认识 <code>java-tron</code> 网络的健壮性和高效性，并在此基础上进行二次开发与优化。</p>
 
 
 
@@ -1974,7 +2047,7 @@ function convertFromTronInt(uint256 tronAddress) public view returns(address) {
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../mechanism-algorithm/resource/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 资源模型">
+          <a href="../chainbase-module/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Chainbase">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1984,20 +2057,20 @@ function convertFromTronInt(uint256 tronAddress) public view returns(address) {
                 Previous
               </span>
               <div class="md-ellipsis">
-                资源模型
+                Chainbase
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../mechanism-algorithm/system-contracts/" class="md-footer__link md-footer__link--next" aria-label="Next: 系统合约">
+          <a href="../../contracts/tools/" class="md-footer__link md-footer__link--next" aria-label="Next: 工具">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                系统合约
+                工具
               </div>
             </div>
             <div class="md-footer__button md-icon">

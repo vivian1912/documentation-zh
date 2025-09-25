@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://tronprotocol.github.io/documentation-zh/contracts/contract/">
+        <link rel="canonical" href="https://tronprotocol.github.io/documentation-zh/developers/chainbase-module/">
       
       
-        <link rel="prev" href="../../mechanism-algorithm/resource/">
+        <link rel="prev" href="../code-structure/">
       
       
-        <link rel="next" href="../../mechanism-algorithm/system-contracts/">
+        <link rel="next" href="../network-module/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>智能合约 - java-tron</title>
+        <title>Chainbase - java-tron</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#chainbase-tron" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              智能合约
+              Chainbase
             
           </span>
         </div>
@@ -791,8 +791,6 @@
       
   
   
-    
-  
   
   
     
@@ -804,11 +802,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
@@ -823,7 +821,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             核心协议
@@ -922,31 +920,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    智能合约
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../contracts/contract/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -956,86 +933,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item ">
-  <a href="#_2" class="md-nav__link" >
-    <span class="md-ellipsis">
-      概述
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item has-children">
-  <a href="#tron" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
-    <span class="md-ellipsis">
-      TRON 智能合约特性
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="TRON 智能合约特性" hidden>
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item ">
-  <a href="#_3" class="md-nav__link" >
-    <span class="md-ellipsis">
-      智能合约的定义
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item ">
-  <a href="#_4" class="md-nav__link" >
-    <span class="md-ellipsis">
-      合约函数的使用
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#solidity-tron" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Solidity 中的 TRON 地址使用规范
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#_8" class="md-nav__link" >
-    <span class="md-ellipsis">
-      全局变量与单位
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1118,8 +1015,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -1129,11 +1028,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
@@ -1148,7 +1047,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             java-tron开发
@@ -1162,7 +1061,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/java-tron/" class="md-nav__link">
+      <a href="../java-tron/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1184,7 +1083,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/tips/" class="md-nav__link">
+      <a href="../tips/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1206,7 +1105,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/issue-workflow/" class="md-nav__link">
+      <a href="../issue-workflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1228,7 +1127,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/governance/" class="md-nav__link">
+      <a href="../governance/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1250,7 +1149,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/run-in-idea/" class="md-nav__link">
+      <a href="../run-in-idea/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1272,7 +1171,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/demo/" class="md-nav__link">
+      <a href="../demo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1291,6 +1190,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1299,11 +1200,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" checked>
         
           
           <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
@@ -1318,7 +1219,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_7">
             <span class="md-nav__icon md-icon"></span>
             核心模块
@@ -1332,7 +1233,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/code-structure/" class="md-nav__link">
+      <a href="../code-structure/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1351,10 +1252,31 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../developers/chainbase-module/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Chainbase
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1364,6 +1286,185 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item ">
+  <a href="#_1" class="md-nav__link" >
+    <span class="md-ellipsis">
+      概览
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#_2" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      预备知识
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="预备知识" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#1" class="md-nav__link" >
+    <span class="md-ellipsis">
+      1. 持久化存储
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#2" class="md-nav__link" >
+    <span class="md-ellipsis">
+      2. 交易验证
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#_3" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      状态回滚
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="状态回滚" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#1_1" class="md-nav__link" >
+    <span class="md-ellipsis">
+      1. 接收新区块后的状态回滚
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#2_1" class="md-nav__link" >
+    <span class="md-ellipsis">
+      2. 生产区块后的状态回滚
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#3" class="md-nav__link" >
+    <span class="md-ellipsis">
+      3. 分叉链的状态回滚
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#_4" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      状态回滚的实现
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="状态回滚的实现" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#1_2" class="md-nav__link" >
+    <span class="md-ellipsis">
+      1. 交易接收
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#2_2" class="md-nav__link" >
+    <span class="md-ellipsis">
+      2. 收到新区块时的状态回滚
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#3_1" class="md-nav__link" >
+    <span class="md-ellipsis">
+      3. 生产区块时的状态回滚
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#_5" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      区块持久化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="区块持久化" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#1_3" class="md-nav__link" >
+    <span class="md-ellipsis">
+      1. 数据库原子性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#_6" class="md-nav__link" >
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1376,7 +1477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/network-module/" class="md-nav__link">
+      <a href="../network-module/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1454,7 +1555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/" class="md-nav__link">
+      <a href="../../contracts/tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1749,211 +1850,191 @@
   
 
 
-<h1 id="_1">智能合约<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<h2 id="_2">概述<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>智能合约是一种旨在自动执行合约条款的计算化交易协议。智能合约和普通合约一样，定义了参与者相关的条款和奖惩机制。一旦合约被启动，便能按照设定的条款执行，并自动检查所承诺的条款实施情形。</p>
-<p>TRON 完全兼容以太坊（Ethereum）的智能合约生态，支持使用 Solidity 语言编写的合约。开发流程如下：
-1. 在本地或在线 IDE 中编写并编译 Solidity 合约。
-2. 将合约部署到 TRON 公链。
-3. 部署后的合约会在被触发时于 TRON 网络的所有节点上自动执行。</p>
-<p>您可以在 <a href="https://github.com/tronprotocol/solidity/releases">TRON Solidity 代码库</a> 中获取最新版本。</p>
-<h2 id="tron">TRON 智能合约特性<a class="headerlink" href="#tron" title="Permanent link">&para;</a></h2>
-<p>TRON 虚拟机（TRON Virtual Machine, 简称 TVM）基于以太坊 Solidity 语言实现，在兼容以太坊虚拟机（Ethereum Virtual Machine，简称 EVM）功能的基础上，结合 TRON 自身特性存在部分差异。</p>
-<h3 id="_3">智能合约的定义<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>TVM 运行的智能合约兼容以太坊合约特性。TRON 协议采用 <strong>Protocol Buffers</strong> 来封装和描述一个智能合约，其数据结构定义如下：</p>
-<p><div class="highlight"><pre><span></span><code>message SmartContract {
-  message ABI {
-    message Entry {
-      enum EntryType {
-        UnknownEntryType = 0;
-        Constructor = 1;
-        Function = 2;
-        Event = 3;
-        Fallback = 4;
-        Receive = 5;
-        Error = 6;
-      }
-      message Param {
-        bool indexed = 1;
-        string name = 2;
-        string type = 3;
-      }
-      enum StateMutabilityType {
-        UnknownMutabilityType = 0;
-        Pure = 1;
-        View = 2;
-        Nonpayable = 3;
-        Payable = 4;
-      }
-
-      bool anonymous = 1;
-      bool constant = 2;
-      string name = 3;
-      repeated Param inputs = 4;
-      repeated Param outputs = 5;
-      EntryType type = 6;
-      bool payable = 7;
-      StateMutabilityType stateMutability = 8;
-    }
-    repeated Entry entrys = 1;
-  }
-  bytes origin_address = 1;
-  bytes contract_address = 2;
-  ABI abi = 3;
-  bytes bytecode = 4;
-  int64 call_value = 5;
-  int64 consume_user_resource_percent = 6;
-  string name = 7;
-  int64 origin_energy_limit = 8;
-  bytes code_hash = 9;
-  bytes trx_hash = 10;
-}
-</code></pre></div>
-字段说明：</p>
+<h1 id="chainbase-tron"><code>ChainBase</code> 模块：深入理解 TRON 的数据存储<a class="headerlink" href="#chainbase-tron" title="Permanent link">&para;</a></h1>
+<h2 id="_1">概览<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>区块链本质上是一个不可篡改的分布式账本，其最大价值在于解决信任问题。在现实应用中，区块链被广泛用于记账和交易，例如许多应用通过比特币 (BTC)、以太坊 (ETH) 和 TRON 网络的 TRX 等数字货币进行经济活动，以确保资金流转的公开透明。</p>
+<p>然而，实现这样一个不可篡改的分布式账本是一个极其复杂的系统工程，它涉及众多技术领域，包括 P2P 网络、智能合约、数据库、密码学和共识机制等。其中，数据库作为底层存储的核心组件，直接决定了系统的性能、可扩展性以及数据一致性，因此是区块链架构设计中的关键部分。</p>
+<p>在 java-tron 中，数据库模块被称为 <code>ChainBase</code>。本文将围绕 <code>ChainBase</code> 模块，重点讲解以下核心机制：</p>
 <ul>
-<li><code>origin_address</code>: 合约创建者地址</li>
-<li><code>contract_address</code>: 合约地址</li>
-<li><code>abi</code>: 合约中所有函数的接口信息</li>
-<li><code>bytecode</code>: 合约字节码</li>
-<li><code>call_value</code>: 调用合约时传入的 TRX 数量（以 sun 为单位）</li>
-<li><code>consume_user_resource_percent</code>: 开发者设定的、调用者需承担的资源消耗百分比</li>
-<li><code>name</code>: 合约名称</li>
-<li><code>origin_energy_limit</code>: 开发者设定的、部署者为单笔交易承担的能量（Energy）上限。该值必须大于 0。对于在部署时未提供能量上限参数的旧合约，其 <code>origin_energy_limit</code> 值会存储为 <code>0</code>，但在计算资源时，系统仍会按照 1000 万的能量上限来处理。开发者后续可以通过调用 <code>updateEnergyLimit</code> 接口来明确设定此值，且新值必须大于 0。</li>
+<li><a href="#rollback">状态回滚</a>：在区块回滚、链分叉等场景下如何保证数据一致性</li>
+<li><a href="#rollback-implementation">状态回滚的实现</a>：如何实现区块回滚</li>
+<li><a href="#solidifying-block">区块持久化</a>：如何高效且可靠地将链上数据写入存储引擎，并保证数据一致性</li>
 </ul>
-<p>开发者可以通过 <code>CreateSmartContract</code> 和 <code>TriggerSmartContract</code> 这两种 gRPC 消息类型来创建和调用智能合约。</p>
-<h3 id="_4">合约函数的使用<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="constant-constant">Constant 函数与非 Constant 函数<a class="headerlink" href="#constant-constant" title="Permanent link">&para;</a></h4>
-<p>根据是否更改链上状态，合约函数可分为两类：</p>
+<p>目标是帮助开发者更好地理解 <code>ChainBase</code> 的设计理念和实现细节，从而在开发 TRON 生态应用时更加得心应手。</p>
+<h2 id="_2">预备知识<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>在区块链系统中，数据库是整个架构的核心之一，负责存储链上所有数据，包括：</p>
 <ul>
-<li><strong>Constant 函数</strong>: 使用 <code>view</code>、<code>pure</code> 或 <code>constant</code> 修饰的函数。这类调用在节点本地执行并直接返回结果，不会产生交易广播。</li>
-<li><strong>非 Constant 函数</strong>: 会修改链上状态的函数，例如执行转账或更改合约内部变量。这类调用必须通过提交一笔交易来完成，并由网络共识确认。</li>
+<li>区块数据</li>
+<li>交易记录</li>
+<li>合约状态</li>
+<li>账户信息</li>
+<li>事件与日志</li>
 </ul>
-<blockquote>
-<p><strong>注意</strong>：若在合约内部使用 <code>CREATE</code> 指令（动态创建合约），即使该函数被 <code>view</code> 或 <code>pure</code> 等关键字修饰，仍会被视为非 constant 函数，并以交易的形式处理。</p>
-</blockquote>
-<h4 id="message-calls">消息调用 (Message Calls)<a class="headerlink" href="#message-calls" title="Permanent link">&para;</a></h4>
-<p>在合约执行期间，可以通过消息调用与其他合约交互，或向任何账户（合约或非合约）转帐 TRX。每次消息调用都包含发起者、接收者、数据、转账金额、扣费，以及返回值等属性，并可以递归生成新的消息调用。</p>
-<p>当合约发起内部消息调用时，可以灵活控制能量分配：</p>
+<p>每一个 TRON 全节点 都需要维护一份完整的数据副本，以保证在去中心化网络中实现一致性。</p>
+<h3 id="1">1. 持久化存储<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>与传统互联网应用相比，区块链数据库的设计有以下显著特征：</p>
 <ul>
-<li>为该调用指定可使用的能量上限；</li>
-<li>为当前合约的后续执行预留部分能量。</li>
+<li>高频读写：链上存在大量的 Key-Value 数据访问</li>
+<li>数据不可篡改：历史数据一旦上链，不能被修改</li>
+<li>高性能要求：交易量大，读写性能要求极高</li>
+<li>可扩展性：需要适应不同规模的网络和节点部署场景，支持灵活扩展和存储优化策略。</li>
 </ul>
-<p>通常使用 <code>{gas: gasleft() - 预留能量}</code> 的方式来设定该次内部调用可消耗的能量上限。</p>
-<p>如果在调用过程中发生异常（例如 <code>OutOfEnergyException</code>）：</p>
+<p>基于以上特点，java-tron 在数据库设计中采用了面向接口的架构，通过接口抽象，实现存储层与上层业务逻辑的解耦。这样做的好处是，开发者可以在不修改上层逻辑的情况下，灵活切换不同的底层存储引擎。</p>
+<p>目前，<code>ChainBase</code> 支持以下两种主流存储引擎：</p>
 <ul>
-<li>调用会返回 <code>false</code>，但不会抛出异常；</li>
-<li>若为该调用设置了能量上限，则最多只会消耗分配给它的能量。若未显式设定，则该调用会消耗掉执行合约时剩余的全部能量。</li>
+<li>LevelDB：轻量级嵌入式 Key-Value 存储</li>
+<li>RocksDB：高性能、高并发的 Key-Value 存储</li>
 </ul>
-<h4 id="delegatecallcallcodelibrary">委托调用/代码调用与库（<code>delegatecall</code>/<code>callcode</code>/Library）<a class="headerlink" href="#delegatecallcallcodelibrary" title="Permanent link">&para;</a></h4>
-<p>委托调用 (<code>delegatecall</code>) 是一种特殊类型的消息调用。它和一般的消息调用的区别在于，目标地址的合约代码在<strong>发起者合约的上下文</strong>中执行，且 <code>msg.sender</code> 和 <code>msg.value</code> 保持不变。这使得合约可在运行时动态加载外部代码，同时保持自身存储、地址和余额都指向发起调用的合约，只有代码是从被调用地址获取。</p>
-<p>这种机制使得 Solidity 可以实现 <strong>库（Library）</strong> 的能力。开发者可以将可复用的代码部署为独立的库合约，然后通过 <code>delegatecall</code> 在调用合约的上下文中执行这些代码。一个典型的应用是使用库来实现复杂的数据结构（如链表、集合等），从而让多个主合约共享同一套功能逻辑，同时避免代码冗余。</p>
-<h4 id="create"><code>CREATE</code> 指令<a class="headerlink" href="#create" title="Permanent link">&para;</a></h4>
-<p><code>CREATE</code> 指令用于在合约内部动态地创建新的合约并生成新地址。与以太坊不同，TVM 生成新地址的方式是<strong>基于当前智能合约的交易 ID 与一个内部调用计数器（<code>nonce</code>）的哈希组合</strong>。其中，<code>nonce</code> 定义为<strong>根调用下的创建序号</strong>，即在一次合约执行中，每次使用 <code>CREATE</code> 指令都会生成一个递增的编号：第一次为 1，第二次为 2，以此类推。</p>
-<blockquote>
-<p><strong>注意</strong>：通过 <code>CREATE</code> 指令创建的合约并不会自动保存 ABI，如果需要记录 ABI，则应使用 gRPC 接口 <code>deploycontract</code> 来部署合约。</p>
-</blockquote>
-<h4 id="tvm">TVM 内置功能<a class="headerlink" href="#tvm" title="Permanent link">&para;</a></h4>
-<p>TRON 智能合约内置了多种功能，以支持常见的链上操作。最常见的是 <strong>转账</strong>，它可以出现在不同场景中，例如：</p>
+<p>这种架构既保证了系统的灵活性，又为后续支持更多存储后端提供了扩展能力。</p>
+<h3 id="2">2. 交易验证<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>在深入了解 <code>Chainbase</code> 模块之前，首先需要理解 java-tron 中交易的处理逻辑。</p>
+<p><img alt="交易验证流程" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/chainbase_1.png" /></p>
+<p>交易通过网络广播分发到各个节点。节点接收交易后，首先会对交易的签名进行校验。验证成功后，还需要对交易进行<strong>预执行</strong>，以此来判断该交易是否合法。</p>
+<p>例如，一笔 A 向 B 转账 100 TRX 的交易，系统需验证 A 是否拥有足够余额。交易接收后，系统会尝试在本地数据库中执行余额扣减（A-100）与增加（B+100）。若操作成功，则该交易被认为在当前状态下是合法的，可进入打包流程。</p>
+<p><a id="rollback"></a></p>
+<h2 id="_3">状态回滚<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>如前所述，java-tron 通过<strong>预执行</strong>来验证交易的合法性。然而，某个交易在一个节点上验证成功，并不意味着该交易已成功上链，因为它尚未被打包到已共识的区块中，因此存在被回滚的风险。</p>
+<p>java-tron 的共识遵循以下核心原则：只有被超过 2/3 的<strong>超级代表</strong>（<code>SR</code>）认可的区块中的交易，才是真正成功上链的交易。这可以理解为：</p>
 <ul>
-<li>在构造函数（<code>constructor</code>）执行时随交易进行转账</li>
-<li>在合约函数调用的过程中进行转账</li>
-<li>使用 <code>transfer</code>、<code>send</code>、<code>call</code>、<code>callcode</code>、<code>delegatecall</code> 等方式进行转账</li>
+<li>交易被打包进入区块。</li>
+<li>该区块被超过 2/3 的 <code>SR</code> 所接受。</li>
 </ul>
-<blockquote>
-<p>注意：在 TRON 智能合约中，在 TRON 智能合约中，如果转账目标地址尚未激活，不能通过智能合约转账的形式激活目标地址账户。这一点既不同于以太坊的处理方式，也不同于 TRON 系统合约的逻辑。</p>
-</blockquote>
-<p>除了转账功能外，合约还可以执行更复杂的链上操作，包括：</p>
+<p>只有同时满足以上两点的交易，才被视为成功上链的交易。在 java-tron 中，一个交易被最终确认需要经历三个阶段：</p>
+<ol>
+<li><strong>交易校验</strong>：初步验证交易的合法性。</li>
+<li><strong>交易打包进区块</strong>：交易被包含在一个待确认的区块中。</li>
+<li><strong>该区块被网络大部分节点接收并应用</strong>：区块获得足够多的 <code>SR</code> 认可，成为固化块。</li>
+</ol>
+<p>这引出了一个关键问题：节点在验证交易后，更新了本地数据库，但若该交易未被打包进区块，或所在区块未获得超过 2/3 <code>SR</code> 的确认，该节点状态将在短时间内与整个网络产生不一致。</p>
+<p>因此，<strong>除了被超过 2/3 <code>SR</code> 认可的区块中的交易数据外，所有因交易处理而产生的数据状态变化都有可能需要回滚</strong>。需要回滚的情况主要有以下三种：</p>
 <ul>
-<li>为超级节点投票</li>
-<li>质押（Stake）TRX</li>
-<li>资源代理</li>
+<li><strong><a href="#rollback-1">接收到新的区块后</a></strong>，需回滚本地验证交易产生的状态变更。</li>
+<li><strong><a href="#rollback-2">生产新区块后</a></strong>，需回滚交易验证产生的状态变更。</li>
+<li><strong><a href="#rollback-3">出现链分叉时</a></strong>，需回滚旧主链区块并应用新主链区块。</li>
 </ul>
-<p>TVM 同时保持了对以太坊大部分内置函数的兼容性，使开发者能够在已有经验的基础上快速迁移和开发合约。</p>
-<h2 id="solidity-tron">Solidity 中的 TRON 地址使用规范<a class="headerlink" href="#solidity-tron" title="Permanent link">&para;</a></h2>
-<p>在 Solidity 中正确处理地址是在 TRON 上开发智能合约的关键。核心需要理解的是 TRON 地址与以太坊地址在字节长度上的差异，以及 TRON 虚拟机（TVM）为兼容 Solidity 而做的内部处理。</p>
-<p><strong>核心差异：20字节 vs 21字节</strong></p>
+<p>下面将逐一展开说明。</p>
+<p><a id="rollback-1"></a></p>
+<h3 id="1_1">1. 接收新区块后的状态回滚<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<p>当节点接收到新的区块时，需要将本地状态回滚到上一个区块结束时的状态，并回滚所有在此之后因交易验证而产生的状态变更。如下图所示：</p>
+<p><img alt="接收新区块后的状态回滚" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/chainbase_2.png" /></p>
+<p>如图所示：</p>
 <ul>
-<li>以太坊地址：是一个 20 字节（40 个十六进制字符）的值。</li>
-<li>TRON 地址：是一个 21 字节的值。它由一个字节的地址前缀（通常是 <code>0x41</code>）和后面 20 字节的核心地址组成。</li>
+<li>区块高度为 100 时，accountA 余额为 100；</li>
+<li>节点预验证交易 t1：A 向 B 转账 100，成功执行；</li>
+<li>随后收到新区块 block101，包含交易 t2：A 向 C 转账 50；</li>
+<li>若不先回滚 t1，则因余额不足，t2 将校验失败。</li>
 </ul>
-<p>在 Solidity 中处理 TRON 地址时，需要遵循以下规范。</p>
-<h4 id="_5">地址转换<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>当您需要将一个 TRON 地址传入合约时，推荐的做法是将其作为一个 <code>uint256</code> 整数传入，然后在合约内部转换为 <code>address</code> 类型。</p>
-<p><div class="highlight"><pre><span></span><code>/**
- * @dev 将 uint256 格式的 TRON 地址转换为 Solidity 的 address 类型。
- * @param tronAddress uint256 格式的 TRON 地址，以 0x 开头，后接 HexString
- * @return address Solidity 的地址类型。
- */
-function convertFromTronInt(uint256 tronAddress) public view returns(address) {
-    return address(tronAddress);
-}
-</code></pre></div>
-这个和在以太坊中其他类型转换成 <code>address</code> 类型语法相同。</p>
-<h4 id="_6">地址判断<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>在 Solidity 中进行地址常量的比较时，必须使用 20 字节的格式，否则将导致编译器报错。TVM 在执行时会自动处理前缀 <code>0x41</code>。例如：</p>
-<div class="highlight"><pre><span></span><code>function compareAddress(address tronAddress) public view returns (uint256) {
-    // 错误写法：包含 0x41 前缀，会导致编译器报错。
-    // if (tronAddress == 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c) { ... }
-
-    // 正确写法：使用 20 字节的地址格式。
-    if (tronAddress == 0xca35b7d915458ef540ade6068dfe2f44e8fa733c) {
-        return 1;
-    } else {
-        return 0;
-    }
-}
-</code></pre></div>
-<blockquote>
-<p><strong>说明</strong>：虽然代码中常量为 20 字节，但当 <code>tronAddress</code> 参数从外部（如 <code>wallet-cli</code>）传入一个完整的 21 字节 TRON 地址时，TVM 依然能正确完成判断，即依然能正确返回 <code>1</code>。</p>
-</blockquote>
-<h4 id="_7">地址赋值<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>与地址判断类似，在为 <code>address</code> 类型的变量赋常量值时，也必须省略 <code>0x41</code> 前缀，使用 20 字节的格式。例如：</p>
-<div class="highlight"><pre><span></span><code>function assignAddress() public pure {
-    // 错误写法：包含 0x41 前缀，会导致编译器报错。
-    // address newAddress = 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c;
-
-    // 正确写法：
-    address newAddress = 0xca35b7d915458ef540ade6068dfe2f44e8fa733c;
-    // ... 后续操作
-}
-</code></pre></div>
-<blockquote>
-<p>说明：
-- 当使用 <code>newAddress</code> 变量进行转账等链上操作时，TVM 会自动为其补上 <code>0x41</code> 前缀，以构成一个有效的 TRON 地址。
-- <code>TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm</code> 此类 Base58 格式的地址是钱包等客户端使用的字符串地址，不能直接在 Solidity 代码中使用，需要先解码为十六进制格式（HexString）。</p>
-</blockquote>
-<h2 id="_8">全局变量与单位<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<p>在 Solidity 智能合约中，可以使用一系列全局变量来获取关于区块链、交易和调用的信息。</p>
-<h4 id="_9">货币单位<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>类似于 Solidity 对 <code>ether</code> 的支持，TVM 原生支持 <code>trx</code> 和 <code>sun</code> 两个货币单位，换算关系为 <code>1 trx = 1,000,000 sun</code>。这两个单位均为小写且大小写敏感。</p>
+<p>因此，需先撤销 t1 所引起的变更，回退至区块 100 的末状态，再执行 block101。</p>
+<p><a id="rollback-2"></a></p>
+<h3 id="2_1">2. 生产区块后的状态回滚<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<p>您可能会有疑问：在生产区块时，已经验证过的交易直接打包到区块中即可，为何还需要在生产区块前进行状态回滚？</p>
+<p>java-tron 在将交易打包到区块时，需要对交易进行<strong>二次校验</strong>。进行二次校验的原因在于交易的时效性。仍然以上图为例，从图中可知在接收到区块 101 后，交易 <code>t1</code> 进行了回滚，并且 <code>accountA</code> 的余额减去了 50。之后轮到该节点打包出块，但此时 <code>t1</code> 已经变成一个非法的交易，因为 <code>accountA</code> 中的余额已经不足以支付 100 TRX。直接将 <code>t1</code> 打包进区块显然是不可取的，所以需要对交易再次进行校验。正因如此，才需要在出块前先将状态回滚。</p>
+<p>当区块打包成功后，该节点会向网络广播该区块，同时也在本地 <code>apply</code> 该区块。而 <code>apply</code> 的逻辑则会对区块中的交易再次校验。因此，在打包完区块后，仍然需要执行回滚操作。</p>
+<p><a id="rollback-3"></a></p>
+<h3 id="3">3. 分叉链的状态回滚<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>在区块链运行过程中，不可避免地会出现分叉，尤其是在基于 DPoS 共识机制、出块速度较快的区块链系统中。当网络中出现多个区块候选链时，系统需要根据共识规则选择一条作为主链，其余链路则会被回滚并丢弃。</p>
+<p>为实现这一过程，java-tron 会在内存中维护一个特定的数据结构（如下图所示），用于记录当前区块链的主链、分叉链及其对应的状态信息。</p>
+<p><img alt="分叉链的状态回滚" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/chainbase_3.png" /></p>
+<p>java-tron 会在内存中保存最近尚未达成最终共识的所有区块。当网络中出现分叉时，系统会根据<strong>最长链原则</strong>选择主链：如果某条分叉链的区块高度超过当前主链的高度，则会将该分叉链切换为新的主链。</p>
+<p>切换过程如下：</p>
 <ul>
-<li>我们推荐使用 <strong>TronIDE</strong> 或 <strong>TronBox</strong> 进行 TRON 智能合约的开发，这两款工具均完整支持 <code>trx</code> 和 <code>sun</code> 单位。</li>
+<li>找到两条链的<strong>共同父区块</strong>（即分叉点）；</li>
+<li>从当前主链回滚至该父区块，依次移除在此之后的主链区块；</li>
+<li>从父区块开始，按顺序 <code>apply</code> 新主链上的区块数据。</li>
 </ul>
-<h4 id="_10">区块与交易相关的全局变量<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>以下是在 TRON 智能合约中常用的全局变量和函数，其中部分变量的行为与以太坊有所不同。</p>
-<p><strong>区块信息</strong></p>
+<p>如上图所示，红色部分的 <code>Fork A</code> 原本是主链，但随着 <code>Fork B</code> 的高度不断增长，最终超过 <code>Fork A</code>。此时系统会回滚 <code>Fork A</code> 中高度为 103、102、101 的三个区块，然后依次 <code>apply</code> <code>Fork B</code> 中的 101、102、103、104 区块。</p>
+<p><a id="rollback-implementation"></a></p>
+<h2 id="_4">状态回滚的实现<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>本节将从代码层面讲解交易接收、交易验证、生成区块、验证区块和保存区块的流程，以进一步解析 <code>chainbase</code> 模块。</p>
+<h3 id="1_2">1. 交易接收<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h3>
+<p><img alt="交易接收流程" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/chainbase_4.png" /></p>
 <ul>
-<li><code>block.blockhash(uint blockNumber) returns (bytes32)</code>: 获取指定区块的哈希值。仅对最近的 256 个区块有效（不含当前区块）</li>
-<li><code>block.coinbase (address)</code>: 产出当前区块的超级节点地址</li>
-<li><code>block.number (uint)</code>：当前区块的高度（即区块号）</li>
-<li><code>block.timestamp (uint)</code>：当前区块的时间戳（以秒为单位）</li>
-<li><code>now (uint)</code>：当前区块的时间戳，与 <code>block.timestamp</code> 等价</li>
+<li>节点收到广播过来的交易后，通过 <code>Manager.pushTransaction(final TransactionCapsule trx)</code> 函数接收交易：将交易放入本地的 <code>pushTransactionQueue</code> 缓存队列，同时，对该交易进行验证。</li>
+<li>验证通过后，交易进入 <code>pendingTransactionQueue</code>，供出块时使用。</li>
+<li>若为 SR 节点，打包区块时会从中取出交易构建区块。</li>
 </ul>
-<p><strong>调用与交易信息</strong></p>
+<p>验证失败处理：
+* 来自 API：返回异常信息给用户
+* 来自 P2P 网络：本地日志中记录错误</p>
+<h3 id="2_2">2. 收到新区块时的状态回滚<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h3>
+<p>在新区块抵达之前，节点可能已经收到了广播过来的交易，并对这些交易进行了验证。交易验证的过程会临时修改节点状态，以便判断交易是否能够正确执行。</p>
+<p>然而，验证成功并不意味着交易最终一定会生效，因为交易还需要被打包进区块并完成固化。为保证状态一致性，当新区块到来时，节点会回滚之前因交易验证而产生的临时状态，只保留在 apply 区块过程中产生的状态变更。</p>
+<p>节点在收到新区块之前，也可能收到广播过来的交易，这时，节点需要对接收到的交易进行验证，以判断该交易是否能正确执行。验证意味着需要改变状态，但验证成功的交易并不代表该交易最终一定能执行，它还需要经过打包进区块和固化的过程。因此，当新的区块到来时，这些交易验证所产生的状态都应该被回滚掉。</p>
+<p><img alt="收到新区块时的状态回滚" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/chainbase_5.png" /></p>
+<p>回滚时，需要将 <code>pendingTransactionQueue</code> 中的交易移至 <code>rePushTransactions</code>，并清空 <code>pendingTransactionQueue</code>。详细解释请参考上图。</p>
+<p>为什么新的区块到来后需要清空 <code>pendingTransactionQueue</code>？首先明确一点，<code>pendingTransactionQueue</code> 队列负责在生成区块时提供交易数据，也就是说，它存放的是验证过的可以直接打包进区块的交易。但是，由于新区块也会对账户状态进行变更，可能导致 <code>pendingTransactionQueue</code> 中之前验证通过的交易在 <code>apply</code> 新区块后变得无效（最简单的例子：新区块中某笔交易是账户 A 花费了一部分 <code>token</code>，导致账户 A 在队列中的某笔交易金额不足以支付）。将交易移至 <code>rePushTransactions</code> 后，会有后台线程专门负责对该队列中的交易再次验证，如果没有问题，则再次放回 <code>pendingTransactionQueue</code>，为产生区块提供数据。</p>
+<p>java-tron 中存在一个 <code>session</code> 对象，一个 <code>session</code> 表示一个区块对状态的变更。<code>session</code> 对象主要用于回滚，例如将状态回滚到上一个区块的状态都需要通过 <code>session</code> 来操作，如下图所示：</p>
+<p><img alt="Session 对象与数据库" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/chainbase_6.png" /></p>
+<p>上图显示了持久化存储中包含多种不同类型的数据库，这些数据共同组织成一个完整的区块链。例如，区块存储在 <code>khasodb</code> 和 <code>blockStore</code> 中，账户信息存储在 <code>accountStore</code> 中。</p>
+<p>节点维护了一个 <code>session</code> 链表，该链表存储了区块/交易对应的变更信息，节点可以通过这些变更信息进行回退。上图中 <code>session1</code> 是当前最高区块对状态的变更。当接收到一个交易后，会产生一个新的 <code>session2</code>。后续每接收一个交易，都会产生一个临时的 <code>tmpSession</code>，该交易验证后，<code>tmpSession</code> 会立即合并到 <code>session2</code> 中。在再次接收到一个新区块之前，所有交易验证产生的状态变更都会保存在 <code>session2</code> 中。当有新区块到来时，直接执行 <code>session2</code> 的 <code>reset</code> 方法即可将状态回滚到上一个区块。</p>
+<h3 id="3_1">3. 生产区块时的状态回滚<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<p><code>SR</code> 生产区块前需要回滚，原因比较复杂。我们先考虑一个场景：</p>
 <ul>
-<li><code>msg.data (bytes)</code>：完整的调用数据 (<code>calldata</code>)</li>
-<li><code>msg.sender (address)</code>：消息的发送者（当前调用的发起者）</li>
-<li><code>msg.sig (bytes4)</code>：<code>calldata</code> 的前 4 字节，即函数标识符</li>
-<li><code>msg.value (uint)</code>：随消息发送的 <code>sun</code> 的数量</li>
-<li><code>tx.origin (address)</code>：交易的原始发起者</li>
+<li><code>pendingTransactionQueue</code> 中存放的是当前已经验证过的交易，所以某个 <code>SR</code> 节点产块时，只要直接打包 <code>pendingTransactionQueue</code> 中的交易进区块，打包完成后将状态回滚到上一个区块的状态即可。</li>
 </ul>
-<p><strong>Gas 与特殊变量</strong></p>
+<p>但是这种方案存在一个问题：如果该 <code>SR</code> 节点刚刚接收并 <code>apply</code> 一个新的区块，从前面的内容可知 <code>pendingTransactionQueue</code> 将被清空至 <code>rePushTransactions</code>。此时如果正好轮到这个 <code>SR</code> 打包区块，但 <code>SR</code> 的 <code>pendingTransactionQueue</code> 中可能没有足够的交易。因此，真实的实现是，产块时不仅从 <code>pendingTransactionQueue</code> 读取交易，如果 <code>pendingTransactionQueue</code> 中交易较少，还会从 <code>rePushTransactions</code> 中读取交易来放入区块。而通过上面的分析可知，<code>rePushTransactions</code> 中的交易有可能已经不再有效，所以需要对交易再次进行验证。正是因为有这个验证逻辑，才需要在出块前先将状态回滚。</p>
+<p><img alt="生产区块时的状态回滚" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/chainbase_7.png" /></p>
+<p>在生产区块的过程中，会对交易再次验证，因此会产生状态变更。但这只是区块生成，还需要广播区块，由广播接收到的区块才会真正改变状态。所以，生成区块所产生的状态变更也需要被回滚掉。如上图所示，当区块生产完成后，还需要将 <code>session2''</code> 回滚掉。</p>
+<p><a id="solidifying-block"></a></p>
+<h2 id="_5">区块持久化<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>java-tron 采用 DPoS 共识机制，通过投票选出 27 个超级代表（SR）作为出块节点，负责生产和确认区块。</p>
+<p>当一个区块获得超过 2/3 <code>SR</code> 的认可，即超过 2/3 的超级代表基于该区块生成了后续区块时，该区块即视为已达成共识，不再发生回滚，称为 <strong>固化块</strong>（<code>Solidified Block</code>）。只有固化块才会被安全写入数据库。</p>
+<p>在 Chainbase 模块中，<code>SnapshotManager</code> 扮演着核心角色，它作为存储层的统一入口，管理并维护所有业务数据库的引用。这些数据库引用被集中存放在一个列表中，每个数据库实例都支持基于自身新增一层临时状态集，即 <code>SnapshotImpl</code>。</p>
+<p><code>SnapshotImpl</code> 本质上是一个内存中的 <code>HashMap</code>，多个 <code>SnapshotImpl</code> 之间通过链表结构进行关联。每个 <code>SnapshotImpl</code> 独立保存一次状态变更所涉及的数据修改，彼此之间相互隔离。借助这种链式快照结构，系统能够实现不同状态的独立管理与回滚控制，如下图所示：</p>
+<p><img alt="SnapshotManager 结构" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/chainbase_8.png" /></p>
+<p>在上图中，<code>SnapshotRoot</code> 是对底层持久化数据库的封装类，负责存储所有已固化的数据。</p>
+<p>在前文我们提到过 <code>session</code> 的概念：一个 <code>session</code> 表示某个区块对全局状态的变更。实际上，一个 <code>session</code> 由多个数据库对应的 <code>SnapshotImpl</code> 组成。例如，在图中，区块 5 对应的所有 <code>SnapshotImpl</code> 共同构成了区块 5 的状态变更集合。</p>
+<p>当节点接收到新区块时，其状态变更并不会立即写入持久化存储，而是首先记录在内存中的 <code>SnapshotImpl</code>。每接收一个区块，就会生成一个新的 <code>SnapshotImpl</code>。随着区块的不断到来，<code>SnapshotImpl</code> 的数量也会持续增加。</p>
+<p>那么，这些内存中的快照（<code>SnapshotImpl</code>）何时会被真正写入持久化存储呢？</p>
+<p>在 <code>SnapshotManager</code> 中有两个关键变量：</p>
 <ul>
-<li><code>gasleft() returns (uint256)</code>：剩余的 gas</li>
-<li><code>block.difficulty (uint)</code>：当前区块的难度。在 TRON 网络中，此值恒定为 0，不推荐使用</li>
-<li><code>block.gaslimit (uint)</code>：当前区块的 gas 限额。在 TRON 网络中不支持使用，暂时设置为 0</li>
-<li><code>tx.gasprice (uint)</code>：交易的 gas 价格。在 TRON 网络中，此值恒定为 0，不推荐使用</li>
+<li><code>size</code>：表示当前内存中 <code>SnapshotImpl</code> 的层数；</li>
+<li><code>maxSize</code>：表示固化块高度与最新块高度之间的差值。</li>
 </ul>
+<p>当 <code>size</code> &gt; <code>maxSize</code> 时，意味着前面多出的 <code>size - maxSize</code> 层的<code>snapshotImpl</code> 对应的区块已经是固化块了，因此它们可以安全地落盘。此时，<code>SnapshotManager</code> 会将这些 <code>SnapshotImpl</code> 写入持久化数据库。</p>
+<p>这种机制既避免了 <code>SnapshotImpl</code> 无限堆积导致的内存消耗，也确保了固化块能被及时、可靠地写入数据库。</p>
+<h3 id="1_3">1. 数据库原子性<a class="headerlink" href="#1_3" title="Permanent link">&para;</a></h3>
+<p>java-tron 的数据库存储设计与其他公链存在一定差异。以太坊在持久化层采用单一数据库实例，通过前缀区分不同类型的数据，并统一存储在同一个数据库中。而 java-tron 则采取了<strong>多数据库实例</strong>的设计思路，将不同业务的数据分别存放在独立的数据库实例中。</p>
+<p>这两种实现方式各有优劣：</p>
+<ul>
+<li>单实例数据库：<ul>
+<li>优点：维护简单，数据写入统一。</li>
+<li>缺点：随着时间推移，单库数据量持续膨胀；某些业务的高频访问可能影响到其他业务的读写性能。</li>
+</ul>
+</li>
+<li>多实例数据库：<ul>
+<li>优点：不同业务的数据互不干扰，可针对不同数据库的数据规模和访问特征独立配置参数，从而实现性能优化；还可以将数据量庞大的库单独拆分，缓解膨胀问题。</li>
+<li>缺点：缺乏原生的跨数据库原子写入支持，带来了事务一致性方面的挑战。</li>
+</ul>
+</li>
+</ul>
+<p>为了解决多数据库实例缺乏原子写入支持的问题，java-tron 引入了 检查点机制（<code>checkpoint mechanism</code>）。在将数据写入多个数据库实例之前，系统会先将所有待写入的数据统一记录到 <code>checkpoint</code> 中。如果在写入过程中发生异常，节点在服务重启时可以基于 <code>checkpoint</code> 恢复一致的数据状态，从而保证多实例写入的原子性。</p>
+<p>在前一节中我们提到，固化块对应的 <code>snapshotImpl</code> 最终需要写入数据库，这一过程主要分为两步：</p>
+<ol>
+<li>创建 <code>checkpoint</code>
+将内存中需要落盘的 <code>snapshotImpl</code> 统一持久化到一个临时数据库 <code>tmp</code>。</li>
+<li>执行落盘操作
+只有在 <code>checkpoint</code> 创建成功后，系统才会将对应的 <code>snapshotImpl</code> 正式写入各个业务数据库实例。</li>
+</ol>
+<p>在多实例数据库写入过程中，创建 <code>checkpoint</code> 是一个关键步骤。
+<code>checkpoint</code> 的作用是：在数据真正落盘之前，先将内存中待写入数据库的 <code>snapshotImpl</code> 统一持久化到一个临时数据库（tmp 数据库。</p>
+<p>只有在 <code>checkpoint</code> 创建成功之后，系统才会继续执行 <code>snapshotImpl</code> 的落盘操作。
+如果此时在落盘过程中节点意外宕机，那么在节点重启时，系统会优先检查是否存在 <code>tmp</code> 的 <code>checkpoint</code> 数据：</p>
+<ul>
+<li>如果存在，则会将 <code>checkpoint</code> 中的数据回放至 <code>SnapshotRoot</code>，从而恢复一致的数据库状态。</li>
+<li>如果不存在，则说明之前的数据已经安全落盘，节点可以直接继续执行。</li>
+</ul>
+<p><code>checkpoint</code> 的数据结构如下所示：</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/chainbase_9.png" /></p>
+<p><code>checkpoint</code> 会将一次状态变更涉及的所有数据统一存放到一个临时数据库中，并通过前缀来区分不同类型的数据。为了确保所有数据能够完整落盘，写入时采用底层数据库提供的 <code>writeBatch()</code> 原子批量写入方式。</p>
+<p>这一机制的核心思路可以总结为：</p>
+<ul>
+<li>多实例数据库之间缺乏原子写入保证，但单实例数据库（大多数主流数据库）通常支持原子性写入。</li>
+<li>因此，系统先将需要原子写入的数据集统一写入到一个临时数据库（保证原子性），再从临时库将数据分发写入各个独立数据库实例。</li>
+<li>如果写入过程中发生异常，节点可依靠临时库中的数据进行恢复，从而保证整体写入的一致性与可靠性。</li>
+</ul>
+<h2 id="_6">总结<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>本文结合交易与区块的处理流程，分析了 <code>ChainBase</code> 模块在 "状态回滚" 与 "数据库写入" 方面的实现机制。同时重点介绍了 java-tron 针对多数据库实例写入引入的 <code>checkpoint</code> 原子写入方案，如何在宕机等意外情况下有效防止数据库损坏。希望本文能帮助开发者更深入理解并更高效地参与 java-tron 数据库的开发与优化。</p>
 
 
 
@@ -1974,7 +2055,7 @@ function convertFromTronInt(uint256 tronAddress) public view returns(address) {
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../mechanism-algorithm/resource/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 资源模型">
+          <a href="../code-structure/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 模块结构">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1984,20 +2065,20 @@ function convertFromTronInt(uint256 tronAddress) public view returns(address) {
                 Previous
               </span>
               <div class="md-ellipsis">
-                资源模型
+                模块结构
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../mechanism-algorithm/system-contracts/" class="md-footer__link md-footer__link--next" aria-label="Next: 系统合约">
+          <a href="../network-module/" class="md-footer__link md-footer__link--next" aria-label="Next: 网络">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                系统合约
+                网络
               </div>
             </div>
             <div class="md-footer__button md-icon">
