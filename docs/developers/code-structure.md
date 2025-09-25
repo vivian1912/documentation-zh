@@ -4,7 +4,6 @@
 
 本文将系统解析 Java-tron 的代码结构，深入介绍各功能模块的职责与组织方式，为开发者后续进行源码分析和功能扩展提供参考。
 
-## 核心模块
 `Java-tron` 采用模块化的设计理念，确保了代码的清晰性、可维护性和可扩展性。当前，`Java-tron` 主要包含以下七个核心模块：
 
 * [protocol](#1)
@@ -18,7 +17,7 @@
 接下来，我们将逐一介绍这些模块的功能及其内部结构。
 
 <a id="1"></a>
-### 1. `protocol` 模块
+## `protocol` 模块
 
 在区块链这样的分布式网络环境中，简洁高效的数据交互协议至关重要。`protocol` 模块定义了 `java-tron` 客户端中的关键通信协议：
 
@@ -54,7 +53,7 @@
 
 
 <a id="2"></a> 
-### 2. `common` 模块
+## `common` 模块
 
 `common` 模块封装了 `java-tron` 中常用的公共组件和工具类，旨在提升代码复用性，便于其他模块统一调用。该模块包含异常处理机制、指标监控工具等通用功能。
 
@@ -108,7 +107,7 @@
 *   `core/db` 和 `core/db2`：数据库相关基础类。
 
 <a id="3"></a> 
-### 3. `chainbase` 模块
+## `chainbase` 模块
 
 `chainbase` 模块是 java-tron 在数据库层的抽象封装。考虑到 Proof of Work (PoW)、Proof-of-Stake (PoS)、Delegated Proof-of-Stake (DPoS) 等基于概率的共识算法可能出现的链分叉（切链）情况，chainbase 提供了一个支持状态回退的数据库接口标准。该接口要求底层数据库实现状态回滚机制、Checkpoint 容灾机制等能力，以保障系统在发生链重组时仍能保持数据一致性与可靠性。
 
@@ -165,7 +164,7 @@ chainbase 模块源代码位于 [java-tron 仓库的 chainbase 目录](https://g
 
 
 <a id="4"></a> 
-### 4. `consensus` 模块
+## `consensus` 模块
 
 共识机制是区块链系统中至关重要的核心模块，决定了网络中节点如何就交易和区块的有效性达成一致。常见的共识算法包括工作量证明（PoW）、权益证明（PoS）、委托权益证明（DPoS）以及实用拜占庭容错（PBFT）等。在联盟链或受限信任网络中，也常采用 Paxos、Raft 等一致性算法。
 
@@ -198,7 +197,7 @@ chainbase 模块源代码位于 [java-tron 仓库的 chainbase 目录](https://g
 
 
 <a id="5"></a> 
-### 5. `actuator` 模块
+## `actuator` 模块
 
 以太坊开创性地引入了虚拟机和智能合约开发范式，极大推动了区块链应用的发展。然而，在某些复杂场景下，智能合约在灵活性和性能方面仍存在局限。为满足更高性能和定制化的需求，java-tron 提供了构建应用链（Application Chain）的能力，并为此设计了独立的 `actuator` 模块。
 
@@ -242,7 +241,7 @@ chainbase 模块源代码位于 [java-tron 仓库的 chainbase 目录](https://g
 
 
 <a id="6"></a> 
-### 6. `crypto` 模块
+## `crypto` 模块
 
 `crypto` 是 java-tron 中一个相对独立但至关重要的模块，承担了整个系统的加密与数据安全工作。目前支持的加密算法包括 `SM2` 和 `ECKey` 。
 
@@ -269,7 +268,7 @@ chainbase 模块源代码位于 [java-tron 仓库的 chainbase 目录](https://g
 
 
 <a id="7"></a> 
-### 7. `framework` 模块
+## `framework` 模块
 
 `framework` 是 java-tron 的核心模块，也是整个节点的启动入口。它负责各个子模块的初始化、业务逻辑的分发，以及对外服务的统一接入，涵盖了节点网络通信、区块广播、同步与管理等核心功能。
 
