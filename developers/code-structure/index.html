@@ -1280,81 +1280,66 @@
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
-        <li class="md-nav__item has-children">
-  <a href="#_1" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+        <li class="md-nav__item ">
+  <a href="#protocol" class="md-nav__link" >
     <span class="md-ellipsis">
-      核心模块
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="核心模块" hidden>
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item ">
-  <a href="#1-protocol" class="md-nav__link" >
-    <span class="md-ellipsis">
-      1. protocol 模块
+      protocol 模块
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item ">
-  <a href="#2-common" class="md-nav__link" >
+      
+        <li class="md-nav__item ">
+  <a href="#common" class="md-nav__link" >
     <span class="md-ellipsis">
-      2. common 模块
+      common 模块
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item ">
-  <a href="#3-chainbase" class="md-nav__link" >
+      
+        <li class="md-nav__item ">
+  <a href="#chainbase" class="md-nav__link" >
     <span class="md-ellipsis">
-      3. chainbase 模块
+      chainbase 模块
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item ">
-  <a href="#4-consensus" class="md-nav__link" >
+      
+        <li class="md-nav__item ">
+  <a href="#consensus" class="md-nav__link" >
     <span class="md-ellipsis">
-      4. consensus 模块
+      consensus 模块
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item ">
-  <a href="#5-actuator" class="md-nav__link" >
+      
+        <li class="md-nav__item ">
+  <a href="#actuator" class="md-nav__link" >
     <span class="md-ellipsis">
-      5. actuator 模块
+      actuator 模块
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item ">
-  <a href="#6-crypto" class="md-nav__link" >
+      
+        <li class="md-nav__item ">
+  <a href="#crypto" class="md-nav__link" >
     <span class="md-ellipsis">
-      6. crypto 模块
+      crypto 模块
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item ">
-  <a href="#7-framework" class="md-nav__link" >
+      
+        <li class="md-nav__item ">
+  <a href="#framework" class="md-nav__link" >
     <span class="md-ellipsis">
-      7. framework 模块
+      framework 模块
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1772,7 +1757,6 @@
 <h1 id="java-tron">Java-tron 模块结构<a class="headerlink" href="#java-tron" title="Permanent link">&para;</a></h1>
 <p><code>Java-tron</code> 是由 Java 编写的 TRON 网络核心客户端，实现了 TRON 白皮书中定义的全部核心功能，包括共识机制、加密算法、数据库管理、TRON 虚拟机（TVM）以及网络通信等。开发者可以通过启动 Java-tron 快速运行一个 TRON 网络节点。</p>
 <p>本文将系统解析 Java-tron 的代码结构，深入介绍各功能模块的职责与组织方式，为开发者后续进行源码分析和功能扩展提供参考。</p>
-<h2 id="_1">核心模块<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p><code>Java-tron</code> 采用模块化的设计理念，确保了代码的清晰性、可维护性和可扩展性。当前，<code>Java-tron</code> 主要包含以下七个核心模块：</p>
 <ul>
 <li><a href="#1">protocol</a></li>
@@ -1785,7 +1769,7 @@
 </ul>
 <p>接下来，我们将逐一介绍这些模块的功能及其内部结构。</p>
 <p><a id="1"></a></p>
-<h3 id="1-protocol">1. <code>protocol</code> 模块<a class="headerlink" href="#1-protocol" title="Permanent link">&para;</a></h3>
+<h2 id="protocol"><code>protocol</code> 模块<a class="headerlink" href="#protocol" title="Permanent link">&para;</a></h2>
 <p>在区块链这样的分布式网络环境中，简洁高效的数据交互协议至关重要。<code>protocol</code> 模块定义了 <code>java-tron</code> 客户端中的关键通信协议：</p>
 <ul>
 <li>节点间的通信协议</li>
@@ -1815,7 +1799,7 @@
 </li>
 </ul>
 <p><a id="2"></a> </p>
-<h3 id="2-common">2. <code>common</code> 模块<a class="headerlink" href="#2-common" title="Permanent link">&para;</a></h3>
+<h2 id="common"><code>common</code> 模块<a class="headerlink" href="#common" title="Permanent link">&para;</a></h2>
 <p><code>common</code> 模块封装了 <code>java-tron</code> 中常用的公共组件和工具类，旨在提升代码复用性，便于其他模块统一调用。该模块包含异常处理机制、指标监控工具等通用功能。</p>
 <p>源代码位于 <a href="https://github.com/tronprotocol/java-tron/tree/develop/common">java-tron 仓库的 common 目录</a>，其核心目录结构如下所示：</p>
 <div class="highlight"><pre><span></span><code>|-- /common/src/main/java/org/tron
@@ -1864,7 +1848,7 @@
 <li><code>core/db</code> 和 <code>core/db2</code>：数据库相关基础类。</li>
 </ul>
 <p><a id="3"></a> </p>
-<h3 id="3-chainbase">3. <code>chainbase</code> 模块<a class="headerlink" href="#3-chainbase" title="Permanent link">&para;</a></h3>
+<h2 id="chainbase"><code>chainbase</code> 模块<a class="headerlink" href="#chainbase" title="Permanent link">&para;</a></h2>
 <p><code>chainbase</code> 模块是 java-tron 在数据库层的抽象封装。考虑到 Proof of Work (PoW)、Proof-of-Stake (PoS)、Delegated Proof-of-Stake (DPoS) 等基于概率的共识算法可能出现的链分叉（切链）情况，chainbase 提供了一个支持状态回退的数据库接口标准。该接口要求底层数据库实现状态回滚机制、Checkpoint 容灾机制等能力，以保障系统在发生链重组时仍能保持数据一致性与可靠性。</p>
 <p>此外，chainbase 模块具备良好的接口抽象设计，任何符合该接口规范的数据库都可作为区块链系统的底层存储，从而为开发者提供更大的灵活性。当前，java-tron 默认提供了 LevelDB 和 RocksDB 两种实现。</p>
 <p>chainbase 模块源代码位于 <a href="https://github.com/tronprotocol/java-tron/tree/develop/chainbase">java-tron 仓库的 chainbase 目录</a>，其核心目录结构如下：</p>
@@ -1923,7 +1907,7 @@
 </li>
 </ul>
 <p><a id="4"></a> </p>
-<h3 id="4-consensus">4. <code>consensus</code> 模块<a class="headerlink" href="#4-consensus" title="Permanent link">&para;</a></h3>
+<h2 id="consensus"><code>consensus</code> 模块<a class="headerlink" href="#consensus" title="Permanent link">&para;</a></h2>
 <p>共识机制是区块链系统中至关重要的核心模块，决定了网络中节点如何就交易和区块的有效性达成一致。常见的共识算法包括工作量证明（PoW）、权益证明（PoS）、委托权益证明（DPoS）以及实用拜占庭容错（PBFT）等。在联盟链或受限信任网络中，也常采用 Paxos、Raft 等一致性算法。</p>
 <p>共识机制的选择应与具体业务场景相匹配，比如对共识效率敏感的实时游戏类就不适合采用 PoW，而对实时性要求极高的交易所来说 PBFT 可能是首选。所以支持可替换的共识是非常有必要的，同时也是实现特定应用区块链的重要一环，consensus 模块最终目标是能够让应用开发者能够像配置参数那样简单的切换共识机制。</p>
 <p><code>consensus</code> 模块源代码位于 <a href="https://github.com/tronprotocol/java-tron/tree/develop/consensus">java-tron 仓库的 consensus 目录</a>，其核心目录结构如下：</p>
@@ -1947,7 +1931,7 @@
 <p>目前，<code>java-tron</code> 基于该接口提供了两种共识机制的实现：DPoS（位于 dpos/ 目录）和 PBFT（位于 pbft/ 目录）。</p>
 <p>开发者也可以根据具体业务需求，自行实现 <code>ConsensusInterface</code> 接口，以集成其他共识算法，从而实现更灵活的链设计与部署。</p>
 <p><a id="5"></a> </p>
-<h3 id="5-actuator">5. <code>actuator</code> 模块<a class="headerlink" href="#5-actuator" title="Permanent link">&para;</a></h3>
+<h2 id="actuator"><code>actuator</code> 模块<a class="headerlink" href="#actuator" title="Permanent link">&para;</a></h2>
 <p>以太坊开创性地引入了虚拟机和智能合约开发范式，极大推动了区块链应用的发展。然而，在某些复杂场景下，智能合约在灵活性和性能方面仍存在局限。为满足更高性能和定制化的需求，java-tron 提供了构建应用链（Application Chain）的能力，并为此设计了独立的 <code>actuator</code> 模块。</p>
 <p><code>actuator</code> 模块是交易的执行器，支持将应用逻辑直接植入链中，而无需在虚拟机中运行。开发者可将应用视为由不同类型的交易组成，每种交易类型对应一个专属的 actuator，负责该类交易的具体执行逻辑，从而实现高度定制化的链上处理能力。</p>
 <p><code>actuator</code> 模块源代码位于 <a href="https://github.com/tronprotocol/java-tron/tree/develop/actuator">java-tron 仓库的 actuator 目录</a>，其核心目录结构如下：</p>
@@ -1982,7 +1966,7 @@
 </ul>
 <p>开发者也可以根据自身业务需求，通过实现 <code>Actuator</code> 接口来定义和处理自定义的交易类型。</p>
 <p><a id="6"></a> </p>
-<h3 id="6-crypto">6. <code>crypto</code> 模块<a class="headerlink" href="#6-crypto" title="Permanent link">&para;</a></h3>
+<h2 id="crypto"><code>crypto</code> 模块<a class="headerlink" href="#crypto" title="Permanent link">&para;</a></h2>
 <p><code>crypto</code> 是 java-tron 中一个相对独立但至关重要的模块，承担了整个系统的加密与数据安全工作。目前支持的加密算法包括 <code>SM2</code> 和 <code>ECKey</code> 。</p>
 <p><code>crypto</code> 模块源代码位于 <a href="https://github.com/tronprotocol/java-tron/tree/develop/crypto">java-tron 仓库的 crypto 目录</a>，其核心目录结构如下：</p>
 <div class="highlight"><pre><span></span><code>|-- crypto/src/main/java/org/tron/common/crypto
@@ -2003,7 +1987,7 @@
 </ul>
 <p>该模块为整个 TRON 网络提供了安全基础，确保交易数据的完整性、不可抵赖性与隐私性，是支撑链上信任的重要支柱。</p>
 <p><a id="7"></a> </p>
-<h3 id="7-framework">7. <code>framework</code> 模块<a class="headerlink" href="#7-framework" title="Permanent link">&para;</a></h3>
+<h2 id="framework"><code>framework</code> 模块<a class="headerlink" href="#framework" title="Permanent link">&para;</a></h2>
 <p><code>framework</code> 是 java-tron 的核心模块，也是整个节点的启动入口。它负责各个子模块的初始化、业务逻辑的分发，以及对外服务的统一接入，涵盖了节点网络通信、区块广播、同步与管理等核心功能。</p>
 <p><code>framework</code> 模块源代码位于 <a href="https://github.com/tronprotocol/java-tron/tree/develop/framework">java-tron 仓库的 framework 目录</a>，其核心目录结构如下：</p>
 <div class="highlight"><pre><span></span><code>|-- framework/src/main/java/org/tron
