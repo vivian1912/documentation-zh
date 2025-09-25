@@ -2,9 +2,9 @@
 
 ## 概述
 
-**注意：** SolidityNode 已被弃用。现在 FullNode 支持 SolidityNode 的所有 RPC。新的开发者应仅部署 FullNode。
-
 本文档提供了 TRON 区块链网络中远程过程调用 gRPC API 的详细参考。这些 API 允许开发者与 TRON 网络交互，执行账户管理、交易广播、智能合约操作、资源管理等多种功能。
+
+**注意：** SolidityNode 已被弃用。现在 FullNode 支持 SolidityNode 的所有 gRPC。新的开发者应仅部署 FullNode。
 
 **API 定义参考:** 本文档介绍了各主要 API 的功能。如需查看最完整和权威的 API 技术定义，请访问 [api/api.proto](https://github.com/tronprotocol/protocol/blob/master/api/api.proto)。
 
