@@ -40,7 +40,10 @@ nav:
         - 治理流程: developers/governance.md
         - 配置IDE开发环境: developers/run-in-idea.md
         - 开发示例: developers/demo.md
-        - 核心模块: developers/code-structure.md
+        - 核心模块:
+            - 模块结构: developers/code-structure.md
+            - Chainbase: developers/chainbase-module.md
+            - 网络: developers/network-module.md
     - Dapp开发:
         - 工具: contracts/tools.md
     - 客户端: 
