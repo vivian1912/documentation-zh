@@ -4,10 +4,19 @@ TRON 网络支持多种多样的交易类型，例如 TRX 转账、TRC-10 代币
 
 举例来说，部署智能合约需要调用 `wallet/deploycontract` 接口，其对应的合约类型为 `CreateSmartContract`。而质押 TRX 获取资源则需调用 `wallet/freezebalancev2` 接口，其合约类型为 `FreezeBalanceV2Contract`。
 
-本文档将详细介绍 TRON 网络中主要的系统合约类型及其包含的参数。
+本文档将详细介绍 TRON 网络中主要的系统合约类型及其包含的参数：
+
+  * [**账户管理合约**](#account-contracts)：负责账户的创建与信息更新。
+  * [**TRX 转账与资源合约**](#trx-resource-contracts)：处理原生代币 TRX 的流转以及带宽、能量等网络资源的质押与委托。
+  * [**TRC-10 代币合约**](#trc10-token-contracts)：定义了 TRC-10 标准代币的发行、转账与管理规则。
+  * [**超级代表与投票合约**](#sr-voting-contracts)：涵盖了 TRON 网络共识机制中的节点选举与投票操作。
+  * [**提议与治理合约**](#proposal-governance-contracts)：用于修改网络参数的链上治理机制。
+  * [**智能合约管理合约**](#smart-contract-contracts)：支持 TRC-20 及其他智能合约的部署、调用与设置。
+  * [**账户权限管理**](#permission-management)：介绍了实现多重签名等高级功能的账户权限设置。
 
 
-## 1. 账户管理合约
+<a id="account-contracts"></a>
+## 账户管理合约
 
 ### AccountCreateContract
 *创建新账户*
@@ -55,8 +64,8 @@ message SetAccountIdContract {
 * `owner_address`: 合约发起人地址。
 * `account_id`: 账户 ID，唯一且不区分大小写。
 
-
-## 2. TRX 转账与资源合约
+<a id="trx-resource-contracts"></a>
+## TRX 转账与资源合约
 
 ### TransferContract
 *TRX 转账*
@@ -197,8 +206,8 @@ message WithdrawBalanceContract {
 
 * `owner_address`: 合约发起人地址。
 
-
-## 3. TRC-10 代币合约
+<a id="trc10-token-contracts"></a>
+## TRC-10 代币合约
 
 ### TransferAssetContract
 *TRC-10 代币转账*
@@ -312,8 +321,8 @@ message UpdateAssetContract {
 * `new_public_limit`: 所有调用者可消耗的新公共带宽上限。
 
 
-
-## 4. 超级代表与投票合约
+<a id="sr-voting-contracts"></a>
+## 超级代表与投票合约
 
 ### VoteWitnessContract
 *为超级代表候选人投票*
@@ -363,8 +372,8 @@ message WitnessUpdateContract {
 * `update_url`: 新的网站地址。
 
 
-
-## 5. 提议与治理合约
+<a id="proposal-governance-contracts"></a>
+## 提议与治理合约
 
 ### ProposalCreateContract
 *创建提议（Proposal）*
@@ -408,8 +417,8 @@ message ProposalDeleteContract {
 * `proposal_id`: Proposal ID。
 
 
-
-## 6. 智能合约管理合约
+<a id="smart-contract-contracts"></a>
+## 智能合约管理合约
 
 ### CreateSmartContract
 *创建智能合约*
@@ -505,7 +514,7 @@ message UpdateBrokerageContract {
 * `owner_address`: 超级代表地址。
 * `brokerage`: 新的分红比例，范围从 0 到 100，表示百分比。
 
-
-## 7. 账户权限管理
+<a id="permission-management"></a>
+## 账户权限管理
 
 如需了解账户权限管理的详细信息，请参考 [账户权限管理](https://tronprotocol.github.io/documentation-zh/mechanism-algorithm/multi-signatures/)。
