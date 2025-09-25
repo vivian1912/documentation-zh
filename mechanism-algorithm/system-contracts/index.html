@@ -995,13 +995,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item has-children">
-  <a href="#1" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#_2" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      1. 账户管理合约
+      账户管理合约
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. 账户管理合约" hidden>
+    <nav class="md-nav" aria-label="账户管理合约" hidden>
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
@@ -1037,13 +1037,13 @@
 </li>
       
         <li class="md-nav__item has-children">
-  <a href="#2-trx" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#trx" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      2. TRX 转账与资源合约
+      TRX 转账与资源合约
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. TRX 转账与资源合约" hidden>
+    <nav class="md-nav" aria-label="TRX 转账与资源合约" hidden>
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
@@ -1133,13 +1133,13 @@
 </li>
       
         <li class="md-nav__item has-children">
-  <a href="#3-trc-10" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#trc-10" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      3. TRC-10 代币合约
+      TRC-10 代币合约
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. TRC-10 代币合约" hidden>
+    <nav class="md-nav" aria-label="TRC-10 代币合约" hidden>
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
@@ -1193,13 +1193,13 @@
 </li>
       
         <li class="md-nav__item has-children">
-  <a href="#4" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#_3" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      4. 超级代表与投票合约
+      超级代表与投票合约
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. 超级代表与投票合约" hidden>
+    <nav class="md-nav" aria-label="超级代表与投票合约" hidden>
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
@@ -1235,13 +1235,13 @@
 </li>
       
         <li class="md-nav__item has-children">
-  <a href="#5" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#_4" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      5. 提议与治理合约
+      提议与治理合约
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5. 提议与治理合约" hidden>
+    <nav class="md-nav" aria-label="提议与治理合约" hidden>
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
@@ -1277,13 +1277,13 @@
 </li>
       
         <li class="md-nav__item has-children">
-  <a href="#6" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#_5" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      6. 智能合约管理合约
+      智能合约管理合约
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6. 智能合约管理合约" hidden>
+    <nav class="md-nav" aria-label="智能合约管理合约" hidden>
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
@@ -1346,9 +1346,9 @@
 </li>
       
         <li class="md-nav__item ">
-  <a href="#7" class="md-nav__link" >
+  <a href="#_6" class="md-nav__link" >
     <span class="md-ellipsis">
-      7. 账户权限管理
+      账户权限管理
     </span>
   </a>
   
@@ -1962,8 +1962,18 @@
 <h1 id="_1">系统合约<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>TRON 网络支持多种多样的交易类型，例如 TRX 转账、TRC-10 代币转账、智能合约部署与调用，以及 TRX 质押等。每种交易类型都由一个特定的系统合约来定义和执行。开发者可以通过调用不同的 API 接口来创建这些交易。</p>
 <p>举例来说，部署智能合约需要调用 <code>wallet/deploycontract</code> 接口，其对应的合约类型为 <code>CreateSmartContract</code>。而质押 TRX 获取资源则需调用 <code>wallet/freezebalancev2</code> 接口，其合约类型为 <code>FreezeBalanceV2Contract</code>。</p>
-<p>本文档将详细介绍 TRON 网络中主要的系统合约类型及其包含的参数。</p>
-<h2 id="1">1. 账户管理合约<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>本文档将详细介绍 TRON 网络中主要的系统合约类型及其包含的参数：</p>
+<ul>
+<li><a href="#account-contracts"><strong>账户管理合约</strong></a>：负责账户的创建与信息更新。</li>
+<li><a href="#trx-resource-contracts"><strong>TRX 转账与资源合约</strong></a>：处理原生代币 TRX 的流转以及带宽、能量等网络资源的质押与委托。</li>
+<li><a href="#trc10-token-contracts"><strong>TRC-10 代币合约</strong></a>：定义了 TRC-10 标准代币的发行、转账与管理规则。</li>
+<li><a href="#sr-voting-contracts"><strong>超级代表与投票合约</strong></a>：涵盖了 TRON 网络共识机制中的节点选举与投票操作。</li>
+<li><a href="#proposal-governance-contracts"><strong>提议与治理合约</strong></a>：用于修改网络参数的链上治理机制。</li>
+<li><a href="#smart-contract-contracts"><strong>智能合约管理合约</strong></a>：支持 TRC-20 及其他智能合约的部署、调用与设置。</li>
+<li><a href="#permission-management"><strong>账户权限管理</strong></a>：介绍了实现多重签名等高级功能的账户权限设置。</li>
+</ul>
+<p><a id="account-contracts"></a></p>
+<h2 id="_2">账户管理合约<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <h3 id="accountcreatecontract">AccountCreateContract<a class="headerlink" href="#accountcreatecontract" title="Permanent link">&para;</a></h3>
 <p><em>创建新账户</em></p>
 <div class="highlight"><pre><span></span><code>message AccountCreateContract {
@@ -2006,7 +2016,8 @@ message SetAccountIdContract {
 <li><code>owner_address</code>: 合约发起人地址。</li>
 <li><code>account_id</code>: 账户 ID，唯一且不区分大小写。</li>
 </ul>
-<h2 id="2-trx">2. TRX 转账与资源合约<a class="headerlink" href="#2-trx" title="Permanent link">&para;</a></h2>
+<p><a id="trx-resource-contracts"></a></p>
+<h2 id="trx">TRX 转账与资源合约<a class="headerlink" href="#trx" title="Permanent link">&para;</a></h2>
 <h3 id="transfercontract">TransferContract<a class="headerlink" href="#transfercontract" title="Permanent link">&para;</a></h3>
 <p><em>TRX 转账</em></p>
 <div class="highlight"><pre><span></span><code>message TransferContract {
@@ -2128,7 +2139,8 @@ message SetAccountIdContract {
 <ul>
 <li><code>owner_address</code>: 合约发起人地址。</li>
 </ul>
-<h2 id="3-trc-10">3. TRC-10 代币合约<a class="headerlink" href="#3-trc-10" title="Permanent link">&para;</a></h2>
+<p><a id="trc10-token-contracts"></a></p>
+<h2 id="trc-10">TRC-10 代币合约<a class="headerlink" href="#trc-10" title="Permanent link">&para;</a></h2>
 <h3 id="transferassetcontract">TransferAssetContract<a class="headerlink" href="#transferassetcontract" title="Permanent link">&para;</a></h3>
 <p><em>TRC-10 代币转账</em></p>
 <div class="highlight"><pre><span></span><code>message TransferAssetContract {
@@ -2230,7 +2242,8 @@ message SetAccountIdContract {
 <li><code>new_limit</code>: 单个调用者可消耗的新带宽上限。</li>
 <li><code>new_public_limit</code>: 所有调用者可消耗的新公共带宽上限。</li>
 </ul>
-<h2 id="4">4. 超级代表与投票合约<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p><a id="sr-voting-contracts"></a></p>
+<h2 id="_3">超级代表与投票合约<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <h3 id="votewitnesscontract">VoteWitnessContract<a class="headerlink" href="#votewitnesscontract" title="Permanent link">&para;</a></h3>
 <p><em>为超级代表候选人投票</em></p>
 <div class="highlight"><pre><span></span><code>message VoteWitnessContract {
@@ -2274,7 +2287,8 @@ message SetAccountIdContract {
 <li><code>owner_address</code>: 候选人地址。</li>
 <li><code>update_url</code>: 新的网站地址。</li>
 </ul>
-<h2 id="5">5. 提议与治理合约<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p><a id="proposal-governance-contracts"></a></p>
+<h2 id="_4">提议与治理合约<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <h3 id="proposalcreatecontract">ProposalCreateContract<a class="headerlink" href="#proposalcreatecontract" title="Permanent link">&para;</a></h3>
 <p><em>创建提议（Proposal）</em></p>
 <div class="highlight"><pre><span></span><code>message ProposalCreateContract {
@@ -2310,7 +2324,8 @@ message SetAccountIdContract {
 <li><code>owner_address</code>: Proposal 删除人地址。</li>
 <li><code>proposal_id</code>: Proposal ID。</li>
 </ul>
-<h2 id="6">6. 智能合约管理合约<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<p><a id="smart-contract-contracts"></a></p>
+<h2 id="_5">智能合约管理合约<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <h3 id="createsmartcontract">CreateSmartContract<a class="headerlink" href="#createsmartcontract" title="Permanent link">&para;</a></h3>
 <p><em>创建智能合约</em></p>
 <div class="highlight"><pre><span></span><code>message CreateSmartContract {
@@ -2393,7 +2408,8 @@ message SetAccountIdContract {
 <li><code>owner_address</code>: 超级代表地址。</li>
 <li><code>brokerage</code>: 新的分红比例，范围从 0 到 100，表示百分比。</li>
 </ul>
-<h2 id="7">7. 账户权限管理<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<p><a id="permission-management"></a></p>
+<h2 id="_6">账户权限管理<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p>如需了解账户权限管理的详细信息，请参考 <a href="https://tronprotocol.github.io/documentation-zh/mechanism-algorithm/multi-signatures/">账户权限管理</a>。</p>
 
 

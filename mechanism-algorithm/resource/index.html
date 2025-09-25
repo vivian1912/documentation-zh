@@ -1821,7 +1821,7 @@
 <ul>
 <li><strong>通过质押 TRX 获取</strong>：
 用户根据其为获取带宽而质押的 TRX 数量，按比例分享一个全网固定的总带宽池。
-    <div class="highlight"><pre><span></span><code>额度 = (为获取带宽质押的 TRX / 整个网络为获取带宽质押的 TRX 总额) * (Bandwidth 上界) 
+    <div class="highlight"><pre><span></span><code>额度 = (为获取带宽质押的 TRX / 整个网络为获取带宽质押的 TRX 总额) * (Bandwidth 总量) 
 </code></pre></div>
     <strong>Bandwidth 总量</strong>是一个可通过委员会提案修改的网络参数（<a href="https://tronscan.io/#/sr/committee">#62</a>），目前的值是 43,200,000,000。</li>
 </ul>
@@ -1886,7 +1886,13 @@
 </code></pre></div>
 <p>注：如果接口返回的结果中没有包含上述公式中的参数，表示该参数值为 <code>0</code>。</p>
 <h2 id="_5">能量<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>能量 (Energy) 是在 TRON 虚拟机（TVM）中执行智能合约指令时所需消耗的计算资源的计量单位。</p>
+<p>能量 (Energy) 是在 TRON 虚拟机（TVM）中执行智能合约指令时所需消耗的计算资源的计量单位。本章将从以下三个方面全面介绍能量这一核心资源：</p>
+<ul>
+<li><a href="#get-energy">能量的获取、消耗与恢复</a></li>
+<li><a href="#set-fee-limit">如何设置关键参数 <code>fee_limit</code></a></li>
+<li><a href="#energy-mechanism">TRON 网络的整体消耗机制</a></li>
+</ul>
+<p><a id="get-energy"></a></p>
 <h3 id="1_1">1. 能量的获取与消耗<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
 <p>获取能量有两种方式，一种是通过质押 TRX （即将持有的 TRX 锁定，作为抵押）获取，另外一种是通过他人代理获取。通过质押，用户可以按其贡献比例，分享一个全网固定的总能量池。</p>
 <p>获取能量主要有两种方式：</p>
@@ -1907,9 +1913,9 @@
 <p>注：如果接口返回的结果中没有包含上述公式中的参数，表示该参数值为 <code>0</code>。</p>
 <h4 id="_7">能量额度计算<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>您能获得的能量额度是一个动态值，它根据您的质押占全网总能量质押的比例实时计算：
-<div class="highlight"><pre><span></span><code>您的能量额度 = (为获取 Energy 质押的 TRX / 整个网络为获取 Energy 质押的 TRX 总额) * 能量上界
+<div class="highlight"><pre><span></span><code>您的能量额度 = (为获取 Energy 质押的 TRX / 整个网络为获取 Energy 质押的 TRX 总额) * 能量总量
 </code></pre></div>
-<strong>能量上界</strong>是一个由委员会设定的网络参数（<a href="https://tronscan.io/#/sr/committee">#19</a>），当前值为 180,000,000,000，可通过 TIP 修改。</p>
+能量总量是一个由委员会设定的网络参数（<a href="https://tronscan.io/#/sr/committee">#19</a>），当前值为 180,000,000,000，可通过 TIP 修改。</p>
 <h5 id="_8">计算示例<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h5>
 <p>由于您的额度与全网总质押量挂钩，当其他用户质押或解押时，您的能量额度会随之变化。</p>
 <div class="highlight"><pre><span></span><code>如全网只有两个人 A，B 分别质押 2 TRX，2 TRX。
@@ -1945,6 +1951,7 @@ C: 36,000,000,000
 </ul>
 <h4 id="_12">能量的恢复<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>账户的能量资源消耗后，会在 24 小时内逐步恢复。</p>
+<p><a id="set-fee-limit"></a></p>
 <h3 id="2-fee_limit">2. 如何填写 <code>fee_limit</code> (用户必读)<a class="headerlink" href="#2-fee_limit" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>在本节范围内，将合约的开发部署人员，简称为“开发者”；将调用合约的用户或者其他合约，简称为“调用者”。</p>
@@ -1976,6 +1983,7 @@ C: 36,000,000,000
 <li><strong>步骤 3：设定最终的 <code>fee_limit</code></strong>
 因此，建议用户将 <code>fee_limit</code> 设置为 200,000 sun。</li>
 </ul>
+<p><a id="energy-mechanism"></a></p>
 <h3 id="3-tron">3. TRON 网络能量消耗机制<a class="headerlink" href="#3-tron" title="Permanent link">&para;</a></h3>
 <h4 id="_13">基本能量消耗规则<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>在执行合约交易时，系统会逐条指令计算并扣除所需能量，账户能量的使用遵循以下优先级原则：</p>
