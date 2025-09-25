@@ -1781,7 +1781,6 @@
 <div class="highlight"><pre><span></span><code>|-- protos
     |-- api
     |   |-- api.proto
-    |   |-- zksnark.proto
     |-- core
         |-- Discover.proto
         |-- Tron.proto
@@ -1862,7 +1861,6 @@
     |   |   |-- leveldb
     |   |   |-- rocksdb
     |   |-- utils
-    |   |-- zksnark
     |-- core
         |-- actuator
         |-- capsule
@@ -1979,11 +1977,9 @@
     |-- cryptohash
     |-- jce
     |-- sm2
-    |-- zksnark
 </code></pre></div>
 <ul>
 <li><code>sm2</code> 和 <code>jce</code>：分别实现了 SM2 和 ECKey 加密与签名算法，广泛用于交易签名、身份验证等核心安全场景。</li>
-<li><code>zksnark</code>：引入零知识证明（<code>Zero-Knowledge Proof</code>）算法，为更高级别的隐私保护能力奠定基础。</li>
 </ul>
 <p>该模块为整个 TRON 网络提供了安全基础，确保交易数据的完整性、不可抵赖性与隐私性，是支撑链上信任的重要支柱。</p>
 <p><a id="7"></a> </p>
@@ -2002,7 +1998,6 @@
     |   |   |-- message
     |   |   |-- server
     |   |-- runtime
-    |   |-- zksnark
     |-- core
     |   |-- Wallet.java
     |   |-- capsule
