@@ -1,6 +1,9 @@
 name: Publish Document
 
 on:
+  push:
+    branches:
+      - master 
   workflow_dispatch: # Allows manual trigger from GitHub UI
 
 jobs:
@@ -24,8 +27,8 @@ jobs:
       run: mkdocs build
 
     - name: Build and Deploy
-      uses: JamesIves/github-pages-deploy-action@releases/v3
+      uses: JamesIves/github-pages-deploy-action@releases/v4
       with:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: gh-pages # The branch the action should deploy to.
         FOLDER: site # The folder the action should deploy.
