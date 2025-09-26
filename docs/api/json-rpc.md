@@ -554,7 +554,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 ### eth_getTransactionReceipt
 
-*通过交易哈希返回交易的收据信息。收据包含了交易的执行结果、事件日志、消耗的资源等。请参考 HTTP api: [wallet/gettransactioninfobyid](http/#walletgettransactioninfobyid)*。
+*通过交易哈希返回交易的收据信息。收据包含了交易的执行结果、事件日志、消耗的资源等。请参考 HTTP api: [wallet/gettransactioninfobyid](http.md#walletgettransactioninfobyid)*。
 
 **参数：**
 `DATA, 32 Bytes` - 交易的哈希。
