@@ -2988,7 +2988,7 @@
 <h3 id="_63">获取账户资源（能量，带宽）<a class="headerlink" href="#_63" title="Permanent link">&para;</a></h3>
 <p><div class="highlight"><pre><span></span><code>rpc GetAccountResource (Account) returns (AccountResourceMessage){}; 
 </code></pre></div>
-<strong>注意</strong>：只有在配置文件里设置了 <code>storage.balance.history.lookup= true</code> 的节点才支持查
+<strong>注意</strong>：只有在配置文件里设置了 <code>storage.balance.history.lookup = true</code> 的节点才支持查
 询账户历史余额。支持此接口的官方节点可在 <a href="../../using_javatron/backup_restore/#fullnode">此处</a> 查阅。</p>
 <h3 id="_64">获取区块内账号余额变更<a class="headerlink" href="#_64" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>rpc GetBlockBalanceTrace (BlockBalanceTrace.BlockIdentifier) returns (BlockBalanceTrace) {}; 

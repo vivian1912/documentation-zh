@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#jsonrpc-api" class="md-skip">
+        <a href="#json-rpc-api" class="md-skip">
           Skip to content
         </a>
       
@@ -2106,10 +2106,10 @@
   
 
 
-<h1 id="jsonrpc-api">jsonRPC API<a class="headerlink" href="#jsonrpc-api" title="Permanent link">&para;</a></h1>
+<h1 id="json-rpc-api">JSON-RPC API<a class="headerlink" href="#json-rpc-api" title="Permanent link">&para;</a></h1>
 <h2 id="_1">概述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>JSON-RPC 是一种无状态、轻量级的远程过程调用（RPC）协议，TRON 网络提供了一套与以太坊兼容的 JSON-RPC API。</p>
-<p>尽管 API 在设计上保持了高度兼容性，但由于 TRON 与以太坊在底层账户模型、资源模型和共识机制上存在差异，部分接口的行为会有所不同。同时，TRON 也扩展了部分自定义接口以支持其特有的交易类型。</p>
+<p>尽管这些 API 在设计上与以太坊高度兼容，但由于 TRON 与以太坊在底层账户模型、资源模型和共识机制上存在差异，部分接口的行为可能会有所不同。同时，TRON 也扩展了部分自定义接口以支持其特有的交易类型。</p>
 <h3 id="json-rpc">如何启用或禁用节点的 JSON-RPC 服务<a class="headerlink" href="#json-rpc" title="Permanent link">&para;</a></h3>
 <p>默认情况下，java-tron 节点的 JSON-RPC 服务是禁用的。您必须在节点的 <a href="https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf">配置文件</a> 中明确启用它。<br />
 <div class="highlight"><pre><span></span><code>node.jsonrpc {  
@@ -2121,29 +2121,21 @@
 </code></pre></div></p>
 <h3 id="hex">HEX 值编码<a class="headerlink" href="#hex" title="Permanent link">&para;</a></h3>
 <p>在 JSON-RPC 交互中，所有数据均通过十六进制字符串传递，但遵循两种不同的格式化规则：</p>
-<ul>
-<li>
 <p><strong>QUANTITIES (数值类型)</strong></p>
-</li>
-<li>
-<p>描述: 用于表示整数，如区块号、余额、数量等。</p>
-</li>
-<li>格式: 以 <code>0x</code> 为前缀的十六进制，采用最紧凑的表示法（即没有前导零）。唯一的例外是零，必须表示为 <code>0x0</code>.</li>
-<li>
-<p>示例:</p>
 <ul>
+<li>描述: 用于表示整数，如区块号、余额、数量等。</li>
+<li>格式: 以 <code>0x</code> 为前缀的十六进制，采用最紧凑的表示法（即没有前导零）。唯一的例外是零，必须表示为 <code>0x0</code>.</li>
+<li>示例:<ul>
 <li><code>0x41</code> (十进制 65)</li>
 <li><code>0x400</code> (十进制 1024)</li>
 <li>错误: <code>0x0400</code> (不允许前导零)</li>
 <li>错误: <code>ff</code> (必须有 <code>0x</code> 前缀)</li>
 </ul>
 </li>
-<li>
+</ul>
 <p><strong>UNFORMATTED DATA (非格式化数据)</strong></p>
-</li>
-<li>
-<p>描述: 用于表示字节数组，如地址、哈希、字节码等。</p>
-</li>
+<ul>
+<li>描述: 用于表示字节数组，如地址、哈希、字节码等。</li>
 <li>格式: 以 <code>0x</code> 为前缀，每个字节由两个十六进制字符表示。</li>
 <li>示例:<ul>
 <li><code>0x41</code> (1 字节数据)</li>
@@ -2159,7 +2151,7 @@
 <p><em>返回客户端拥有的地址列表。</em></p>
 <p><strong>参数：</strong>  无</p>
 <p><strong>返回值：</strong>空列表</p>
-<p><strong>注意</strong>: 与 Geth 等以太坊客户端不同，TRON 节点不负责管理私钥或账户。因此，此接口仅为兼容性而存在，不具备实际功能。</p>
+<p><strong>注意</strong>: 与 Geth 等以太坊客户端不同，TRON 节点不负责管理私钥或账户。因此，提供此接口仅为兼容目的，它不会返回任何账户。</p>
 <p><strong>示例</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;
 {&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;id&quot;: 1, &quot;method&quot;: &quot;eth_accounts&quot;, &quot;params&quot;: []}&#39;
@@ -2195,7 +2187,7 @@
 <tr>
 <td style="text-align: left;"><code>from</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
-<td style="text-align: left;">调用者地址。十六进制格式地址，为了兼容 ETH，所有地址既可以是 TRON 十六进制地址，也可以是 ETH 地址</td>
+<td style="text-align: left;">调用者地址。十六进制格式地址，TRON 和以太坊两种地址格式均可接受。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>to</code></td>
@@ -2226,7 +2218,7 @@
 </table>
 </li>
 <li>
-<p><code>QUANTITY|TAG</code> - 区块标识符，目前仅支持 "latest"。</p>
+<p><code>QUANTITY|TAG</code> - 区块标识符，当前仅支持 "latest"。</p>
 </li>
 </ol>
 <p><strong>返回值：</strong> <code>DATA</code> - 合约函数执行的返回值，经过 <code>ABI</code> 编码。</p>
@@ -2589,8 +2581,8 @@
 <li><code>QUANTITY</code> - 交易在区块中的索引。</li>
 </ol>
 <p><strong>返回值：</strong>
-<code>Object</code> - 交易对象。如果未找到，则返回 <code>null</code>。
-交易对象包含以下项：</p>
+<code>Object</code> - 交易对象。如果未找到，则返回 <code>null</code>。</p>
+<p>交易对象包含以下项：</p>
 <table>
 <thead>
 <tr>
@@ -2618,12 +2610,12 @@
 <tr>
 <td style="text-align: left;"><code>gas</code></td>
 <td style="text-align: left;">QUANTITY</td>
-<td style="text-align: left;">交易消耗的能量（Energy）</td>
+<td style="text-align: left;">交易消耗的能量</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>gasPrice</code></td>
 <td style="text-align: left;">QUANTITY</td>
-<td style="text-align: left;">能量 (Energy)价格</td>
+<td style="text-align: left;">能量价格</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>hash</code></td>
@@ -2653,7 +2645,7 @@
 <tr>
 <td style="text-align: left;"><code>type</code></td>
 <td style="text-align: left;">QUANTITY</td>
-<td style="text-align: left;">交易类型，当前TRON网络上的交易都是普通交易，值为0</td>
+<td style="text-align: left;">交易类型，当前 TRON 网络上的交易都是普通交易，通常值为 <code>0x0</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>value</code></td>
@@ -2766,7 +2758,7 @@
 }
 </code></pre></div></p>
 <h3 id="eth_gettransactionreceipt">eth_getTransactionReceipt<a class="headerlink" href="#eth_gettransactionreceipt" title="Permanent link">&para;</a></h3>
-<p><em>通过交易哈希返回交易的收据信息。收据包含了交易的执行结果、事件日志、消耗的资源等。请参考 HTTP api: <a href="../http/#walletgettransactioninfobyid">wallet/gettransactioninfobyid</a></em>。</p>
+<p><em>通过交易哈希返回交易的收据信息。收据包含了交易的执行结果、事件日志、消耗的资源等，功能相当于 <a href="../http/#walletgettransactioninfobyid">wallet/gettransactioninfobyid</a> HTTP API</em>。</p>
 <p><strong>参数：</strong>
 <code>DATA, 32 Bytes</code> - 交易的哈希。</p>
 <p><strong>返回值：</strong>
