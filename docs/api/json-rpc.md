@@ -1,10 +1,10 @@
-# jsonRPC API
+# JSON-RPC API
 
 ## 概述
 
 JSON-RPC 是一种无状态、轻量级的远程过程调用（RPC）协议，TRON 网络提供了一套与以太坊兼容的 JSON-RPC API。
 
-尽管 API 在设计上保持了高度兼容性，但由于 TRON 与以太坊在底层账户模型、资源模型和共识机制上存在差异，部分接口的行为会有所不同。同时，TRON 也扩展了部分自定义接口以支持其特有的交易类型。
+尽管这些 API 在设计上与以太坊高度兼容，但由于 TRON 与以太坊在底层账户模型、资源模型和共识机制上存在差异，部分接口的行为可能会有所不同。同时，TRON 也扩展了部分自定义接口以支持其特有的交易类型。
 
 ### 如何启用或禁用节点的 JSON-RPC 服务
 
@@ -22,7 +22,7 @@ node.jsonrpc {
 
 在 JSON-RPC 交互中，所有数据均通过十六进制字符串传递，但遵循两种不同的格式化规则：
 
-- **QUANTITIES (数值类型)**
+**QUANTITIES (数值类型)**
 
    - 描述: 用于表示整数，如区块号、余额、数量等。
    - 格式: 以 `0x` 为前缀的十六进制，采用最紧凑的表示法（即没有前导零）。唯一的例外是零，必须表示为 `0x0`.
@@ -32,7 +32,7 @@ node.jsonrpc {
        -  错误: `0x0400` (不允许前导零)
        -  错误: `ff` (必须有 `0x` 前缀)
 
-- **UNFORMATTED DATA (非格式化数据)**
+**UNFORMATTED DATA (非格式化数据)**
 
   - 描述: 用于表示字节数组，如地址、哈希、字节码等。
   - 格式: 以 `0x` 为前缀，每个字节由两个十六进制字符表示。
@@ -53,7 +53,7 @@ node.jsonrpc {
 
 **返回值：**空列表
 
-**注意**: 与 Geth 等以太坊客户端不同，TRON 节点不负责管理私钥或账户。因此，此接口仅为兼容性而存在，不具备实际功能。
+**注意**: 与 Geth 等以太坊客户端不同，TRON 节点不负责管理私钥或账户。因此，提供此接口仅为兼容目的，它不会返回任何账户。
  
 **示例**
 
@@ -93,14 +93,14 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 
     | 项名称 | 数据类型      | 描述                                                   |
     | :-------- | :------------- | :------------------------------------------------------------ |
-    | `from`      | DATA, 20 Bytes | 调用者地址。十六进制格式地址，为了兼容 ETH，所有地址既可以是 TRON 十六进制地址，也可以是 ETH 地址    |
+    | `from`      | DATA, 20 Bytes | 调用者地址。十六进制格式地址，TRON 和以太坊两种地址格式均可接受。    |
     | `to`        | DATA, 20 Bytes | 合约地址。十六进制格式地址 |
     | `gas`       | QUANTITY       | 不支持。值为 `0x0`                               |
     | `gasPrice`  | QUANTITY       | 不支持。值为 `0x0`                               |
     | `value`     | QUANTITY       | 不支持。值为 `0x0`                               |
     | `data`      | DATA           | 方法签名和编码参数的哈希。          |
 
-2. `QUANTITY|TAG` - 区块标识符，目前仅支持 "latest"。
+2. `QUANTITY|TAG` - 区块标识符，当前仅支持 "latest"。
 
 **返回值：** `DATA` - 合约函数执行的返回值，经过 `ABI` 编码。
 
@@ -428,6 +428,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 **返回值：**
 `Object` - 交易对象。如果未找到，则返回 `null`。
+
 交易对象包含以下项：
 
 | 项名称             | 数据类型       | 描述                                                       |
@@ -435,14 +436,14 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 | `blockHash`        | DATA, 32 Bytes | 交易所在区块的哈希                                         |
 | `blockNumber`      | QUANTITY       | 交易所在区块的区块号                                       |
 | `from`             | DATA, 20 Bytes | 发送方地址                                                 |
-| `gas`              | QUANTITY       | 交易消耗的能量（Energy）                                   |
-| `gasPrice`         | QUANTITY       | 能量 (Energy)价格                                          |
+| `gas`              | QUANTITY       | 交易消耗的能量                                   |
+| `gasPrice`         | QUANTITY       | 能量价格                                          |
 | `hash`             | DATA, 32 Bytes | 交易哈希                                                   |
 | `input`            | DATA           | 随交易发送的数据                                           |
 | `nonce`            | QUANTITY       | 未使用                                                     |
 | `to`               | DATA, 20 Bytes | 接收方地址                                                 |
 | `transactionIndex` | QUANTITY       | 交易在区块中的索引位置                                     |
-| `type`             | QUANTITY       | 交易类型，当前TRON网络上的交易都是普通交易，值为0          |
+| `type`             | QUANTITY       | 交易类型，当前 TRON 网络上的交易都是普通交易，通常值为 `0x0`          |
 | `value`            | QUANTITY       | 转账金额（单位：sun）                                      |
 | `v`                | QUANTITY       | ECDSA 恢复 id                                              |
 | `r`                | DATA, 32 Bytes | ECDSA 签名 r                                               |
@@ -554,7 +555,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 ### eth_getTransactionReceipt
 
-*通过交易哈希返回交易的收据信息。收据包含了交易的执行结果、事件日志、消耗的资源等。请参考 HTTP api: [wallet/gettransactioninfobyid](http.md#walletgettransactioninfobyid)*。
+*通过交易哈希返回交易的收据信息。收据包含了交易的执行结果、事件日志、消耗的资源等，功能相当于 [wallet/gettransactioninfobyid](http.md#walletgettransactioninfobyid) HTTP API*。
 
 **参数：**
 `DATA, 32 Bytes` - 交易的哈希。
