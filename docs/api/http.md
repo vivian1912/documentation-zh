@@ -4,14 +4,15 @@
 !!! 注意
     尽管 TRON 通过将 HTTP API 的 Content-Type 设置为 application/json 避免了 XSS 攻击，但仍有一些 API 没有输入验证。为了更好地保护用户数据安全，我们建议您在使用 API 的任何数据之前，先对其进行正确编码（尤其是当参数'visible'为true时）。
     
- 以下是一种典型的 XSS 防护方法：对来自 API 的所有数据在 HTML 中进行编码。使用诸如 `encodeURIComponent()` 或 `escape()` 等方法对数据进行编码，这可以将特殊字符转换为其 HTML 实体，防止浏览器将其解释为 HTML 代码。
+   以下是一种典型的 XSS 防护方法：对来自 API 的所有数据在 HTML 中进行编码。使用诸如 `encodeURIComponent()` 或 `escape()` 等方法对数据进行编码，这可以将特殊字符转换为其 HTML 实体，防止浏览器将其解释为 HTML 代码。
     
- 请务必为来自 API 的所有数据实施 XSS 防护，以确保用户数据的安全。我们了解您可能需要有关 XSS 防护的更多信息。建议您参考以下资源：[OWASP XSS Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html)。
+   请务必为来自 API 的所有数据实施 XSS 防护，以确保用户数据的安全。我们了解您可能需要有关 XSS 防护的更多信息。建议您参考以下资源：[OWASP XSS Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html)。
 
 
 TRON 节点的 HTTP API 支持两种地址格式，开发者可以通过 `visible` 参数来统一控制请求和响应中的地址格式。
 
 `visible` 参数的设置决定了地址格式的规则：
+
 * `"visible": false (默认值)`：参数和返回值中的地址必须为 HexString 格式。如果省略此参数，则按默认值处理。
 * `"visible": true`：参数和返回值中的地址必须为 Base58Check 格式。
 
@@ -66,12 +67,11 @@ Fullnode HTTP API分类如下:
 - [wallet/getaccountbyid](#walletgetaccountbyid)
 
 #### wallet/validateaddress
-作用：验证一个TRON地址是否有效。此接口非常适用于在应用前端或后端发送交易前，预先检查用户输入的地址是否合法。
+作用：验证一个 TRON 地址是否有效。此接口非常适用于在应用前端或后端发送交易前，预先检查用户输入的地址是否合法。
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/validateaddress -d '{"address": "4189139CB1387AF85E3D24E212A008AC974967E561"}'
 ```
-参数说明：
-- `address`可以是Base58Checksum、hexString、base64格式
+参数：`address`：可以是 Base58Checksum、hexString、base64 格式
 
 返回值：地址正确或者错误，示例：
 ```
@@ -90,7 +90,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/validateaddress -d '{"address": "4189
 
 
 #### wallet/createaccount
-作用：创建账号，一个已经激活的账号创建一个新账号。如果创建者账号有足够的通过质押TRX获得的带宽，那么创建账户只会消耗带宽，否则，会烧掉0.1个TRX来支付带宽费用，同时需要额外支付 1 TRX的创建费用
+作用：创建账号，一个已经激活的账号创建一个新账号。如果创建者账号有足够的通过质押 TRX 获得的带宽，那么创建账户只会消耗带宽，否则，会烧掉 0.1 个 TRX 来支付带宽费用，同时需要额外支付 1 TRX 的创建费用。
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/createaccount -d '{"owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292", "account_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0"}'
 ```
@@ -99,7 +99,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/createaccount -d '{"owner_address":"4
 - `owner_address` 是创建者的地址，必须是一个已在链上激活的账户。
 - `account_address` 是待激活的新账户地址。此地址必须预先在链下生成好。
 - `Permission_id` 可选参数，在使用账户管理权限签名时使用。
-- `visible` 设置地址格式,`true` 为 Base58Check，`false` 或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：未签名的创建账号的 Transaction
 
@@ -109,8 +109,9 @@ curl -X POST  http://127.0.0.1:8090/wallet/createaccount -d '{"owner_address":"4
 curl -X POST  http://127.0.0.1:8090/wallet/getaccount -d '{"address": "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}'
 ```
 参数：
+
 * `address` 需要查询的账户地址。
-* `visible` 设置地址格式,`true` 为 Base58Check，`false` 或省略则为HexString。
+* `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为HexString。
 
 返回值：Account 对象
 
@@ -124,8 +125,8 @@ curl -X POST  http://127.0.0.1:8090/wallet/updateaccount -d '{"account_name": "0
 
 - `account_name` 是账号名称，默认为 HexString格式
 - `owner_address` 是要修改名称的账号地址，默认为 HexString 格式
-- `Permission_id`可选参数, 在使用账户管理权限签名时使用。
-- `visible` 设置地址格式,`true` 为 Base58Check，`false` 或省略则为 HexString。
+- `Permission_id` 可选参数, 在使用账户管理权限签名时使用。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：未签名的修改名称 Transaction
 
@@ -173,11 +174,11 @@ curl -X POST  http://127.0.0.1:8090/wallet/accountpermissionupdate -d
 
 - `owner_address`：创建合约的账户地址，默认为 HexString 格式
 - `owner`：账户 owner 权限的分配信息
-- `witness`：出块权限的分配信息，如果不是 witness，不需要设置
+- `witness`：出块权限的分配信息，如果不是超级代表（Super Representative，简称 SR），不需要设置
 - `actives`：其他功能权限的分配信息
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible`：设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
-返回值:未签名的 transaction
+返回值：未签名的 transaction
 
 #### wallet/getaccountbalance
 作用：查询一个 TRON 账户在**过去某个特定区块高度**的 TRX 余额。
@@ -204,12 +205,12 @@ curl -X POST  http://127.0.0.1:8090/wallet/getaccountbalance -d
 }'
 ```
 
-参数说明： 
+参数： 
 
-* `account_identifier.address` 要查询的账户地址。
-* `block_identifier.hash` 目标区块的哈希值。
-* `block_identifier.number` 目标区块的高度（块号）。
-* `visible` 设置地址格式,`true` 为 Base58Check，`false` 或省略则为 HexString。
+* `account_identifier.address`: 要查询的账户地址。
+* `block_identifier.hash`: 目标区块的哈希值。
+* `block_identifier.number`: 目标区块的高度（块号）。
+* `visible`：设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值示例：
 ```
@@ -228,13 +229,13 @@ curl -X POST  http://127.0.0.1:8090/wallet/getaccountbalance -d
 curl -X POST  http://127.0.0.1:8090/wallet/setaccountid -d '{
 "owner_address":"41a7d8a35b260395c14aa456297662092ba3b76fc0","account_id":"6161616162626262"}'
 ```
-参数说明：
+参数：
 
 - `owner_address`：是交易对创建者的地址，默认为 HexString 格式
 - `account_id` accountid,默认为 HexString 格式
-- `visible` 设置地址格式,`true` 为 Base58Check，`false` 或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
-返回值:设置 AccountID 的 transaction
+返回值：设置 `AccountID` 的 transaction
 
 #### wallet/getaccountbyid
 作用：通过accountId查询一个账号的信息
@@ -242,7 +243,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/setaccountid -d '{
 curl -X POST  http://127.0.0.1:8090/wallet/getaccountbyid -d
 '{"account_id":"6161616162626262"}'
 ```
-参数说明：`account_id` 默认为 HexString 格式
+参数：`account_id`：默认为 HexString 格式
 
 返回值：Account 对象
 
@@ -269,7 +270,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/createtransaction -d '{"to_address": 
 - `owner_address` 是转出方地址（发送者）。
 - `amount` 是转账金额，单位为 sun (1 TRX = 1,000,000 sun)。
 - `Permission_id` 可选，在使用账户管理权限签名时使用。
-- `visible` 设置地址格式,`true` 为 Base58Check，`false` 或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：未签名的TRX转账交易
 
@@ -279,9 +280,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/createtransaction -d '{"to_address": 
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/broadcasttransaction -d '{"signature":["97c825b41c77de2a8bd65b3df55cd4c0df59c307c0187e42321dcc1cc455ddba583dd9502e17cfec5945b34cad0511985a6165999092a6dec84c2bdd97e649fc01"],"txID":"454f156bf1256587ff6ccdbc56e64ad0c51e4f8efea5490dcbc720ee606bc7b8","raw_data":{"contract":[{"parameter":{"value":{"amount":1000,"owner_address":"41e552f6487585c2b58bc2c9bb4492bc1f17132cd0","to_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292"},"type_url":"type.googleapis.com/protocol.TransferContract"},"type":"TransferContract"}],"ref_block_bytes":"267e","ref_block_hash":"9a447d222e8de9f2","expiration":1530893064000,"timestamp":1530893006233}}'
 ```
-参数：
-
-* 一个完整的已签名交易对象 (Signed Transaction)。它是在调用创建类接口（如 `wallet/createtransaction`）返回的未签名交易的基础上，添加了 signature 字段构成的。
+参数：一个完整的已签名交易对象 (Signed Transaction)。它是在调用创建类接口（如 `wallet/createtransaction`）返回的未签名交易的基础上，添加了 signature 字段构成的。
 
 返回值：
 
@@ -295,10 +294,10 @@ curl -X POST  http://127.0.0.1:8090/wallet/broadcasttransaction -d '{"signature"
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/broadcasthex -d '{"transaction":"0A8A010A0202DB2208C89D4811359A28004098A4E0A6B52D5A730802126F0A32747970652E676F6F676C65617069732E636F6D2F70726F746F636F6C2E5472616E736665724173736574436F6E747261637412390A07313030303030311215415A523B449890854C8FC460AB602DF9F31FE4293F1A15416B0580DA195542DDABE288FEC436C7D5AF769D24206412418BF3F2E492ED443607910EA9EF0A7EF79728DAAAAC0EE2BA6CB87DA38366DF9AC4ADE54B2912C1DEB0EE6666B86A07A6C7DF68F1F9DA171EEE6A370B3CA9CBBB00"}'
 ```
-参数：
-* `transaction`：一个包含了所有交易信息（包括签名）并已被序列化为hex的完整交易。
+参数：`transaction`：一个包含了所有交易信息（包括签名）并已被序列化为 hex 的完整交易。
 
 返回值：
+
 * 返回一个包含广播结果的JSON对象。
 * 一个成功的响应通常包含 `"result": true`，表示您连接的这个节点已成功接收您的交易并开始向全网广播。
 
@@ -337,12 +336,9 @@ curl -X POST  http://127.0.0.1:8090/wallet/getsignweight -d '{
     "raw_data_hex": "0a02163d220877ef4ace148b05ba40d8c5e5a6a32d5a69080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541a7d8a35b260395c14aa456297662092ba3b76fc01215415a523b449890854c8fc460ab602df9f31fe4293f18c0843d2802709af4e1a6a32d",
     "visible": true}'
 ```
-参数：
+参数：一个完整的、包含了**一个或多个签名**的交易对象。
 
-*  一个完整的、包含了**一个或多个签名**的交易对象。
-
-返回值:
-* 返回一个 JSON 对象，已签名权重是否达到阈值（即是否满足验签标准），签名地址列表，permission 的详细信息，已签名的权重及交易信息。
+返回值：返回一个 JSON 对象，已签名权重是否达到阈值（即是否满足验签标准），签名地址列表，permission 的详细信息，已签名的权重及交易信息。
 
 #### wallet/getapprovedlist
 作用：在账户管理权限流程中，用于查询并返回一个交易的已签名地址列表。
@@ -376,11 +372,9 @@ curl -X POST  http://127.0.0.1:8090/wallet/getapprovedlist -d '{
     "raw_data_hex": "0a02163d220877ef4ace148b05ba40d8c5e5a6a32d5a69080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541a7d8a35b260395c14aa456297662092ba3b76fc01215415a523b449890854c8fc460ab602df9f31fe4293f18c0843d2802709af4e1a6a32d",
     "visible": true}'
 ```
-参数：
-* 一个完整的、包含了一个或多个签名的交易对象。
+参数：一个完整的、包含了一个或多个签名的交易对象。
 
-返回值:
-* 返回一个 JSON 对象，其中包含了已批准的地址列表和交易的整体签名状态。
+返回值：返回一个 JSON 对象，其中包含了已批准的地址列表和交易的整体签名状态。
 
 <a id="resources"></a>
 ### 帐户资源
@@ -412,11 +406,9 @@ curl -X POST  http://127.0.0.1:8090/wallet/getaccountresource -d {"address" : "4
 参数：
 
 - `address`：查询账户的地址，默认为 HexString 格式。
-- `visible` 设置地址格式,`true` 为 Base58Check，`false` 或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
-返回值：
-
- - 该接口返回一个包含账户所有资源相关信息的 JSON 对象。
+返回值：该接口返回一个包含账户所有资源相关信息的 JSON 对象。
 
 
 #### wallet/getaccountnet
@@ -425,11 +417,11 @@ curl -X POST  http://127.0.0.1:8090/wallet/getaccountresource -d {"address" : "4
 curl -X POST  http://127.0.0.1:8090/wallet/getaccountnet -d '{"address": "4112E621D5577311998708F4D7B9F71F86DAE138B5"}'
 ```
 参数：
-- `address`  查询账户的地址，默认为 HexString 格式。
-- `visible` 设置地址格式,`true` 为 Base58Check，`false` 或省略则为 HexString。
 
-返回值：
-- 该接口返回一个包含账户所有带宽相关信息的 JSON 对象。
+- `address`  查询账户的地址，默认为 HexString 格式。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
+
+返回值：该接口返回一个包含账户所有带宽相关信息的 JSON 对象。
 
 #### wallet/freezebalance
 作用：该接口是 TRON Stake 1.0 阶段的产物，已被正式废弃。所有新的质押操作请使用`freezebalancev2`。
@@ -450,10 +442,9 @@ curl -X POST http://127.0.0.1:8090/wallet/unfreezebalance -d '{
 - `resource`可以是 `BANDWIDTH` 或者 `ENERGY`
 - `receiverAddress`表示受委托账户的地址，默认为 HexString 格式
 - 可选参数`Permission_id`，在使用账户管理权限签名时使用。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
-返回值：
-- 该接口返回一个未签名的解质押交易对象 (Unsigned Transaction)。
+返回值：该接口返回一个未签名的解质押交易对象 (Unsigned Transaction)。
 
 
 #### wallet/getdelegatedresource
@@ -469,10 +460,9 @@ curl -X POST  http://127.0.0.1:8090/wallet/getdelegatedresource -d '
 
 - `fromAddress`：是要查询的账户地址，默认为 HexString 格式
 - `toAddress`：代理对象的账户地址，默认为 HexString 格式
-- `visible` 设置地址格式,`true` 为 Base58Check，`false` 或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
-返回值：
-- 账户的资源代理的列表，列表的元素为 `DelegatedResource`
+返回值：账户的资源代理的列表，列表的元素为 `DelegatedResource`
 
 #### wallet/getdelegatedresourceaccountindex
 作用：Stake1.0 中查询一个指定账户的代理以及被代理资源关系列表。
@@ -485,11 +475,9 @@ curl -X POST  http://127.0.0.1:8090/wallet/getdelegatedresourceaccountindex -d '
 参数：
 
 - `value`：是要查询的账户地址，默认为 HexString 格式。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
-返回值：
-
-- 账户的资源代理概况，结构为 `DelegatedResourceAccountIndex`。
+返回值：账户的资源代理概况，结构为 `DelegatedResourceAccountIndex`。
 
 #### wallet/freezebalancev2
 作用：**Stake 2.0** 质押 TRX。通过此操作，质押者不仅能获取指定的网络资源（能量或带宽），还将**同时获得**与质押 TRX 数量等同的**投票权 (TRON Power, TP)**，比例为 1 TRX : 1 TP。
@@ -508,10 +496,9 @@ curl -X POST http://127.0.0.1:8090/wallet/freezebalancev2 -d
 - `frozen_balance`: 质押 TRX 的数量, 单位为 sun
 - `resource`: 质押 TRX 获取资源的类型, 可以是 `BANDWIDTH` 或者 `ENERGY`
 - `permission_id`: 可选参数，在使用账户管理权限签名时使用。
-- `visible` 设置地址格式,`true` 为 Base58Check，`false` 或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
-返回值：
-- 该接口返回一个未签名的质押交易对象 (Unsigned Transaction)。
+返回值：该接口返回一个未签名的质押交易对象 (Unsigned Transaction)。
 
 #### wallet/unfreezebalancev2
 
@@ -531,11 +518,9 @@ curl -X POST http://127.0.0.1:8090/wallet/unfreezebalancev2 -d
 - `resource`: 资源类型, `BANDWIDTH` 或者 `ENERGY`
 - `unfreeze_balance`: 解质押的TRX数量，单位为 sun
 - `permission_id`: 可选参数，在使用账户管理权限签名时使用。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
-返回值：
-
-- 该接口返回一个未签名的解质押交易对象 (Unsigned Transaction)。
+返回值：该接口返回一个未签名的解质押交易对象 (Unsigned Transaction)。
 
 #### wallet/cancelallunfreezev2
 
@@ -555,11 +540,9 @@ curl -X POST http://127.0.0.1:8090/wallet/cancelallunfreezev2 -d
 
 - `owner_address`: 账户地址, HEX 格式或 Base58Check 格式。
 - `permission_id`: 可选参数，在使用账户管理权限签名时使用。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
-返回值：
-
-- 一个未签名的取消解质押交易对象 (Unsigned Transaction)。
+返回值：一个未签名的取消解质押交易对象 (Unsigned Transaction)。
 
 
 #### wallet/delegateresource
@@ -584,18 +567,17 @@ curl -X POST http://127.0.0.1:8090/wallet/delegateresource -d
 - `balance`: 代理balance数量的 TRX 所对应的资源给目标地址, 单位为sun。
 - `resource`: 代理的资源类型, `BANDWIDTH` 或者 `ENERGY`。
 - `lock`: true 表示为该资源代理操作设置三天的锁定期，即资源代理给目标地址后的三天内不可以取消对其的资源代理，如果锁定期内，再次代理资源给同一目标地址，则锁定期将重新设置为3天。false 表示本次资源代理没有锁定期，可随时取消对目标地址的资源代理。
-- `lock_period`: 锁定周期，以区块时间（3s）为单位，表示锁定多少个区块的时间，当 lock 为 true 时，该字段有效。如果代理锁定期为 1 天，则 lock_period 为：28800。
+- `lock_period`: 锁定周期，以区块时间（3s）为单位，表示锁定多少个区块的时间，当 lock 为 `true` 时，该字段有效。如果代理锁定期为 1 天，则 `lock_period` 为：28800。
 - `permission_id`: 可选参数，在使用账户管理权限签名时使用。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
-返回值：
-- 该接口返回一个未签名的资源代理交易对象 (Unsigned Transaction)。
+返回值：该接口返回一个未签名的资源代理交易对象 (Unsigned Transaction)。
 
 #### wallet/undelegateresource
 
 作用： 取消（收回）此前为其他账户代理的能量或带宽资源。
 
-**重要提示**：如果一笔资源代理设置了时间锁 (lock: true) 并且尚未到期，调用此接口来取消该笔代理将会失败。您必须等待锁定期结束后才能执行此操作。
+**重要提示**：如果一笔资源代理设置了时间锁 (`lock: true`) 并且尚未到期，调用此接口来取消该笔代理将会失败。您必须等待锁定期结束后才能执行此操作。
 
 ```
 curl -X POST http://127.0.0.1:8090/wallet/undelegateresource -d
@@ -614,14 +596,13 @@ curl -X POST http://127.0.0.1:8090/wallet/undelegateresource -d
 - `balance`: 取消代理 balance 数量的 TRX 所对应的资源, 单位为 sun。
 - `resource`: 取消代理的资源类型, `BANDWIDTH` 或者 `ENERGY`。
 - `permission_id`: 可选参数，在使用账户管理权限签名时使用。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
-返回值：
-- 该接口返回一个未签名的取消资源代理交易对象 (Unsigned Transaction)。
+返回值：该接口返回一个未签名的取消资源代理交易对象 (Unsigned Transaction)。
 
 #### wallet/withdrawexpireunfreeze
 
-作用：提取所有**已过锁定期**的解质押TRX本金。
+作用：提取所有**已过锁定期**的解质押 TRX。
 ```
 curl -X POST http://127.0.0.1:8090/wallet/withdrawexpireunfreeze -d
 '{
@@ -633,10 +614,9 @@ curl -X POST http://127.0.0.1:8090/wallet/withdrawexpireunfreeze -d
 
 - `owner_address`: 交易发起者账号的地址, HEX 格式或 Base58Check 格式。
 - `permission_id`: 可选参数，在使用账户管理权限签名时使用。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
-返回值：
-- 该接口返回一个未签名的提取到期解质押资金的交易对象 (Unsigned Transaction)。
+返回值：该接口返回一个未签名的提取到期解质押资金的交易对象 (Unsigned Transaction)。
 
 #### wallet/getavailableunfreezecount
 
@@ -654,10 +634,9 @@ curl -X POST http://127.0.0.1:8090/wallet/getavailableunfreezecount -d
 参数：
 
 - `owner_address`: 需要查询的账户地址。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
-返回值：
-- 该接口返回一个包含剩余次数的 JSON 对象。
+返回值：该接口返回一个包含剩余次数的 JSON 对象。
 
 #### wallet/getcanwithdrawunfreezeamount
 
@@ -676,10 +655,9 @@ curl -X POST http://127.0.0.1:8090/wallet/getcanwithdrawunfreezeamount -d
 
 - `owner_address`: 交易发起者账号的地址。
 - `timestamp`: 查询在该时间戳时，可提取的本金数量，单位为毫秒。
-- `visible` 设置地址格式,`true` 为 Base58Check，`false` 或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
-返回值：
-- 该接口返回一个包含可提取金额的 JSON 对象。
+返回值：该接口返回一个包含可提取金额的 JSON 对象。
 
 
 #### wallet/getcandelegatedmaxsize
@@ -699,10 +677,9 @@ curl -X POST http://127.0.0.1:8090/wallet/getcandelegatedmaxsize -d
 
 - `owner_address`: 需要查询的账户地址。
 - `type`: 资源类型，0 为带宽，1 为能量。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
-返回值：
-- 该接口返回一个包含可代理份额最大值的 JSON 对象。
+返回值：该接口返回一个包含可代理份额最大值的 JSON 对象。
 
 #### wallet/getdelegatedresourcev2
 
@@ -721,13 +698,12 @@ curl -X POST http://127.0.0.1:8090/wallet/getdelegatedresourcev2 -d
 
 - `fromAddress`: 代理账户地址。
 - `toAddress`: 资源的接收账户地址。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
-返回值：
-- 该接口返回一个 delegatedResource 数组，包含了两者在Stake 2.0下的所有资源代理记录。
+返回值：该接口返回一个 delegatedResource 数组，包含了两者在Stake 2.0下的所有资源代理记录。
 
 #### wallet/getdelegatedresourceaccountindexv2
-作用：查询在 Stake2.0 阶段，某地址的资源委托索引。返回两个列表，一个是该帐户将资源委托给的地址列表 (toAddress)，另一个是将资源委托给该帐户的地址列表 (fromAddress)
+作用：查询在 Stake2.0 阶段，某地址的资源委托索引。返回两个列表，一个是该帐户将资源委托给的地址列表 (`toAddress`)，另一个是将资源委托给该帐户的地址列表 (`fromAddress`)
 ```
 curl -X POST http://127.0.0.1:8090/wallet/getdelegatedresourceaccountindexv2 -d
 '{
@@ -740,10 +716,9 @@ curl -X POST http://127.0.0.1:8090/wallet/getdelegatedresourceaccountindexv2 -d
 参数：
 
 - `value`: 账户地址。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
-返回值：
-- 该接口返回一个包含双向代理关系列表的 JSON 对象。包含两个列表，一个是该帐户将资源委托给的地址列表 (toAddress)，另一个是将资源委托给该帐户的地址列表 (fromAddress)
+返回值：该接口返回一个包含双向代理关系列表的 JSON 对象。包含两个列表，一个是该帐户将资源委托给的地址列表 (toAddress)，另一个是将资源委托给该帐户的地址列表 (fromAddress)
 
 <a id="network"></a>
 ### 查询链上数据
@@ -794,8 +769,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getblock -d '{"detail":false}'
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getblockbynum -d '{"num": 1}'
 ```
-参数：
-- num：区块高度 (整型)。
+参数：`num`：区块高度 (整型)。
 
 返回值：指定高度的区块对象 (Block object)。
 
@@ -804,8 +778,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getblockbynum -d '{"num": 1}'
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getblockbyid -d '{"value": "0000000000038809c59ee8409a3b6c051e369ef1096603c7ee723c16e2376c73"}'
 ```
-参数：
-- value：区块的ID (hash)。
+参数：`value`：区块的ID (hash)。
 
 返回值：指定ID的区块对象 (Block object)。
 
@@ -814,8 +787,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getblockbyid -d '{"value": "000000000
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getblockbylatestnum -d '{"num": 5}'
 ```
-参数：
-- num：需要查询的区块数量。
+参数：`num`：需要查询的区块数量。
 
 返回值：一个包含多个区块对象的数组 (Block[])。
 
@@ -824,7 +796,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getblockbylatestnum -d '{"num": 5}'
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getblockbylimitnext -d '{"startNum": 1, "endNum": 2}'
 ```
-参数说明：
+参数：
 
 - `startNum`：起始块高度，包含此块
 - `endNum`：截止块高度，不包含此此块
@@ -843,8 +815,9 @@ curl -X POST  http://127.0.0.1:8090/wallet/getblockbalance -d
 }'
 ```
 参数:
- - hash: 区块的哈希值。
- - number: 区块的高度。与区块哈希必须精确匹配。
+
+ - `hash`: 区块的哈希值。
+ - `number`: 区块的高度。与区块哈希必须精确匹配。
 
 返回值：一个包含了该区块所有余额变动追踪信息的对象,示例如下：
 ```
@@ -891,8 +864,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getblockbalance -d
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/gettransactionbyid -d '{"value": "d5ec749ecc2a615399d8a6c864ea4c74ff9f523c2be0e341ac9be5d47d7c2d62"}'
 ```
-参数：
-- value：交易 ID (hash)。
+参数：`value`：交易 ID (hash)。
 
 返回值：完整的交易对象 (Transaction object)。如果交易不存在，返回空对象。
 
@@ -901,8 +873,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/gettransactionbyid -d '{"value": "d5e
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/gettransactioninfobyid -d '{"value" : "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"}'
 ```
-参数：
-- value：交易 ID (hash)。
+参数：`value`：交易 ID (hash)。
 
 返回值：交易的摘要信息对象 (TransactionInfo object)，包含交易费用、所在区块高度、区块时间戳、合约执行结果等。
 
@@ -911,8 +882,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/gettransactioninfobyid -d '{"value" :
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/gettransactioncountbyblocknum -d '{"num" : 100}'
 ```
-参数：
-- num：区块高度。
+参数：`num`：区块高度。
 
 返回值：一个包含交易数量的对象，如 {"count": 50}。
 
@@ -921,8 +891,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/gettransactioncountbyblocknum -d '{"n
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/gettransactioninfobyblocknum -d '{"num" : 100}'
 ```
-参数：
-- num：区块高度。
+参数：`num`：区块高度。
 
 返回值：一个包含多个交易摘要信息对象的列表。
 
@@ -931,7 +900,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/gettransactioninfobyblocknum -d '{"nu
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/listnodes
 ```
-参数说明：无
+参数：无
 
 返回值：一个包含多个节点信息的数组，每个节点包含IP地址和端口。
 
@@ -1000,9 +969,10 @@ curl -X POST  http://127.0.0.1:8090/wallet/getburntrx
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getcontract -d '{"value":"4189139CB1387AF85E3D24E212A008AC974967E561"}'
 ```
-参数说明：
+参数：
+
 - `value`：合约地址，默认为 HexString 格式。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：智能合约对象 (SmartContract)，包含ABI、部署字节码、名称等。
 
@@ -1012,17 +982,18 @@ curl -X POST  http://127.0.0.1:8090/wallet/getcontract -d '{"value":"4189139CB13
 curl -X POST  http://127.0.0.1:8090/wallet/getcontractinfo -d '{"value":"4189139CB1387AF85E3D24E212A008AC974967E561"}'
 ```
 参数：
-- `value`：合约地址，默认为 HexString 格式。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
 
-返回值：查询链上的合约信息。与 wallet/getcontract 接口不同的是，该接口不仅返回 bytecode 还会返回合约的 runtime bytecode。runtime bytecode 相比 bytecode，不包含构造函数以及构造函数的参数信息。
+- `value`：合约地址，默认为 HexString 格式。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
+
+返回值：查询链上的合约信息。与 `wallet/getcontract` 接口不同的是，该接口不仅返回 bytecode 还会返回合约的 runtime bytecode。runtime bytecode 相比 bytecode，不包含构造函数以及构造函数的参数信息。
 
 #### wallet/deploycontract
 作用：创建一笔部署智能合约的交易。
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/deploycontract -d '{"abi":"[{\"constant\":false,\"inputs\":[{\"name\":\"key\",\"type\":\"uint256\"},{\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"key\",\"type\":\"uint256\"}],\"name\":\"get\",\"outputs\":[{\"name\":\"value\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}]","bytecode":"608060405234801561001057600080fd5b5060de8061001f6000396000f30060806040526004361060485763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416631ab06ee58114604d5780639507d39a146067575b600080fd5b348015605857600080fd5b506065600435602435608e565b005b348015607257600080fd5b50607c60043560a0565b60408051918252519081900360200190f35b60009182526020829052604090912055565b600090815260208190526040902054905600a165627a7a72305820fdfe832221d60dd582b4526afa20518b98c2e1cb0054653053a844cf265b25040029","parameter":"","call_value":100,"name":"SomeContract","consume_user_resource_percent":30,"fee_limit":10,"origin_energy_limit": 10,"owner_address":"41D1E7A6BC354106CB410E65FF8B181C600FF14292"}'
 ```
-参数说明：
+参数：
 
 - `abi`：abi。
 - `bytecode`：bytecode，需要是 HexString 格式。
@@ -1036,17 +1007,16 @@ curl -X POST  http://127.0.0.1:8090/wallet/deploycontract -d '{"abi":"[{\"consta
 - `call_token_value`:本次调用往合约中转账 TRC-10 币的数量，如果不设置 token_id，这项设置为 0 或者不设置。
 - `token_id`:本次调用往合约中转账 TRC-10 币的 id，如果没有，不需要设置。
 - `Permission_id`可选参数，多重签名时使用，设置交易多重签名时使用的 permissionId。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
-返回值：
-- 该接口返回一个包含了未签名部署交易的对象。
+返回值：该接口返回一个包含了未签名部署交易的对象。
 
 #### wallet/triggersmartcontract
 作用：创建一笔调用智能合约函数的交易
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/triggersmartcontract -d '{"contract_address":"4189139CB1387AF85E3D24E212A008AC974967E561","function_selector":"set(uint256,uint256)","parameter":"00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002","fee_limit":10,"call_value":100,"owner_address":"41D1E7A6BC354106CB410E65FF8B181C600FF14292"}'
 ```
-参数说明：
+参数：
 
 - `contract_address`：调用者的地址，默认为 HexString 格式。
 - `function_selector`：函数签名，不能有空格。
@@ -1058,10 +1028,9 @@ curl -X POST  http://127.0.0.1:8090/wallet/triggersmartcontract -d '{"contract_a
 - `call_token_value`:本次调用往合约中转账 TRC-10 币的数量，如果不设置 token_id，这项设置为 0 或者不设置。
 - `token_id`:本次调用往合约中转账 TRC-10 币的 id，如果没有，不需要设置。
 - `Permission_id`可选参数，多重签名时使用，设置交易多重签名时使用的 permissionId。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
-返回值：
-- 该接口返回一个包含了未签名部署交易的对象。
+返回值：该接口返回一个包含了未签名部署交易的对象。
 
 
 #### wallet/triggerconstantcontract
@@ -1069,7 +1038,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/triggersmartcontract -d '{"contract_a
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/triggerconstantcontract -d '{"contract_address":"4189139CB1387AF85E3D24E212A008AC974967E561","function_selector":"set(uint256,uint256)","parameter":"00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002","call_value":100,"owner_address":"41D1E7A6BC354106CB410E65FF8B181C600FF14292"}'
 ```
-参数说明：
+参数：
 
 - `contract_address`：调用者的地址，默认为 HexString 格式。
 - `function_selector`：函数签名，不能有空格。
@@ -1079,7 +1048,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/triggerconstantcontract -d '{"contrac
 - `call_value`：本次调用往合约转账的 sun（1TRX = 1,000,000 sun）。
 - `call_token_value`:本次调用往合约中转账 TRC-10 币的数量，如果不设置 token_id，这项设置为 0 或者不设置。
 - `token_id`:本次调用往合约中转账 TRC-10 币的 id，如果没有，不需要设置。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：合约函数的返回值，经过 ABI 编码后的结果。
 
@@ -1089,13 +1058,13 @@ curl -X POST  http://127.0.0.1:8090/wallet/triggerconstantcontract -d '{"contrac
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/updatesetting -d '{"owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9", "contract_address": "41c6600433381c731f22fc2b9f864b14fe518b322f", "consume_user_resource_percent": 7}'
 ```
-参数说明：
+参数：
 
 - `owner_address`：合约的所有者地址，默认为 HexString 格式。
 - `contract_address`：要修改的合约的地址，默认为 HexString 格式。
 - `consume_user_resource_percent`：指定的使用该合约用户的资源占比。
 - `Permission_id`可选参数，多重签名时使用，设置交易多重签名时使用的 permissionId。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：该接口返回一个包含了未签名更新交易的对象。
 
@@ -1104,13 +1073,13 @@ curl -X POST  http://127.0.0.1:8090/wallet/updatesetting -d '{"owner_address": "
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/updateenergylimit -d '{"owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9", "contract_address": "41c6600433381c731f22fc2b9f864b14fe518b322f", "origin_energy_limit": 7}'
 ```
-参数说明：
+参数：
 
 - `owner_address`：合约的所有者地址，默认为 HexString 格式。
 - `contract_address`：要修改的合约的地址，默认为  HexString 格式。
 - `origin_energy_limit`：创建者设置的，在一次合约执行或创建过程中创建者自己消耗的最大的 energy。
 - `Permission_id`可选参数，多重签名时使用，设置交易多重签名时使用的 permissionId。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：该接口返回一个包含了未签名更新交易的对象。
 
@@ -1121,13 +1090,13 @@ curl -X POST  http://127.0.0.1:8090/wallet/clearabi -d '{
 "owner_address":"41a7d8a35b260395c14aa456297662092ba3b76fc0",
 "contract_address":"417bcb781f4743afaacf9f9528f3ea903b3782339f"}'
 ```
-参数说明：
+参数：
 
 - `owner_address`：创建合约的账户地址，默认为 HexString 格式
 - `contract_address`：合约地址,默认为 HexString
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
-返回值:该接口返回一个未签名的交易对象
+返回值：该接口返回一个未签名的交易对象
 
 #### wallet/estimateenergy
 作用：预估一次智能合约调用所需的能量。
@@ -1141,7 +1110,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/estimateenergy -d '{
 }'
 ```
 
-参数说明：
+参数：
 
 - `contract_address`，默认为 HexString 格式
 - `function_selector`，函数签名，不能有空格
@@ -1152,7 +1121,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/estimateenergy -d '{
 - `call_value`：本次调用往合约转账的 sun（1TRX = 1,000,000 sun）
 - `call_token_value`:本次调用往合约中转账 TRC-10 币的数量，如果不设置 token_id，这项设置为 0 或者不设置
 - `token_id`:本次调用往合约中转账 TRC-10 币的 id，如果没有，不需要设置
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：该接口返回一个包含预估能量值的对象。
 
@@ -1180,9 +1149,10 @@ curl -X POST  http://127.0.0.1:8090/wallet/estimateenergy -d '{
 curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyaccount -d '{"address": "41F9395ED64A6E1D4ED37CD17C75A1D247223CAF2D"}'
 ```
 
-参数说明：
+参数：
+
 - `address`：发行者账户地址，默认为 HexString 格式。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：该接口返回一个包含了该地址发行的 TRC-10 代币列表的对象。
 
@@ -1191,8 +1161,8 @@ curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyaccount -d '{"address"
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyname -d '{"value": "44756354616E"}'
 ```
-参数：
- - `value`：代币名称，默认为 HexString 格式。
+参数：`value`：代币名称，默认为 HexString 格式。
+
 返回值：TRC-10 代币对象。
 
 
@@ -1203,8 +1173,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyname -d '{"value": "44
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getassetissuelistbyname -d '{"value": "44756354616E"}'
 ```
-参数：
- - `value`：代币名称，默认为 HexString 格式。
+参数：`value`：代币名称，默认为 HexString 格式。
 
 返回值：一个包含所有同名 TRC-10 代币对象的数组。
 
@@ -1213,8 +1182,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getassetissuelistbyname -d '{"value":
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyid -d '{"value": "1000001"}'
 ```
-参数：
-- `value`：TRC-10 代币的 ID。
+参数：`value`：TRC-10 代币的 ID。
 
 返回值：指定的 TRC-10 代币对象。
 
@@ -1224,7 +1192,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyid -d '{"value": "1000
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getassetissuelist
 ```
-参数说明：无
+参数：无
 
 返回值：一个包含全网所有 TRC-10 代币对象的数组。
 
@@ -1234,6 +1202,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getassetissuelist
 curl -X POST  http://127.0.0.1:8090/wallet/getpaginatedassetissuelist -d '{"offset": 0, "limit": 10}'
 ```
 参数：
+
  - `offset`：分页查询的起始索引。
  - `limit`：本次查询期望返回的代币数量。
 
@@ -1244,14 +1213,14 @@ curl -X POST  http://127.0.0.1:8090/wallet/getpaginatedassetissuelist -d '{"offs
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/transferasset -d '{"owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292", "to_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0", "asset_name": "0x6173736574497373756531353330383934333132313538", "amount": 100}'
 ```
-参数说明：
+参数：
 
 - `owner_address`是转出方地址。，默认为 HexString 格式。
 - `to_address`是接收方地址，默认为 HexString 格式。
 - `asset_name`是 TRC-10 代币 ID，默认为 HexString 格式。
 - `amount`是 token 转账数量。
 - `Permission_id`可选参数，多重签名时使用，设置交易多重签名时使用的 permissionId。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：一个未签名的 TRC-10 转账交易对象。
 
@@ -1267,18 +1236,19 @@ curl -X POST http://127.0.0.1:8090/wallet/participateassetissue -d '{
 "asset_name":"3230313271756265696a696e67"
 }'
 ```
-参数说明：
+参数：
 
 - `to_address`是代币发行方地址，默认为 HexString 格式。
 - `owner_address`是参与者地址（购买方），默认为HexString 格式
 - `amount`是参与 token 的数量。
 - `asset_name`是要参与的代币 ID，默认为 HexString 格式。
 - `Permission_id`可选参数，多重签名时使用，设置交易多重签名时使用的 permissionId。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：一个未签名的参与众筹交易对象。
-【注意】
-- 当前的 asset_name 为 token 名称。当委员会通过 AllowSameTokenName 提议后 asset_name 改为 token ID 的 String 类型。
+
+> 注意
+> 当前的 `asset_name` 为 token 名称。当委员会通过 `AllowSameTokenName` 提议后 `asset_name` 改为 token ID 的 String 类型。
 
 
 #### wallet/createassetissue
@@ -1300,7 +1270,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/createassetissue -d '{
 "frozen_supply":{"frozen_amount":1, "frozen_days":2}
 }'
 ```
-参数说明：
+参数：
 
 - `owner_address`发行人地址，默认为 HexString 格式。
 - `name`是 token 名称，默认为 HexString 格式。
@@ -1314,7 +1284,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/createassetissue -d '{
 - `public_free_asset_net_limit` 是每个 token 拥护者能使用本 token 的免费带宽。
 - `frozen_supply`是 token 发行者可以在发行的时候指定质押的 token。
 - `Permission_id`可选参数，多重签名时使用，设置交易多重签名时使用的 permissionId。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：一个未签名的发行 TRC-10 代币交易对象。
 
@@ -1325,11 +1295,11 @@ curl -X POST http://127.0.0.1:8090/wallet/unfreezeasset -d '{
 "owner_address":"41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
 }'
 ```
-参数说明：
+参数：
 
 - `owner_address`是解质押 token 账号的地址，默认为 HexString 格式。
 - `Permission_id`可选参数，多重签名时使用，设置交易多重签名时使用的 permissionId。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：一个未签名的解质押代币交易对象。
 
@@ -1344,22 +1314,21 @@ curl -X POST http://127.0.0.1:8090/wallet/updateasset -d '{
 "new_public_limit" : 100
 }'
 ```
-参数说明：
+参数：
 
-- `owner_address`是 token 发行人的地址，默认为 HexString 格式。
-- `description`是 token 的描述，默认为 HexString 格式。
-- `url`是 token 发行人的官网地址，默认为 HexString 格式。
-- `new_limit`是 token 每个持有人能够使用的免费带宽。
-- `new_public_limit`是该 token 全部的免费带宽。
-- `Permission_id`可选参数，多重签名时使用，设置交易多重签名时使用的 permissionId。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `owner_address` 是 token 发行人的地址，默认为 HexString 格式。
+- `description` 是 token 的描述，默认为 HexString 格式。
+- `url` 是 token 发行人的官网地址，默认为 HexString 格式。
+- `new_limit` 是 token 每个持有人能够使用的免费带宽。
+- `new_public_limit` 是该 token 全部的免费带宽。
+- `Permission_id` 可选参数，多重签名时使用，设置交易多重签名时使用的 permissionId。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：一个未签名的更新代币信息交易对象。
 
 <a id="sr"></a>
-### 投票和 SR
-下面是投票和 SR 相关 API：
-
+### 投票和超级代表
+下面是投票和超级代表（SR）相关的 API：
 
 - [wallet/createwitness](#walletcreatewitness)
 - [wallet/updatewitness](#walletupdatewitness)
@@ -1376,12 +1345,12 @@ curl -X POST http://127.0.0.1:8090/wallet/updateasset -d '{
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/createwitness -d '{"owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292", "url": "007570646174654e616d6531353330363038383733343633"}'
 ```
-参数说明：
+参数：
 
 - `owner_address`是申请成为超级代表的账号地址，默认为 HexString 格式。
 - `url`是官网地址，默认为 HexString 格式。
 - 可选参数`Permission_id`，多重签名时使用，设置交易多重签名时使用的 permissionId。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：一个未签名的申请 SR 交易对象。
 
@@ -1394,12 +1363,12 @@ curl -X POST  http://127.0.0.1:8090/wallet/updatewitness -d '{
 "update_url": "007570646174654e616d6531353330363038383733343633"
 }'
 ```
-参数说明：
+参数：
 
 - `owner_address`是创建人地址，默认为 HexString 格式。
 - `update_url`是更新的官网的 url，默认为 HexString 格式。
 - 可选参数`Permission_id`，多重签名时使用，设置交易多重签名时使用的 permissionId。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：一个未签名的更新 URL 交易对象。
 
@@ -1409,7 +1378,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/updatewitness -d '{
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/listwitnesses
 ```
-参数说明：无
+参数：无
 
 返回值：返回所有 SR 信息列表。
 
@@ -1421,11 +1390,11 @@ curl -X POST http://127.0.0.1:8090/wallet/withdrawbalance -d '{
 "owner_address":"41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
 }'
 ```
-参数说明：
+参数：
 
 - `owner_address`是提现账号的地址，默认为 HexString 格式。
 - `Permission_id`可选参数，多重签名时使用，设置交易多重签名时使用的 permissionId。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：一个未签名的提取奖励交易对象。
 
@@ -1438,13 +1407,13 @@ curl -X POST  http://127.0.0.1:8090/wallet/votewitnessaccount -d '{
 "votes": [{"vote_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0", "vote_count": 5}]
 }'
 ```
-参数说明：
+参数：
 
 - `owner_address`是投票人地址，默认为 HexString 格式。
 - `votes.vote_address`是被投票的超级代表的地址，默认为 HexString 格式。
 - `vote_count`是投票数量。
 - 可选参数`Permission_id`，多重签名时使用，设置交易多重签名时使用的 permissionId。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：一个未签名的投票交易对象。
 
@@ -1454,9 +1423,9 @@ curl -X POST  http://127.0.0.1:8090/wallet/votewitnessaccount -d '{
 curl -X GET  http://127.0.0.1:8090/wallet/getBrokerage -d '{
 "address":"41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}'
 ```
-参数说明：
+参数：
  - `address`是被投票的超级代表的地址，默认为 HexString 格式
- - `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+ - `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：超级代表的当前 brokerage 比例。
 
@@ -1467,11 +1436,11 @@ curl -X POST  http://47.252.81.126:8090/wallet/updateBrokerage  -d '{
 "owner_address":"41E552F6487585C2B58BC2C9BB4492BC1F17132CD0",
 "brokerage":30}'
 ```
-参数说明：
+参数：
 
 - `owner_address`是被投票的超级代表的地址，默认为 HexString 格式。
 - `brokerage`是超级代表想要更新为的 brokerage 比例。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：一个未签名的更新佣金交易对象。
 
@@ -1482,9 +1451,9 @@ curl -X GET
 http://127.0.0.1:8090/wallet/getReward -d '{
 "address":"41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}'
 ```
-参数说明：
+参数：
  - `address`是投票人地址，默认为 HexString 格式
- - `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+ - `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 返回值：一个包含未领取奖励金额（单位 sun）的对象。
 
 #### wallet/getnextmaintenancetime
@@ -1492,7 +1461,7 @@ http://127.0.0.1:8090/wallet/getReward -d '{
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getnextmaintenancetime
 ```
-参数说明：无
+参数：无
 
 返回值：下次统计投票时间的毫秒数。
 
@@ -1514,12 +1483,12 @@ curl -X POST  http://127.0.0.1:8090/wallet/getnextmaintenancetime
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/proposalcreate -d {"owner_address" : "419844F7600E018FD0D710E2145351D607B3316CE9","parameters":[{"key": 0,"value": 100000},{"key": 1,"value": 2}] }
 ```
-参数说明：
+参数：
 
 - `owner_address`：创建人地址。
 - `parameters`：提案参数。
 - 可选参数`Permission_id`，多重签名时使用，设置交易多重签名时使用的 permissionId。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：一个未签名的创建提案交易对象。
 
@@ -1528,7 +1497,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/proposalcreate -d {"owner_address" : 
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getproposalbyid -d {"id":1}
 ```
-参数说明：
+参数：
 - `id`：提案 id
 
 返回值：指定的提案详细信息。
@@ -1538,7 +1507,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getproposalbyid -d {"id":1}
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/listproposals
 ```
-参数说明：无
+参数：无
 
 返回值：一个包含所有提案对象的数组。
 
@@ -1547,13 +1516,13 @@ curl -X POST  http://127.0.0.1:8090/wallet/listproposals
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/proposalapprove -d {"owner_address" : "419844F7600E018FD0D710E2145351D607B3316CE9", "proposal_id":1, "is_add_approval":true}
 ```
-参数说明：
+参数：
 
 - `owner_address`：批准人地址，默认为 HexString 格式。
 - `proposal_id`：提案 id。
 - `is_add_approval`：是否批准。
 - 可选参数`Permission_id`，多重签名时使用，设置交易多重签名时使用的 permissionId。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：一个未签名的批准提案交易对象。
 
@@ -1562,12 +1531,12 @@ curl -X POST  http://127.0.0.1:8090/wallet/proposalapprove -d {"owner_address" :
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/proposaldelete -d {"owner_address" : "419844F7600E018FD0D710E2145351D607B3316CE9", "proposal_id":1}
 ```
-参数说明：
+参数：
 
 - `owner_address`：删除人的地址，只有提案所有人允许删除提案，默认为 HexString 格式。
 - `proposal_id`：提案 id。
 - 可选参数`Permission_id`，多重签名时使用，设置交易多重签名时使用的 permissionId。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：一个未签名的删除提案交易对象。
 
@@ -1576,7 +1545,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/proposaldelete -d {"owner_address" : 
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getpaginatedproposallist -d '{"offset": 0, "limit": 10}'
 ```
-参数说明：
+参数：
  -` offset`：分页查询的起始索引。
  - `limit`：本次查询期望返回的提案数量。
 
@@ -1608,7 +1577,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getpaginatedproposallist -d '{"offset
 curl -X POST  http://127.0.0.1:8090/wallet/exchangecreate -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", 、
 "first_token_id":token_a, "first_token_balance":100, "second_token_id":token_b,"second_token_balance":200}
 ```
-参数说明：
+参数：
 
 - `first_token_id`  ：第 1 种 token 的 id，默认为 HexString 格式
 - `first_token_balance`：第 1 种 token 的 balance
@@ -1623,14 +1592,14 @@ curl -X POST  http://127.0.0.1:8090/wallet/exchangecreate -d {"owner_address":"4
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/exchangeinject -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", "exchange_id":1, "token_id":"74726f6e6e616d65", "quant":100}
 ```
-参数说明：
+参数：
 
 - `owner_address`：交易对创建者的地址，默认为 HexString 格式。
 - `exchange_id`：交易对 id。
 - `token_id`： token 的 id，一般情况是 token 的 name，默认为 HexString 格式。
 - `quant`：注资 token 的数量。
 - 可选参数`Permission_id`，多重签名时使用，设置交易多重签名时使用的 permissionId。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：一个未签名的注资交易对象。
 
@@ -1639,14 +1608,14 @@ curl -X POST  http://127.0.0.1:8090/wallet/exchangeinject -d {"owner_address":"4
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/exchangewithdraw -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", "exchange_id":1, "token_id":"74726f6e6e616d65", "quant":100}
 ```
-参数说明：
+参数：
 
 - `owner_address`：是交易对创建者的地址，默认为 HexString 格式。
 - `exchange_id`：交易对 id。
 - `token_id`： token的 id，一般情况是 token 的 name，需要是 HexString 格式。
 - `quant`：撤资 token 的数量。
 - 可选参数`Permission_id`，多重签名时使用，设置交易多重签名时使用的 permissionId。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：一个未签名的撤资交易对象。
 
@@ -1655,7 +1624,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/exchangewithdraw -d {"owner_address":
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/exchangetransaction -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", "exchange_id":1, "token_id":"74726f6e6e616d65", "quant":100,"expected":10}
 ```
-参数说明：
+参数：
 
 - `owner_address`：是交易对创建者的地址，默认为 HexString 格式。
 - `exchange_id`：交易对 id。
@@ -1663,7 +1632,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/exchangetransaction -d {"owner_addres
 - `quant`：卖出 token 的数量。
 - `expected`：期望买入 token 的数量。
 - 可选参数`Permission_id`，多重签名时使用，设置交易多重签名时使用的 permissionId。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：一个未签名的兑换交易对象。
 
@@ -1672,7 +1641,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/exchangetransaction -d {"owner_addres
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getexchangebyid -d {"id":1}
 ```
-参数说明：
+参数：
 - `id`：交易对 id
 
 返回值：返回指定的交易对对象。
@@ -1682,7 +1651,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getexchangebyid -d {"id":1}
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/listexchanges
 ```
-参数说明：无
+参数：无
 
 返回值：一个包含所有交易对对象的数组。
 
@@ -1691,7 +1660,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/listexchanges
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getpaginatedexchangelist -d '{"offset": 0, "limit":10}'
 ```
-参数说明：
+参数：
  - `offset`：分页查询的起始索引。
  - `limit`：本次查询期望返回的交易对数量。
 
@@ -1709,14 +1678,14 @@ curl -X POST  http://127.0.0.1:8090/wallet/marketsellasset -d
     "buy_token_quantity": 200
 }'
 ```
-参数说明：
+参数：
 
 - `owner_address`：订单发起者地址，默认为 HexString 格式。
 - `sell_token_id`：卖出 asset 的 id，默认为 HexString 格式。
 - `sell_token_quantity`：卖出 asset 的数量。
 - `buy_token_id`：买入 asset 的 id，默认为 HexString 格式。
 - `buy_token_quantity`：最少买入的 asset 的数量。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：一个未签名的挂单交易对象。
 
@@ -1730,11 +1699,11 @@ curl -X POST  http://127.0.0.1:8090/wallet/marketcancelorder -d
     "order_id": "0a7af584a53b612bcff1d0fc86feab05f69bc4528f26a4433bb344d453bd6eeb"
 }'
 ```
-参数说明：
+参数：
 
 - `owner_address`：订单发起者地址，默认为 HexString 格式。
 - `order_id`：取消订单的 id。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 返回值：一个未签名的取消订单交易对象。
 
@@ -1746,10 +1715,10 @@ curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderbyaccount -d
     "value": "4184894b42f66dce8cb84aec2ed11604c991351ac8"
 }'
 ```
-参数说明：
+参数：
 
 - `value`：地址，默认为 HexString 格式。
-- `visible` 设置地址格式,`true`为 Base58Check，`false`或省略则为 HexString。
+- `visible` 设置地址格式，`true` 为 Base58Check，`false` 或省略则为 HexString。
 
 
 返回值：一个包含了该账户所有订单对象的数组。
@@ -1759,7 +1728,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderbyaccount -d
 ```
 curl -X get  http://127.0.0.1:8090/wallet/getmarketpairlist
 ```
-参数说明：
+参数：
 无
 
 返回值：一个包含了所有交易对信息的数组。
@@ -1773,7 +1742,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderlistbypair -d
     "buy_token_id": "31303030303031"
 }'
 ```
-参数说明：
+参数：
 
 - `sell_token_id`：卖出 asset 的 id，默认为 HexString 格式
 - `buy_token_id`：买入 asset 的 id，默认为 HexString 格式
@@ -1789,7 +1758,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getmarketpricebypair -d
     "buy_token_id": "31303030303031"
 }'
 ```
-参数说明：
+参数：
 
 - `sell_token_id`：卖出 asset 的 id，默认为 HexString 格式
 - `buy_token_id`：买入 asset 的 id，默认为 HexString 格式
@@ -1804,7 +1773,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderbyid -d
    "value": "orderid"
 }'
 ```
-参数说明：
+参数：
 - `value`：order id，默认为 HexString 格式
 
 返回值：指定的订单对象。
@@ -1825,7 +1794,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/gettransactionfrompending -d
   "value": "txId"
 }'
 ```
-参数说明：
+参数：
 - `value`: 交易id，默认为hexString格式
 
 返回值：完整的交易对象。如果交易不在等待池中，返回空对象。
@@ -1835,7 +1804,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/gettransactionfrompending -d
 ```
 curl -X get  http://127.0.0.1:8090/wallet/gettransactionlistfrompending
 ```
-参数说明：无
+参数：无
 
 返回值：一个包含了所有等待中交易ID的数组。
 
@@ -1844,7 +1813,7 @@ curl -X get  http://127.0.0.1:8090/wallet/gettransactionlistfrompending
 ```
 curl -X get  http://127.0.0.1:8090/wallet/getpendingsize
 ```
-参数说明：无
+参数：无
 
 返回值：一个包含等待池大小的对象。
 
@@ -1860,7 +1829,7 @@ curl -X POST  http://127.0.0.1:8091/walletsolidity/getaccount -d '{"address": "4
 ```
 参数：
 * `address` 需要查询的账户地址。
-* `visible` 设置地址格式,`true`为Base58Check，`false`或省略则为HexString。
+* `visible` 设置地址格式，`true`为Base58Check，`false`或省略则为HexString。
 
 返回值：Account对象
 
@@ -1873,10 +1842,10 @@ curl -X POST  http://127.0.0.1:8091/walletsolidity/getdelegatedresource -d '
 "toAddress": "41c6600433381c731f22fc2b9f864b14fe518b322f"
 }'
 ```
-参数说明：
+参数：
 - `fromAddress`：是要查询的账户地址，默认为hexString格式
 - `toAddress`：代理对象的账户地址，默认为hexString格式
-- `visible` 设置地址格式,`true`为Base58Check，`false`或省略则为HexString。
+- `visible` 设置地址格式，`true`为Base58Check，`false`或省略则为HexString。
 
 返回值：
 - 账户的资源代理的列表，列表的元素为DelegatedResource
@@ -1891,7 +1860,7 @@ curl -X POST  http://127.0.0.1:8091/walletsolidity/getdelegatedresourceaccountin
 ```
 参数：
 - `value`：是要查询的账户地址，默认为hexString格式。
-- `visible` 设置地址格式,`true`为Base58Check，`false`或省略则为HexString。
+- `visible` 设置地址格式，`true`为Base58Check，`false`或省略则为HexString。
 
 返回值：
 - 账户的资源代理概况，结构为DelegatedResourceAccountIndex。
@@ -1901,7 +1870,7 @@ curl -X POST  http://127.0.0.1:8091/walletsolidity/getdelegatedresourceaccountin
 ```
 curl -X POST  http://127.0.0.1:8091/walletsolidity/getaccountbyid -d '{"account_id":"6161616162626262"}'
 ```
-参数说明：account_id 默认为hexString格式
+参数：account_id 默认为hexString格式
 
 返回值：Account对象
 
@@ -1919,7 +1888,7 @@ curl -X POST http://127.0.0.1:8090/walletsolidity/getavailableunfreezecount -d
 
 参数：
 - `owner_address`: 需要查询的账户地址。
-- `visible` 设置地址格式,`true`为Base58Check，`false`或省略则为HexString。
+- `visible` 设置地址格式，`true`为Base58Check，`false`或省略则为HexString。
 
 返回值：
 - 该接口返回一个包含剩余次数的JSON对象。
@@ -1940,7 +1909,7 @@ curl -X POST http://127.0.0.1:8090/walletsolidity/getcanwithdrawunfreezeamount -
 参数：
 - `owner_address`: 交易发起者账号的地址。
 - `timestamp`: 查询在该时间戳时，可提取的本金数量，单位为毫秒。
-- `visible` 设置地址格式,`true`为Base58Check，`false`或省略则为HexString。
+- `visible` 设置地址格式，`true`为Base58Check，`false`或省略则为HexString。
 
 返回值：
 - 该接口返回一个包含可提取金额的JSON对象。
@@ -1962,7 +1931,7 @@ curl -X POST http://127.0.0.1:8090/walletsolidity/getcandelegatedmaxsize -d
 参数：
 - `owner_address`: 需要查询的账户地址。
 - `type`: 资源类型，0为带宽，1为能量。
-- `visible` 设置地址格式,`true`为Base58Check，`false`或省略则为HexString。
+- `visible` 设置地址格式，`true`为Base58Check，`false`或省略则为HexString。
 
 返回值：
 - 该接口返回一个包含可代理份额最大值的JSON对象。
@@ -1983,7 +1952,7 @@ curl -X POST http://127.0.0.1:8090/walletsolidity/getdelegatedresourcev2 -d
 参数：
 - `fromAddress`: 代理账户地址。
 - `toAddress`: 资源的接收账户地址。
-- `visible` 设置地址格式,`true`为Base58Check，`false`或省略则为HexString。
+- `visible` 设置地址格式，`true`为Base58Check，`false`或省略则为HexString。
 
 返回值：
 - 该接口返回一个 delegatedResource 数组，包含了两者在Stake 2.0下的所有资源代理记录。
@@ -2001,7 +1970,7 @@ curl -X POST http://127.0.0.1:8090/walletsolidity/getdelegatedresourceaccountind
 
 参数：
 - `value`: 账户地址。
-- `visible` 设置地址格式,`true`为Base58Check，`false`或省略则为HexString。
+- `visible` 设置地址格式，`true`为Base58Check，`false`或省略则为HexString。
 
 返回值：
 - 该接口返回一个包含双向代理关系列表的JSON对象。包含两个列表，一个是该帐户将资源委托给的地址列表(toAddress)，另一个是将资源委托给该帐户的地址列表(fromAddress)
@@ -2009,13 +1978,13 @@ curl -X POST http://127.0.0.1:8090/walletsolidity/getdelegatedresourceaccountind
 ### 投票和SR
 
 #### walletsolidity/listwitnesses
-作用：查询当前的所有witness列表。
+作用：查询当前的所有 SR 列表。
 ```
 curl -X POST  http://127.0.0.1:8091/walletsolidity/listwitnesses
 ```
-参数说明：无
+参数：无
 
-返回值：返回所有witness信息列表。
+返回值：返回所有 SR 信息列表。
 
 ### TRC10 通证
 
@@ -2024,7 +1993,7 @@ curl -X POST  http://127.0.0.1:8091/walletsolidity/listwitnesses
 ```
 curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuelist
 ```
-参数说明：无
+参数：无
 
 返回值：返回所有 Token 列表。
 
@@ -2078,7 +2047,7 @@ curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyid -d '{"value
 ```
 curl -X POST  http://127.0.0.1:8091/walletsolidity/getnowblock
 ```
-参数说明：无
+参数：无
 
 返回值：solidityNode 上的最新的区块对象。
 
@@ -2108,7 +2077,7 @@ curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbyid-d '{"value":
 ```
 curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbylimitnext -d '{"startNum": 1, "endNum": 2}'
 ```
-参数说明：
+参数：
 
 - `startNum`：起始块高度，包含此块
 - `endNum`：截止块高度，不包含此此块
@@ -2130,7 +2099,7 @@ curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbylatestnum -d '{"num
 ```
 curl -X GET http://127.0.0.1:8091/wallet/getnodeinfo
 ```
-参数说明：无
+参数：无
 
 返回值：一个包含节点版本、网络状况、区块同步状态等信息的对象。
 
@@ -2185,7 +2154,7 @@ curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioninfobyblocknum 
 ```
 curl -X POST  http://127.0.0.1:8091/walletsolidity/getexchangebyid -d {"id":1}
 ```
-参数说明：
+参数：
 - `id`：交易对id
 
 返回值：返回指定的交易对对象。
@@ -2195,7 +2164,7 @@ curl -X POST  http://127.0.0.1:8091/walletsolidity/getexchangebyid -d {"id":1}
 ```
 curl -X POST  http://127.0.0.1:8091/walletsolidity/listexchanges
 ```
-参数说明：无
+参数：无
 
 返回值：一个包含所有交易对对象的数组。
 

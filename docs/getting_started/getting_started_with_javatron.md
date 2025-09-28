@@ -142,6 +142,7 @@ wallet>
 本模块将指导您启动一个 java-tron 实例，从而将您的计算机转变为一个 TRON 全节点。运行自己的节点可以为您提供最稳定、最可靠且无速率限制的网络访问。在本模块中，我们将连接到 TRON 的 Nile 测试网。
 
 > 提示：
+> 
 > - 执行本教程中的操作前，请确保已安装 java-tron 及相关的开发工具。如果您尚未安装，请参考 [部署](../using_javatron/installing_javatron.md) 页面了解具体步骤。
 > - 教程中的启动命令仅为基础演示。关于更详细的部署与配置，请参考 [Nile 官方节点部署指南](https://nileex.io/run/getRunPage)。
 > - Nile 测试网不支持从创世区块（区块 0）开始同步数据。为快速启动节点，请下载官方提供的数据快照。具体操作可参阅 [使用数据快照部署节点](../using_javatron/backup_restore.md) 指南。
@@ -149,6 +150,7 @@ wallet>
 ### **1. 启动节点**
 
 请使用以下命令启动节点。其中 `-Xmx24g` 标志为 JVM 分配了 24GB 内存，您可以根据自己机器的配置进行调整。
+
 > 提示：在运行此命令前，请确保您已根据引言部分的说明，完成了 java-tron 的安装。
 
 ```
@@ -289,6 +291,7 @@ before sign transaction hex string is 0a85010a02cbc322088581ae7e29258a5240a89aef
 Please confirm and input your permission id, if input y or Y means default 0, other non-numeric characters will cancel transaction.
 ```
 此命令会返回一个待确认的交易。请按以下步骤完成签名和广播：
+
 1. 确认交易：核对交易详情无误后，输入 `y` 并按回车键（输入其他任意字符则会取消交易）。
 2. 选择签名账户：根据界面提示，选择用于给这笔交易签名的账户（即扣款账户）。
 3. 输入密码授权：输入所选账户的密码，`wallet-cli` 将会完成签名，并将交易广播至 java-tron 节点，完成交易。
@@ -315,65 +318,65 @@ wallet>
 当您发送一笔交易后，`wallet-cli` 终端会返回一个唯一的交易ID（`txid`）。通过这个 `txid`，您可以查询到关于这笔交易的所有信息。
 
 1. 使用 `gettransactionbyid <txid>` 查看交易的原始内容：
-```
-wallet> gettransactionbyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4
-```
-返回的 JSON 数据包含了交易的所有细节，例如合约类型 (`TransferContract`)、转账金额、发送方和接收方地址等。`"contractRet":"SUCCESS"` 表示这笔交易的合约在语法上是正确的。
-
-```
-{
-	"ret":[
-		{
-			"contractRet":"SUCCESS"
-		}
-	],
-	"signature":[
-		"241a3ce4797ccc2fedf49ae41af28b49df1e15a476e4948af4df5aadf23a1e940ad5cc2133f501c08f2bab6a2231cdc82a745fed0fc6a012dc19310532d9138600"
-	],
-	"txID":"21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4",
-	"raw_data":{
-		"contract":[
-			{
-				"parameter":{
-					"value":{
-						"amount":1000000,
-						"owner_address":"TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
-						"to_address":"TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf"
-					},
-					"type_url":"type.googleapis.com/protocol.TransferContract"
-				},
-				"type":"TransferContract"
-			}
-		],
-		"ref_block_bytes":"cbc3",
-		"ref_block_hash":"8581ae7e29258a52",
-		"expiration":1656939118171,
-		"timestamp":1656917518232
-	},
-	"raw_data_hex":"0a02cbc322088581ae7e29258a5240dbfc91ca9c305a67080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca121541d0b69631440f0a494bb51f7eee68ff5c593c00f018c0843d7098cfebbf9c30"
-}
-wallet> 
-
-```
+  ```
+  wallet> gettransactionbyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4
+  ```
+  返回的 JSON 数据包含了交易的所有细节，例如合约类型 (`TransferContract`)、转账金额、发送方和接收方地址等。`"contractRet":"SUCCESS"` 表示这笔交易的合约在语法上是正确的。
+  
+  ```
+  {
+  	"ret":[
+  		{
+  			"contractRet":"SUCCESS"
+  		}
+  	],
+  	"signature":[
+  		"241a3ce4797ccc2fedf49ae41af28b49df1e15a476e4948af4df5aadf23a1e940ad5cc2133f501c08f2bab6a2231cdc82a745fed0fc6a012dc19310532d9138600"
+  	],
+  	"txID":"21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4",
+  	"raw_data":{
+  		"contract":[
+  			{
+  				"parameter":{
+  					"value":{
+  						"amount":1000000,
+  						"owner_address":"TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
+  						"to_address":"TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf"
+  					},
+  					"type_url":"type.googleapis.com/protocol.TransferContract"
+  				},
+  				"type":"TransferContract"
+  			}
+  		],
+  		"ref_block_bytes":"cbc3",
+  		"ref_block_hash":"8581ae7e29258a52",
+  		"expiration":1656939118171,
+  		"timestamp":1656917518232
+  	},
+  	"raw_data_hex":"0a02cbc322088581ae7e29258a5240dbfc91ca9c305a67080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca121541d0b69631440f0a494bb51f7eee68ff5c593c00f018c0843d7098cfebbf9c30"
+  }
+  wallet> 
+  
+  ```
 2. 使用 `gettransactioninfobyid <txid>` 查看交易的处理结果和回执信息（即交易是否已经被打包进区块，执行的结果和资源消耗情况）：
-```
-wallet> gettransactioninfobyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4
-```
-在返回的结果中，最重要的字段是 `blockNumber`，它表示交易在哪一个区块高度被确认。如果这个值存在，说明交易已成功上链。此外，`receipt` 对象则记录了该交易消耗的带宽（`net_usage`）等资源。
-```
-{
-	"id": "21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4",
-	"blockNumber": 27773932,
-	"blockTimeStamp": 1656917586000,
-	"contractResult": [
-		""
-	],
-	"receipt": {
-		"net_usage": 267
-	}
-}
-wallet> 
-```
+  ```
+  wallet> gettransactioninfobyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4
+  ```
+  在返回的结果中，最重要的字段是 `blockNumber`，它表示交易在哪一个区块高度被确认。如果这个值存在，说明交易已成功上链。此外，`receipt` 对象则记录了该交易消耗的带宽（`net_usage`）等资源。
+  ```
+  {
+  	"id": "21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4",
+  	"blockNumber": 27773932,
+  	"blockTimeStamp": 1656917586000,
+  	"contractResult": [
+  		""
+  	],
+  	"receipt": {
+  		"net_usage": 267
+  	}
+  }
+  wallet> 
+  ```
 
 ### 方式二：使用 `cURL`（直接调用 HTTP API）
 
@@ -408,96 +411,98 @@ wallet>
 
 1. 创建一笔交易
 
-通过 Fullnode HTTP 的 `wallet/createtransaction` 接口，创建一笔未签名的 TRX 转账交易。在请求体中，指明发送方 (`owner_address`)、接收方 (`to_address`) 和金额 (`amount`)。
+  通过 Fullnode HTTP 的 `wallet/createtransaction` 接口，创建一笔未签名的 TRX 转账交易。在请求体中，指明发送方 (`owner_address`)、接收方 (`to_address`) 和金额 (`amount`)。
+  
+  ```
+  curl -X POST  http://127.0.0.1:8090/wallet/createtransaction -d 
+      '{
+          "to_address": "TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf", 
+          "owner_address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM", 
+          "amount": 10000000,
+          "visible":true
+      }'
+  ```
+  节点会返回一个未签名的 TRX 转账交易。请记下其中的 `txid` 和 `raw_data_hex`，它们将在后续步骤中使用。
+  ```
+  {
+      "visible": true,
+      "txID": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0",
+      "raw_data": {
+          "contract": [
+              {
+                  "parameter": {
+                      "value": {
+                          "amount": 10000000,
+                          "owner_address": "TPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1",
+                          "to_address": "TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf"
+                      },
+                      "type_url": "type.googleapis.com/protocol.TransferContract"
+                  },
+                  "type": "TransferContract"
+              }
+          ],
+          "ref_block_bytes": "193b",
+          "ref_block_hash": "aaecd88e4e0e7528",
+          "expiration": 1656580476000,
+          "timestamp": 1656580418228
+      },
+      "raw_data_hex": "0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30"
+  }
+  ```
 
-```
-curl -X POST  http://127.0.0.1:8090/wallet/createtransaction -d 
-    '{
-        "to_address": "TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf", 
-        "owner_address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM", 
-        "amount": 10000000,
-        "visible":true
-    }'
-```
-节点会返回一个未签名的 TRX 转账交易。请记下其中的 `txid` 和 `raw_data_hex`，它们将在后续步骤中使用。
-```
-{
-    "visible": true,
-    "txID": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0",
-    "raw_data": {
-        "contract": [
-            {
-                "parameter": {
-                    "value": {
-                        "amount": 10000000,
-                        "owner_address": "TPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1",
-                        "to_address": "TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf"
-                    },
-                    "type_url": "type.googleapis.com/protocol.TransferContract"
-                },
-                "type": "TransferContract"
-            }
-        ],
-        "ref_block_bytes": "193b",
-        "ref_block_hash": "aaecd88e4e0e7528",
-        "expiration": 1656580476000,
-        "timestamp": 1656580418228
-    },
-    "raw_data_hex": "0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30"
-}
-```
 2. 对交易进行签名
 
-使用发送方账户的私钥，对上一步生成的交易数据 (`raw_data_hex` 或 `txid`) 进行签名，以证明您对该账户的所有权。
-
-**重要提示**: 
-- 为保障私钥安全，建议您始终在本地或安全的服务器环境中，并使用 TRON 官方提供的 SDK (如 `TronWeb`, `java-tron-sdk` 等) 完成所有签名操作。
-- `cURL` 无法执行签名操作。此步骤仅作流程说明。
-
-签名后，您会得到一个长字符串，即交易的签名哈希 (Signature Hash)。
+  使用发送方账户的私钥，对上一步生成的交易数据 (`raw_data_hex` 或 `txid`) 进行签名，以证明您对该账户的所有权。
+  
+  **重要提示**: 
+  
+  - 为保障私钥安全，建议您始终在本地或安全的服务器环境中，并使用 TRON 官方提供的 SDK (如 `TronWeb`, `java-tron-sdk` 等) 完成所有签名操作。
+  - `cURL` 无法执行签名操作。此步骤仅作流程说明。
+  
+  签名后，您会得到一个长字符串，即交易的签名哈希 (Signature Hash)。
 
 3. 广播交易
 
-最后一步，我们将已签名的交易广播出去。调用  [`wallet/broadcasttransaction`](https://cn.developers.tron.network/reference/broadcasttransaction) 接口，并在其请求体中填入第一步获取的交易对象和第二步生成的签名哈希。提交后，节点会验证签名，然后将交易广播至整个 TRON 网络等待打包确认，至此便完成了整个转账流程。
-
-```
-curl --location --request POST 'http://127.0.0.1:8090/wallet/broadcasttransaction' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "visible": true,
-    "signature": [
-        "e12996cfaf52f8b49e64400987f9158a87b1aa809a11a75e01bb230722db97a26204334aea945b1ece0851a89c96459872e56229b0bd725c4f6a0577bfe331c301"
-    ],
-    "txID": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0",
-    "raw_data": {
-        "contract": [
-            {
-                "parameter": {
-                    "value": {
-                        "amount": 10000000,
-                        "owner_address": "TPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1",
-                        "to_address": "TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf"
-                    },
-                    "type_url": "type.googleapis.com/protocol.TransferContract"
-                },
-                "type": "TransferContract"
-            }
-        ],
-        "ref_block_bytes": "193b",
-        "ref_block_hash": "aaecd88e4e0e7528",
-        "expiration": 1656580476000,
-        "timestamp": 1656580418228
-    },
-    "raw_data_hex": "0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30"
-}'
-```
-如果返回结果中的 `"result": true`，则代表您的交易已成功广播:
-```
-{
-    "result": true,
-    "txid": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0"
-}
-```
+  最后一步，我们将已签名的交易广播出去。调用  [`wallet/broadcasttransaction`](../api/http.md/#walletbroadcasttransaction) 接口，并在其请求体中填入第一步获取的交易对象和第二步生成的签名哈希。提交后，节点会验证签名，然后将交易广播至整个 TRON 网络等待打包确认，至此便完成了整个转账流程。
+  
+  ```
+  curl --location --request POST 'http://127.0.0.1:8090/wallet/broadcasttransaction' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+      "visible": true,
+      "signature": [
+          "e12996cfaf52f8b49e64400987f9158a87b1aa809a11a75e01bb230722db97a26204334aea945b1ece0851a89c96459872e56229b0bd725c4f6a0577bfe331c301"
+      ],
+      "txID": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0",
+      "raw_data": {
+          "contract": [
+              {
+                  "parameter": {
+                      "value": {
+                          "amount": 10000000,
+                          "owner_address": "TPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1",
+                          "to_address": "TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf"
+                      },
+                      "type_url": "type.googleapis.com/protocol.TransferContract"
+                  },
+                  "type": "TransferContract"
+              }
+          ],
+          "ref_block_bytes": "193b",
+          "ref_block_hash": "aaecd88e4e0e7528",
+          "expiration": 1656580476000,
+          "timestamp": 1656580418228
+      },
+      "raw_data_hex": "0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30"
+  }'
+  ```
+  如果返回结果中的 `"result": true`，则代表您的交易已成功广播:
+  ```
+  {
+      "result": true,
+      "txid": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0"
+  }
+  ```
 
 #### 根据交易 ID 查询交易
 
@@ -505,70 +510,73 @@ curl --location --request POST 'http://127.0.0.1:8090/wallet/broadcasttransactio
 
 1. 通过 HTTP 接口 `wallet/gettransactionbyid` 获取已广播交易的完整数据。在请求体中，通过 `value` 字段传入您要查询的 `txid`：
 
-```
-curl --location --request POST 'http://127.0.0.1:8090/wallet/gettransactionbyid' \
---header 'Content-Type: application/json' \
---data-raw '{
-     "value": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0"
-}'
-```
-返回结果的数据结构与 `wallet-cli` 的 `gettransactionbyid` 命令基本一致：
-```
-{
-    "ret": [
-        {
-            "contractRet": "SUCCESS"
-        }
-    ],
-    "signature": [
-        "e12996cfaf52f8b49e64400987f9158a87b1aa809a11a75e01bb230722db97a26204334aea945b1ece0851a89c96459872e56229b0bd725c4f6a0577bfe331c301"
-    ],
-    "txID": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0",
-    "raw_data": {
-        "contract": [
-            {
-                "parameter": {
-                    "value": {
-                        "amount": 10000000,
-                        "owner_address": "4198927ffb9f554dc4a453c64b2e553a02d6df514b",
-                        "to_address": "41d0b69631440f0a494bb51f7eee68ff5c593c00f0"
-                    },
-                    "type_url": "type.googleapis.com/protocol.TransferContract"
-                },
-                "type": "TransferContract"
-            }
-        ],
-        "ref_block_bytes": "193b",
-        "ref_block_hash": "aaecd88e4e0e7528",
-        "expiration": 1656580476000,
-        "timestamp": 1656580418228
-    },
-    "raw_data_hex": "0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30"
-}
-```
-2. 通过 HTTP 接口 `wallet/gettransactioninfobyid` 查看交易的处理结果和回执信息（即交易是否已经被打包进区块，执行的结果和资源消耗情况）。在请求体中传入目标 `txid`：
+  ```
+  curl --location --request POST 'http://127.0.0.1:8090/wallet/gettransactionbyid' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+       "value": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0"
+  }'
+  ```
+  返回结果的数据结构与 `wallet-cli` 的 `gettransactionbyid` 命令基本一致：
+  ```
+  {
+      "ret": [
+          {
+              "contractRet": "SUCCESS"
+          }
+      ],
+      "signature": [
+          "e12996cfaf52f8b49e64400987f9158a87b1aa809a11a75e01bb230722db97a26204334aea945b1ece0851a89c96459872e56229b0bd725c4f6a0577bfe331c301"
+      ],
+      "txID": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0",
+      "raw_data": {
+          "contract": [
+              {
+                  "parameter": {
+                      "value": {
+                          "amount": 10000000,
+                          "owner_address": "4198927ffb9f554dc4a453c64b2e553a02d6df514b",
+                          "to_address": "41d0b69631440f0a494bb51f7eee68ff5c593c00f0"
+                      },
+                      "type_url": "type.googleapis.com/protocol.TransferContract"
+                  },
+                  "type": "TransferContract"
+              }
+          ],
+          "ref_block_bytes": "193b",
+          "ref_block_hash": "aaecd88e4e0e7528",
+          "expiration": 1656580476000,
+          "timestamp": 1656580418228
+      },
+      "raw_data_hex": "0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30"
+  }
+  ```
 
-```
-curl --location --request POST 'http://127.0.0.1:8090/wallet/gettransactioninfobyid' \
---header 'Content-Type: application/json' \
---data-raw '{
-     "value": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0"
-}'
-```
-返回结果中的 `blockNumber` 字段是交易成功的关键凭证，只要这个字段有值，就代表您的交易已成功上链且不可逆转。而 `receipt` 字段则提供了详细的执行回执。
-```
-{
-    "id": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0",
-    "blockNumber": 27662687,
-    "blockTimeStamp": 1656580470000,
-    "contractResult": [
-        ""
-    ],
-    "receipt": {
-        "net_usage": 268
-    }
-}
-```
+2. 通过 HTTP 接口 `wallet/gettransactioninfobyid` 查看交易的处理结果和回执信息（即交易是否已经被打包进区块，执行的结果和资源消耗情况）。
+
+  在请求体中传入目标 `txid`：
+  
+  ```
+  curl --location --request POST 'http://127.0.0.1:8090/wallet/gettransactioninfobyid' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+       "value": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0"
+  }'
+  ```
+  返回结果中的 `blockNumber` 字段是交易成功的关键凭证，只要这个字段有值，就代表您的交易已成功上链且不可逆转。而 `receipt` 字段则提供了详细的执行回执。
+  ```
+  {
+      "id": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0",
+      "blockNumber": 27662687,
+      "blockTimeStamp": 1656580470000,
+      "contractResult": [
+          ""
+      ],
+      "receipt": {
+          "net_usage": 268
+      }
+  }
+  ```
 
 ## 总结与展望
 恭喜您完成了 java-tron 的入门之旅！您已经亲手操作并掌握了运行节点、创建账户和发送交易等核心技能，为深入探索 TRON 生态打下了坚实的基础。
