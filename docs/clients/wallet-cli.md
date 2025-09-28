@@ -56,7 +56,7 @@ Balance = 0
 - [交易](#transaction)
 - [查询链上数据](#query_chain_data)
 - [智能合约](#contract)
-- [TRC-10 资产](#TRC-10_asset)
+- [TRC-10 资产](#trc-10)
 - [治理](#governance)
 - [去中心化交易所](#defi)
 - [GasFree 支持](#gasfree)
@@ -370,9 +370,9 @@ CreateAccount successful !!
 
 #### 修改账户权限
 
-##### 如何使用 `wallet-cli` 的多重签名功能？
+##### 如何使用 `wallet-cli` 的账户权限管理功能？
 
-多重签名允许其他用户访问账户，以便更好地管理账户。有三种访问类型：
+账户权限管理功能允许其他用户访问账户，以便更好地管理账户。有三种访问类型：
 
 * `owner`：账户所有者的访问权限
 * `active`：账户的其他功能访问权限，以及授权特定功能的访问权限。如果用于 SR，不包括区块生产授权。
@@ -430,6 +430,7 @@ CreateAccount successful !!
 
 如果账户不是超级代表（Super Representative, 简称 SR），则无需设置 `witness_permission`，否则将报错。
 
+<a id="resource"></a>
 ### 账户资源
 
 #### 如何冻结/解冻余额
@@ -831,7 +832,7 @@ wallet> getCanWithdrawUnfreezeAmount TJAVcszse667FmSNCwU2fm6DmfM5D4AyDh 16711003
 
 > SendCoin TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW 10000000000000000
 
-以下是一个多重签名交易的示例。其中，签名账户的授权情况请参考 修改账户权限 部分的示例。
+以下是一个使用账户权限管理功能的交易示例。其中，签名账户的授权情况请参考 修改账户权限 部分的示例。
 
 ```shell
 wallet> sendcoin TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE 10
@@ -1022,7 +1023,7 @@ Current signWeight is:
     }
 }
 ```
-<a id="query_onchain_data"></a>
+<a id="query_chain_data"></a>
 ### 查询链上数据
 
 #### 查看本地交易历史 - `ViewTransactionHistory`
@@ -1318,6 +1319,7 @@ EstimateEnergy owner_address(use # if you own) contract_address method args isHe
 ```
 
 #### 获取智能合约信息 - `GetContractInfo contractAddress`
+
 - `contractAddress` - 智能合约地址
 
 示例：
@@ -1332,8 +1334,9 @@ EstimateEnergy owner_address(use # if you own) contract_address method args isHe
 UpdateEnergyLimit [ownerAddress] contract_address energy_limit  # 更新参数energy_limit
 > UpdateSetting [ownerAddress] contract_address consume_user_resource_percent  # 更新参数consume_user_resource_percent
 ```
------
-<a id="TRC-10_asset"></a>
+
+
+<a id="trc-10"></a>
 ### TRC-10 资产
 
 #### 如何发行 TRC-10 代币
