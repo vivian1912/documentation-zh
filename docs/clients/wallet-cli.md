@@ -826,7 +826,7 @@ wallet> getCanWithdrawUnfreezeAmount TJAVcszse667FmSNCwU2fm6DmfM5D4AyDh 16711003
 }
 ```
 <a id="transaction"></a>
-### 交易相关
+### 交易
 
 #### 签名交易
 
@@ -834,7 +834,7 @@ wallet> getCanWithdrawUnfreezeAmount TJAVcszse667FmSNCwU2fm6DmfM5D4AyDh 16711003
 
 以下是一个使用账户权限管理功能的交易示例。其中，签名账户的授权情况请参考 修改账户权限 部分的示例。
 
-```shell
+```
 wallet> sendcoin TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE 10
 {
 	"raw_data":{
@@ -1917,9 +1917,9 @@ getTransactionInfoById b375787a098498623403c755b1399e82910385251b643811936d914c9
 
 
 <a id="gasfree"></a>
-## GasFree 支持
+### GasFree 支持
 
-Wallet-cli 现在支持 **GasFree** 集成。本指南解释了新的命令并提供了如何使用它们的说明。
+`wallet-cli` 现在支持 **GasFree** 集成。本指南解释了新的命令并提供了如何使用它们的说明。
 
 有关更多详细信息，请参阅 [GasFree Documentation](https://gasfree.io/specification) 和 [TronLink User Guide For GasFree](https://support.tronlink.org/hc/en-us/articles/38903684778393-GasFree-User-Guide)。
 
@@ -2033,7 +2033,6 @@ GasFreeTrace: successful!!
 
 
 <a id="other"></a>
-
 ### 其他实用命令
 
 #### 切换网络 - `SwitchNetwork`
