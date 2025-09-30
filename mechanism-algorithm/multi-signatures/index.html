@@ -1979,23 +1979,27 @@
 <li><code>keys</code>：具备此权限的地址与权重（最多 5 个）。</li>
 </ul>
 <h3 id="3-key">3. 权限密钥结构：<code>Key</code><a class="headerlink" href="#3-key" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>message Key {
+<div class="highlight"><pre><span></span><code>message Key {
   bytes address = 1;
   int64 weight = 2;
 }
 </code></pre></div>
-- <code>address</code>：具备权限的地址；
-- <code>weight</code>：该地址在该权限下的权重。</p>
+<ul>
+<li><code>address</code>：具备权限的地址；</li>
+<li><code>weight</code>：该地址在该权限下的权重。</li>
+</ul>
 <h3 id="4-accountpermissionupdatecontract">4. 权限更新交易：<code>AccountPermissionUpdateContract</code><a class="headerlink" href="#4-accountpermissionupdatecontract" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>message AccountPermissionUpdateContract {
+<div class="highlight"><pre><span></span><code>message AccountPermissionUpdateContract {
   bytes owner_address = 1;
   Permission owner = 2;
   Permission witness = 3;
   repeated Permission actives = 4;
 }
 </code></pre></div>
-- 此合约用于 <strong>一次性更新账户的所有权限结构</strong>；
-- 即便只修改其中一种权限，也需完整设置其余字段。</p>
+<ul>
+<li>此合约用于 <strong>一次性更新账户的所有权限结构</strong>；</li>
+<li>即便只修改其中一种权限，也需完整设置其余字段。</li>
+</ul>
 <h3 id="5-contracttype">5. 合约类型枚举：<code>ContractType</code><a class="headerlink" href="#5-contracttype" title="Permanent link">&para;</a></h3>
 <p><div class="highlight"><pre><span></span><code>enum ContractType {
   AccountCreateContract = 0;
@@ -2003,7 +2007,7 @@
   AccountPermissionUpdateContract = 46;
 }
 </code></pre></div>
-<code>active</code> 权限通过 <code>operations</code> 字段配置可执行哪些 <code>ContractType</code>，详见下方计算方法。</p>
+<code>active</code> 权限通过 <code>operations</code> 字段配置可执行哪些 <code>ContractType</code>。 <code>operations</code> 字段值的计算请参考<a href="#2-operations">operations 值计算示例</a>。</p>
 <h2 id="_5">各权限类型说明<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <h3 id="owner"><code>owner</code> 权限（账户主控）<a class="headerlink" href="#owner" title="Permanent link">&para;</a></h3>
 <ul>
