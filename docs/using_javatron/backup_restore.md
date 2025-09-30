@@ -1,6 +1,6 @@
 # TRON 网络节点数据备份与恢复
 
-`java-tron` 节点将其持久化数据存储在指定的数据目录下。默认的数据目录是 `/output-directory/`。您可以通过在 `java-tron` 节点启动命令中添加 `-d` 或 `--output-directory` 参数来指定不同的数据存储位置，例如：
+java-tron 节点将其持久化数据存储在指定的数据目录下。默认的数据目录是 `/output-directory/`。您可以通过在 java-tron 节点启动命令中添加 `-d` 或 `--output-directory` 参数来指定不同的数据存储位置，例如：
 
 ```
 java -jar fullnode.jar -d ./outputdir
@@ -11,13 +11,13 @@ java -jar fullnode.jar -d ./outputdir
 
 在备份节点数据之前，请务必 **关闭节点进程**。您可以按照以下步骤进行操作：
 
-首先，使用以下命令获取 `java-tron` 进程的 PID：
+首先，使用以下命令获取 java-tron 进程的 PID：
 
 ```
 ps -ef | grep FullNode.jar | grep -v grep | awk '{print $2}'
 ```
 
-然后，使用获取到的 PID 来终止进程。建议使用以下停止脚本来安全关闭 `java-tron` 进程，以避免数据库损坏：
+然后，使用获取到的 PID 来终止进程。建议使用以下停止脚本来安全关闭 java-tron 进程，以避免数据库损坏：
 
 ```
 #!/bin/bash
@@ -34,7 +34,7 @@ while true; do
 done
 ```
 
-当 `java-tron` 进程成功关闭后，您可以使用以下命令进行数据备份：
+当 java-tron 进程成功关闭后，您可以使用以下命令进行数据备份：
 
 ```
 tar cvzf output-directory.`date "+%Y%m%d%H%M%S"`.etgz output-directory
