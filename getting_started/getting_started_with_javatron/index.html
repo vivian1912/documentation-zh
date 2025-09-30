@@ -2153,10 +2153,8 @@ wallet&gt;
 </code></pre></div></p>
 <h4 id="_5">发送交易的三步流程<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>现在，让我们以 TRX 转账为例说明如何向 java-tron 发送交易，完整地演示“创建-签名-广播”这三个步骤。</p>
-<ol>
-<li>创建一笔交易</li>
-</ol>
-<p>通过 Fullnode HTTP 的 <code>wallet/createtransaction</code> 接口，创建一笔未签名的 TRX 转账交易。在请求体中，指明发送方 (<code>owner_address</code>)、接收方 (<code>to_address</code>) 和金额 (<code>amount</code>)。</p>
+<p><strong>第一步 - 创建一笔交易</strong></p>
+<p>通过 FullNode HTTP 的 <code>wallet/createtransaction</code> 接口，创建一笔未签名的 TRX 转账交易。在请求体中，指明发送方 (<code>owner_address</code>)、接收方 (<code>to_address</code>) 和金额 (<code>amount</code>)。</p>
 <p><div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/createtransaction -d 
     &#39;{
         &quot;to_address&quot;: &quot;TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf&quot;, 
@@ -2191,9 +2189,7 @@ wallet&gt;
     &quot;raw_data_hex&quot;: &quot;0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30&quot;
 }
 </code></pre></div></p>
-<ol>
-<li>对交易进行签名</li>
-</ol>
+<p><strong>第二步 - 对交易进行签名</strong></p>
 <p>使用发送方账户的私钥，对上一步生成的交易数据 (<code>raw_data_hex</code> 或 <code>txid</code>) 进行签名，以证明您对该账户的所有权。</p>
 <p><strong>重要提示</strong>: </p>
 <ul>
@@ -2201,9 +2197,7 @@ wallet&gt;
 <li><code>cURL</code> 无法执行签名操作。此步骤仅作流程说明。</li>
 </ul>
 <p>签名后，您会得到一个长字符串，即交易的签名哈希 (Signature Hash)。</p>
-<ol>
-<li>广播交易</li>
-</ol>
+<p><strong>第三步 - 广播交易</strong></p>
 <p>最后一步，我们将已签名的交易广播出去。调用  <a href="../../api/http/#walletbroadcasttransaction"><code>wallet/broadcasttransaction</code></a> 接口，并在其请求体中填入第一步获取的交易对象和第二步生成的签名哈希。提交后，节点会验证签名，然后将交易广播至整个 TRON 网络等待打包确认，至此便完成了整个转账流程。</p>
 <p><div class="highlight"><pre><span></span><code>curl --location --request POST &#39;http://127.0.0.1:8090/wallet/broadcasttransaction&#39; \
 --header &#39;Content-Type: application/json&#39; \
@@ -2243,9 +2237,8 @@ wallet&gt;
 </code></pre></div></p>
 <h4 id="id_1">根据交易 ID 查询交易<a class="headerlink" href="#id_1" title="Permanent link">&para;</a></h4>
 <p>通过 HTTP API 查询已广播的交易，原理与 <code>wallet-cli</code> 相同。</p>
-<ol>
-<li>通过 HTTP 接口 <code>wallet/gettransactionbyid</code> 获取已广播交易的完整数据。在请求体中，通过 <code>value</code> 字段传入您要查询的 <code>txid</code>：</li>
-</ol>
+<h5 id="walletgettransactionbyid"><code>wallet/gettransactionbyid</code><a class="headerlink" href="#walletgettransactionbyid" title="Permanent link">&para;</a></h5>
+<p>通过 HTTP 接口 <code>wallet/gettransactionbyid</code> 获取已广播交易的完整数据。在请求体中，通过 <code>value</code> 字段传入您要查询的 <code>txid</code>：</p>
 <p><div class="highlight"><pre><span></span><code>curl --location --request POST &#39;http://127.0.0.1:8090/wallet/gettransactionbyid&#39; \
 --header &#39;Content-Type: application/json&#39; \
 --data-raw &#39;{
@@ -2285,9 +2278,8 @@ wallet&gt;
     &quot;raw_data_hex&quot;: &quot;0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30&quot;
 }
 </code></pre></div></p>
-<ol>
-<li>通过 HTTP 接口 <code>wallet/gettransactioninfobyid</code> 查看交易的处理结果和回执信息（即交易是否已经被打包进区块，执行的结果和资源消耗情况）。</li>
-</ol>
+<h5 id="walletgettransactioninfobyid"><code>wallet/gettransactioninfobyid</code><a class="headerlink" href="#walletgettransactioninfobyid" title="Permanent link">&para;</a></h5>
+<p>通过 HTTP 接口 <code>wallet/gettransactioninfobyid</code> 查看交易的处理结果和回执信息（即交易是否已经被打包进区块，执行的结果和资源消耗情况）。</p>
 <p>在请求体中传入目标 <code>txid</code>：</p>
 <p><div class="highlight"><pre><span></span><code>curl --location --request POST &#39;http://127.0.0.1:8090/wallet/gettransactioninfobyid&#39; \
 --header &#39;Content-Type: application/json&#39; \
