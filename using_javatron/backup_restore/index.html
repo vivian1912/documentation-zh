@@ -1741,15 +1741,15 @@
 
 
 <h1 id="tron">TRON 网络节点数据备份与恢复<a class="headerlink" href="#tron" title="Permanent link">&para;</a></h1>
-<p><code>java-tron</code> 节点将其持久化数据存储在指定的数据目录下。默认的数据目录是 <code>/output-directory/</code>。您可以通过在 <code>java-tron</code> 节点启动命令中添加 <code>-d</code> 或 <code>--output-directory</code> 参数来指定不同的数据存储位置，例如：</p>
+<p>java-tron 节点将其持久化数据存储在指定的数据目录下。默认的数据目录是 <code>/output-directory/</code>。您可以通过在 java-tron 节点启动命令中添加 <code>-d</code> 或 <code>--output-directory</code> 参数来指定不同的数据存储位置，例如：</p>
 <div class="highlight"><pre><span></span><code>java -jar fullnode.jar -d ./outputdir
 </code></pre></div>
 <h2 id="_1">备份节点数据<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>在备份节点数据之前，请务必 <strong>关闭节点进程</strong>。您可以按照以下步骤进行操作：</p>
-<p>首先，使用以下命令获取 <code>java-tron</code> 进程的 PID：</p>
+<p>首先，使用以下命令获取 java-tron 进程的 PID：</p>
 <div class="highlight"><pre><span></span><code>ps -ef | grep FullNode.jar | grep -v grep | awk &#39;{print $2}&#39;
 </code></pre></div>
-<p>然后，使用获取到的 PID 来终止进程。建议使用以下停止脚本来安全关闭 <code>java-tron</code> 进程，以避免数据库损坏：</p>
+<p>然后，使用获取到的 PID 来终止进程。建议使用以下停止脚本来安全关闭 java-tron 进程，以避免数据库损坏：</p>
 <div class="highlight"><pre><span></span><code>#!/bin/bash
 while true; do
   pid=`ps -ef |grep FullNode.jar |grep -v grep |awk &#39;{print $2}&#39;`
@@ -1763,7 +1763,7 @@ while true; do
   fi
 done
 </code></pre></div>
-<p>当 <code>java-tron</code> 进程成功关闭后，您可以使用以下命令进行数据备份：</p>
+<p>当 java-tron 进程成功关闭后，您可以使用以下命令进行数据备份：</p>
 <div class="highlight"><pre><span></span><code>tar cvzf output-directory.`date &quot;+%Y%m%d%H%M%S&quot;`.etgz output-directory
 </code></pre></div>
 <h2 id="_2">恢复节点数据<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
