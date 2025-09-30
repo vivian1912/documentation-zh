@@ -1528,7 +1528,7 @@
           <li class="md-nav__item ">
   <a href="#_13" class="md-nav__link" >
     <span class="md-ellipsis">
-      交易相关
+      交易
     </span>
   </a>
   
@@ -1579,20 +1579,14 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item has-children">
-  <a href="#gasfree" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+          <li class="md-nav__item ">
+  <a href="#gasfree" class="md-nav__link" >
     <span class="md-ellipsis">
       GasFree 支持
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="GasFree 支持" hidden>
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item ">
   <a href="#_34" class="md-nav__link" >
@@ -2583,83 +2577,83 @@ wallet&gt; GetTransactionById feb334794cf361fd351728026ccf7319e6ae90eba622b9eb53
 }
 </code></pre></div>
 <a id="transaction"></a></p>
-<h3 id="_13">交易相关<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h3 id="_13">交易<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="_14">签名交易<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>SendCoin TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW 10000000000000000</p>
 </blockquote>
 <p>以下是一个使用账户权限管理功能的交易示例。其中，签名账户的授权情况请参考 修改账户权限 部分的示例。</p>
-<div class="highlight"><pre><span></span><code>wallet&gt;<span class="w"> </span>sendcoin<span class="w"> </span>TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE<span class="w"> </span><span class="m">10</span>
-<span class="o">{</span>
-<span class="w">    </span><span class="s2">&quot;raw_data&quot;</span>:<span class="o">{</span>
-<span class="w">        </span><span class="s2">&quot;contract&quot;</span>:<span class="o">[</span>
-<span class="w">    </span>...
-<span class="w">    </span><span class="s2">&quot;raw_data_hex&quot;</span>:<span class="s2">&quot;0a029ca12208432ed1fe1357ff7f40c0c484f19a305a65080112610a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412300a1541babecec4d9f58f0df77f0728b9c53abb1f21d684121541e8bd653015895947cec33d1670a88cf67ab277b9180a708a8481f19a30&quot;</span>
-<span class="o">}</span>
-before<span class="w"> </span>sign<span class="w"> </span>transaction<span class="w"> </span>hex<span class="w"> </span>string<span class="w"> </span>is<span class="w"> </span>0a83010a029ca12208432ed1fe1357ff7f40c0c484f19a305a65080112610a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412300a1541babecec4d9f58f0df77f0728b9c53abb1f21d684121541e8bd653015895947cec33d1670a88cf67ab277b9180a708a8481f19a30
-Please<span class="w"> </span>confirm<span class="w"> </span>and<span class="w"> </span>input<span class="w"> </span>your<span class="w"> </span>permission<span class="w"> </span>id,<span class="w"> </span><span class="k">if</span><span class="w"> </span>input<span class="w"> </span>y<span class="w"> </span>or<span class="w"> </span>Y<span class="w"> </span>means<span class="w"> </span>default<span class="w"> </span><span class="m">0</span>,<span class="w"> </span>other<span class="w"> </span>non-numeric<span class="w"> </span>characters<span class="w"> </span>will<span class="w"> </span>cancel<span class="w"> </span>transaction.
-<span class="m">2</span>
-Please<span class="w"> </span>choose<span class="w"> </span>your<span class="w"> </span>key<span class="w"> </span><span class="k">for</span><span class="w"> </span>sign.
-The<span class="w"> </span>1th<span class="w"> </span>keystore<span class="w"> </span>file<span class="w"> </span>name<span class="w"> </span>is<span class="w"> </span>UTC--2022-06-28T06-52-56.928000000Z--TB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej.json
-The<span class="w"> </span>2th<span class="w"> </span>keystore<span class="w"> </span>file<span class="w"> </span>name<span class="w"> </span>is<span class="w"> </span>.DS_Store
-The<span class="w"> </span>3th<span class="w"> </span>keystore<span class="w"> </span>file<span class="w"> </span>name<span class="w"> </span>is<span class="w"> </span>UTC--2022-04-06T09-43-20.710000000Z--TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8.json
-The<span class="w"> </span>4th<span class="w"> </span>keystore<span class="w"> </span>file<span class="w"> </span>name<span class="w"> </span>is<span class="w"> </span>UTC--2022-04-07T09-03-38.307000000Z--TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE.json
-Please<span class="w"> </span>choose<span class="w"> </span>between<span class="w"> </span><span class="m">1</span><span class="w"> </span>and<span class="w"> </span><span class="m">4</span>
-<span class="m">1</span>
-Please<span class="w"> </span>input<span class="w"> </span>your<span class="w"> </span>password.
-password:<span class="w"> </span>
-Current<span class="w"> </span>signWeight<span class="w"> </span>is:
-<span class="o">{</span>
-<span class="w">    </span><span class="s2">&quot;result&quot;</span>:<span class="o">{</span>
-<span class="w">        </span><span class="s2">&quot;code&quot;</span>:<span class="s2">&quot;NOT_ENOUGH_PERMISSION&quot;</span>
-<span class="w">    </span><span class="o">}</span>,
-<span class="w">    </span><span class="s2">&quot;approved_list&quot;</span>:<span class="o">[</span>
-<span class="w">        </span><span class="s2">&quot;TB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej&quot;</span>
-<span class="w">    </span><span class="o">]</span>,
-<span class="w">    </span><span class="s2">&quot;permission&quot;</span>:<span class="o">{</span>
-<span class="w">        </span><span class="s2">&quot;operations&quot;</span>:<span class="s2">&quot;7fff1fc0033e0000000000000000000000000000000000000000000000000000&quot;</span>,
-<span class="w">        </span><span class="s2">&quot;keys&quot;</span>:<span class="o">[</span>
-<span class="w">            </span><span class="o">{</span>
-<span class="w">                </span><span class="s2">&quot;address&quot;</span>:<span class="s2">&quot;TB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;weight&quot;</span>:1
-<span class="w">            </span><span class="o">}</span>,
-<span class="w">            </span><span class="o">{</span>
-<span class="w">                </span><span class="s2">&quot;address&quot;</span>:<span class="s2">&quot;TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;weight&quot;</span>:1
-<span class="w">            </span><span class="o">}</span>
-<span class="w">        </span><span class="o">]</span>,
-<span class="w">        </span><span class="s2">&quot;threshold&quot;</span>:2,
-<span class="w">        </span><span class="s2">&quot;id&quot;</span>:2,
-<span class="w">        </span><span class="s2">&quot;type&quot;</span>:<span class="s2">&quot;Active&quot;</span>,
-<span class="w">        </span><span class="s2">&quot;permission_name&quot;</span>:<span class="s2">&quot;active12323&quot;</span>
-<span class="w">    </span><span class="o">}</span>,
-<span class="w">    </span><span class="s2">&quot;current_weight&quot;</span>:1,
-<span class="w">    </span><span class="s2">&quot;transaction&quot;</span>:<span class="o">{</span>
-<span class="w">        </span><span class="s2">&quot;raw_data&quot;</span>:<span class="o">{</span>
-<span class="w">            </span><span class="s2">&quot;contract&quot;</span>:<span class="o">[</span>
-<span class="w">                </span><span class="o">{</span>
-<span class="w">                    </span><span class="s2">&quot;parameter&quot;</span>:<span class="o">{</span>
-<span class="w">                        </span><span class="s2">&quot;value&quot;</span>:<span class="o">{</span>
-<span class="w">                            </span><span class="s2">&quot;owner_address&quot;</span>:<span class="s2">&quot;TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8&quot;</span>,
-<span class="w">                            </span><span class="s2">&quot;to_address&quot;</span>:<span class="s2">&quot;TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE&quot;</span>,
-<span class="w">                            </span><span class="s2">&quot;amount&quot;</span>:10
-<span class="w">                        </span><span class="o">}</span>,
-<span class="w">                        </span><span class="s2">&quot;type_url&quot;</span>:<span class="s2">&quot;type.googleapis.com/protocol.TransferContract&quot;</span>
-<span class="w">                    </span><span class="o">}</span>,
-<span class="w">                    </span><span class="s2">&quot;type&quot;</span>:<span class="s2">&quot;TransferContract&quot;</span>
-<span class="w">                </span><span class="o">}</span>
-<span class="w">            </span><span class="o">]</span>,
-<span class="w">            </span><span class="s2">&quot;ref_block_bytes&quot;</span>:<span class="s2">&quot;9ca1&quot;</span>,
-<span class="w">            </span><span class="s2">&quot;ref_block_hash&quot;</span>:<span class="s2">&quot;432ed1fe1357ff7f&quot;</span>,
-<span class="w">            </span><span class="s2">&quot;expiration&quot;</span>:1656403217000,
-<span class="w">            </span><span class="s2">&quot;timestamp&quot;</span>:1656403157297
-<span class="w">        </span><span class="o">}</span>,
-<span class="w">        </span><span class="s2">&quot;signature&quot;</span>:<span class="o">[</span>
-<span class="w">            </span><span class="s2">&quot;a32b906a5b6f00f023d5a4208a0d2445c75463f822a16d56f6c0f836f3325e6488d57d76a08605330e2f3d532a849f2b389ed94819d9b4b0051e5052994f0e0d01&quot;</span>
-<span class="w">        </span><span class="o">]</span>
-<span class="w">    </span><span class="o">}</span>,
-<span class="w">    </span><span class="s2">&quot;permission_id&quot;</span>:2
-<span class="o">}</span>
+<div class="highlight"><pre><span></span><code>wallet&gt; sendcoin TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE 10
+{
+    &quot;raw_data&quot;:{
+        &quot;contract&quot;:[
+    ...
+    &quot;raw_data_hex&quot;:&quot;0a029ca12208432ed1fe1357ff7f40c0c484f19a305a65080112610a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412300a1541babecec4d9f58f0df77f0728b9c53abb1f21d684121541e8bd653015895947cec33d1670a88cf67ab277b9180a708a8481f19a30&quot;
+}
+before sign transaction hex string is 0a83010a029ca12208432ed1fe1357ff7f40c0c484f19a305a65080112610a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412300a1541babecec4d9f58f0df77f0728b9c53abb1f21d684121541e8bd653015895947cec33d1670a88cf67ab277b9180a708a8481f19a30
+Please confirm and input your permission id, if input y or Y means default 0, other non-numeric characters will cancel transaction.
+2
+Please choose your key for sign.
+The 1th keystore file name is UTC--2022-06-28T06-52-56.928000000Z--TB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej.json
+The 2th keystore file name is .DS_Store
+The 3th keystore file name is UTC--2022-04-06T09-43-20.710000000Z--TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8.json
+The 4th keystore file name is UTC--2022-04-07T09-03-38.307000000Z--TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE.json
+Please choose between 1 and 4
+1
+Please input your password.
+password: 
+Current signWeight is:
+{
+    &quot;result&quot;:{
+        &quot;code&quot;:&quot;NOT_ENOUGH_PERMISSION&quot;
+    },
+    &quot;approved_list&quot;:[
+        &quot;TB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej&quot;
+    ],
+    &quot;permission&quot;:{
+        &quot;operations&quot;:&quot;7fff1fc0033e0000000000000000000000000000000000000000000000000000&quot;,
+        &quot;keys&quot;:[
+            {
+                &quot;address&quot;:&quot;TB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej&quot;,
+                &quot;weight&quot;:1
+            },
+            {
+                &quot;address&quot;:&quot;TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE&quot;,
+                &quot;weight&quot;:1
+            }
+        ],
+        &quot;threshold&quot;:2,
+        &quot;id&quot;:2,
+        &quot;type&quot;:&quot;Active&quot;,
+        &quot;permission_name&quot;:&quot;active12323&quot;
+    },
+    &quot;current_weight&quot;:1,
+    &quot;transaction&quot;:{
+        &quot;raw_data&quot;:{
+            &quot;contract&quot;:[
+                {
+                    &quot;parameter&quot;:{
+                        &quot;value&quot;:{
+                            &quot;owner_address&quot;:&quot;TSzdGHnhYnQKFF4LKrRLztkjYAvbNoxnQ8&quot;,
+                            &quot;to_address&quot;:&quot;TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE&quot;,
+                            &quot;amount&quot;:10
+                        },
+                        &quot;type_url&quot;:&quot;type.googleapis.com/protocol.TransferContract&quot;
+                    },
+                    &quot;type&quot;:&quot;TransferContract&quot;
+                }
+            ],
+            &quot;ref_block_bytes&quot;:&quot;9ca1&quot;,
+            &quot;ref_block_hash&quot;:&quot;432ed1fe1357ff7f&quot;,
+            &quot;expiration&quot;:1656403217000,
+            &quot;timestamp&quot;:1656403157297
+        },
+        &quot;signature&quot;:[
+            &quot;a32b906a5b6f00f023d5a4208a0d2445c75463f822a16d56f6c0f836f3325e6488d57d76a08605330e2f3d532a849f2b389ed94819d9b4b0051e5052994f0e0d01&quot;
+        ]
+    },
+    &quot;permission_id&quot;:2
+}
 ...
 </code></pre></div>
 <h4 id="-broadcasttransaction">广播交易 - <code>BroadcastTransaction</code><a class="headerlink" href="#-broadcasttransaction" title="Permanent link">&para;</a></h4>
@@ -3553,8 +3547,8 @@ getTransactionInfoById 10040f993cd9452b25bf367f38edadf11176355802baf61f3c49b96b4
 }
 </code></pre></div></p>
 <p><a id="gasfree"></a></p>
-<h2 id="gasfree">GasFree 支持<a class="headerlink" href="#gasfree" title="Permanent link">&para;</a></h2>
-<p>Wallet-cli 现在支持 <strong>GasFree</strong> 集成。本指南解释了新的命令并提供了如何使用它们的说明。</p>
+<h3 id="gasfree">GasFree 支持<a class="headerlink" href="#gasfree" title="Permanent link">&para;</a></h3>
+<p><code>wallet-cli</code> 现在支持 <strong>GasFree</strong> 集成。本指南解释了新的命令并提供了如何使用它们的说明。</p>
 <p>有关更多详细信息，请参阅 <a href="https://gasfree.io/specification">GasFree Documentation</a> 和 <a href="https://support.tronlink.org/hc/en-us/articles/38903684778393-GasFree-User-Guide">TronLink User Guide For GasFree</a>。</p>
 <p>前提条件
 API Credentials: 用户必须从 <strong>GasFree</strong> 获取 API Key 和 API Secret 以进行身份验证。请参阅官方 <a href="https://docs.google.com/forms/d/e/1FAIpQLSc5EB1X8JN7LA4SAVAG99VziXEY6Kv6JxmlBry9rUBlwI-GaQ/viewform">application form</a> 以获取设置 API 身份验证的说明。</p>
