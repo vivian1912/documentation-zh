@@ -508,7 +508,7 @@ wallet>
 
 通过 HTTP API 查询已广播的交易，原理与 `wallet-cli` 相同。
 
-##### `wallet/gettransactionbyid`
+**`wallet/gettransactionbyid`**
 
 通过 HTTP 接口 `wallet/gettransactionbyid` 获取已广播交易的完整数据。在请求体中，通过 `value` 字段传入您要查询的 `txid`：
 
@@ -554,7 +554,7 @@ wallet>
   }
   ```
 
-##### `wallet/gettransactioninfobyid`
+**`wallet/gettransactioninfobyid`**
 
 通过 HTTP 接口 `wallet/gettransactioninfobyid` 查看交易的处理结果和回执信息（即交易是否已经被打包进区块，执行的结果和资源消耗情况）。
 
