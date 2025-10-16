@@ -1860,35 +1860,39 @@ contractTopics: contract topics列表
 <li><strong>事件推送：</strong> 插件将数据推送到目标系统（例如 Kafka 或 MongoDB）。</li>
 <li><strong>业务处理：</strong> 外部业务应用持续消费这些事件数据。</li>
 </ol>
-<h4 id="v20">如何迁移至新版事件服务（V2.0）<a class="headerlink" href="#v20" title="Permanent link">&para;</a></h4>
+<h4 id="v20">迁移至新版事件服务（V2.0）<a class="headerlink" href="#v20" title="Permanent link">&para;</a></h4>
 <p>新版 <code>V2.0</code> 事件服务框架引入了历史事件回溯功能，并对事件推送机制进行了全面优化。以下是迁移至 <code>V2.0</code> 的操作步骤。</p>
 <h5 id="_6">迁移前评估<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h5>
 <p>在迁移之前，请考虑以下因素：</p>
 <ul>
-<li><strong>内部交易日志支持：</strong> <code>V2.0</code> 暂不支持内部交易日志（<code>internalTransactionList</code> 字段为空）。如果您的业务依赖此字段，请继续使用 <code>V1.0</code>。</li>
-<li><strong>插件版本：</strong> 建议将事件插件同步升级至最新版，以避免处理大量历史数据时可能出现的性能问题。</li>
+<li>内部交易日志支持： <code>V2.0</code> 暂不支持内部交易日志（<code>internalTransactionList</code> 字段为空）。如果您的业务依赖此字段，请继续使用 <code>V1.0</code>。</li>
+<li>插件版本： 建议将事件插件同步升级至最新版，以避免处理大量历史数据时可能出现的性能问题。</li>
 </ul>
 <h5 id="_7">迁移操作步骤<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h5>
 <h6 id="1_2">步骤 1：获取新版事件插件<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h6>
 <p>你可以从 GitHub 获取源码并自行构建，或直接下载官方发布的版本。</p>
-<p><strong>通过源码构建：</strong></p>
+<ul>
+<li>通过源码构建</li>
+</ul>
 <p><div class="highlight"><pre><span></span><code>git clone git@github.com:tronprotocol/event-plugin.git
 cd event-plugin
 git checkout master
 ./gradlew build
 </code></pre></div>
 构建完成后，生成的 <code>.zip</code> 文件即为插件包。</p>
-<p><strong>直接下载官方发布版本：</strong></p>
+<ul>
+<li>直接下载官方发布版本</li>
+</ul>
 <p>访问 <a href="https://github.com/tronprotocol/event-plugin/releases">event-plugin Releases 页面</a> 下载最新插件包。</p>
 <h6 id="2-fullnode">步骤 2：修改 FullNode 配置<a class="headerlink" href="#2-fullnode" title="Permanent link">&para;</a></h6>
 <p>在 <code>config.conf</code> 文件中，将事件服务版本修改为使用<code>V2.0</code>，值为 1 。</p>
 <div class="highlight"><pre><span></span><code>event.subscribe.version = 1 # 1 表示 V2.0，0 表示 V1.0
 </code></pre></div>
 <h6 id="3_1">步骤 3：配置事件插件<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h6>
-<p>新版插件的配置方式与旧版基本一致。你可以参考官方文档进行部署：</p>
+<p>新版插件的配置方式与旧版基本一致，你可以参考如下文档进行部署：</p>
 <ul>
-<li><a href="/documentation-zh/architecture/use-mongodb/">事件插件部署(MongoDB)</a></li>
-<li><a href="/documentation-zh/architecture/use-kafka/">事件插件部署(Kafka)</a></li>
+<li><a href="#use-kafka">事件插件部署(MongoDB)</a></li>
+<li><a href="#use-mongodb">事件插件部署(Kafka)</a></li>
 </ul>
 <h6 id="4_1">步骤 4（可选）：配置历史事件同步起点<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h6>
 <p>如果你需要从指定区块高度开始同步历史事件，请在配置文件中加入以下配置。</p>
@@ -1896,19 +1900,20 @@ git checkout master
 </code></pre></div>
 <h6 id="5-fullnode">步骤 5：启动 FullNode 和插件<a class="headerlink" href="#5-fullnode" title="Permanent link">&para;</a></h6>
 <p>完成上述配置后，使用以下命令启动 <code>FullNode</code> 并加载事件插件。</p>
-<div class="highlight"><pre><span></span><code>java -jar FullNode.jar -c config.conf --es
+<p><div class="highlight"><pre><span></span><code>java -jar FullNode.jar -c config.conf --es
 </code></pre></div>
+<a id="use-kafka"></a></p>
 <h3 id="tron-kafka">TRON Kafka 事件订阅插件：部署与使用指南<a class="headerlink" href="#tron-kafka" title="Permanent link">&para;</a></h3>
 <p>本指南旨在帮助开发者高效搭建并运行 TRON Kafka 事件订阅插件，用以监听 TRON 链上事件。我们将从环境准备讲起，一步步带您完成部署、配置和最终验证。主要步骤包括：</p>
 <ul>
-<li><a href="#1">检查系统配置</a></li>
-<li><a href="#2">编译事件插件</a></li>
-<li><a href="#3">部署并运行 Kafka</a></li>
-<li><a href="#4">配置事件订阅规则</a></li>
-<li><a href="#5">创建 Kafka 订阅 Topic</a></li>
-<li><a href="#6">启动事件订阅节点</a></li>
+<li><a href="#checking-system-configuration-1">检查系统配置</a></li>
+<li><a href="#compiling-the-event-plugin-1">编译事件插件</a></li>
+<li><a href="#deploying-and-running-kafka">部署并运行 Kafka</a></li>
+<li><a href="#configuring-event-subscription-rules">配置事件订阅规则</a></li>
+<li><a href="#creating-the-kafka-subscription-topic">创建 Kafka 订阅 Topic</a></li>
+<li><a href="#start-the-node">启动事件订阅节点</a></li>
 </ul>
-<p><a id="1"></a> </p>
+<p><a id="checking-system-configuration-1"></a> </p>
 <h4 id="_8">推荐系统配置<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>为确保 TRON 节点和事件订阅服务的稳定运行，建议采用以下系统配置：</p>
 <ul>
@@ -1917,7 +1922,7 @@ git checkout master
 <li><strong>SSD</strong>：2.5 TB 或更大存储空间</li>
 <li><strong>操作系统</strong>：Linux 或 macOS</li>
 </ul>
-<p><a id="2"></a> </p>
+<p><a id="compiling-the-event-plugin-1"></a> </p>
 <h4 id="kafka">编译 Kafka 事件订阅插件<a class="headerlink" href="#kafka" title="Permanent link">&para;</a></h4>
 <p>首先，您需要从 GitHub 仓库克隆 <code>event-plugin</code> 项目，并进行编译以生成插件的 <code>.zip</code> 文件。请按照以下步骤操作：</p>
 <div class="highlight"><pre><span></span><code>git clone https://github.com/tronprotocol/event-plugin.git
@@ -1925,7 +1930,7 @@ cd event-plugin
 ./gradlew build
 </code></pre></div>
 <p>编译成功后，您将在 <code>event-plugin/build/plugins/</code> 目录下找到生成的 <code>.zip</code> 插件文件，例如 <code>plugin-kafka-1.0.0.zip</code>。</p>
-<p><a id="3"></a> </p>
+<p><a id="deploying-and-running-kafka"></a> </p>
 <h4 id="kafka_1">部署并运行 Kafka<a class="headerlink" href="#kafka_1" title="Permanent link">&para;</a></h4>
 <h5 id="1-kafka">步骤 1：安装 Kafka<a class="headerlink" href="#1-kafka" title="Permanent link">&para;</a></h5>
 <p>在 Linux 环境下，请按照以下步骤安装 Kafka：</p>
@@ -1941,7 +1946,7 @@ bin/zookeeper-server-start.sh config/zookeeper.properties &amp;
 # 启动 Kafka Broker 服务
 bin/kafka-server-start.sh config/server.properties &amp;
 </code></pre></div>
-<p><a id="4"></a> </p>
+<p><a id="configuring-event-subscription-rules"></a> </p>
 <h4 id="_9">配置事件订阅<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>为了支持 Kafka 事件订阅，您需要修改 Fullnode 节点的配置文件 (<code>config.conf</code>)，添加 <code>event.subscribe</code> 配置项。</p>
 <h5 id="_10">插件配置项<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h5>
@@ -2005,13 +2010,13 @@ bin/kafka-server-start.sh config/server.properties &amp;
   ]
 }
 </code></pre></div>
-<p><a id="5"></a> </p>
+<p><a id="creating-the-kafka-subscription-topic"></a> </p>
 <h4 id="kafka-topic">创建 Kafka 订阅 Topic<a class="headerlink" href="#kafka-topic" title="Permanent link">&para;</a></h4>
 <p>Kafka 订阅 Topic 的名称必须与 <code>event.subscribe</code> 配置中 <code>topics</code> 字段的 <code>topic</code> 配置项一致。例如，如果开发者需要订阅 <code>block</code> 事件，并在 <code>block</code> 触发器中填写 <code>topic</code> 字段为 <code>"block"</code>，则需要在 Kafka 中创建名为 <code>"block"</code> 的 Topic，用于接收区块事件。</p>
 <p>在 Linux 环境下，创建 Kafka Topic 的命令如下：</p>
 <div class="highlight"><pre><span></span><code>bin/kafka-topics.sh --create --topic block --bootstrap-server localhost:9092
 </code></pre></div>
-<p><a id="6"></a> </p>
+<p><a id="start-the-node"></a> </p>
 <h4 id="_13">启动事件订阅节点<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>完成上述配置后，启动 Fullnode 节点时需要添加 <code>--es</code> 参数，以启用事件订阅功能。</p>
 <div class="highlight"><pre><span></span><code>java -jar FullNode.jar -c config.conf --es
@@ -2039,19 +2044,20 @@ bin/kafka-server-start.sh config/server.properties &amp;
     &quot;transactionList&quot;: [&quot;8757f846e541b51b5692a2370327f4b8031125f4557f8ad4b1037d4452616d39&quot;, &quot;f6adab7814b34e5e756170f93a31a0c3393c5d99eff11e30271916375adc7467&quot;, ..., &quot;89bcbcd063a48ef4a5678a033acf5edbb6b17419a3c91eb0479a3c8598774b43&quot;]
 }
 </code></pre></div>
+<p><a id="use-mongodb"></a></p>
 <h3 id="tron-mongodb">TRON MongoDB 事件订阅插件：部署与使用指南<a class="headerlink" href="#tron-mongodb" title="Permanent link">&para;</a></h3>
 <p>本指南旨在帮助开发者快速部署和使用 TRON MongoDB 事件订阅插件，实现链上事件的实时数据采集、持久化存储与查询。文档涵盖系统环境配置、插件部署、数据库安装、查询服务构建及接口调用等全流程。</p>
 <p>本指南将带您从环境准备到接口调用，一步步完成 TRON MongoDB 事件订阅服务的完整部署与使用。主要流程包括：</p>
 <ul>
-<li><a href="#7">检查系统配置</a></li>
-<li><a href="#8">了解系统架构</a></li>
-<li><a href="#9">部署事件订阅插件</a></li>
-<li><a href="#10">安装并配置 MongoDB</a></li>
-<li><a href="#11">部署事件查询服务</a></li>
-<li><a href="#12">启动服务并验证数据</a></li>
-<li><a href="#13">调用 API 查询事件</a></li>
+<li><a href="#checking-system-configuration-2">检查系统配置</a></li>
+<li><a href="#understanding-system-architecture">了解系统架构</a></li>
+<li><a href="#deploying-the-event-plugin">部署事件订阅插件</a></li>
+<li><a href="#deploying-the-mongodb">安装并配置 MongoDB</a></li>
+<li><a href="#deploying-the-event-query-service">部署事件查询服务</a></li>
+<li><a href="#starting-and-verifing">启动服务并验证数据</a></li>
+<li><a href="#using-the-tron-event-query-service-api">调用 API 查询事件</a></li>
 </ul>
-<p><a id="7"></a> </p>
+<p><a id="checking-system-configuration-2"></a> </p>
 <h4 id="_16">推荐系统配置<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p>为了确保 TRON 节点与事件服务的高效稳定运行，推荐以下配置：</p>
 <ul>
@@ -2060,7 +2066,7 @@ bin/kafka-server-start.sh config/server.properties &amp;
 <li><strong>SSD</strong>：2.5 TB 以上</li>
 <li><strong>操作系统</strong>：Linux 或 macOS</li>
 </ul>
-<p><a id="8"></a> </p>
+<p><a id="understanding-system-architecture"></a> </p>
 <h4 id="_17">系统架构与工作机制<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p>TRON MongoDB 事件订阅系统包含三大核心模块：</p>
 <ol>
@@ -2068,7 +2074,7 @@ bin/kafka-server-start.sh config/server.properties &amp;
 <li>MongoDB 数据库：事件数据持久化存储层。</li>
 <li>事件查询服务：提供 HTTP API，供外部查询事件数据。</li>
 </ol>
-<p><a id="9"></a> </p>
+<p><a id="deploying-the-event-plugin"></a> </p>
 <h4 id="_18">部署事件订阅插件<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <h5 id="_19">构建插件<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h5>
 <p><div class="highlight"><pre><span></span><code>git clone https://github.com/tronprotocol/event-plugin.git
@@ -2163,7 +2169,7 @@ cd event-plugin
 </ul>
 </li>
 </ul>
-<p><a id="10"></a> </p>
+<p><a id="deploying-the-mongodb"></a> </p>
 <h4 id="mongodb">安装与配置 MongoDB<a class="headerlink" href="#mongodb" title="Permanent link">&para;</a></h4>
 <p>MongoDB 将用于存储 TRON 事件数据。请按照以下步骤安装和配置 MongoDB：</p>
 <h5 id="mongodb_1">安装 MongoDB<a class="headerlink" href="#mongodb_1" title="Permanent link">&para;</a></h5>
@@ -2214,7 +2220,7 @@ db.auth(&quot;root&quot;, &quot;admin&quot;)
 use eventlog
 db.createUser({user:&quot;tron&quot;,pwd:&quot;123456&quot;,roles:[{role:&quot;dbOwner&quot;,db:&quot;eventlog&quot;}]})
 </code></pre></div>
-<p><a id="11"></a> </p>
+<p><a id="deploying-the-event-query-service"></a> </p>
 <h4 id="event-query-service">部署事件查询服务（Event Query Service）<a class="headerlink" href="#event-query-service" title="Permanent link">&para;</a></h4>
 <p>事件查询服务提供 HTTP 接口，用于查询 MongoDB 中存储的事件数据。该服务依赖 Java 环境。</p>
 <p><strong>注意</strong>：请确保 JDK 使用的是 <strong>Oracle JDK 8</strong>，而不是 Open JDK 8。</p>
@@ -2250,7 +2256,7 @@ sh insertIndex.sh
 <p><strong>注意</strong>：默认端口为 <code>8080</code>。如需修改，请编辑 <code>deploy.sh</code> 脚本，例如：</p>
 <div class="highlight"><pre><span></span><code>nohup java -jar -Dserver.port=8081 target/troneventquery-1.0.0-SNAPSHOT.jar 2&gt;&amp;1 &amp;
 </code></pre></div>
-<p><a id="12"></a> </p>
+<p><a id="starting-and-verifing"></a> </p>
 <h4 id="_21">启动服务与验证数据<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
 <p>完成上述部署步骤后，您可以启动 TRON FullNode 节点并验证事件订阅服务是否正常工作。</p>
 <h5 id="fullnode">启动 FullNode 节点<a class="headerlink" href="#fullnode" title="Permanent link">&para;</a></h5>
@@ -2275,7 +2281,7 @@ show collections
 db.block.find()
 </code></pre></div>
 <p>如果有返回信息，则说明数据已成功存储。否则，请查看 FullNode 日志逐步排查问题。</p>
-<p><a id="13"></a> </p>
+<p><a id="using-the-tron-event-query-service-api"></a> </p>
 <h4 id="api">调用 API 查询事件<a class="headerlink" href="#api" title="Permanent link">&para;</a></h4>
 <p>TRON Event Query Service 提供了一系列 HTTP API 接口，用于查询 MongoDB 中存储的事件数据。具体 API 及其用法请参考<a href="https://github.com/tronprotocol/tron-eventquery?tab=readme-ov-file#main-http-service">Event Query Service HTTP API</a>。</p>
 
