@@ -1773,8 +1773,8 @@ bin/kafka-server-start.sh config/server.properties &amp;
 <li><code>path</code>：<code>plugin-kafka-1.0.0.zip</code> 的本地绝对路径，请确保路径正确，否则无法加载。</li>
 <li><code>server</code>：Kafka 服务器地址，使用 <code>ip:port</code> 的格式。Kafka 默认端口号是 <code>9092</code>，请确保端口号正确，并确保 Kafka 服务可访问。</li>
 <li><code>dbconfig</code>：此配置项仅针对 MongoDB 插件，对于 Kafka 插件请忽略。</li>
-<li><code>topics</code>：配置订阅的事件，详情请参看，详情请参看交易类型章节章节。</li>
-<li><code>filter</code>：过滤参数，详情请参看<a href="#event-types">事件类型</a>章节。</li>
+<li><code>topics</code>：配置订阅的事件，详情请参看接下来的<a href="#event-types">事件类型</a>章节。</li>
+<li><code>filter</code>：过滤参数，详情请参看接下来的<a href="#event-types">事件类型</a>章节。</li>
 </ul>
 <p><a id="event-types"></a></p>
 <h6 id="_6">事件类型<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h6>
@@ -1869,11 +1869,18 @@ bin/kafka-server-start.sh config/server.properties &amp;
 </ul>
 <p>更多字段请参考 <a href="https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/ContractEventTrigger.java">ContractEventTrigger</a> 和  <a href="https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/ContractLogTrigger.java">ContractLogTrigger</a>。</p>
 <blockquote>
-<p>注意：<strong>合约事件</strong>与<strong>合约日志事件</strong>订阅支持以下过滤参数：
-<div class="highlight"><pre><span></span><code>fromBlock = &quot;&quot; // 起始区块索引，可以是空字符串、&quot;earliest&quot; 或指定的区块号
-toBlock = &quot;&quot; // 结束区块索引，可以是空字符串、&quot;latest&quot; 或指定的区块号
-contractAddress = [ &quot;&quot;  // 合约地址。如果设置为空字符串，将接收所有合约地址的日志/事件 ]
-contractTopics = [ &quot;&quot; // 合约主题。如果设置为空字符串，将接收所有合约主题的日志/事件 ]
+<p>注意：<strong>合约事件</strong>与<strong>合约日志事件</strong>订阅支持通过<code>filter</code> 字段对事件进行过滤，可以指定区块范围 (<code>fromblock</code> - <code>toblock</code>)、特定合约地址 (<code>contractAddress</code>) 或特定合约主题 (<code>contractTopic</code>)，为开发者提供更高效、更精准的事件订阅服务。：
+<div class="highlight"><pre><span></span><code>filter = {
+  fromblock = &quot;&quot; // 查询范围的起始区块号，可以是空字符串、&quot;earliest&quot; 或指定的区块号。
+  toblock = &quot;&quot; // 查询范围的结束区块号，可以是空字符串、&quot;latest&quot; 或指定的区块号。
+  contractAddress = [
+    &quot;&quot; // 您希望订阅的合约地址。如果设置为空字符串，将接收所有合约地址的日志/事件。
+  ]
+
+  contractTopic = [
+    &quot;&quot; // 您希望订阅的合约主题。如果设置为空字符串，将接收所有合约主题的日志/事件。
+  ]
+}
 </code></pre></div></p>
 </blockquote>
 <p><strong>4. 固化块通知事件</strong></p>
@@ -1966,7 +1973,7 @@ cd event-plugin
 构建完成后，生成的插件文件：
 <div class="highlight"><pre><span></span><code>event-plugin/build/plugins/plugin-mongodb-*.zip
 </code></pre></div></p>
-<h5 id="32-fullnode">3.2 FullNode 节点配置<a class="headerlink" href="#32-fullnode" title="Permanent link">&para;</a></h5>
+<h5 id="fullnode">FullNode 节点配置<a class="headerlink" href="#fullnode" title="Permanent link">&para;</a></h5>
 <p>在 FullNode 配置文件 <code>config.conf</code> 中添加如下内容：</p>
 <div class="highlight"><pre><span></span><code><span class="nx">event</span><span class="p">.</span><span class="nx">subscribe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="w">  </span>
@@ -2083,16 +2090,16 @@ bind_ip=0.0.0.0
 auth=true
 wiredTigerCacheSizeGB=2
 </code></pre></div>
-<p><strong>重要配置说明</strong>：</p>
+<p>重要配置说明：</p>
 <ul>
 <li><code>bind_ip=0.0.0.0</code>：必须配置为 <code>0.0.0.0</code>，否则将拒绝远程连接。</li>
 <li><code>wiredTigerCacheSizeGB</code>：必须配置此参数以防止内存溢出 (OOM) 问题。</li>
 </ul>
-<h5 id="44-mongodb">4.4 启动 MongoDB<a class="headerlink" href="#44-mongodb" title="Permanent link">&para;</a></h5>
+<h5 id="mongodb_4">启动 MongoDB<a class="headerlink" href="#mongodb_4" title="Permanent link">&para;</a></h5>
 <p>使用配置文件启动 MongoDB 服务：</p>
 <div class="highlight"><pre><span></span><code>mongod --config /home/java-tron/mongodb/mgdb.conf &amp;
 </code></pre></div>
-<h5 id="45">4.5 创建管理员用户和数据库用户<a class="headerlink" href="#45" title="Permanent link">&para;</a></h5>
+<h5 id="_15">创建管理员用户和数据库用户<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h5>
 <p>连接到 MongoDB 并创建管理员用户，然后创建用于事件订阅的数据库和用户：</p>
 <div class="highlight"><pre><span></span><code>mongo
 use admin
@@ -2139,22 +2146,22 @@ sh insertIndex.sh
 <div class="highlight"><pre><span></span><code>nohup java -jar -Dserver.port=8081 target/troneventquery-1.0.0-SNAPSHOT.jar 2&gt;&amp;1 &amp;
 </code></pre></div>
 <p><a id="starting-and-verifing"></a> </p>
-<h4 id="_15">启动服务与验证数据<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<h4 id="_16">启动服务与验证数据<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p>完成上述部署步骤后，您可以启动 TRON FullNode 节点并验证事件订阅服务是否正常工作。</p>
-<h5 id="fullnode">启动 FullNode 节点<a class="headerlink" href="#fullnode" title="Permanent link">&para;</a></h5>
+<h5 id="fullnode_1">启动 FullNode 节点<a class="headerlink" href="#fullnode_1" title="Permanent link">&para;</a></h5>
 <p><strong>重要提示</strong>：在启动 FullNode 节点之前，请确保 MongoDB 服务已成功启动。</p>
 <p>启动 FullNode 节点的命令如下：</p>
 <div class="highlight"><pre><span></span><code>java -jar FullNode.jar -c config.conf --es
 </code></pre></div>
 <p>有关 FullNode 节点的安装，请参考 <a href="https://tronprotocol.github.io/documentation-zh/using_javatron/installing_javatron/">部署 FullNode</a> 文档。</p>
-<h5 id="_16">验证插件加载<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h5>
+<h5 id="_17">验证插件加载<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h5>
 <p>您可以通过查看 FullNode 日志来验证事件插件是否成功加载：</p>
 <div class="highlight"><pre><span></span><code>tail -f logs/tron.log | grep -i eventplugin
 </code></pre></div>
 <p>如果看到类似以下字样，则表示插件已成功加载：</p>
 <div class="highlight"><pre><span></span><code>o.t.c.l.EventPluginLoader &#39;your plugin path/plugin-kafka-1.0.0.zip&#39; loaded
 </code></pre></div>
-<h5 id="mongodb_4">验证数据是否存入 MongoDB<a class="headerlink" href="#mongodb_4" title="Permanent link">&para;</a></h5>
+<h5 id="mongodb_5">验证数据是否存入 MongoDB<a class="headerlink" href="#mongodb_5" title="Permanent link">&para;</a></h5>
 <p>连接到 MongoDB 并查询数据，以验证事件数据是否已从节点获取并通过事件订阅存储到 MongoDB 中：</p>
 <div class="highlight"><pre><span></span><code>mongo 47.90.245.68:27017
 use eventlog
