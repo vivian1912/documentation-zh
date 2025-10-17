@@ -96,7 +96,7 @@ event.subscribe.startSyncBlockNum = <block_height>
 java -jar FullNode.jar -c config.conf --es
 ```
 <a id="use-kafka"></a>
-### TRON Kafka 事件订阅插件：部署与使用指南
+### Kafka 事件订阅插件部署与使用指南
 
 本指南旨在帮助开发者高效搭建并运行 TRON Kafka 事件订阅插件，用以监听 TRON 链上事件。我们将从环境准备讲起，一步步带您完成部署、配置和最终验证。主要步骤包括：
 
@@ -158,11 +158,7 @@ bin/kafka-server-start.sh config/server.properties &
 <a id="configuring-event-subscription-rules"></a> 
 #### 配置事件订阅
 
-为了支持 Kafka 事件订阅，您需要修改 Fullnode 节点的配置文件 (`config.conf`)，添加 `event.subscribe` 配置项。
-
-##### 插件配置项
-
-以下是 `event.subscribe` 配置项的示例：
+为了支持 Kafka 事件订阅，您需要修改 Fullnode 节点的配置文件 (`config.conf`)，配置 `event.subscribe` 配置项。
 
 ```
 event.subscribe = {
@@ -175,9 +171,10 @@ event.subscribe = {
 
   path = "" 
   server = "" 
-  dbconfig = "" 。
-  contractParse = true,
-  # ... 其他配置项 ...
+  dbconfig = "" 
+  contractParse = true
+  topics = []
+  filter = {}
 }
 ```
 
@@ -191,14 +188,17 @@ event.subscribe = {
 *   `path`：`plugin-kafka-1.0.0.zip` 的本地绝对路径，请确保路径正确，否则无法加载。
 *   `server`：Kafka 服务器地址，使用 `ip:port` 的格式。Kafka 默认端口号是 `9092`，请确保端口号正确，并确保 Kafka 服务可访问。
 *   `dbconfig`：此配置项仅针对 MongoDB 插件，对于 Kafka 插件请忽略。
-
-##### 配置事件订阅类型
-
-TRON 事件订阅支持 `block`、`transaction`、`contractevent`、`contractlog`、`solidity`、`soliditytevent`、`soliditylog` 7 种类型的事件订阅。开发者需要根据业务需求进行配置，**建议只订阅 1-2 种事件类型，如果开启过多触发器，会导致性能下降。**
+*   `topics`：配置订阅的事件，详情请参看，详情请参看交易类型章节章节。
+*   `filter`：过滤参数，详情请参看[事件类型](#event-types)章节。
 
 
 <a id="event-types"></a>
 ###### 事件类型
+
+TRON 事件订阅支持 `block`、`transaction`、`contractevent`、`contractlog`、`solidity`、`soliditytevent`、`soliditylog` 7 种类型的事件订阅。开发者需要根据业务需求进行配置，**建议只订阅 1-2 种事件类型，如果开启过多触发器，会导致性能下降。**
+
+
+
 
 **1. 交易事件**
 
@@ -400,7 +400,7 @@ bin/kafka-console-consumer.sh --topic block --from-beginning --bootstrap-server 
 ```
 
 <a id="use-mongodb"></a>
-### TRON MongoDB 事件订阅插件：部署与使用指南
+### MongoDB 事件订阅插件部署与使用指南
 
 本指南旨在帮助开发者快速部署和使用 TRON MongoDB 事件订阅插件，实现链上事件的实时数据采集、持久化存储与查询。我们将从环境准备讲起，一步步带您完成部署、配置和使用，主要流程包括：
 
