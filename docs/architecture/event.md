@@ -188,8 +188,8 @@ event.subscribe = {
 *   `path`：`plugin-kafka-1.0.0.zip` 的本地绝对路径，请确保路径正确，否则无法加载。
 *   `server`：Kafka 服务器地址，使用 `ip:port` 的格式。Kafka 默认端口号是 `9092`，请确保端口号正确，并确保 Kafka 服务可访问。
 *   `dbconfig`：此配置项仅针对 MongoDB 插件，对于 Kafka 插件请忽略。
-*   `topics`：配置订阅的事件，详情请参看，详情请参看交易类型章节章节。
-*   `filter`：过滤参数，详情请参看[事件类型](#event-types)章节。
+*   `topics`：配置订阅的事件，详情请参看接下来的[事件类型](#event-types)章节。
+*   `filter`：过滤参数，详情请参看接下来的[事件类型](#event-types)章节。
 
 
 <a id="event-types"></a>
@@ -306,12 +306,19 @@ event.subscribe.topics = [
 
 更多字段请参考 [ContractEventTrigger](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/ContractEventTrigger.java) 和  [ContractLogTrigger](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/ContractLogTrigger.java)。
 
-> 注意：**合约事件**与**合约日志事件**订阅支持以下过滤参数：
+> 注意：**合约事件**与**合约日志事件**订阅支持通过`filter` 字段对事件进行过滤，可以指定区块范围 (`fromblock` - `toblock`)、特定合约地址 (`contractAddress`) 或特定合约主题 (`contractTopic`)，为开发者提供更高效、更精准的事件订阅服务。：
 > ```
-> fromBlock = "" // 起始区块索引，可以是空字符串、"earliest" 或指定的区块号
-> toBlock = "" // 结束区块索引，可以是空字符串、"latest" 或指定的区块号
-> contractAddress = [ ""  // 合约地址。如果设置为空字符串，将接收所有合约地址的日志/事件 ]
-> contractTopics = [ "" // 合约主题。如果设置为空字符串，将接收所有合约主题的日志/事件 ]
+> filter = {
+>   fromblock = "" // 查询范围的起始区块号，可以是空字符串、"earliest" 或指定的区块号。
+>   toblock = "" // 查询范围的结束区块号，可以是空字符串、"latest" 或指定的区块号。
+>   contractAddress = [
+>     "" // 您希望订阅的合约地址。如果设置为空字符串，将接收所有合约地址的日志/事件。
+>   ]
+>
+>   contractTopic = [
+>     "" // 您希望订阅的合约主题。如果设置为空字符串，将接收所有合约主题的日志/事件。
+>   ]
+> }
 > ```
 
 
@@ -446,7 +453,7 @@ cd event-plugin
 event-plugin/build/plugins/plugin-mongodb-*.zip
 ```
 
-##### 3.2 FullNode 节点配置
+##### FullNode 节点配置
 
 在 FullNode 配置文件 `config.conf` 中添加如下内容：
 
@@ -580,12 +587,12 @@ auth=true
 wiredTigerCacheSizeGB=2
 ```
 
-**重要配置说明**：
+重要配置说明：
 
 *   `bind_ip=0.0.0.0`：必须配置为 `0.0.0.0`，否则将拒绝远程连接。
 *   `wiredTigerCacheSizeGB`：必须配置此参数以防止内存溢出 (OOM) 问题。
 
-##### 4.4 启动 MongoDB
+##### 启动 MongoDB
 
 使用配置文件启动 MongoDB 服务：
 
@@ -593,7 +600,7 @@ wiredTigerCacheSizeGB=2
 mongod --config /home/java-tron/mongodb/mgdb.conf &
 ```
 
-##### 4.5 创建管理员用户和数据库用户
+##### 创建管理员用户和数据库用户
 
 连接到 MongoDB 并创建管理员用户，然后创建用于事件订阅的数据库和用户：
 
