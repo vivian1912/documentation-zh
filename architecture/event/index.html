@@ -542,12 +542,54 @@
   
 </li>
       
-        <li class="md-nav__item ">
-  <a href="#zeromq" class="md-nav__link" >
+        <li class="md-nav__item has-children">
+  <a href="#zeromq" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
       内置消息队列订阅（ZeroMQ）
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="内置消息队列订阅（ZeroMQ）" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#_18" class="md-nav__link" >
+    <span class="md-ellipsis">
+      配置节点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#_19" class="md-nav__link" >
+    <span class="md-ellipsis">
+      启动节点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#_20" class="md-nav__link" >
+    <span class="md-ellipsis">
+      准备事件订阅脚本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#_21" class="md-nav__link" >
+    <span class="md-ellipsis">
+      启动订阅者
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2181,6 +2223,72 @@ db.block.find()
 <li><strong>高实时性：</strong> 专为实时事件推送而设计。</li>
 <li><strong>轻量级：</strong> 适合快速原型开发和测试环境。</li>
 </ul>
+<p>因此，当您希望以最小成本、快速接入事件流，并不依赖持久化能力时，使用 <strong>内置 ZeroMQ 消息队列</strong> 将是更轻便、直接的选择。本指南将详细介绍如何通过 Java-tron 内置的消息队列来订阅事件。</p>
+<h3 id="_18">配置节点<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p>要通过 Java-tron 内置的 ZeroMQ 实现事件订阅，需在节点的配置文件中启用内置消息队列功能。具体操作如下：</p>
+<div class="highlight"><pre><span></span><code>event.subscribe = {
+  native = {
+    useNativeQueue = true 
+    bindport = 5555 
+    sendqueuelength = 1000 
+  }
+
+  ......
+
+  topics = [
+    {
+      triggerName = &quot;block&quot; 
+      enable = true
+      topic = &quot;block&quot; 
+    },
+    ......
+  ]
+}
+</code></pre></div>
+<ul>
+<li><code>native.useNativeQueue</code>: <code>true</code> 为使用内置消息队列，<code>false</code> 为使用事件插件</li>
+<li><code>native.bindport</code>: ZeroMQ 发布者绑定端口。本例中为 <code>5555</code>，所以订阅者应连接的发布者地址为<code>"tcp://127.0.0.1:5555"</code></li>
+<li><code>native.sendqueuelength</code>: 发送队列的长度，即当订阅者接收消息较慢的情况下，TCP 缓冲区最多容纳的发布者发布的消息数量，超过则丢弃</li>
+<li><code>topics</code>: 订阅的 <a href="../event/#_4">事件类型</a>，包括区块类型、交易类型等</li>
+</ul>
+<h3 id="_19">启动节点<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p>事件订阅服务默认为关闭状态，需要通过配置命令行参数 <code>--es</code> 的方式来启用。开启事件订阅服务的节点的启动命令如下：
+<div class="highlight"><pre><span></span><code>$ java -jar FullNode.jar --es
+</code></pre></div></p>
+<h3 id="_20">准备事件订阅脚本<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p>本文以 Node.js 为例来说明如何订阅事件。</p>
+<p>首先，下载 <code>ZeroMQ</code> 库：
+<div class="highlight"><pre><span></span><code>$ npm install zeromq@5
+</code></pre></div>
+然后，编写订阅者代码：
+<div class="highlight"><pre><span></span><code>// subscriber.js
+var zmq = require(&quot;zeromq&quot;),
+var sock = zmq.socket(&quot;sub&quot;);
+
+sock.connect(&quot;tcp://127.0.0.1:5555&quot;);
+sock.subscribe(&quot;block&quot;);
+console.log(&quot;Subscriber connected to port 5555&quot;);
+
+sock.on(&quot;message&quot;, function(topic, message) {
+  console.log(
+    &quot;received a message related to:&quot;,
+    Buffer.from(topic).toString(),
+    &quot;, containing message:&quot;,
+    Buffer.from(message).toString()
+  );
+});
+</code></pre></div>
+本示例将订阅者连接到了节点事件发布者，并订阅了 <code>block</code> 事件。</p>
+<h3 id="_21">启动订阅者<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<p>Node.js 启动命令如下：
+<div class="highlight"><pre><span></span><code>$ node subscriber.js
+
+&gt; Subscriber connected to port 5555
+</code></pre></div>
+当节点有新的区块时，该订阅者将收到区块事件，输出信息如下：
+<div class="highlight"><pre><span></span><code>received a message related to: blockTrigger, containing message: {&quot;timeStamp&quot;:1678343709000,&quot;triggerName&quot;:&quot;blockTrigger&quot;,&quot;blockNumber&quot;:1361,&quot;blockHash&quot;:&quot;00000000000005519b3995cd638753a862c812d1bda11de14bbfaa5ad3383280&quot;,&quot;transactionSize&quot;:0,&quot;latestSolidifiedBlockNumber&quot;:1361,&quot;transactionList&quot;:[]}
+received a message related to: blockTrigger, containing message: {&quot;timeStamp&quot;:1678343712000,&quot;triggerName&quot;:&quot;blockTrigger&quot;,&quot;blockNumber&quot;:1362,&quot;blockHash&quot;:&quot;0000000000000552d53d1bdd9929e4533a983f14df8931ee9b3bf6d6c74a47b0&quot;,&quot;transactionSize&quot;:0,&quot;latestSolidifiedBlockNumber&quot;:1362,&quot;transactionList&quot;:[]}
+</code></pre></div></p>
 
 
 
