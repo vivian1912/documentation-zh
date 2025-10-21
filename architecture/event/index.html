@@ -2249,7 +2249,7 @@ db.block.find()
 <li><code>native.useNativeQueue</code>: <code>true</code> 为使用内置消息队列，<code>false</code> 为使用事件插件</li>
 <li><code>native.bindport</code>: ZeroMQ 发布者绑定端口。本例中为 <code>5555</code>，所以订阅者应连接的发布者地址为<code>"tcp://127.0.0.1:5555"</code></li>
 <li><code>native.sendqueuelength</code>: 发送队列的长度，即当订阅者接收消息较慢的情况下，TCP 缓冲区最多容纳的发布者发布的消息数量，超过则丢弃</li>
-<li><code>topics</code>: 订阅的 <a href="../event/#_4">事件类型</a>，包括区块类型、交易类型等</li>
+<li><code>topics</code>: 订阅的 <a href="#event-types">事件类型</a>，包括区块类型、交易类型等</li>
 </ul>
 <h3 id="_19">启动节点<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <p>事件订阅服务默认为关闭状态，需要通过配置命令行参数 <code>--es</code> 的方式来启用。开启事件订阅服务的节点的启动命令如下：
