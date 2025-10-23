@@ -81,7 +81,7 @@ TRON 网络从 GreatVoyage-V4.1.0 版本开始支持 **Lite FullNode** 类型的
 | :----------------------- | :------- | :--- |
 | 官方数据源 (亚洲: 新加坡) | [http://34.143.247.77/](http://34.143.247.77/) | LevelDB 数据 |
 
-**小提示：** 如果您已经拥有 FullNode 的全量数据，可以使用 [Lite FullNode 数据裁剪工具](./toolkit/#_5)自行将 FullNode 数据裁剪为 Lite FullNode 数据。
+**小提示：** 如果您已经拥有 FullNode 的全量数据，可以使用 [Lite FullNode 数据裁剪工具](../toolkit/#_5)自行将 FullNode 数据裁剪为 Lite FullNode 数据。
 
 
 
@@ -123,7 +123,6 @@ bash download_snapshot.sh
 **方法 2：先下载后解压（需充足存储空间）**
 
 ```
-bash
 # 1. 下载完整快照文件  
 wget SNAPSHOT_URL/FullNode_output-directory.tgz  
 
@@ -131,4 +130,4 @@ wget SNAPSHOT_URL/FullNode_output-directory.tgz
 tar -zxvf FullNode_output-directory.tgz  
 ```
 
-注意：解压时需同时保留压缩包和解压后的文件，建议使用2个3TB的磁盘（3TB+ 压缩包 & 3TB+ 解压数据，解压后可释放一块磁盘，节省成本）。
+该方法在解压时同时保留压缩包和解压后的文件，建议使用2个3TB的磁盘（3TB+ 压缩包 & 3TB+ 解压数据，解压后可释放一块磁盘，节省成本）。
