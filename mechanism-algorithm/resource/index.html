@@ -2015,11 +2015,11 @@ C: 36,000,000,000
 </ol>
 </li>
 </ul>
-<p>!!! 重要提示：Stake 1.0 与 Stake 2.0 的关键区别
-    尽管当前网络主流为 Stake 2.0，但通过 Stake 1.0 质押的 TRX 依然有效，并可通过其对应的 <code>wallet/unfreezebalance</code> 接口赎回。</p>
-<div class="codehilite"><pre><span></span><code>如果解质押 Stake 1.0 质押的 TRX，会撤销账户所有的投票。
-</code></pre></div>
-
+<div class="admonition 重要提示">
+<p class="admonition-title">重要提示</p>
+<p>Stake 1.0 与 Stake 2.0 的关键区别:
+尽管当前网络主流为 Stake 2.0，但通过 Stake 1.0 质押的 TRX 依然有效，并可通过其对应的 <code>wallet/unfreezebalance</code> 接口赎回。如果解质押 Stake 1.0 质押的 TRX，会撤销账户所有的投票。</p>
+</div>
 <h3 id="_24">如何取消全部解质押<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <p>如果您发起了 TRX 解质押但中途改变了主意，Stake 2.0 提供了一个高效的“撤销”功能。您可以使用 <code>cancelallunfreezev2</code> API 立即取消所有正在进行中的解质押，从而避免了漫长的 14 天锁定期，并可立刻获取资源。</p>
 <p><strong>请注意</strong>，调用此接口后，您账户中所有处于 14 天锁定期内、尚未完成的解质押请求都将被一次性全部撤销。</p>
