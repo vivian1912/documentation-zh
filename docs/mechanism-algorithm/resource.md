@@ -392,6 +392,7 @@ _**选票撤销的计算规则**_
 
 !!! 重要提示
     Stake 1.0 与 Stake 2.0 的关键区别:
+    
     尽管当前网络主流为 Stake 2.0，但通过 Stake 1.0 质押的 TRX 依然有效，并可通过其对应的 `wallet/unfreezebalance` 接口赎回。如果解质押 Stake 1.0 质押的 TRX，会撤销账户所有的投票。
 
 
