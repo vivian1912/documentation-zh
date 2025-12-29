@@ -2104,11 +2104,34 @@ C: 36,000,000,000
 <p>当用户 X 取消对 用户 Y 的 200 TRX 的能量代理时：</p>
 <p><div class="highlight"><pre><span></span><code>回收的未恢复能量数量 = 200 / 500 * 50 = 20 Energy
 </code></pre></div>
-回收后，各账户的状态：
-| 账户 | 身份 | 总质押数额（为获取能量） | 能量总量| 未恢复的能量数量 | 
-| -------- | -------- | -------- | -------- | -------- |
-| X     | 代理方     | 1200 TRX（1000 + 200 ）| 240 Energy   |  95 Energy（ 75 + 20 ）  | 
-| Y     | 被代理方     | 300 TRX（500 - 200） | 60 Energy | 30 Energy（ 50 -20 ）  | </p>
+回收后，各账户的状态：</p>
+<table>
+<thead>
+<tr>
+<th>账户</th>
+<th>身份</th>
+<th>总质押数额（为获取能量）</th>
+<th>能量总量</th>
+<th>未恢复的能量数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X</td>
+<td>代理方</td>
+<td>1200 TRX（1000 + 200 ）</td>
+<td>240 Energy</td>
+<td>95 Energy（ 75 + 20 ）</td>
+</tr>
+<tr>
+<td>Y</td>
+<td>被代理方</td>
+<td>300 TRX（500 - 200）</td>
+<td>60 Energy</td>
+<td>30 Energy（ 50 -20 ）</td>
+</tr>
+</tbody>
+</table>
 <h3 id="api">相关 API 接口<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
 <p>下表为质押模型相关接口及其说明：</p>
 <table>
