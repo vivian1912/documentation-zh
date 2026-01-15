@@ -3322,10 +3322,10 @@
 <ul>
 <li>源代码：<a href="https://github.com/tronprotocol/java-tron/pull/6507">https://github.com/tronprotocol/java-tron/pull/6507</a></li>
 </ul>
-<p>There is no easy way from the earth to the stars.</p>
+<hr />
+<p><em>There is no easy way from the earth to the stars.</em></p>
 <p align="right">---Seneca</p>
 
-<hr />
 <h2 id="greatvoyage-480kant">GreatVoyage-4.8.0(Kant)<a class="headerlink" href="#greatvoyage-480kant" title="Permanent link">&para;</a></h2>
 <p>Kant版本引入了多个重要的优化和更新，主要包括支持以太坊Cancun升级；增强共识层校验等，下面是详细介绍。</p>
 <h3 id="cancun">支持 以太坊 Cancun 升级<a class="headerlink" href="#cancun" title="Permanent link">&para;</a></h3>
@@ -3522,7 +3522,8 @@ node.jsonrpc.maxSubTopics = 1000
 <ul>
 <li>源代码：<a href="https://github.com/tronprotocol/java-tron/pull/6174">https://github.com/tronprotocol/java-tron/pull/6174</a></li>
 </ul>
-<p>Science is organized knowledge. Wisdom is organized life.</p>
+<hr />
+<p><em>Science is organized knowledge. Wisdom is organized life.</em></p>
 <p align="right">---Immanuel Kant</p>
 
 <h2 id="greatvoyage-477epicurus">GreatVoyage-4.7.7(Epicurus)<a class="headerlink" href="#greatvoyage-477epicurus" title="Permanent link">&para;</a></h2>
@@ -3544,10 +3545,10 @@ node.jsonrpc.maxSubTopics = 1000
 <h4 id="3-grpc">3. 优化GRPC接口调用耗时统计方法<a class="headerlink" href="#3-grpc" title="Permanent link">&para;</a></h4>
 <p>Epicurus版本优化了GRPC接口调用的耗时统计方法，以适配GRPC异步调用模式：新增一个服务端拦截器，用于记录GRPC调用的起始时间，并监听GRPC调用的结束事件，以准确的计算出GRPC接口异步调用耗时。</p>
 <p>源代码：https://github.com/tronprotocol/java-tron/pull/6097 </p>
-<p>Not what we have but what we enjoy, constitutes our abundance.</p>
+<hr />
+<p><em>Not what we have but what we enjoy, constitutes our abundance.</em></p>
 <p align="right">---Epicurus</p>
 
-<hr />
 <h2 id="greatvoyage-v476anaximander">GreatVoyage-v4.7.6(Anaximander)<a class="headerlink" href="#greatvoyage-v476anaximander" title="Permanent link">&para;</a></h2>
 <p>Anaximander版本引入了多个重要的优化和更新，优化的单元测试任务，提高了测试用例执行的稳定性；新增的TCP、UDP流量统计，进一步完善了节点监控数据；优化的远端节点空闲判断逻辑，提升了区块同步的稳定性；优化的节点连接随机断开逻辑，提高了节点网络健壮性。下面是详细介绍。</p>
 <h3 id="_6">其它变更<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
@@ -3577,10 +3578,10 @@ node.jsonrpc.maxSubTopics = 1000
 <p>源代码：<a href="https://github.com/tronprotocol/java-tron/pull/5924">https://github.com/tronprotocol/java-tron/pull/5924</a>   <a href="https://github.com/tronprotocol/java-tron/pull/5944">https://github.com/tronprotocol/java-tron/pull/5944</a><br />
 <a href="https://github.com/tronprotocol/java-tron/pull/5956">https://github.com/tronprotocol/java-tron/pull/5956</a><br />
 <a href="https://github.com/tronprotocol/java-tron/pull/5984">https://github.com/tronprotocol/java-tron/pull/5984</a>  </p>
+<hr />
 <p><em>Nature is eternal and does not age.</em> </p>
 <p align="right"> ---Anaximander</p>
 
-<hr />
 <h2 id="greatvoyage-v475cleobulus">GreatVoyage-v4.7.5(Cleobulus)<a class="headerlink" href="#greatvoyage-v475cleobulus" title="Permanent link">&para;</a></h2>
 <p>Cleobulus版本引入了多个重要的优化和更新，新增调整部分 TVM 操作码能量成本的提案，使能量成本更加合理；增强的交易及区块检查逻辑，提高了系统的容错能力；优化的线程间同步逻辑，提高了数据一致性。下面是详细介绍。</p>
 <h3 id="_7">核心协议<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
@@ -4388,7 +4389,7 @@ node.dynamicConfig.checkInterval = 600
 </ul>
 <h4 id="2_12">2. 新增预估能量接口<a class="headerlink" href="#2_12" title="Permanent link">&para;</a></h4>
 <p>在GreatVoyage-v4.7.0.1(Aristotle)之前的版本中，可以通过<code>/wallet/triggerconstantcontract</code>接口预估执行智能合约交易所需的能量消耗量，然后根据预估的消耗量来设置交易的<code>feelimit</code>参数。但由于某些智能合约交易可能存在对其他智能合约的调用，这时有可能出现预估<code>feelimit</code>参数不准确的情况。</p>
-<p>因此，GreatVoyage-v4.7.0.1(Aristotle)版本新增了一个能量预估接口<code>/wallet/estimateenergy</code>，利用该接口预估的<code>feelimit</code>在任何情况下都是可靠的。该接口返回值中的<code>energy_required</code>字段表示这笔智能合约调用交易执行成功所需要的能量预估量，用户根据该字段来计算<code>feelimit</code>参数：<code>feelimit</code> = <code>energy_required</code> * 能量单价， 当前能量单价是210sun 。</p>
+<p>因此，GreatVoyage-v4.7.0.1(Aristotle)版本新增了一个能量预估接口<code>/wallet/estimateenergy</code>，利用该接口预估的<code>feelimit</code>在任何情况下都是可靠的。该接口返回值中的<code>energy_required</code>字段表示这笔智能合约调用交易执行成功所需要的能量预估量，用户根据该字段来计算<code>feelimit</code>参数：<code>feelimit</code> = <code>energy_required</code> * 能量单价， 当前能量单价是100sun 。</p>
 <p>如果由于某种原因导致预估接口执行失败时，<code>energy_required</code>字段值为0，在返回值中将不显示该字段，这时可以通过<code>result</code>字段查看预估失败原因。</p>
 <p>新版本部署成功后，该接口默认为关闭状态，打开该接口需要节点配置文件中同时开启<code>vm.estimateEnergy</code>和<code>vm.supportConstant</code>这两个配置项。<code>vm.estimateEnergy</code>和<code>vm.supportConstant</code>的默认值均为false。</p>
 <p><code>/wallet/triggerconstantcontract</code>接口调用示例如下：</p>
@@ -4872,6 +4873,7 @@ GreatVoyage-v4.3.0(Bacon)引入了leveldb 启动优化插件，插件优化了ma
 <li>源代码： https://github.com/tronprotocol/java-tron/pull/3925</li>
 <li>插件使用指南：https://tronprotocol.github.io/documentation-zh/using_javatron/toolkit/#leveldb  </li>
 </ul>
+<hr />
 <p><em>Knowledge is power.</em> </p>
 <p align="right"> --- Francis Bacon </p>
 
@@ -4918,7 +4920,8 @@ GreatVoyage-v4.3.0(Bacon)引入了leveldb 启动优化插件，插件优化了ma
 <ul>
 <li>源代码:  <a href="https://github.com/tronprotocol/java-tron/pull/3836">#3836</a></li>
 </ul>
-<p>--- <em>Truths kindle light for truths.</em>
+<hr />
+<p><em>Truths kindle light for truths.</em>
  
 <p align="right"> --- Lucretius</p>
 </p>
