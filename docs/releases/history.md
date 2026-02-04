@@ -84,6 +84,7 @@
 
 
 
+
 ## GreatVoyage-4.8.1(Democritus)
 
 ### 核心协议
@@ -131,16 +132,18 @@
         |  org.aspectj   | aspectjrt    | 1.8.13     | 1.9.8     |
         |  org.rocksdb   | rocksdbjni    | -     | 9.7.4(arm)    |
 
-* Issue：https://github.com/tronprotocol/java-tron/issues/5954 
+
+
+* Issue：[https://github.com/tronprotocol/java-tron/issues/5954](https://github.com/tronprotocol/java-tron/issues/5954)
 * 源代码：
-https://github.com/tronprotocol/java-tron/pull/6327
-https://github.com/tronprotocol/java-tron/pull/6421
-https://github.com/tronprotocol/java-tron/pull/6440
-https://github.com/tronprotocol/java-tron/pull/6455
-https://github.com/tronprotocol/java-tron/pull/6457
-https://github.com/tronprotocol/java-tron/pull/6459
-https://github.com/tronprotocol/java-tron/pull/6472
-https://github.com/tronprotocol/java-tron/pull/6502 
+[https://github.com/tronprotocol/java-tron/pull/6327](https://github.com/tronprotocol/java-tron/pull/6327)
+[https://github.com/tronprotocol/java-tron/pull/6421](https://github.com/tronprotocol/java-tron/pull/6421)
+[https://github.com/tronprotocol/java-tron/pull/6440](https://github.com/tronprotocol/java-tron/pull/6440)
+[https://github.com/tronprotocol/java-tron/pull/6455](https://github.com/tronprotocol/java-tron/pull/6455)
+[https://github.com/tronprotocol/java-tron/pull/6457](https://github.com/tronprotocol/java-tron/pull/6457)
+[https://github.com/tronprotocol/java-tron/pull/6459](https://github.com/tronprotocol/java-tron/pull/6459)
+[https://github.com/tronprotocol/java-tron/pull/6472](https://github.com/tronprotocol/java-tron/pull/6472)
+[https://github.com/tronprotocol/java-tron/pull/6502](https://github.com/tronprotocol/java-tron/pull/6502)
 
 ### TVM
 
@@ -166,27 +169,29 @@ https://github.com/tronprotocol/java-tron/pull/6502
 
 注意，该功能由 TRON 网络的第 94 号参数控制。Democritus 部署后默认关闭（值为 0），需通过提案投票的方式开启，且开启后不可关闭。
 
-* TIP: https://github.com/tronprotocol/tips/blob/master/tip-6780.md 
+* TIP: [https://github.com/tronprotocol/tips/blob/master/tip-6780.md](https://github.com/tronprotocol/tips/blob/master/tip-6780.md)
 * 源代码：
-https://github.com/tronprotocol/java-tron/pull/6383
-https://github.com/tronprotocol/java-tron/pull/6448
-
+[https://github.com/tronprotocol/java-tron/pull/6383](https://github.com/tronprotocol/java-tron/pull/6383)
+[https://github.com/tronprotocol/java-tron/pull/6448](https://github.com/tronprotocol/java-tron/pull/6448)
 
 ### Net
 
-#### 1. 修复同步区块时报出的 `gt highNoFork` 和 `gt lastNum` 错误 
+#### 1. 修复同步区块时报出的 `gt highNoFork` 和 `gt lastNum` 错误
+
 同步服务在个别极端场景中会打印整个异常堆栈，该日志输出不符合其错误级别，需要进行调整。调整后日志只输出具体异常信息，不再打印异常堆栈。
 
-* 源代码： https://github.com/tronprotocol/java-tron/pull/6381
+* 源代码： [https://github.com/tronprotocol/java-tron/pull/6381](https://github.com/tronprotocol/java-tron/pull/6381)
 
 #### 2. 修复轻节点错误报出 FORKED 断连的问题
+
 在 Democritus 之前的版本中，当轻节点与高度比它低的全节点进行同步时，若全节点的最高固化块不在轻节点本地的主链上，握手时的断连原因会被误报为 FORKED。
 
 Democritus版本添加了一个额外判断，只有当轻节点的最低块高度低于全节点的最高固化块高度时，才判定为 FORKED；其他情况时是 LIGHT_NODE_SYNC_FAIL。
 
-* 源代码： https://github.com/tronprotocol/java-tron/pull/6375
+* 源代码： [https://github.com/tronprotocol/java-tron/pull/6375](https://github.com/tronprotocol/java-tron/pull/6375)
 
 #### 3. 优化 P2P 断连原因
+
 在 Democritus 之前的版本中，部分 Peer 断开场景下 P2P_DISCONNECT 消息携带的原因代码（Reason Code）定义较为模糊，导致节点无法准确感知真正的断连原因，不利于网络排障。
 
 Democritus 版本针对以下三类场景的断连原因进行了优化：
@@ -197,9 +202,10 @@ Democritus 版本针对以下三类场景的断连原因进行了优化：
 
 场景3: 当接收到的 P2P_HELLO 消息中包含的区块 ID 的长度不等于32时，断连原因由 UNKNOWN 改为 INCOMPATIBLE_PROTOCOL。
 
-* 源代码： https://github.com/tronprotocol/java-tron/pull/6394
+* 源代码： [https://github.com/tronprotocol/java-tron/pull/6394](https://github.com/tronprotocol/java-tron/pull/6394)
 
 #### 4. 引入 P2P 消息处理速率限制
+
 在 Democritus 之前的版本中，并未限制 P2P 消息的处理速率，但网络节点的处理能力受限于带宽、CPU 和内存等物理资源。处理大量 P2P 消息会导致资源过度消耗。因此，Democritus 版本引入了针对单一对等节点（Peer）的 P2P 消息限速逻辑。具体策略如下：
 
 * 当 ChainInventory.remainNum > 0 时，SyncBlockChainMessage报文的 qps不能超过 3 。
@@ -208,13 +214,13 @@ Democritus 版本针对以下三类场景的断连原因进行了优化：
 
 若单一Peer发送的相关频率超过了上述速率限制，则节点将直接丢弃该消息并主动断开与 该 peer 的连接。
 
-* 源代码： https://github.com/tronprotocol/java-tron/pull/6393
-
+* 源代码： [https://github.com/tronprotocol/java-tron/pull/6393](https://github.com/tronprotocol/java-tron/pull/6393)
 
 #### 5. 优化对 PeerConnection 中字段的并发访问
+
 Democritus 版本优化了 PeerConnection 的并发访问处理逻辑：为并发访问的字段加 `volatile` 关键字修饰，同时，调整变量赋值先后顺序，以减少网络同步过程中因状态并发修改而导致的异常。
 
-* 源代码：https://github.com/tronprotocol/java-tron/pull/6360
+* 源代码：[https://github.com/tronprotocol/java-tron/pull/6360](https://github.com/tronprotocol/java-tron/pull/6360)
 
 ### 其它变更
 
@@ -224,71 +230,73 @@ Democritus 版本优化了 PeerConnection 的并发访问处理逻辑：为并�
 
 Democritus 版本新增配置项 `node.allowShieldedTransactionApi` 以代替 `node.fullNodeAllowShieldedTransaction`。
 
-* 源代码： 
-https://github.com/tronprotocol/java-tron/pull/6371
-https://github.com/tronprotocol/java-tron/pull/6427
+* 源代码：
+[https://github.com/tronprotocol/java-tron/pull/6371](https://github.com/tronprotocol/java-tron/pull/6371)
+[https://github.com/tronprotocol/java-tron/pull/6427](https://github.com/tronprotocol/java-tron/pull/6427)
 
 #### 2. 升级 Gradle 以支持 JitPack 发布
+
 Gradle 版本已升级到 7.6.4，使用 maven-publish 插件支持 jitpack 发布。
 
-* 源代码： https://github.com/tronprotocol/java-tron/pull/6367
+* 源代码： [https://github.com/tronprotocol/java-tron/pull/6367](https://github.com/tronprotocol/java-tron/pull/6367)
 
 #### 3. 优化本地 Witness 初始化逻辑
 
 Democritus 版本优化了本地 Witness 初始化逻辑，只有 witness 节点才执行私钥和地址的初始化逻辑，若是配置了无效 witness 地址, 程序会抛异常并且退出。同时，Democritus 版本将密码库从 org.bouncycastle:bcprov-jdk15on:1.69 升级到了org.bouncycastle:bcprov-jdk18on:1.79。
 
-* 源代码： 
-https://github.com/tronprotocol/java-tron/pull/6368
-https://github.com/tronprotocol/java-tron/pull/6452
+* 源代码：
+[https://github.com/tronprotocol/java-tron/pull/6368](https://github.com/tronprotocol/java-tron/pull/6368)
+[https://github.com/tronprotocol/java-tron/pull/6452](https://github.com/tronprotocol/java-tron/pull/6452)
 
 #### 4. 优化缺失 Blackhole 账户配置时的日志提示
 
 Democritus 版本优化了在缺失 Blackhole 账户配置时的日志提示，通过更具引导性的提示信息，明确告知用户需要在 config.conf 中正确配置 Blackhole 账户地址。
 
-* 源代码： https://github.com/tronprotocol/java-tron/pull/6356
+* 源代码： [https://github.com/tronprotocol/java-tron/pull/6356](https://github.com/tronprotocol/java-tron/pull/6356)
 
 #### 5. 丰富 FullNode 命令行选项
 
 Democritus 版本移除独立的 `SolidityNode.jar` 与 `KeystoreFactory.jar` 文件，并将其功能整合至 FullNode 中。用户可通过命令行参数 `--solidity` 启动 SolidityNode 服务，或通过 `--keystore-factory` 启动 KeystoreFactory 服务。该优化在保持原有功能完整性的同时，显著缩短了项目构建时间并降低了存储占用，进一步简化了运维部署流程。
 
 * 源代码：
-https://github.com/tronprotocol/java-tron/pull/6397 
-https://github.com/tronprotocol/java-tron/pull/6450 
-https://github.com/tronprotocol/java-tron/pull/6446
+[https://github.com/tronprotocol/java-tron/pull/6397](https://github.com/tronprotocol/java-tron/pull/6397)
+[https://github.com/tronprotocol/java-tron/pull/6450](https://github.com/tronprotocol/java-tron/pull/6450)
+[https://github.com/tronprotocol/java-tron/pull/6446](https://github.com/tronprotocol/java-tron/pull/6446)
 
 #### 6. 对齐 config.conf 与 tron-deployment 中的配置项
+
 Democritus 版本实现了 `config.conf` 与 tron-deployment 存储库中配置项的同步。并优化更新了 `seed.node.ip.list` 种子节点列表，补全了相关配置的默认值。此举旨在确保不同部署环境下的配置参数保持高度一致，提升了节点接入网络的标准化程度。
 
-* 源代码： https://github.com/tronprotocol/java-tron/pull/6332
+* 源代码： [https://github.com/tronprotocol/java-tron/pull/6332](https://github.com/tronprotocol/java-tron/pull/6332)
 
 #### 7. 规范化全量配置标准与注释准则
+
 Democritus 版本引入了一份包含全量配置项的标准配置文件，任何未收录于此文件的配置项均被视为无效或已过期，同时定义了配置文件内的注释规范：
 
 * 整行注释以”#”开头
 * 配置项后面的注释用”#”或”//”均可
 * 没有默认值的配置项以”#”开头作为注释
-
-
-* 源代码： https://github.com/tronprotocol/java-tron/pull/6430
+* 源代码： [https://github.com/tronprotocol/java-tron/pull/6430](https://github.com/tronprotocol/java-tron/pull/6430)
 
 #### 8. 升级依赖库
+
 Democritus 版本对 `grpc-java`、`Spring`、`Jackson`、`Jetty` 等核心依赖库进行了版本升级。
 
 | group-name | package-name | Old version | New version |
-| :--- | :--- | :--- | :--- |
+| --- | --- | --- | --- |
 | org.eclipse.jetty | jetty-server | 9.4.53.v20231009 | 9.4.57.v20241219 |
 | com.cedarsoftware | java-util | 1.8.0 | 3.2.0 |
 | com.fasterxml.jackson.core | jackson-databind | 2.13.4.2 | 2.18.3 |
-| com.carrotsearch | java-sizeof | delete | |
-| org.springframework | spring-tx | delete | |
-| | spring-web | delete | |
-| | spring-context | 5.3.18 | 5.3.39 |
-| | spring-test | 5.2.0.RELEASE | 5.3.39 |
+| com.carrotsearch | java-sizeof | delete |  |
+| org.springframework | spring-tx | delete |  |
+|  | spring-web | delete |  |
+|  | spring-context | 5.3.18 | 5.3.39 |
+|  | spring-test | 5.2.0.RELEASE | 5.3.39 |
 | io.grpc | grpc-netty, grpc-protobuf, grpc-stub, grpc-core, grpc-services | 1.60.0 | 1.75.0 |
 | com.google.protobuf | protobuf-java, protobuf-java-util, protoc | 3.25.5 | 3.25.8 |
-| org.hamcrest | hamcrest-junit | delete | |
-| com.google.inject | guice | delete | |
-| io.vavr | vavr | delete | |
+| org.hamcrest | hamcrest-junit | delete |  |
+| com.google.inject | guice | delete |  |
+| io.vavr | vavr | delete |  |
 
 另外，Democritus 版本升级了底层网络库 `libp2p`（从 2.2.6 升级至 2.2.7）。此版本不仅新增了对 JDK 17 的编译支持，还针对 Windows 兼容性、内存管理和网络稳定性进行了大幅优化与修复。核心修复与改进包括：
 
@@ -297,30 +305,31 @@ Democritus 版本对 `grpc-java`、`Spring`、`Jackson`、`Jetty` 等核心依�
 * 优化连接池（connPool）与资源管理逻辑 (#116)。
 * 实现了带验证机制的并发外部 IP 获取 (#120, #121)。
 * 优化网络探测逻辑 (#122)
-    * 增强了本地局域网（LAN）IP 的探测。
+* 增强了本地局域网（LAN）IP 的探测。
+
+
 * 优化日志及更新readme文档 （#113, #115, #117）
+* 源代码：
+[https://github.com/tronprotocol/java-tron/pull/6400](https://github.com/tronprotocol/java-tron/pull/6400)
+[https://github.com/tronprotocol/java-tron/pull/6429](https://github.com/tronprotocol/java-tron/pull/6429)
+[https://github.com/tronprotocol/java-tron/pull/6431](https://github.com/tronprotocol/java-tron/pull/6431)
+[https://github.com/tronprotocol/java-tron/pull/6481](https://github.com/tronprotocol/java-tron/pull/6481)
 
+#### 9. 定义版本号为 4.8.1
 
-
-* 源代码： 
-https://github.com/tronprotocol/java-tron/pull/6400
-https://github.com/tronprotocol/java-tron/pull/6429
-https://github.com/tronprotocol/java-tron/pull/6431
-https://github.com/tronprotocol/java-tron/pull/6481
-
-#### 9. 定义版本号为 4.8.1 
 调整 java-tron 代码内的版本号，定义 Democritus 的版本号为 4.8.1。
 
-* 源代码：https://github.com/tronprotocol/java-tron/pull/6445 
+* 源代码：[https://github.com/tronprotocol/java-tron/pull/6445](https://github.com/tronprotocol/java-tron/pull/6445)
 
 **事件服务**
 
 #### 1. 优化事件服务对 Transaction Info 的获取逻辑
+
 解决了获取 transaction info 时的兼容性问题。如果事件服务从transactionRetStore 数据库读取不到数据，则会兼容地回退到从transactionHistoryStore 数据库读取。
 
 * 源代码：
-https://github.com/tronprotocol/java-tron/pull/6443
-https://github.com/tronprotocol/java-tron/pull/6453
+[https://github.com/tronprotocol/java-tron/pull/6443](https://github.com/tronprotocol/java-tron/pull/6443)
+[https://github.com/tronprotocol/java-tron/pull/6453](https://github.com/tronprotocol/java-tron/pull/6453)
 
 #### 2. 移除 Bloom 过滤器写入开关
 
@@ -330,16 +339,18 @@ section-bloom 数据库用于存储合约日志的 Bloom 过滤器及其对应�
 
 Democritus 版本正式移除了对该配置项的依赖，改为始终向 section-bloom 数据库写入数据。确保了 Bloom 过滤器索引的持续性与完整性，彻底解决了因配置开关状态导致 eth_getLogs 接口查询不到历史数据的问题。
 
-* 源代码： https://github.com/tronprotocol/java-tron/pull/6372
+* 源代码： [https://github.com/tronprotocol/java-tron/pull/6372](https://github.com/tronprotocol/java-tron/pull/6372)
 
 #### 3. 优化事件服务线程关闭逻辑
+
 Democritus 版本优化了 HistoryEventService 线程关闭逻辑，通过引入全局变量 `isClosed`，确保即使 `close` 函数被重复调用，相关资源也只会释放一次。该优化成功解决了因资源被重复释放或查找不到而抛出异常的问题。
 
-* 源代码：https://github.com/tronprotocol/java-tron/pull/6463
-
+* 源代码：[https://github.com/tronprotocol/java-tron/pull/6463](https://github.com/tronprotocol/java-tron/pull/6463)
 
 **单元测试**
+
 #### 1. 优化测试用例的资源释放逻辑
+
 在 Democritus 之前的版本中单测存在以下问题：
 
 * 临时文件遗留： 在 java.io.tmpdir 目录下遗留了大量未清理的临时文件。
@@ -353,87 +364,92 @@ Democritus 版本进行了如下改进和修复：
 * 性能优化： 解决了几个耗时过长的单测，使单测总耗时最多减少 30%。
 * 资源修复： 修复了资源泄漏问题，并优化了部分单测的资源释放逻辑。
 * 异常修复： 解决了部分单测中的空指针异常（NullPointerException）。
-
-* 源代码： 
-https://github.com/tronprotocol/java-tron/pull/6437
-https://github.com/tronprotocol/java-tron/pull/6483
-https://github.com/tronprotocol/java-tron/pull/6486
+* 源代码：
+[https://github.com/tronprotocol/java-tron/pull/6437](https://github.com/tronprotocol/java-tron/pull/6437)
+[https://github.com/tronprotocol/java-tron/pull/6483](https://github.com/tronprotocol/java-tron/pull/6483)
+[https://github.com/tronprotocol/java-tron/pull/6486](https://github.com/tronprotocol/java-tron/pull/6486)
 
 #### 2. 引入 gRPC 超时机制
+
 针对在 ARM 架构环境下高频重复执行单元测试（如 100 次以上）时可能出现的单测阻塞问题，Democritus 版本引入 gRPC 超时机制，对每个gRPC单测添加5秒执行超时时间和此次单测执行30s超时时间；若超时，再跳出继续执行后续逻辑。
 
-* 源代码： 
-https://github.com/tronprotocol/java-tron/pull/6441
-https://github.com/tronprotocol/java-tron/pull/6460 
+* 源代码：
+[https://github.com/tronprotocol/java-tron/pull/6441](https://github.com/tronprotocol/java-tron/pull/6441)
+[https://github.com/tronprotocol/java-tron/pull/6460](https://github.com/tronprotocol/java-tron/pull/6460)
 
 #### 3. 确保单测正确自动停止
+
 Democritus 版本修复了 ConditionalStopTest 单测中的判断逻辑。在 SR 产块场景下，即使遇到出块顺序发生变化的情况，也能准确识别停止条件，从而使单测能够按照预期正确、自动地停止执行。
 
-* 源代码： https://github.com/tronprotocol/java-tron/pull/6469
+* 源代码： [https://github.com/tronprotocol/java-tron/pull/6469](https://github.com/tronprotocol/java-tron/pull/6469)
 
 #### 4. 恢复测试后的日志上下文以防止配置污染
 
-Democritus 版本修复了 TronErrorTest 单元测试导致的全局 logger 配置污染问题。通过在 LogService 加载配置时输出错误/警告信息，并在测试里显式恢复 logger 上下文，保证测试之间互不影响日志输出，并且能更好地定位 logback 配置加载问题。 
+Democritus 版本修复了 TronErrorTest 单元测试导致的全局 logger 配置污染问题。通过在 LogService 加载配置时输出错误/警告信息，并在测试里显式恢复 logger 上下文，保证测试之间互不影响日志输出，并且能更好地定位 logback 配置加载问题。
 
-* 源代码： https://github.com/tronprotocol/java-tron/pull/6476 
+* 源代码： [https://github.com/tronprotocol/java-tron/pull/6476](https://github.com/tronprotocol/java-tron/pull/6476)
 
 #### 5. 修复测试用例中的 CheckStyle 问题
+
 测试用例文件中一个注释的语句增加换行，修复测试用例中的checkStyle问题。
 
-* 源代码： https://github.com/tronprotocol/java-tron/pull/6392
-
+* 源代码： [https://github.com/tronprotocol/java-tron/pull/6392](https://github.com/tronprotocol/java-tron/pull/6392)
 
 **Document**
+
 #### 1. 更新 Readme 中的 FullNode JVM 启动参数
+
 调整 java-tron 在 x86 和 ARM 平台下的 JVM 启动参数，旨在确保FullNode节点能够在最低硬件配置下满足基本的容灾需求；同时，修改硬件要求，推荐采用更为稳定的机器配置。
 
-* 源代码： https://github.com/tronprotocol/java-tron/pull/6478/files
+* 源代码： [https://github.com/tronprotocol/java-tron/pull/6478/files](https://github.com/tronprotocol/java-tron/pull/6478/files)
 
 #### 2. 修复 README 徽章显示问题
 
 Democritus 版本修复了 README 文档顶部 GitHub 徽章（Badge）显示为 "unknown" 的问题。通过更新徽章的图片链接，确保了项目信息的正常展示。
 
-
-* 源代码： https://github.com/tronprotocol/java-tron/pull/6340
+* 源代码： [https://github.com/tronprotocol/java-tron/pull/6340](https://github.com/tronprotocol/java-tron/pull/6340)
 
 #### 3. 更新 README 中的社区群组与文档链接
+
 Democritus 版本更新了 README 文档中的TRON官方开发讨论群组和文档链接。
 
-* 源代码： https://github.com/tronprotocol/java-tron/pull/6364
-
+* 源代码： [https://github.com/tronprotocol/java-tron/pull/6364](https://github.com/tronprotocol/java-tron/pull/6364)
 
 **其它变更**
 
 #### 1. 将提案过期时间切换为链上治理模式
+
 为确保全网治理参数的高度统一并提升协议的一致性，Democritus 版本引入了TRON网络的第 92 号链上参数（PROPOSAL_EXPIRE_TIME），将提案过期时间从本地配置模式切换为链上治理模式。
 
 注意：该功能默认为关闭状态，需要超级代表通过发起提案投票的方式开启，并设置参数值。
 
-TIP：https://github.com/tronprotocol/tips/blob/master/tip-767.md
-源代码：
-https://github.com/tronprotocol/java-tron/pull/6399
-https://github.com/tronprotocol/java-tron/pull/6454
+* TIP：[https://github.com/tronprotocol/tips/blob/master/tip-767.md](https://github.com/tronprotocol/tips/blob/master/tip-767.md)
+* 源代码：
+[https://github.com/tronprotocol/java-tron/pull/6399](https://github.com/tronprotocol/java-tron/pull/6399)
+[https://github.com/tronprotocol/java-tron/pull/6454](https://github.com/tronprotocol/java-tron/pull/6454)
 
 #### 2. 修复 Protocol Buffer 文件语法兼容性问题
+
 修复了 `ReasonCode` 结构体中一个枚举值 16 进制赋值的大小写错误，以解决 JavaScript 编译不通过的问题。
 
 * 源代码：
-https://github.com/tronprotocol/java-tron/pull/6426
-
-
+[https://github.com/tronprotocol/java-tron/pull/6426](https://github.com/tronprotocol/java-tron/pull/6426)
 
 ### API
+
 #### 1. 新增 eth_getBlockReceipts API
+
 Democritus 版本新增 `eth_getBlockReceipts` 接口，用于查询指定区块中的所有交易回执（Transaction Receipts）。对于创世块，轻节点已经裁剪的块和未生产的块返回null。
 
 参数： `blockNumber`（必填），支持十六进制字符串表示的区块号、blockHash(有无0x开头均支持)、或标签（ "latest"、"earliest"、"finalized"）三种类型。
 
-返回值：返回一个对象数组，每个对象为该区块内一笔交易的回执。和 `eth_getTransactionReceipt` 返回结构一致，参见 ：https://developers.tron.network/reference/eth_gettransactionreceipt
+返回值：返回一个对象数组。每个对象为该区块内一笔交易的回执，和 [eth_getTransactionReceipt](https://developers.tron.network/reference/eth_gettransactionreceipt) 返回结构一致。
 
 * 源代码：
-https://github.com/tronprotocol/java-tron/pull/6379 https://github.com/tronprotocol/java-tron/pull/6433
+[https://github.com/tronprotocol/java-tron/pull/6379](https://github.com/tronprotocol/java-tron/pull/6379) [https://github.com/tronprotocol/java-tron/pull/6433](https://github.com/tronprotocol/java-tron/pull/6433)
 
 #### 2. 新增查询超级代表实时票数的 API
+
 Democritus 版本新增`getpaginatednowwitnesslist`接口，用于查询当前 epoch 的实时票数并且返回按降序排序后的witness分页列表，其中票数=上轮维护期结束时的最终票数+当前 epoch 中的投票增量（可能为负）。
 
 参数：
@@ -449,15 +465,16 @@ Democritus 版本新增`getpaginatednowwitnesslist`接口，用于查询当前 e
 
 该API特有的错误与边界：当处于维护期、并且请求的是非固化数据时，抛出维护期不可用异常, http code = 200。
 
-* 源代码： 
-https://github.com/tronprotocol/java-tron/pull/6373
-https://github.com/tronprotocol/java-tron/pull/6451
+* 源代码：
+[https://github.com/tronprotocol/java-tron/pull/6373](https://github.com/tronprotocol/java-tron/pull/6373)
+[https://github.com/tronprotocol/java-tron/pull/6451](https://github.com/tronprotocol/java-tron/pull/6451)
 
 #### 3. 优化 eth_call 接口的返回信息
 
 在 Democritus 之前的版本中，当合约执行失败时，eth_call 接口仅返回简单的错误消息（如 "REVERT opcode executed"），而其 data 字段始终为空，缺乏具体错误信息，导致开发者难以追查问题。Democritus 版本定义了 JsonRpcException 作为所有 JSON-RPC 异常的基类，同时，实现了 JsonRpcErrorResolver 类，负责 data 字段的生成逻辑。
 
-以[demo合约](https://nile.tronscan.org/#/contract/TAFPPQK2NaqSPwKcaomLXJmwbxLB34x8Lr/code)为例，请求 testInsufficientBalance 方法时，修改前返回如下信息，
+以[demo合约](https://www.google.com/search?q=https://nile.tronscan.org/%23/contract/TAFPPQK2NaqSPwKcaomLXJmwbxLB34x8Lr/code)为例，请求 testInsufficientBalance 方法时，修改前返回如下信息，
+
 ```
 {
     "jsonrpc": "2.0",
@@ -468,8 +485,11 @@ https://github.com/tronprotocol/java-tron/pull/6451
         "data": "{}"
     }
 }
+
 ```
+
 修改后`data`字段返回了错误信息，开发者可以通过abi解析获取具体错误原因（同以太坊节点策略保持一致，除默认的 Error(string)之外均返回未解析数据）。
+
 ```
 {
     "jsonrpc": "2.0",
@@ -480,9 +500,10 @@ https://github.com/tronprotocol/java-tron/pull/6451
        "data": "0xcf47918100000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000064"
     }
 }
+
 ```
 
-* 源代码： https://github.com/tronprotocol/java-tron/pull/6369
+* 源代码： [https://github.com/tronprotocol/java-tron/pull/6369](https://github.com/tronprotocol/java-tron/pull/6369)
 
 #### 4. 优化 eth_getLogs 和 eth_getFilterLogs 性能
 
@@ -491,15 +512,13 @@ https://github.com/tronprotocol/java-tron/pull/6451
 下表对比了不同 topic 和 address 数量下，bitIndex 的重复率和 partialMatch 的执行时间。从中可见，随着 topic 数量的增加，bitIndex 的重复度越高，优化后的性能提升越显著。
 
 | 指标 (Metric) | 10 Topics | 100 Topics | 500 Topics | 1000 Topics | 2000 Addresses |
-| :--- | :--- | :--- | :--- | :--- | :--- |
+| --- | --- | --- | --- | --- | --- |
 | **原始耗时 (ms)** | 2.28 | 2.51 | 9.35 | 21.41 | 40.15 |
 | **优化后耗时 (ms)** | 2.13 | 2.13 | 6.95 | 12.80 | 15.24 |
 | **提升率** | 6.58% | 15.14% | 25.67% | 40.21% | 62.04% |
 | **重复率** | 0% | 7.60% | 29.41% | 47.31% | 67.62% |
 
-* 源代码： https://github.com/tronprotocol/java-tron/pull/6370 
-
- 
+* 源代码： [https://github.com/tronprotocol/java-tron/pull/6370](https://github.com/tronprotocol/java-tron/pull/6370)
 
 
 
