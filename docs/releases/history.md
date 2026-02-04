@@ -192,7 +192,9 @@ Democritus版本添加了一个额外判断，只有当轻节点的最低块高�
 Democritus 版本针对以下三类场景的断连原因进行了优化：
 
 场景1: 节点收到 peer 发送的区块后，如果由于区块签名验证失败而断开与 peer 的连接，则断连原因由 UNKNOWN 改成 BAD_BLOCK。
+
 场景2: 在 Democritus 之前的版本中，在 HandshakeService 处理 HelloMessage 的有效性检查时，若发生错误，则返回 UNEXPECTED_IDENTITY 错误代码，但实际上不会执行与身份相关的有效性检查。因此，Democritus版本将这种场景的断连原因从 UNEXPECTED_IDENTITY 改为 INCOMPATIBLE_PROTOCOL。
+
 场景3: 当接收到的 P2P_HELLO 消息中包含的区块 ID 的长度不等于32时，断连原因由 UNKNOWN 改为 INCOMPATIBLE_PROTOCOL。
 
 * 源代码： https://github.com/tronprotocol/java-tron/pull/6394
@@ -247,7 +249,7 @@ Democritus 版本优化了在缺失 Blackhole 账户配置时的日志提示，�
 
 #### 5. 丰富 FullNode 命令行选项
 
-Democritus 版本移除独立的 `SolidityNode.jar` 与 `KeystoreFactory.jar` 文件，并将其功能整合至 FullNode 中。用户可通过命令行参数 `--solidity` 启动 SolidityNode 服务，或通过 `--keystore-factory` 启动 KeystoreFactory 服务。此举在保持原有功能完整性的同时，显著缩短了项目构建时间并降低了存储占用，进一步简化了运维部署流程。
+Democritus 版本移除独立的 `SolidityNode.jar` 与 `KeystoreFactory.jar` 文件，并将其功能整合至 FullNode 中。用户可通过命令行参数 `--solidity` 启动 SolidityNode 服务，或通过 `--keystore-factory` 启动 KeystoreFactory 服务。该优化在保持原有功能完整性的同时，显著缩短了项目构建时间并降低了存储占用，进一步简化了运维部署流程。
 
 * 源代码：
 https://github.com/tronprotocol/java-tron/pull/6397 
@@ -288,9 +290,7 @@ Democritus 版本对 `grpc-java`、`Spring`、`Jackson`、`Jetty` 等核心依�
 | com.google.inject | guice | delete | |
 | io.vavr | vavr | delete | |
 
-另外，Democritus 版本升级了底层网络库 `libp2p`（从 2.2.6 升级至 2.2.7）。此版本不仅新增了对 JDK 17 的编译支持，还针对 Windows 兼容性、内存管理和网络稳定性进行了大幅优化与修复。
-
-核心修复与改进包括：
+另外，Democritus 版本升级了底层网络库 `libp2p`（从 2.2.6 升级至 2.2.7）。此版本不仅新增了对 JDK 17 的编译支持，还针对 Windows 兼容性、内存管理和网络稳定性进行了大幅优化与修复。核心修复与改进包括：
 
 * 新增对 JDK 17 的编译支持（#113）。
 * 升级grpc-netty、protobuf依赖库 (#110)。
@@ -384,23 +384,25 @@ Democritus 版本修复了 TronErrorTest 单元测试导致的全局 logger 配�
 
 
 **Document**
-#### 1. Update readme for FullNode startup JVM parameters 
+#### 1. 更新 Readme 中的 FullNode JVM 启动参数
 调整 java-tron 在 x86 和 ARM 平台下的 JVM 启动参数，旨在确保FullNode节点能够在最低硬件配置下满足基本的容灾需求；同时，修改硬件要求，推荐采用更为稳定的机器配置。
 
 * 源代码： https://github.com/tronprotocol/java-tron/pull/6478/files
 
-#### 2. Fix README badge display errors
-修复之前 README 文档头部 GitHub 徽章显示为 "unknown" 的问题，并修改了徽章图片链接。
+#### 2. 修复 README 徽章显示问题
+
+Democritus 版本修复了 README 文档顶部 GitHub 徽章（Badge）显示为 "unknown" 的问题。通过更新徽章的图片链接，确保了项目信息的正常展示。
+
 
 * 源代码： https://github.com/tronprotocol/java-tron/pull/6340
 
-#### 3. Update readme for telegram groups and doc link
-修改 README 文档，添加了 TRON 官方开发讨论群组的 Telegram 联系方式。
+#### 3. 更新 README 中的社区群组与文档链接
+Democritus 版本更新了 README 文档中的TRON官方开发讨论群组和文档链接。
 
 * 源代码： https://github.com/tronprotocol/java-tron/pull/6364
 
 
-**Others**
+**其它变更**
 
 #### 1. 将提案过期时间切换为链上治理模式
 为确保全网治理参数的高度统一并提升协议的一致性，Democritus 版本引入了TRON网络的第 92 号链上参数（PROPOSAL_EXPIRE_TIME），将提案过期时间从本地配置模式切换为链上治理模式。
@@ -498,6 +500,9 @@ https://github.com/tronprotocol/java-tron/pull/6451
 * 源代码： https://github.com/tronprotocol/java-tron/pull/6370 
 
  
+
+
+
 
 
 
