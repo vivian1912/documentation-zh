@@ -3,7 +3,7 @@
 
 |  名称 |版本号  | 发布日期 | 包含的TIP | 版本说明 | 技术解读 |
 | -------- | -------- | -------- | -------- | -------- | -------- |
-|  Seneca    |  GreatVoyage-v4.8.1    |  2026-02-04    |  [TIP-6870](https://github.com/tronprotocol/tips/blob/master/tip-6870.md) <br> [TIP-767](https://github.com/tronprotocol/tips/blob/master/tip-767.md) |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.8.1)   |   [Specs](#greatvoyage-481democritus)   |
+|  Democritus    |  GreatVoyage-v4.8.1    |  2026-02-04    |  [TIP-6780](https://github.com/tronprotocol/tips/blob/master/tip-6780.md) <br> [TIP-767](https://github.com/tronprotocol/tips/blob/master/tip-767.md) |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.8.1)   |   [Specs](#greatvoyage-481democritus)   |
 |  Seneca    |  GreatVoyage-v4.8.0.1    |  2026-01-13    |  N/A  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.8.0.1)   |   [Specs](#greatvoyage-4801seneca)   |
 |  Kant    |  GreatVoyage-v4.8.0    |  2025-04-29    |  [TIP-650](https://github.com/tronprotocol/tips/blob/master/tip-650.md) <br> [TIP-651](https://github.com/tronprotocol/tips/blob/master/tip-651.md) <br> [TIP-694](https://github.com/tronprotocol/tips/blob/master/tip-694.md) <br> [TIP-697](https://github.com/tronprotocol/tips/blob/master/tip-697.md) <br> [TIP-745](https://github.com/tronprotocol/tips/blob/master/tip-745.md)  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.8.0)   |   [Specs](#greatvoyage-480kant)   |
 |  Epicurus    |  GreatVoyage-v4.7.7    |  2024-11-29    |  [TIP-697](https://github.com/tronprotocol/tips/issues/697)  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.7)   |   [Specs](#greatvoyage-477epicurus)   |
@@ -82,7 +82,8 @@
 |   N/A   | Odyssey-v1.0.3    |  2018-4-5    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v1.0.3)    |  N/A   |
 |   N/A   | Exodus-v1.0    |  2017-12-28    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Exodus-v1.0)    |  N/A   |
 
-## GreatVoyage-v4.8.1(Democritus)
+
+## GreatVoyage-4.8.1(Democritus)
 
 ### 核心协议
 
@@ -91,12 +92,15 @@
 为进一步丰富 java-tron 的技术生态，Democritus 版本新增了对 ARM 架构的运行支持，在 ARM 环境下，目前仅支持使用 JDK 17 和 RocksDB 数据库。
 
 * **x86架构下的变更**
-    * **强制 JDK 8 校验**: x86运行环境下，将强制校验Java版本为JDK 8。此前，在JDK 8以上版本运行时，由于JEP 320移除了Java EE Modules，导致@PostConstruct等注解失效，从而引发空指针异常和区块同步失败。
+    * **强制 JDK 8 校验**
+    
+    x86运行环境下，将强制校验Java版本为JDK 8。此前，在JDK 8以上版本运行时，由于JEP 320移除了Java EE Modules，导致@PostConstruct等注解失效，从而引发空指针异常和区块同步失败。
     * **RocksDB/LevelDB兼容性限制**
         * x86 目前使用的 RockDB 版本为 5.15.10，该版本与LevelDB兼容；而新支持的 ARM 架构仅支持 RocksDB 9.7.4，该版本已不再兼容 LevelDB，强行打开会报数据库损坏错误，导致与 x86 行为不一致。因此，Democritus 将统一禁止 RocksDB 打开 LevelDB 数据库，以确保 x86 与 ARM 行为一致，并防止将 x86 上的 RocksDB 数据拷贝至 ARM 环境启动时报错。对于此前已通过兼容方式成功打开的数据库不受影响。
         * 对LevelDB尝试打开RocksDB数据库时的错误提示进行了优化。
         * 统一了RocksDB与LevelDB的接口及异常行为，避免潜在影响。
     * **Toolkit工具更新**
+    
     在 Democritus 之前的版本中，`db convert`命令默认采用兼容模式进行数据转换，仅将节点配置文件中的 `engine.properties` 设置为 RocksDB, 数据库格式依旧为LevelDB。为了消除与ARM架构下使用RocksDB的行为差异，`db convert` 命令默认采用之前的`–safe` 参数对应的**非兼容模式**，不再单独提供 `–safe` 参数，并且不再支持兼容模式的数据转换。
 * **新增 ARM 架构支持**
     * **强制 JDK 17**: 选用JDK 17作为Java运行环境，以确保ARM环境的稳定性（基于JEP 237、388、391）。
@@ -120,13 +124,13 @@
         为支持 JDK 17 和 ARM 架构，进行了以下依赖变更：
 
 
-|  group-name   | package-name | Old version | New version |
-| --- | -------- | -------- | -------- |
-| org.projectlombok    |   lombok       |   1.18.12       |   1.18.34       |
-|  javax.annotation   |   javax.annotation-api       |   -       |  1.3.2        |
-| javax.jws    |   javax.jws-api       |   -       |      1.1    |
-|  org.aspectj   | aspectjrt    | 1.8.13     | 1.9.8     |
-|  org.rocksdb   | rocksdbjni    | -     | 9.7.4(arm)    |
+        |  group-name   | package-name | Old version | New version |
+        | --- | -------- | -------- | -------- |
+        | org.projectlombok    |   lombok       |   1.18.12       |   1.18.34       |
+        |  javax.annotation   |   javax.annotation-api       |   -       |  1.3.2        |
+        | javax.jws    |   javax.jws-api       |   -       |      1.1    |
+        |  org.aspectj   | aspectjrt    | 1.8.13     | 1.9.8     |
+        |  org.rocksdb   | rocksdbjni    | -     | 9.7.4(arm)    |
 
 * Issue：https://github.com/tronprotocol/java-tron/issues/5954 
 * 源代码：
@@ -495,6 +499,9 @@ https://github.com/tronprotocol/java-tron/pull/6451
 * 源代码： https://github.com/tronprotocol/java-tron/pull/6370 
 
  
+
+
+
 
 
 
