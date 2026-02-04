@@ -521,6 +521,21 @@ Democritus 版本新增`getpaginatednowwitnesslist`接口，用于查询当前 e
 * 源代码： [https://github.com/tronprotocol/java-tron/pull/6370](https://github.com/tronprotocol/java-tron/pull/6370)
 
 
+---
+*To a wise and good man the whole earth is his fatherland.*
+<p align="right">---Democritus</p>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
