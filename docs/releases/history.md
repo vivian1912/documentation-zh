@@ -83,6 +83,7 @@
 |   N/A   | Exodus-v1.0    |  2017-12-28    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Exodus-v1.0)    |  N/A   |
 
 
+
 ## GreatVoyage-4.8.1(Democritus)
 
 ### 核心协议
@@ -93,14 +94,12 @@
 
 * **x86架构下的变更**
     * **强制 JDK 8 校验**
-    
     x86运行环境下，将强制校验Java版本为JDK 8。此前，在JDK 8以上版本运行时，由于JEP 320移除了Java EE Modules，导致@PostConstruct等注解失效，从而引发空指针异常和区块同步失败。
     * **RocksDB/LevelDB兼容性限制**
         * x86 目前使用的 RockDB 版本为 5.15.10，该版本与LevelDB兼容；而新支持的 ARM 架构仅支持 RocksDB 9.7.4，该版本已不再兼容 LevelDB，强行打开会报数据库损坏错误，导致与 x86 行为不一致。因此，Democritus 将统一禁止 RocksDB 打开 LevelDB 数据库，以确保 x86 与 ARM 行为一致，并防止将 x86 上的 RocksDB 数据拷贝至 ARM 环境启动时报错。对于此前已通过兼容方式成功打开的数据库不受影响。
         * 对LevelDB尝试打开RocksDB数据库时的错误提示进行了优化。
         * 统一了RocksDB与LevelDB的接口及异常行为，避免潜在影响。
     * **Toolkit工具更新**
-    
     在 Democritus 之前的版本中，`db convert`命令默认采用兼容模式进行数据转换，仅将节点配置文件中的 `engine.properties` 设置为 RocksDB, 数据库格式依旧为LevelDB。为了消除与ARM架构下使用RocksDB的行为差异，`db convert` 命令默认采用之前的`–safe` 参数对应的**非兼容模式**，不再单独提供 `–safe` 参数，并且不再支持兼容模式的数据转换。
 * **新增 ARM 架构支持**
     * **强制 JDK 17**: 选用JDK 17作为Java运行环境，以确保ARM环境的稳定性（基于JEP 237、388、391）。
@@ -499,6 +498,10 @@ https://github.com/tronprotocol/java-tron/pull/6451
 * 源代码： https://github.com/tronprotocol/java-tron/pull/6370 
 
  
+
+
+
+
 
 
 
