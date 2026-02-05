@@ -1671,6 +1671,9 @@ $ git checkout -b release_vx.x.x
 <span class="w">    </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>config.conf<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div></p>
+<blockquote>
+<p><em>注意</em>：推荐使用 <code>keystore</code> 文件或在配置文件中管理私钥，而不是直接在命令行中作为参数传入。</p>
+</blockquote>
 </li>
 </ul>
 <h4 id="_5">普通全节点<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
@@ -1696,10 +1699,7 @@ $ git checkout -b release_vx.x.x
 <span class="w">             </span>-XX:MaxDirectMemorySize<span class="o">=</span>1g<span class="w"> </span><span class="se">\</span>
 <span class="w">             </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
 <span class="w">             </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf<span class="w"> </span><span class="p">&amp;</span>
-</code></pre></div><blockquote>
-<p><em>注意</em>：推荐使用 <code>keystore</code> 文件或在配置文件中管理私钥，而不是直接在命令行中作为参数传入。</p>
-</blockquote>
-</li>
+</code></pre></div></li>
 </ul>
 <p>参数说明请参见 <a href="https://tronprotocol.github.io/documentation-zh/using_javatron/installing_javatron/#_2">节点部署</a>章节。</p>
 <h3 id="6">第 6 步：验证与监控<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
