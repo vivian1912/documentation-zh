@@ -93,24 +93,24 @@
 
 为进一步丰富 java-tron 的技术生态，Democritus 版本新增了对 ARM 架构的运行支持，在 ARM 环境下，目前仅支持使用 JDK 17 和 RocksDB 数据库。
 
+
+* **ARM 架构**
+    * **强制 JDK 17**
+    选用 JDK 17 作为 Java 运行环境，以确保节点在 ARM 架构下运行的稳定性（基于JEP 237、388、391）。
+    * **强制 RocksDB**
+    由于 LevelDB JNI 实现缺乏对 ARM 架构的适配及社区维护，ARM 环境下仅支持 **RocksDB (v9.7.4)**。
+    * **浮点计算适配**
+    浮点计算已通过提案改为使用 `StrictMath`，以确保不同平台上的计算结果一致。但在提案生效前，由于 ARM 与 x86 的浮点运算实现上存在差异，计算结果可能不一致。因此，在 ARM 架构下通过硬编码保持结果与 x86 主网一致。
+        * 注意: 如果其他x86平台下的私有网络使用浮点计算（尤其是涉及pow的Bancor交易），可能导致 ARM 节点无法从零高度完成数据同步。在此类场景下，如需部署 ARM 节点，请务必使用已有区块高度的数据库快照启动。
+    * **Toolkit工具限制**
+    在ARM环境下，不支持LevelDB相关命令 （即，`db archive`和`db convert`）。
 * **x86架构下的变更**
-    * **强制 JDK 8 校验**
-    x86运行环境下，将强制校验Java版本为JDK 8。此前，在JDK 8以上版本运行时，由于JEP 320移除了Java EE Modules，导致@PostConstruct等注解失效，从而引发空指针异常和区块同步失败。
+    * **强制 JDK 8**
+    由于 JDK 8 以上版本移除了 Java EE 模块（基于 JEP 320），这会导致 `@PostConstruct` 等注解失效，进而引发空指针异常和区块同步失败。为此，Democritus 版本在 x86 架构下引入了 JDK 8 强制校验，以确保运行环境的稳定性。
     * **RocksDB/LevelDB兼容性限制**
-        * x86 目前使用的 RockDB 版本为 5.15.10，该版本与LevelDB兼容；而新支持的 ARM 架构仅支持 RocksDB 9.7.4，该版本已不再兼容 LevelDB，强行打开会报数据库损坏错误，导致与 x86 行为不一致。因此，Democritus 将统一禁止 RocksDB 打开 LevelDB 数据库，以确保 x86 与 ARM 行为一致，并防止将 x86 上的 RocksDB 数据拷贝至 ARM 环境启动时报错。对于此前已通过兼容方式成功打开的数据库不受影响。
-        * 对LevelDB尝试打开RocksDB数据库时的错误提示进行了优化。
-        * 统一了RocksDB与LevelDB的接口及异常行为，避免潜在影响。
-    * **Toolkit工具更新**
-    在 Democritus 之前的版本中，`db convert`命令默认采用兼容模式进行数据转换，仅将节点配置文件中的 `engine.properties` 设置为 RocksDB, 数据库格式依旧为LevelDB。为了消除与ARM架构下使用RocksDB的行为差异，`db convert` 命令默认采用之前的`–safe` 参数对应的**非兼容模式**，不再单独提供 `–safe` 参数，并且不再支持兼容模式的数据转换。
-* **新增 ARM 架构支持**
-    * **强制 JDK 17**: 选用JDK 17作为Java运行环境，以确保ARM环境的稳定性（基于JEP 237、388、391）。
-    * **强制 RocksDB**: 由于 LevelDB JNI 实现缺乏对 ARM 架构的适配及社区维护，ARM 环境下仅支持 RocksDB (v9.7.4)。
-    * **浮点计算适配**: 浮点计算已通过提案替换为StrictMath。提案前的浮点计算不一致结果通过硬编码与x86主网数据保持一致。
-        * 警告: 如果其他x86平台下的私有网络使用浮点计算（尤其是涉及pow的Bancor交易），可能无法在ARM上从零同步（此种情况下，如需增加 ARM 节点，请使用现有高度的数据库启动）。
-    * **Toolkit工具限制**: 在ARM环境下，不支持LevelDB相关命令。
-        * `Toolkit.jar`不再支持`db archive`和`db convert`命令。
-        * `ArchiveManifest.jar`不再支持。
-        * 其他命令仅支持RocksDB数据库。
+    考虑到 x86 与 ARM 环境下 RocksDB 版本对 LevelDB 的兼容性存在差异（x86：v5.15.10 支持，而ARM： v9.7.4 不支持），为防止在 ARM 环境下因强行打开 LevelDB 时报数据库损坏错误，Democritus 版本统一禁用了 RocksDB 对 LevelDB 的兼容访问，以确保 x86 与 ARM 环境在数据迁移和运行时行为完全一致（此前已通过兼容方式成功打开的存量数据库不受影响）。同时，该版本还优化了 LevelDB 尝试打开 RocksDB 时的错误提示，并标准化了两者的接口定义与异常处理逻辑。
+    * **Toolkit工具优化**
+    在 Democritus 之前的版本中，`db convert`命令默认采用兼容模式进行数据转换，仅修改配置文件中的 `engine.properties` 为 RocksDB，而底层数据仍保留为 LevelDB 格式。为对齐 ARM 架构对 RocksDB 的硬性存储要求，Democritus 版本重构了`db convert` 命令，使其默认采用**非兼容模式**进行数据转换（即原`–safe` 参数逻辑），相应地，新版本不再单独提供 `–safe` 参数，且不再支持“兼容模式”，从而确保了跨架构环境下的数据无缝迁移。
 * **其他变动**
     * **JDK17 兼容性**
         * 空指针兼容： 优化了空指针提示信息（基于 JEP 358），方便问题定位。
@@ -121,16 +121,16 @@
         * 增加最大句柄设置参数： 新增参数 `dbSettings.maxOpenFiles`，默认为 5000（此前强制且不可配置），开发者可根据服务器负载进行调配。
         * 资源释放优化： 对 RocksDB 资源设置了合理的生命周期，及时释放已使用完资源，避免潜在内存泄漏问题。
     * **依赖变更**
-        为支持 JDK 17 和 ARM 架构，进行了以下依赖变更：
+    为支持 JDK 17 和 ARM 架构，进行了以下依赖变更：
+    
+    |  group-name   | package-name | Old version | New version |
+    | --- | -------- | -------- | -------- |
+    | org.projectlombok    |   lombok       |   1.18.12       |   1.18.34       |
+    |  javax.annotation   |   javax.annotation-api       |   -       |  1.3.2        |
+    | javax.jws    |   javax.jws-api       |   -       |      1.1    |
+    |  org.aspectj   | aspectjrt    | 1.8.13     | 1.9.8     |
+    |  org.rocksdb   | rocksdbjni    | -     | 9.7.4(arm)    |
 
-
-        |  group-name   | package-name | Old version | New version |
-        | --- | -------- | -------- | -------- |
-        | org.projectlombok    |   lombok       |   1.18.12       |   1.18.34       |
-        |  javax.annotation   |   javax.annotation-api       |   -       |  1.3.2        |
-        | javax.jws    |   javax.jws-api       |   -       |      1.1    |
-        |  org.aspectj   | aspectjrt    | 1.8.13     | 1.9.8     |
-        |  org.rocksdb   | rocksdbjni    | -     | 9.7.4(arm)    |
 
 
 
@@ -148,7 +148,7 @@
 ### TVM
 
 #### 1. 修改 `SELFDESTRUCT` 指令的行为
-继 GreatVoyage-4.8.0(Kant)版本通过 TIP-652 提出废弃 `SELFDESTRUCT`  指令的建议后，Democritus 版本正式引入了对 `SELFDESTRUCT` 指令行为的调整。此项变更是为了深度兼容 Ethereum 的 EIP-6780，确保 TVM 与 EVM 的行为一致性，详细规范请参考 TIP-6780。
+继 GreatVoyage-4.8.0(Kant) 通过 TIP-652 提出废弃 `SELFDESTRUCT`  指令的建议后，Democritus 版本正式引入了对 `SELFDESTRUCT` 指令行为的调整。此项变更是为了深度兼容 Ethereum 的 EIP-6780，确保 TVM 与 EVM 的行为一致性，详细规范请参考 TIP-6780。
 
 在 Democritus 之前的版本中， `SELFDESTRUCT` 允许合约自我销毁，并将资金转移到指定地址，同时删除该合约账户的所有数据（代码、存储、账户本身）。 Democritus 版本对`SELFDESTRUCT`指令的修改如下： 
 
@@ -182,43 +182,40 @@
 
 * 源代码： [https://github.com/tronprotocol/java-tron/pull/6381](https://github.com/tronprotocol/java-tron/pull/6381)
 
-#### 2. 修复轻节点错误报出 FORKED 断连的问题
+#### 2. 优化轻节点对 FORKED 状态的判定逻辑
 
-在 Democritus 之前的版本中，当轻节点与高度比它低的全节点进行同步时，若全节点的最高固化块不在轻节点本地的主链上，握手时的断连原因会被误报为 FORKED。
+在 Democritus 之前的版本中，当轻节点与高度比它低的全节点进行同步时，若全节点的最高固化块不在轻节点的本地主链上，握手时的断连原因会被误判为 `FORKED`。
 
-Democritus版本添加了一个额外判断，只有当轻节点的最低块高度低于全节点的最高固化块高度时，才判定为 FORKED；其他情况时是 LIGHT_NODE_SYNC_FAIL。
+Democritus版本优化了轻节点对 FORKED 状态的判定逻辑，引入了一个额外条件，只有当轻节点的最低块高度低于全节点的最高固化块高度时，才判定为 `FORKED`；其他情况时是 `LIGHT_NODE_SYNC_FAIL`。
 
 * 源代码： [https://github.com/tronprotocol/java-tron/pull/6375](https://github.com/tronprotocol/java-tron/pull/6375)
 
 #### 3. 优化 P2P 断连原因
 
-在 Democritus 之前的版本中，部分 Peer 断开场景下 P2P_DISCONNECT 消息携带的原因代码（Reason Code）定义较为模糊，导致节点无法准确感知真正的断连原因，不利于网络排障。
-
-Democritus 版本针对以下三类场景的断连原因进行了优化：
+在 Democritus 之前的版本中，部分 Peer 断开场景下 `P2P_DISCONNECT` 消息携带的原因代码（Reason Code）定义较为模糊，导致节点无法准确感知真正的断连原因，不利于网络排障。Democritus 版本针对以下三类场景的断连原因进行了优化：
 
 场景1: 节点收到 peer 发送的区块后，如果由于区块签名验证失败而断开与 peer 的连接，则断连原因由 UNKNOWN 改成 BAD_BLOCK。
 
-场景2: 在 Democritus 之前的版本中，在 HandshakeService 处理 HelloMessage 的有效性检查时，若发生错误，则返回 UNEXPECTED_IDENTITY 错误代码，但实际上不会执行与身份相关的有效性检查。因此，Democritus版本将这种场景的断连原因从 UNEXPECTED_IDENTITY 改为 INCOMPATIBLE_PROTOCOL。
+场景2: 在 Democritus 之前的版本中，节点在进行 `HelloMessage` 的有效性检查时，若发生错误，则返回 `UNEXPECTED_IDENTITY` 错误代码，但实际上不会执行与身份相关的有效性检查。因此，Democritus版本将这种场景的断连原因从 `UNEXPECTED_IDENTITY` 改为 `INCOMPATIBLE_PROTOCOL`。
 
-场景3: 当接收到的 P2P_HELLO 消息中包含的区块 ID 的长度不等于32时，断连原因由 UNKNOWN 改为 INCOMPATIBLE_PROTOCOL。
+场景3: 当接收到的 P2P_HELLO 消息中包含的区块 ID 的长度不等于32时，断连原因由 `UNKNOWN` 改为 `INCOMPATIBLE_PROTOCOL`。
 
 * 源代码： [https://github.com/tronprotocol/java-tron/pull/6394](https://github.com/tronprotocol/java-tron/pull/6394)
 
 #### 4. 引入 P2P 消息处理速率限制
 
-在 Democritus 之前的版本中，并未限制 P2P 消息的处理速率，但网络节点的处理能力受限于带宽、CPU 和内存等物理资源。处理大量 P2P 消息会导致资源过度消耗。因此，Democritus 版本引入了针对单一对等节点（Peer）的 P2P 消息限速逻辑。具体策略如下：
+在 Democritus 之前的版本中，并未限制 P2P 消息的处理速率，但节点的处理能力受限于带宽、CPU 和内存等物理资源。处理大量 P2P 消息会导致资源过度消耗。因此，Democritus 版本引入了针对单一对等节点（Peer）的 P2P 消息限速机制。当特定消息的发送频率超过设定阈值时，节点将丢弃该消息并主动断开与该 peer 的连接。具体限速策略如下：具体策略如下：
 
-* 当 ChainInventory.remainNum > 0 时，SyncBlockChainMessage报文的 qps不能超过 3 。
-* 同步阶段请求区块数据的 FetchInvDataMessage 报文的 qps不能超过 3。
-* P2P_DISCONNECT 消息qps不能超过1。
+* 链同步报文（SyncBlockChainMessage）： 在节点同步期间（即 ChainInventory.remainNum > 0），处理频率限制为 3 QPS；
+* 区块请求报文（FetchInvDataMessage）： 在区块同步阶段，请求区块数据时，处理频率限制为 3 QPS；
+* 断连控制报文（P2P_DISCONNECT）： 消息处理频率限制为 1 QPS。
 
-若单一Peer发送的相关频率超过了上述速率限制，则节点将直接丢弃该消息并主动断开与 该 peer 的连接。
 
 * 源代码： [https://github.com/tronprotocol/java-tron/pull/6393](https://github.com/tronprotocol/java-tron/pull/6393)
 
 #### 5. 优化对 PeerConnection 中字段的并发访问
 
-Democritus 版本优化了 PeerConnection 的并发访问处理逻辑：为并发访问的字段加 `volatile` 关键字修饰，同时，调整变量赋值先后顺序，以减少网络同步过程中因状态并发修改而导致的异常。
+Democritus 版本优化了 `PeerConnection` 的并发访问处理逻辑：为并发访问的字段加 `volatile` 关键字修饰，同时，调整变量赋值先后顺序，以减少网络同步过程中因状态并发修改而导致的异常。
 
 * 源代码：[https://github.com/tronprotocol/java-tron/pull/6360](https://github.com/tronprotocol/java-tron/pull/6360)
 
@@ -226,7 +223,7 @@ Democritus 版本优化了 PeerConnection 的并发访问处理逻辑：为并�
 
 **配置及依赖**
 
-#### 1. 优化 zkSNARK 与匿名交易配置开关
+#### 1. 优化 zkSNARK 配置开关
 
 Democritus 版本新增配置项 `node.allowShieldedTransactionApi` 以代替 `node.fullNodeAllowShieldedTransaction`。
 
@@ -242,7 +239,7 @@ Gradle 版本已升级到 7.6.4，使用 maven-publish 插件支持 jitpack 发�
 
 #### 3. 优化本地 Witness 初始化逻辑
 
-Democritus 版本优化了本地 Witness 初始化逻辑，只有 witness 节点才执行私钥和地址的初始化逻辑，若是配置了无效 witness 地址, 程序会抛异常并且退出。同时，Democritus 版本将密码库从 org.bouncycastle:bcprov-jdk15on:1.69 升级到了org.bouncycastle:bcprov-jdk18on:1.79。
+Democritus 版本优化了本地 Witness 初始化逻辑，只有 witness 节点才执行私钥和地址的初始化逻辑，若是配置了无效 witness 地址, 程序会抛异常并且退出。同时，Democritus 版本将密码库从 org.bouncycastle:bcprov-jdk15on:1.69 升级到了 org.bouncycastle:bcprov-jdk18on:1.79。
 
 * 源代码：
 [https://github.com/tronprotocol/java-tron/pull/6368](https://github.com/tronprotocol/java-tron/pull/6368)
@@ -250,7 +247,7 @@ Democritus 版本优化了本地 Witness 初始化逻辑，只有 witness 节点
 
 #### 4. 优化缺失 Blackhole 账户配置时的日志提示
 
-Democritus 版本优化了在缺失 Blackhole 账户配置时的日志提示，通过更具引导性的提示信息，明确告知用户需要在 config.conf 中正确配置 Blackhole 账户地址。
+Democritus 版本优化了在缺失 Blackhole 账户配置时的日志提示，通过更具引导性的提示信息，明确告知用户需要在 `config.conf` 中正确配置 `Blackhole` 账户地址。
 
 * 源代码： [https://github.com/tronprotocol/java-tron/pull/6356](https://github.com/tronprotocol/java-tron/pull/6356)
 
@@ -265,122 +262,50 @@ Democritus 版本移除独立的 `SolidityNode.jar` 与 `KeystoreFactory.jar` �
 
 #### 6. 对齐 config.conf 与 tron-deployment 中的配置项
 
-Democritus 版本实现了 `config.conf` 与 tron-deployment 存储库中配置项的同步。并优化更新了 `seed.node.ip.list` 种子节点列表，补全了相关配置的默认值。此举旨在确保不同部署环境下的配置参数保持高度一致，提升了节点接入网络的标准化程度。
+Democritus 版本实现了 `config.conf` 与 tron-deployment 存储库中配置项的同步，并优化更新了 `seed.node.ip.list` 种子节点列表。
 
 * 源代码： [https://github.com/tronprotocol/java-tron/pull/6332](https://github.com/tronprotocol/java-tron/pull/6332)
 
 #### 7. 规范化全量配置标准与注释准则
 
-Democritus 版本引入了一份包含全量配置项的标准配置文件，任何未收录于此文件的配置项均被视为无效或已过期，同时定义了配置文件内的注释规范：
+Democritus 版本引入了一份包含全量配置项的标准配置文件，**任何未收录于此文件的配置项均被视为无效或已过期**，同时定义了配置文件内的注释规范：
 
 * 整行注释以”#”开头
 * 配置项后面的注释用”#”或”//”均可
 * 没有默认值的配置项以”#”开头作为注释
+
+
 * 源代码： [https://github.com/tronprotocol/java-tron/pull/6430](https://github.com/tronprotocol/java-tron/pull/6430)
 
 #### 8. 升级依赖库
 
 Democritus 版本对 `grpc-java`、`Spring`、`Jackson`、`Jetty` 等核心依赖库进行了版本升级。
 
-<table>
-  <thead>
-    <tr>
-      <th>group-name</th>
-      <th>package-name</th>
-      <th>Old version</th>
-      <th>New version</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>org.eclipse.jetty</td>
-      <td>jetty-server</td>
-      <td>9.4.53.v20231009</td>
-      <td>9.4.57.v20241219</td>
-    </tr>
-    <tr>
-      <td>com.cedarsoftware</td>
-      <td>java-util</td>
-      <td>1.8.0</td>
-      <td>3.2.0</td>
-    </tr>
-    <tr>
-      <td>com.fasterxml.jackson.core</td>
-      <td>jackson-databind</td>
-      <td>2.13.4.2</td>
-      <td>2.18.3</td>
-    </tr>
-    <tr>
-      <td>com.carrotsearch</td>
-      <td>java-sizeof</td>
-      <td>delete</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td rowspan="4">org.springframework</td>
-      <td>spring-tx</td>
-      <td>delete</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>spring-web</td>
-      <td>delete</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>spring-context</td>
-      <td>5.3.18</td>
-      <td>5.3.39</td>
-    </tr>
-    <tr>
-      <td>spring-test</td>
-      <td>5.2.0.RELEASE</td>
-      <td>5.3.39</td>
-    </tr>
-    <tr>
-      <td>io.grpc</td>
-      <td>grpc-netty, grpc-protobuf, grpc-stub, grpc-core, grpc-services</td>
-      <td>1.60.0</td>
-      <td>1.75.0</td>
-    </tr>
-    <tr>
-      <td>com.google.protobuf</td>
-      <td>protobuf-java, protobuf-java-util, protoc</td>
-      <td>3.25.5</td>
-      <td>3.25.8</td>
-    </tr>
-    <tr>
-      <td>org.hamcrest</td>
-      <td>hamcrest-junit</td>
-      <td>delete</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>com.google.inject</td>
-      <td>guice</td>
-      <td>delete</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>io.vavr</td>
-      <td>vavr</td>
-      <td>delete</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+| group-name | package-name | Old version | New version |
+| --- | --- | --- | --- |
+| org.eclipse.jetty | jetty-server | 9.4.53.v20231009 | 9.4.57.v20241219 |
+| com.cedarsoftware | java-util | 1.8.0 | 3.2.0 |
+| com.fasterxml.jackson.core | jackson-databind | 2.13.4.2 | 2.18.3 |
+| com.carrotsearch | java-sizeof | delete |  |
+| org.springframework | spring-tx | delete |  |
+|  | spring-web | delete |  |
+|  | spring-context | 5.3.18 | 5.3.39 |
+|  | spring-test | 5.2.0.RELEASE | 5.3.39 |
+| io.grpc | grpc-netty, grpc-protobuf, grpc-stub, grpc-core, grpc-services | 1.60.0 | 1.75.0 |
+| com.google.protobuf | protobuf-java, protobuf-java-util, protoc | 3.25.5 | 3.25.8 |
+| org.hamcrest | hamcrest-junit | delete |  |
+| com.google.inject | guice | delete |  |
+| io.vavr | vavr | delete |  |
 
-另外，Democritus 版本升级了底层网络库 `libp2p`（从 2.2.6 升级至 2.2.7）。此版本不仅新增了对 JDK 17 的编译支持，还针对 Windows 兼容性、内存管理和网络稳定性进行了大幅优化与修复。核心修复与改进包括：
+此外，Democritus 版本将底层网络库 `libp2p` 从 2.2.6 升级至 2.2.7。此版本不仅新增了对 JDK 17 的编译支持，还在性能与稳定性方面进行了多项优化与改进：
 
-* 新增对 JDK 17 的编译支持（#113）。
-* 升级grpc-netty、protobuf依赖库 (#110)。
-* 优化连接池（connPool）与资源管理逻辑 (#116)。
-* 实现了带验证机制的并发外部 IP 获取 (#120, #121)。
-* 优化网络探测逻辑 (#122)
-* 增强了本地局域网（LAN）IP 的探测。
+* 新增对 JDK 17 的编译支持（[#113](https://github.com/tronprotocol/libp2p/pull/113)）。
+* 升级grpc-netty、protobuf依赖库 ([#110](https://github.com/tronprotocol/libp2p/pull/110))。
+* 优化连接池（connPool）与资源管理逻辑 ([#116](https://github.com/tronprotocol/libp2p/pull/116))。
+* 实现了带验证机制的并发外部 IP 获取 ([#120](https://github.com/tronprotocol/libp2p/pull/120), [#121](https://github.com/tronprotocol/libp2p/pull/121))。
+* 优化网络探测逻辑 ([#122](https://github.com/tronprotocol/libp2p/pull/122))
 
 
-* 优化日志及更新readme文档 （#113, #115, #117）
 * 源代码：
 [https://github.com/tronprotocol/java-tron/pull/6400](https://github.com/tronprotocol/java-tron/pull/6400)
 [https://github.com/tronprotocol/java-tron/pull/6429](https://github.com/tronprotocol/java-tron/pull/6429)
@@ -397,7 +322,7 @@ Democritus 版本对 `grpc-java`、`Spring`、`Jackson`、`Jetty` 等核心依�
 
 #### 1. 优化事件服务对 Transaction Info 的获取逻辑
 
-解决了获取 transaction info 时的兼容性问题。如果事件服务从transactionRetStore 数据库读取不到数据，则会兼容地回退到从transactionHistoryStore 数据库读取。
+Democritus 版本解决了获取 Transaction info 时的兼容性问题。如果事件服务从 `transactionRetStore` 数据库读取不到数据，`则会兼容地回退到从transactionHistoryStore` 数据库读取。
 
 * 源代码：
 [https://github.com/tronprotocol/java-tron/pull/6443](https://github.com/tronprotocol/java-tron/pull/6443)
@@ -405,37 +330,33 @@ Democritus 版本对 `grpc-java`、`Spring`、`Jackson`、`Jetty` 等核心依�
 
 #### 2. 移除 Bloom 过滤器写入开关
 
-section-bloom 数据库用于存储合约日志的 Bloom 过滤器及其对应的区块索引。在处理 eth_getLogs 接口时，节点通过查询过滤器快速定位命中区块，是事件检索的关键步骤。
+`section-bloom` 数据库用于存储合约日志的 Bloom 过滤器及其对应的区块索引。在处理 `eth_getLogs` 接口请求时，节点会查询该数据库，快速定位命中区块。这是事件检索的关键步骤。
 
-在 Democritus 之前的版本中： 该数据库的写入受到 node.jsonrpc.httpFullNodeEnable 配置项的控制。若节点未开启该项，系统将不会记录区块的 Bloom 值数据到section-bloom 数据库。由于此类索引数据在后期无法自动追溯补全，导致用户即使后续开启配置，也无法查询到关闭期间的历史交易事件。
+在 Democritus 之前的版本中： 该数据库的写入受到 `node.jsonrpc.httpFullNodeEnable` 配置项的控制。若该配置项未开启，节点将不会记录区块的 Bloom 值数据到 `section-bloom` 数据库。由于此类索引数据在后期无法自动追溯补全，导致用户即使后续开启配置，也无法查询到关闭期间的历史交易事件。
 
-Democritus 版本正式移除了对该配置项的依赖，改为始终向 section-bloom 数据库写入数据。确保了 Bloom 过滤器索引的持续性与完整性，彻底解决了因配置开关状态导致 eth_getLogs 接口查询不到历史数据的问题。
+因此，Democritus 版本正式移除了对该配置项的依赖，改为始终向 `section-bloom` 数据库写入数据，确保了 Bloom 过滤器索引的持续性与完整性，彻底解决了因配置开关状态导致 `eth_getLogs` 接口查询不到历史数据的问题。
 
 * 源代码： [https://github.com/tronprotocol/java-tron/pull/6372](https://github.com/tronprotocol/java-tron/pull/6372)
 
-#### 3. 优化事件服务线程关闭逻辑
+#### 3. 优化事件服务关闭逻辑
 
-Democritus 版本优化了 HistoryEventService 线程关闭逻辑，通过引入全局变量 `isClosed`，确保即使 `close` 函数被重复调用，相关资源也只会释放一次。该优化成功解决了因资源被重复释放或查找不到而抛出异常的问题。
+Democritus 版本优化了 HistoryEventService 线程关闭逻辑，通过引入全局变量 `isClosed`，确保即使 `close` 函数被重复调用，相关资源也只会释放一次。该优化有效避免了资源的重复释放及由此引发的异常，提升了系统退出时的稳定性。
+
 
 * 源代码：[https://github.com/tronprotocol/java-tron/pull/6463](https://github.com/tronprotocol/java-tron/pull/6463)
 
 **单元测试**
 
-#### 1. 优化测试用例的资源释放逻辑
+#### 1. 优化测试用例的资源管理
 
-在 Democritus 之前的版本中单测存在以下问题：
+Democritus 版本对单元测试的资源管理进行了系统性优化，在显著提升执行效能的同时，进一步增强了测试环境的纯净度与稳定性：
 
-* 临时文件遗留： 在 java.io.tmpdir 目录下遗留了大量未清理的临时文件。
-* 执行效率低下： 存在部分单测耗时过长的问题。
-* 资源管理缺陷： 执行完成后资源未释放，或资源关闭逻辑存在泄漏风险。
-* 空指针异常： 对象生命周期bug，导致执行过程中会抛出 NullPointerException 异常。
+* 规范清理机制： 引入了更严格的文件清理机制，确保测试产生的临时数据在执行后被彻底移除。
+* 提升执行效能： 通过优化高耗时用例，使单测总时长最高缩短了 30%。
+* 加固资源释放： 修复了已知的资源泄漏问题，并标准化了资源释放逻辑。
+* 增强运行稳定： 解决了相关单测中的空指针异常。
 
-Democritus 版本进行了如下改进和修复：
 
-* 文件清理： 彻底清理了所有遗留的临时文件，确保目录整洁。
-* 性能优化： 解决了几个耗时过长的单测，使单测总耗时最多减少 30%。
-* 资源修复： 修复了资源泄漏问题，并优化了部分单测的资源释放逻辑。
-* 异常修复： 解决了部分单测中的空指针异常（NullPointerException）。
 * 源代码：
 [https://github.com/tronprotocol/java-tron/pull/6437](https://github.com/tronprotocol/java-tron/pull/6437)
 [https://github.com/tronprotocol/java-tron/pull/6483](https://github.com/tronprotocol/java-tron/pull/6483)
@@ -443,7 +364,7 @@ Democritus 版本进行了如下改进和修复：
 
 #### 2. 引入 gRPC 超时机制
 
-针对在 ARM 架构环境下高频重复执行单元测试（如 100 次以上）时可能出现的单测阻塞问题，Democritus 版本引入 gRPC 超时机制，对每个gRPC单测添加5秒执行超时时间和此次单测执行30s超时时间；若超时，再跳出继续执行后续逻辑。
+针对在 ARM 架构环境下，在高频压力测试（如重复执行 100 次以上）时，可能出现的单测阻塞的问题，Democritus 版本引入 gRPC 超时机制：为单个 gRPC 测试用例设置 5 秒的超时时间，并为此次单测执行过程设定 30 秒的超时时间。一旦触发超时限制，系统将自动跳过当前阻塞点并继续执行后续逻辑，从而保障了自动化测试任务的连续性与完整性。
 
 * 源代码：
 [https://github.com/tronprotocol/java-tron/pull/6441](https://github.com/tronprotocol/java-tron/pull/6441)
@@ -451,13 +372,13 @@ Democritus 版本进行了如下改进和修复：
 
 #### 3. 确保单测正确自动停止
 
-Democritus 版本修复了 ConditionalStopTest 单测中的判断逻辑。在 SR 产块场景下，即使遇到出块顺序发生变化的情况，也能准确识别停止条件，从而使单测能够按照预期正确、自动地停止执行。
+Democritus 版本优化了 ConditionalStopTest 单元测试的停止判定逻辑。在 SR 产块场景下，即使遇到出块顺序发生变化的情况，也能准确识别停止条件，从而使单测能够按照预期正确、自动地停止执行。
 
 * 源代码： [https://github.com/tronprotocol/java-tron/pull/6469](https://github.com/tronprotocol/java-tron/pull/6469)
 
-#### 4. 恢复测试后的日志上下文以防止配置污染
+#### 4. 增强日志上下文隔离机制
 
-Democritus 版本修复了 TronErrorTest 单元测试导致的全局 logger 配置污染问题。通过在 LogService 加载配置时输出错误/警告信息，并在测试里显式恢复 logger 上下文，保证测试之间互不影响日志输出，并且能更好地定位 logback 配置加载问题。
+Democritus 版本修复了 `TronErrorTest` 单元测试引发的全局 `logger` 配置污染问题。通过在 `LogService` 加载配置阶段，增强错误与警告信息的输出，并在单元测试里显式恢复 logger 上下文，确保了不同测试用例间日志环境的完全隔离。这一改进不仅杜绝了用例间的日志行为干扰，也为快速定位 Logback 配置加载异常提供了更清晰的诊断依据。
 
 * 源代码： [https://github.com/tronprotocol/java-tron/pull/6476](https://github.com/tronprotocol/java-tron/pull/6476)
 
@@ -473,7 +394,7 @@ Democritus 版本修复了 TronErrorTest 单元测试导致的全局 logger 配�
 
 调整 java-tron 在 x86 和 ARM 平台下的 JVM 启动参数，旨在确保FullNode节点能够在最低硬件配置下满足基本的容灾需求；同时，修改硬件要求，推荐采用更为稳定的机器配置。
 
-* 源代码： [https://github.com/tronprotocol/java-tron/pull/6478/files](https://github.com/tronprotocol/java-tron/pull/6478/files)
+* 源代码： [https://github.com/tronprotocol/java-tron/pull/6478](https://github.com/tronprotocol/java-tron/pull/6478)
 
 #### 2. 修复 README 徽章显示问题
 
@@ -483,7 +404,7 @@ Democritus 版本修复了 README 文档顶部 GitHub 徽章（Badge）显示为
 
 #### 3. 更新 README 中的社区群组与文档链接
 
-Democritus 版本更新了 README 文档中的TRON官方开发讨论群组和文档链接。
+Democritus 版本更新了 README 中的TRON官方开发讨论群组和文档链接。
 
 * 源代码： [https://github.com/tronprotocol/java-tron/pull/6364](https://github.com/tronprotocol/java-tron/pull/6364)
 
@@ -493,8 +414,6 @@ Democritus 版本更新了 README 文档中的TRON官方开发讨论群组和文
 
 为确保全网治理参数的高度统一并提升协议的一致性，Democritus 版本引入了TRON网络的第 92 号链上参数（PROPOSAL_EXPIRE_TIME），将提案过期时间从本地配置模式切换为链上治理模式。
 
-注意：该功能默认为关闭状态，需要超级代表通过发起提案投票的方式开启，并设置参数值。
-
 * TIP：[https://github.com/tronprotocol/tips/blob/master/tip-767.md](https://github.com/tronprotocol/tips/blob/master/tip-767.md)
 * 源代码：
 [https://github.com/tronprotocol/java-tron/pull/6399](https://github.com/tronprotocol/java-tron/pull/6399)
@@ -502,7 +421,7 @@ Democritus 版本更新了 README 文档中的TRON官方开发讨论群组和文
 
 #### 2. 修复 Protocol Buffer 文件语法兼容性问题
 
-修复了 `ReasonCode` 结构体中一个枚举值 16 进制赋值的大小写错误，以解决 JavaScript 编译不通过的问题。
+修复了 `ReasonCode` 结构体中十六进制赋值的大小写错误，解决了 JavaScript 环境下的编译兼容性问题。
 
 * 源代码：
 [https://github.com/tronprotocol/java-tron/pull/6426](https://github.com/tronprotocol/java-tron/pull/6426)
@@ -596,6 +515,8 @@ Democritus 版本新增`getpaginatednowwitnesslist`接口，用于查询当前 e
 ---
 *To a wise and good man the whole earth is his fatherland.*
 <p align="right">---Democritus</p>
+
+
 
 
 
