@@ -3612,95 +3612,93 @@ x86运行环境下，将强制校验Java版本为JDK 8。此前，在JDK 8以上
 <h4 id="8">8. 升级依赖库<a class="headerlink" href="#8" title="Permanent link">&para;</a></h4>
 <p>Democritus 版本对 <code>grpc-java</code>、<code>Spring</code>、<code>Jackson</code>、<code>Jetty</code> 等核心依赖库进行了版本升级。</p>
 <table>
-<thead>
-<tr>
-<th>group-name</th>
-<th>package-name</th>
-<th>Old version</th>
-<th>New version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>org.eclipse.jetty</td>
-<td>jetty-server</td>
-<td>9.4.53.v20231009</td>
-<td>9.4.57.v20241219</td>
-</tr>
-<tr>
-<td>com.cedarsoftware</td>
-<td>java-util</td>
-<td>1.8.0</td>
-<td>3.2.0</td>
-</tr>
-<tr>
-<td>com.fasterxml.jackson.core</td>
-<td>jackson-databind</td>
-<td>2.13.4.2</td>
-<td>2.18.3</td>
-</tr>
-<tr>
-<td>com.carrotsearch</td>
-<td>java-sizeof</td>
-<td>delete</td>
-<td></td>
-</tr>
-<tr>
-<td>org.springframework</td>
-<td>spring-tx</td>
-<td>delete</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>spring-web</td>
-<td>delete</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>spring-context</td>
-<td>5.3.18</td>
-<td>5.3.39</td>
-</tr>
-<tr>
-<td></td>
-<td>spring-test</td>
-<td>5.2.0.RELEASE</td>
-<td>5.3.39</td>
-</tr>
-<tr>
-<td>io.grpc</td>
-<td>grpc-netty, grpc-protobuf, grpc-stub, grpc-core, grpc-services</td>
-<td>1.60.0</td>
-<td>1.75.0</td>
-</tr>
-<tr>
-<td>com.google.protobuf</td>
-<td>protobuf-java, protobuf-java-util, protoc</td>
-<td>3.25.5</td>
-<td>3.25.8</td>
-</tr>
-<tr>
-<td>org.hamcrest</td>
-<td>hamcrest-junit</td>
-<td>delete</td>
-<td></td>
-</tr>
-<tr>
-<td>com.google.inject</td>
-<td>guice</td>
-<td>delete</td>
-<td></td>
-</tr>
-<tr>
-<td>io.vavr</td>
-<td>vavr</td>
-<td>delete</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>group-name</th>
+      <th>package-name</th>
+      <th>Old version</th>
+      <th>New version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>org.eclipse.jetty</td>
+      <td>jetty-server</td>
+      <td>9.4.53.v20231009</td>
+      <td>9.4.57.v20241219</td>
+    </tr>
+    <tr>
+      <td>com.cedarsoftware</td>
+      <td>java-util</td>
+      <td>1.8.0</td>
+      <td>3.2.0</td>
+    </tr>
+    <tr>
+      <td>com.fasterxml.jackson.core</td>
+      <td>jackson-databind</td>
+      <td>2.13.4.2</td>
+      <td>2.18.3</td>
+    </tr>
+    <tr>
+      <td>com.carrotsearch</td>
+      <td>java-sizeof</td>
+      <td>delete</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td rowspan="4">org.springframework</td>
+      <td>spring-tx</td>
+      <td>delete</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>spring-web</td>
+      <td>delete</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>spring-context</td>
+      <td>5.3.18</td>
+      <td>5.3.39</td>
+    </tr>
+    <tr>
+      <td>spring-test</td>
+      <td>5.2.0.RELEASE</td>
+      <td>5.3.39</td>
+    </tr>
+    <tr>
+      <td>io.grpc</td>
+      <td>grpc-netty, grpc-protobuf, grpc-stub, grpc-core, grpc-services</td>
+      <td>1.60.0</td>
+      <td>1.75.0</td>
+    </tr>
+    <tr>
+      <td>com.google.protobuf</td>
+      <td>protobuf-java, protobuf-java-util, protoc</td>
+      <td>3.25.5</td>
+      <td>3.25.8</td>
+    </tr>
+    <tr>
+      <td>org.hamcrest</td>
+      <td>hamcrest-junit</td>
+      <td>delete</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>com.google.inject</td>
+      <td>guice</td>
+      <td>delete</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>io.vavr</td>
+      <td>vavr</td>
+      <td>delete</td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
+
 <p>另外，Democritus 版本升级了底层网络库 <code>libp2p</code>（从 2.2.6 升级至 2.2.7）。此版本不仅新增了对 JDK 17 的编译支持，还针对 Windows 兼容性、内存管理和网络稳定性进行了大幅优化与修复。核心修复与改进包括：</p>
 <ul>
 <li>新增对 JDK 17 的编译支持（#113）。</li>
