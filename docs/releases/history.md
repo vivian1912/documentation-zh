@@ -282,21 +282,93 @@ Democritus 版本引入了一份包含全量配置项的标准配置文件，任
 
 Democritus 版本对 `grpc-java`、`Spring`、`Jackson`、`Jetty` 等核心依赖库进行了版本升级。
 
-| group-name | package-name | Old version | New version |
-| --- | --- | --- | --- |
-| org.eclipse.jetty | jetty-server | 9.4.53.v20231009 | 9.4.57.v20241219 |
-| com.cedarsoftware | java-util | 1.8.0 | 3.2.0 |
-| com.fasterxml.jackson.core | jackson-databind | 2.13.4.2 | 2.18.3 |
-| com.carrotsearch | java-sizeof | delete |  |
-| org.springframework | spring-tx | delete |  |
-|  | spring-web | delete |  |
-|  | spring-context | 5.3.18 | 5.3.39 |
-|  | spring-test | 5.2.0.RELEASE | 5.3.39 |
-| io.grpc | grpc-netty, grpc-protobuf, grpc-stub, grpc-core, grpc-services | 1.60.0 | 1.75.0 |
-| com.google.protobuf | protobuf-java, protobuf-java-util, protoc | 3.25.5 | 3.25.8 |
-| org.hamcrest | hamcrest-junit | delete |  |
-| com.google.inject | guice | delete |  |
-| io.vavr | vavr | delete |  |
+<table>
+  <thead>
+    <tr>
+      <th>group-name</th>
+      <th>package-name</th>
+      <th>Old version</th>
+      <th>New version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>org.eclipse.jetty</td>
+      <td>jetty-server</td>
+      <td>9.4.53.v20231009</td>
+      <td>9.4.57.v20241219</td>
+    </tr>
+    <tr>
+      <td>com.cedarsoftware</td>
+      <td>java-util</td>
+      <td>1.8.0</td>
+      <td>3.2.0</td>
+    </tr>
+    <tr>
+      <td>com.fasterxml.jackson.core</td>
+      <td>jackson-databind</td>
+      <td>2.13.4.2</td>
+      <td>2.18.3</td>
+    </tr>
+    <tr>
+      <td>com.carrotsearch</td>
+      <td>java-sizeof</td>
+      <td>delete</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td rowspan="4">org.springframework</td>
+      <td>spring-tx</td>
+      <td>delete</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>spring-web</td>
+      <td>delete</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>spring-context</td>
+      <td>5.3.18</td>
+      <td>5.3.39</td>
+    </tr>
+    <tr>
+      <td>spring-test</td>
+      <td>5.2.0.RELEASE</td>
+      <td>5.3.39</td>
+    </tr>
+    <tr>
+      <td>io.grpc</td>
+      <td>grpc-netty, grpc-protobuf, grpc-stub, grpc-core, grpc-services</td>
+      <td>1.60.0</td>
+      <td>1.75.0</td>
+    </tr>
+    <tr>
+      <td>com.google.protobuf</td>
+      <td>protobuf-java, protobuf-java-util, protoc</td>
+      <td>3.25.5</td>
+      <td>3.25.8</td>
+    </tr>
+    <tr>
+      <td>org.hamcrest</td>
+      <td>hamcrest-junit</td>
+      <td>delete</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>com.google.inject</td>
+      <td>guice</td>
+      <td>delete</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>io.vavr</td>
+      <td>vavr</td>
+      <td>delete</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 另外，Democritus 版本升级了底层网络库 `libp2p`（从 2.2.6 升级至 2.2.7）。此版本不仅新增了对 JDK 17 的编译支持，还针对 Windows 兼容性、内存管理和网络稳定性进行了大幅优化与修复。核心修复与改进包括：
 
