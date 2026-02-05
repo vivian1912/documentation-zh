@@ -113,6 +113,8 @@ nohup java -Xms9G -Xmx24G -XX:+UseZGC \
     -XX:+HeapDumpOnOutOfMemoryError \
     -jar ./build/libs/FullNode.jar --witness -c config.conf &
 ```
+> *注意*：推荐使用 `keystore` 文件或在配置文件中管理私钥，而不是直接在命令行中作为参数传入。
+
 #### 普通全节点
  * **x86_64 架构（仅支持 JDK 8）**
 ```bash
@@ -138,10 +140,8 @@ nohup java -Xmx9G -XX:+UseZGC \
              -XX:+HeapDumpOnOutOfMemoryError \
              -jar ./build/libs/FullNode.jar -c main_net_config.conf &
 ```
-> *注意*：推荐使用 `keystore` 文件或在配置文件中管理私钥，而不是直接在命令行中作为参数传入。
 
 参数说明请参见 [节点部署](https://tronprotocol.github.io/documentation-zh/using_javatron/installing_javatron/#_2 )章节。
-
 
 ### 第 6 步：验证与监控
 
