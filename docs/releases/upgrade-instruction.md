@@ -85,7 +85,7 @@
 <a id="step5"></a> 
 ### 第 5 步：启动节点
 
-请根据节点类型及 CPU 架构选择对应的启动命令。
+请根据节点类型及 CPU 架构选择对应的启动命令。命令中各参数的说明请参见 [节点部署](https://tronprotocol.github.io/documentation-zh/using_javatron/installing_javatron/#_2 )章节。
 
 #### 超级代表节点 (出块节点)
  * **x86_64 架构（仅支持 JDK 8）**
@@ -141,7 +141,7 @@ nohup java -Xmx9G -XX:+UseZGC \
              -jar ./build/libs/FullNode.jar -c main_net_config.conf &
 ```
 
-参数说明请参见 [节点部署](https://tronprotocol.github.io/documentation-zh/using_javatron/installing_javatron/#_2 )章节。
+
 
 ### 第 6 步：验证与监控
 
