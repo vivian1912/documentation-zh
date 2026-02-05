@@ -3415,14 +3415,14 @@
 <p><strong>其他变动</strong></p>
 <ul>
 <li><strong>JDK17 兼容性</strong><ul>
-<li>空指针兼容： 优化了空指针提示信息（基于 JEP 358），方便问题定位。</li>
+<li>空指针兼容： 优化了空指针提示信息，方便问题定位（基于 JEP 358）。</li>
 <li>数字转换异常兼容： 优化了数字转换异常提示，增加了转换进制错误提示（基于 JDK-8176425）。</li>
 <li>JDK 版本解析兼容： 适配了 JDK 10 以上版本号格式变化（基于 JEP 223）。</li>
 <li>var 推断关键字： 支持 var 类型推断机制（基于 JEP 286）。</li>
 </ul>
 </li>
 <li><strong>RocksDB 资源优化</strong><ul>
-<li>增加最大句柄设置参数： 新增参数 <code>dbSettings.maxOpenFiles</code>，默认为 5000（此前强制且不可配置），开发者可根据服务器负载进行调配。</li>
+<li>增加最大句柄设置参数： 新增参数 <code>dbSettings.maxOpenFiles</code>，默认值为 5000（此前强制且不可配置），开发者可根据服务器负载进行调配。</li>
 <li>资源释放优化： 对 RocksDB 资源设置了合理的生命周期，及时释放已使用完资源，避免潜在内存泄漏问题。</li>
 </ul>
 </li>
@@ -3432,10 +3432,10 @@
 <table>
 <thead>
 <tr>
-<th>group-name</th>
-<th>package-name</th>
-<th>Old version</th>
-<th>New version</th>
+<th>组名</th>
+<th>包名</th>
+<th>原版本号</th>
+<th>新版本号</th>
 </tr>
 </thead>
 <tbody>
@@ -3492,13 +3492,13 @@
 <p>继 GreatVoyage-4.8.0(Kant) 通过 TIP-652 提出废弃 <code>SELFDESTRUCT</code>  指令的建议后，Democritus 版本正式引入了对 <code>SELFDESTRUCT</code> 指令行为的调整。此项变更是为了深度兼容 Ethereum 的 EIP-6780，确保 TVM 与 EVM 的行为一致性，详细规范请参考 TIP-6780。</p>
 <p>在 Democritus 之前的版本中， <code>SELFDESTRUCT</code> 允许合约自我销毁，并将资金转移到指定地址，同时删除该合约账户的所有数据（代码、存储、账户本身）。 Democritus 版本对<code>SELFDESTRUCT</code>指令的修改如下： </p>
 <ul>
-<li><strong>限制 <code>SELFDESTRUCT</code> 的使用场景</strong>
+<li><strong>限制 <code>SELFDESTRUCT</code> 的使用场景</strong>：
 仅在合约被创建的同一笔交易中调用 <code>SELFDESTRUCT</code> 时，才允许其真正删除账户数据（如代码、存储、账户本身）。<ul>
 <li>场景一：非同一交易中调用 <code>SELFDESTRUCT</code>（默认大多数情况）<ul>
 <li>不允许真正销毁账户。</li>
 <li>当前合约的调用会立即停止。</li>
 <li>不会删除任何数据，包括：存储键（storage keys）、代码（code）、账户本身。但会将账户中的所有资产（TRX、质押的TRX、TRC10 代币）转移至目标地址。</li>
-<li>如果目标地址就是合约自身，资产不会燃烧</li>
+<li>如果目标地址就是合约自身，资产不会燃烧。</li>
 </ul>
 </li>
 <li>场景二：同一交易中调用 <code>SELFDESTRUCT</code> (即合约创建后立即自毁)，保留旧有行为，即：<ul>
@@ -3510,7 +3510,7 @@
 </li>
 </ul>
 </li>
-<li><strong>能量（Energy）成本调整</strong>
+<li><strong>能量（Energy）成本调整</strong>：
 将 <code>SELFDESTRUCT</code> 操作码的固定能量成本，从原来的 0 增加到 5000，提高使用门槛，进一步限制滥用。</li>
 </ul>
 <p>注意，该功能由 TRON 网络的第 94 号参数控制。Democritus 部署后默认关闭（值为 0），需通过提案投票的方式开启，且开启后不可关闭。</p>
@@ -3535,10 +3535,10 @@
 <h4 id="3-p2p">3. 优化 P2P 断连原因<a class="headerlink" href="#3-p2p" title="Permanent link">&para;</a></h4>
 <p>在 Democritus 之前的版本中，部分 Peer 断开场景下 <code>P2P_DISCONNECT</code> 消息携带的原因代码（Reason Code）定义较为模糊，导致节点无法准确感知真正的断连原因，不利于网络排障。Democritus 版本针对以下三类场景的断连原因进行了优化：</p>
 <ul>
-<li>场景1: 节点收到 peer 发送的区块后，如果由于区块签名验证失败而断开与 peer 的连接，则断连原因由 UNKNOWN 改成 BAD_BLOCK。</li>
+<li>场景1: 节点收到 peer 发送的区块后，如果由于区块签名验证失败而断开与 peer 的连接，则断连原因由 <code>UNKNOWN</code> 改成 <code>BAD_BLOCK</code>。</li>
 <li>场景2: 在 Democritus 之前的版本中，节点在进行 <code>HelloMessage</code> 的有效性检查时，若发生错误，则返回 <code>UNEXPECTED_IDENTITY</code> 错误代码，但实际上不会执行与身份相关的有效性检查。因此，Democritus版本将这种场景的断连原因从 <code>UNEXPECTED_IDENTITY</code> 改为 <code>INCOMPATIBLE_PROTOCOL</code>。</li>
 <li>
-<p>场景3: 当接收到的 P2P_HELLO 消息中包含的区块 ID 的长度不等于32时，断连原因由 <code>UNKNOWN</code> 改为 <code>INCOMPATIBLE_PROTOCOL</code>。</p>
+<p>场景3: 当接收到的 <code>P2P_HELLO</code> 消息中包含的区块 ID 的长度不等于32时，断连原因由 <code>UNKNOWN</code> 改为 <code>INCOMPATIBLE_PROTOCOL</code>。</p>
 </li>
 <li>
 <p>源代码： <a href="https://github.com/tronprotocol/java-tron/pull/6394">https://github.com/tronprotocol/java-tron/pull/6394</a></p>
@@ -3727,7 +3727,7 @@
 </ul>
 <p><strong>事件服务</strong></p>
 <h4 id="1-transaction-info">1. 优化事件服务对 Transaction Info 的获取逻辑<a class="headerlink" href="#1-transaction-info" title="Permanent link">&para;</a></h4>
-<p>Democritus 版本解决了获取 Transaction info 时的兼容性问题。如果事件服务从 <code>transactionRetStore</code> 数据库读取不到数据，<code>则会兼容地回退到从transactionHistoryStore</code> 数据库读取。</p>
+<p>Democritus 版本解决了获取 Transaction info 时的兼容性问题。如果事件服务从 <code>transactionRetStore</code> 数据库读取不到数据，则会兼容地回退到从 <code>transactionHistoryStore</code> 数据库读取。</p>
 <ul>
 <li>源代码：
 <a href="https://github.com/tronprotocol/java-tron/pull/6443">https://github.com/tronprotocol/java-tron/pull/6443</a>
@@ -3741,7 +3741,7 @@
 <li>源代码： <a href="https://github.com/tronprotocol/java-tron/pull/6372">https://github.com/tronprotocol/java-tron/pull/6372</a></li>
 </ul>
 <h4 id="3">3. 优化事件服务关闭逻辑<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
-<p>Democritus 版本优化了 HistoryEventService 线程关闭逻辑，通过引入全局变量 <code>isClosed</code>，确保即使 <code>close</code> 函数被重复调用，相关资源也只会释放一次。该优化有效避免了资源的重复释放及由此引发的异常，提升了系统退出时的稳定性。</p>
+<p>Democritus 版本优化了 <code>HistoryEventService</code> 线程关闭逻辑，通过引入全局变量 <code>isClosed</code>，确保即使 <code>close</code> 函数被重复调用，相关资源也只会释放一次。该优化有效避免了资源的重复释放及由此引发的异常，提升了系统退出时的稳定性。</p>
 <ul>
 <li>源代码：<a href="https://github.com/tronprotocol/java-tron/pull/6463">https://github.com/tronprotocol/java-tron/pull/6463</a></li>
 </ul>
@@ -3749,11 +3749,11 @@
 <h4 id="1">1. 优化测试用例的资源管理<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
 <p>Democritus 版本对单元测试的资源管理进行了系统性优化，在显著提升执行效能的同时，进一步增强了测试环境的纯净度与稳定性：</p>
 <ul>
-<li>规范清理机制： 引入了更严格的文件清理机制，确保测试产生的临时数据在执行后被彻底移除。</li>
-<li>提升执行效能： 通过优化高耗时用例，使单测总时长最高缩短了 30%。</li>
-<li>加固资源释放： 修复了已知的资源泄漏问题，并标准化了资源释放逻辑。</li>
+<li><strong>规范清理机制</strong>： 引入了更严格的文件清理机制，确保测试产生的临时数据在执行后被彻底移除。</li>
+<li><strong>提升执行效能</strong>： 通过优化高耗时用例，使单测总时长最高缩短了 30%。</li>
+<li><strong>加固资源释放</strong>： 修复了已知的资源泄漏问题，并标准化了资源释放逻辑。</li>
 <li>
-<p>增强运行稳定： 解决了相关单测中的空指针异常。</p>
+<p><strong>增强稳定运行</strong>： 解决了相关单测中的空指针异常。</p>
 </li>
 <li>
 <p>源代码：
@@ -3770,23 +3770,23 @@
 <a href="https://github.com/tronprotocol/java-tron/pull/6460">https://github.com/tronprotocol/java-tron/pull/6460</a></li>
 </ul>
 <h4 id="3_1">3. 确保单测正确自动停止<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h4>
-<p>Democritus 版本优化了 ConditionalStopTest 单元测试的停止判定逻辑。在 SR 产块场景下，即使遇到出块顺序发生变化的情况，也能准确识别停止条件，从而使单测能够按照预期正确、自动地停止执行。</p>
+<p>Democritus 版本优化了 <code>ConditionalStopTest</code> 单元测试的停止判定逻辑。在 SR 产块场景下，即使遇到出块顺序发生变化的情况，也能准确识别停止条件，从而使单测能够按照预期正确、自动地停止执行。</p>
 <ul>
 <li>源代码： <a href="https://github.com/tronprotocol/java-tron/pull/6469">https://github.com/tronprotocol/java-tron/pull/6469</a></li>
 </ul>
 <h4 id="4">4. 增强日志上下文隔离机制<a class="headerlink" href="#4" title="Permanent link">&para;</a></h4>
-<p>Democritus 版本修复了 <code>TronErrorTest</code> 单元测试引发的全局 <code>logger</code> 配置污染问题。通过在 <code>LogService</code> 加载配置阶段，增强错误与警告信息的输出，并在单元测试里显式恢复 logger 上下文，确保了不同测试用例间日志环境的完全隔离。这一改进不仅杜绝了用例间的日志行为干扰，也为快速定位 Logback 配置加载异常提供了更清晰的诊断依据。</p>
+<p>Democritus 版本修复了 <code>TronErrorTest</code> 单元测试引发的全局 <code>logger</code> 配置污染问题。通过在 <code>LogService</code> 加载配置阶段，增强错误与警告信息的输出，并在单元测试里显式恢复 <code>logger</code> 上下文，确保了不同测试用例间日志环境的完全隔离。这一改进不仅杜绝了用例间的日志行为干扰，也为快速定位 <code>Logback</code> 配置加载异常提供了更清晰的诊断依据。</p>
 <ul>
 <li>源代码： <a href="https://github.com/tronprotocol/java-tron/pull/6476">https://github.com/tronprotocol/java-tron/pull/6476</a></li>
 </ul>
 <h4 id="5-checkstyle">5. 修复测试用例中的 CheckStyle 问题<a class="headerlink" href="#5-checkstyle" title="Permanent link">&para;</a></h4>
-<p>测试用例文件中一个注释的语句增加换行，修复测试用例中的checkStyle问题。</p>
+<p>测试用例文件中一个注释的语句增加换行，修复测试用例中的 checkStyle 问题。</p>
 <ul>
 <li>源代码： <a href="https://github.com/tronprotocol/java-tron/pull/6392">https://github.com/tronprotocol/java-tron/pull/6392</a></li>
 </ul>
 <p><strong>Document</strong></p>
 <h4 id="1-readme-fullnode-jvm">1. 更新 Readme 中的 FullNode JVM 启动参数<a class="headerlink" href="#1-readme-fullnode-jvm" title="Permanent link">&para;</a></h4>
-<p>调整 java-tron 在 x86_64 和 arm64 平台下的 JVM 启动参数，旨在确保FullNode节点能够在最低硬件配置下满足基本的容灾需求；同时，修改硬件要求，推荐采用更为稳定的机器配置。</p>
+<p>调整 java-tron 在 x86_64 和 arm64 平台下的 JVM 启动参数，旨在确保 FullNode 节点能够在最低硬件配置下满足基本的容灾需求；同时，修改硬件要求，推荐采用更为稳定的机器配置。</p>
 <ul>
 <li>源代码： <a href="https://github.com/tronprotocol/java-tron/pull/6478">https://github.com/tronprotocol/java-tron/pull/6478</a></li>
 </ul>
@@ -3833,13 +3833,13 @@
 <ul>
 <li><strong>参数</strong><ul>
 <li>offset  : long ，起始下标，要求 &gt;=0</li>
-<li>limit    : long ，返回条数，要求 &gt;0 ，上限为系统常量1000</li>
+<li>limit    : long ，返回条数，要求 &gt;0 ，最大值为 1000</li>
 <li>visible : boolean ，可选；控制返回 JSON 的address可读编码</li>
 </ul>
 </li>
 <li><strong>返回值</strong><ul>
 <li>成功时：返回按“实时票数”降序排序的超级代表数组，每项包含地址、票数、URL 等。</li>
-<li>失败时：当参数不正确（如： limit&lt;=0 、offset&lt;0、或offset&gt;=总Witness数）时，返回 <code>{}</code>（空对象）, http code = 200。</li>
+<li>失败时：当参数不正确（如： limit&lt;=0 、offset&lt;0、或offset&gt;=总Witness数）时，返回空对象 <code>{}</code>, http code = 200。</li>
 </ul>
 </li>
 </ul>
