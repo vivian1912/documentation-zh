@@ -186,7 +186,7 @@ tail -f logs/tron.log | grep "Try Produce Block"
 
 #### 节点启动时如何指定 log 日志文件路径
 
-添加启动参数 `--log-config logback.xml`(在 `logback.xml` 里面修改 `tron.log` 路径)
+在与节点版本相同的 `logback.xml` 中修改日志文件路径，然后添加启动参数 `--log-config /absolute/path/to/logback.xml`。相对路径基于进程的工作目录解析，而不是基于 `FullNode.jar` 所在目录解析。完整配置说明参见[节点日志](../using_javatron/logging.md#使用自定义-logback-配置)。
 
 #### config.conf 中的 genesis.block.witnesses 如何设置？
 
@@ -202,54 +202,43 @@ tail -f logs/tron.log | grep "Try Produce Block"
 java -jar FullNode.jar -c config.conf -d /data/output
 ```
 
-#### 怎么修改配置可以让 java-tron 日志发送到 stdout?
+#### 如何将节点日志输出到 stdout？
 
-步骤如下：
+以节点所运行的同一 java-tron 版本内置的 `logback.xml` 为起点。当前版本的参考文件为 [`framework/src/main/resources/logback.xml`](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/logback.xml)。
 
-下载[logback.xml](https://github.com/tronprotocol/java-tron/blob/develop/src/main/resources/logback.xml)
-
-取消注释掉以下内容：
+默认配置已定义 `CONSOLE` appender，将其添加到 root logger：
 
 ```xml
-appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender"
+<root level="INFO">
+  <appender-ref ref="CONSOLE"/>
+  <appender-ref ref="ASYNC"/>
+  <appender-ref ref="METRICS"/>
+</root>
 ```
 
-在 `root level="INFO"` 下
+这会同时将日志写入 stdout 和 `logs/tron.log`。如果只需将主节点日志输出到 stdout，请省略 `ASYNC` 引用；如果使用基于 `ERROR` 日志的 Prometheus 指标，请保留 `METRICS`。
 
-- 取消注释`appender-ref ref="STDOUT"`
-- 注释 `appender-ref ref="ASYNC"`
+保存自定义文件，然后通过 `--log-config` 传入其路径：
 
-将 `logback.xml` 移到 `FullNode.jar` 所在的目录下
-
-启动时，添加 `--log-config logback.xml` 参数，例如：
-
-```console
-java -jar FullNode.jar --log-config logback.xml
+```text
+java -jar FullNode.jar --log-config /absolute/path/to/logback.xml
 ```
+
+相对路径基于进程的工作目录解析，而不是基于 `FullNode.jar` 所在目录解析。
+
+该路径必须指向可读取的文件。从 GreatVoyage-v4.8.2 开始，如果显式传入的文件不存在或不可读取，节点将启动失败，而不再静默回退到内置配置。
+
+默认日志文件、轮转设置和完整的自定义说明参见[节点日志](../using_javatron/logging.md)。
 
 #### 如何修改日志级别？
 
-日志级别在 `logback.xml` 中定义。通过修改 `root level=` 来改变输出的日志级别。
+在 `logback.xml` 中修改相应的 logger。许多 java-tron 模块显式配置了 `INFO` 级别，因此只修改 root logger 的级别不会覆盖这些模块自身的设置。例如，仅保留 `WARN` 及以上级别的 P2P 网络日志：
 
 ```xml
-<root level="ERROR">
-    <!--<appender-ref ref="STDOUT"/>-->
-    <appender-ref ref="ASYNC"/>
-  </root>
-
-  <logger name="app" level="ERROR"/>
-  <logger name="net" level="ERROR"/>
-  <logger name="backup" level="ERROR"/>
-  <logger name="discover" level="ERROR"/>
-  <logger name="crypto" level="ERROR"/>
-  <logger name="utils" level="ERROR"/>
-  <logger name="actuator" level="ERROR"/>
-  <logger name="API" level="ERROR"/>
-  <logger name="witness" level="ERROR"/>
-  <logger name="DB" level="ERROR"/>
-  <logger name="capsule" level="ERROR"/>
-  <logger name="VM" level="ERROR"/>
+<logger name="net" level="WARN"/>
 ```
+
+专用的 `LEVELDB`、`ROCKSDB` 和 `io.grpc` logger 有各自的级别，并且不会向 root logger 传播日志。请直接修改这些 logger 的级别，以控制 `db.log` 和 `grpc.log`。示例参见[排查问题时调整日志级别](../using_javatron/logging.md#排查问题时调整日志级别)。
 
 #### 在私有网络环境下，我如何设置我的资产？
 
