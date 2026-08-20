@@ -149,12 +149,13 @@ git push origin feature/branch_name
 - 在提交前自测
 - 通过标准化测试
 
-CI 工具：
+### 自动化 CI 检查
 
-- Sonar：静态代码分析
-- Travis CI：持续集成检查
+java-tron 使用 GitHub Actions 执行 PR 校验、代码和配置检查、多平台构建、覆盖率门禁、集成和安全测试、审查者分配，以及取消与已关闭但未合并的 PR 相关的任务。具体运行哪些工作流取决于变更文件、事件类型和目标分支。
 
-所有检查通过后，维护者将审查并合并至 `develop`。
+完整的触发矩阵、检查细节、阈值和分支差异请参阅 [java-tron CI 工作流](workflows.md)。
+
+所有检查通过后，维护者将审查 PR，并将其合并到适当的目标分支。
 
 > **编码规范**
 >
@@ -172,11 +173,14 @@ CI 工具：
 
 1. 一个 PR 只处理一件事
 2. 避免超大改动量
-3. 标题：简要描述 PR 目标
-4. 描述：面向 Reviewer，详细说明
-5. 明确需要反馈的部分
-6. 标题首字母不大写
-7. 标题结尾不加句号
+3. 标题使用 `type: description` 或 `type(scope): description` 格式
+4. 标题长度保持在 10～72 个字符之间
+5. `type` 必须是以下之一：`feat`、`fix`、`refactor`、`docs`、`style`、`test`、`chore`、`ci`、`perf`、`build` 或 `revert`
+6. 标题中的描述部分不得以 ASCII 大写字母开头，标题结尾不得使用句号
+7. PR 描述不得少于 20 个字符，并说明改动内容及原因
+8. 明确需要反馈的部分
+
+`scope` 是可选的。未知 `scope` 只会产生警告，审查者分配使用另一套独立的 `scope` 映射。详细规则请参阅 [`scope` 校验和审查者分配](workflows.md)。
 
 ## Commit 描述规范
 
@@ -199,16 +203,19 @@ CI 工具：
 - `refactor`：代码重构
 - `test`：测试代码改动
 - `chore`：构建流程或辅助工具的变更（无生产代码改动）
+- `ci`：CI/CD 配置变更
+- `perf`：性能改进
+- `build`：构建系统或依赖项变更
+- `revert`：撤销之前的改动
 
-`scope` 用于说明改动位置，例如：`protocol`、`api`、`test`、`docs`、`build`、`db`、`net`。若无合适的 scope，可使用 `*`。
+`scope` 用于说明改动位置，例如：`protocol`、`api`、`test`、`vm`、`config`、`db`、`net`。若无合适的 `scope`，可使用 `*`。
 
 ### Subject 规范
 
-1. 不超过 50 个字符
+1. 保持在 10～72 个字符之间，结尾不加句号
 2. 使用动词开头，第一人称现在时（如 `change` 而非 `changed` 或 `changes`）
-3. 首字母小写
-4. 结尾不加句号
-5. 避免无意义 Commit，建议使用 `git rebase` 命令
+3. `subject` 不得以大写字母开头
+4. 避免无意义 Commit，建议使用 `git rebase` 命令
 
 示例
 
@@ -234,6 +241,3 @@ Closes #1234
 ## 行为准则
 
 请保持尊重和建设性，共同营造积极的社区氛围。
-
-
-
