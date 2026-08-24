@@ -5,7 +5,7 @@ java-tron是基于Java语言开发的TRON网络客户端，它实现了TRON白�
 java-tron采用模块化的代码结构，代码结构清晰，易于维护与扩展。java-tron 的核心由 7 个模块组成：[protocol](#protocol)、[common](#common)、[chainbase](#chainbase)、[consensus](#consensus)、[actuator](#actuator)、[crypto](#crypto)、[framework](#framework)，本文将分别介绍这 7 个核心模块的功能及其代码组织结构。除此之外，java-tron 还包含三个辅助模块：
 
 * `plugins` - 节点维护工具集（Toolkit），提供数据库的 lite、convert、copy、move、archive 等离线操作工具，以及密钥库管理命令
-* `platform` - CPU 架构适配模块，按 `common`/`x86`/`arm` 分别提供与具体架构相关的实现（如数学运算、市场订单比较器等）
+* `platform` - CPU 架构适配模块，将 `common` 中的共享代码与构建时选择的 `x86` 或 `arm` 实现组合使用，包括数学运算和市场订单比较器
 * `errorprone` - 自定义 Error Prone 检查模块，用于在编译期间检测容易出错的编码模式
 
 
