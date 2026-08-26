@@ -93,11 +93,13 @@ uname -m
     ```
 
     * 参数 `-x test` 表示跳过测试用例的执行。您可以移除此参数以在编译期间执行测试代码，但这将延长编译时间。
-    * 如果在构建过程中遇到 `DependencyVerificationException`，请刷新依赖项并重新生成验证元数据：
+    * 如果构建因 `DependencyVerificationException` 失败，请使用 `--refresh-dependencies` 重试一次：
 
-      ```bash
-      ./gradlew clean build -x test --refresh-dependencies
-      ```
+        ```bash
+        ./gradlew clean build -x test --refresh-dependencies
+        ```
+
+        `--refresh-dependencies` 选项会刷新依赖项，但不会重新生成 `gradle/verification-metadata.xml`。如果依赖校验仍然失败，请勿仅为绕过校验而重新生成该元数据。请确认当前源码未被修改；如需进一步帮助，请联系 java-tron 维护者。
 
     * 编译完成后，`FullNode.jar` 文件将在 `java-tron/build/libs/` 目录中生成。
 
