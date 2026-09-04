@@ -2,10 +2,11 @@
 ## 代码结构
 java-tron是基于Java语言开发的TRON网络客户端，它实现了TRON白皮书中所提到的所有功能，包括共识机制、密码学、数据库、TVM虚拟机、网络管理等。我们可以通过启动java-tron来运行一个TRON网络节点。在本文中，我们将详细描述java-tron的代码结构，介绍其各个功能模块的作用，便于开发者后续的代码分析与开发。
 
-java-tron采用模块化的代码结构，代码结构清晰，易于维护与扩展。java-tron 的核心由 7 个模块组成：[protocol](#protocol)、[common](#common)、[chainbase](#chainbase)、[consensus](#consensus)、[actuator](#actuator)、[crypto](#crypto)、[framework](#framework)，本文将分别介绍这 7 个核心模块的功能及其代码组织结构。除此之外，java-tron 还包含两个辅助模块：
+java-tron采用模块化的代码结构，代码结构清晰，易于维护与扩展。java-tron 的核心由 7 个模块组成：[protocol](#protocol)、[common](#common)、[chainbase](#chainbase)、[consensus](#consensus)、[actuator](#actuator)、[crypto](#crypto)、[framework](#framework)，本文将分别介绍这 7 个核心模块的功能及其代码组织结构。除此之外，java-tron 还包含三个辅助模块：
 
-* `plugins` - 节点维护工具集（Toolkit），提供数据库的 lite、convert、copy、move、archive 等离线操作工具
-* `platform` - CPU 架构适配模块，按 `common`/`x86`/`arm` 分别提供与具体架构相关的实现（如数学运算、市场订单比较器等）
+* `plugins` - 节点维护工具集（Toolkit），提供数据库的 lite、convert、copy、move、archive 等离线操作工具，以及密钥库管理命令
+* `platform` - CPU 架构适配模块，将 `common` 中的共享代码与构建时选择的 `x86` 或 `arm` 实现组合使用，包括数学运算和市场订单比较器
+* `errorprone` - 自定义 Error Prone 检查模块，用于在编译期间检测容易出错的编码模式
 
 
 ### protocol
@@ -204,21 +205,29 @@ crypto是一个相对独立的模块，但也是非常重要的模块，java-tro
 
 [crypto](https://github.com/tronprotocol/java-tron/tree/develop/crypto)模块的路径为`https://github.com/tronprotocol/java-tron/tree/develop/crypto`，其目录结构如下：
 ```
-|-- crypto/src/main/java/org/tron/common/crypto
-    |-- Blake2bfMessageDigest.java
-    |-- ECKey.java
-    |-- Hash.java
-    |-- SignInterface.java
-    |-- SignUtils.java
-    |-- SignatureInterface.java
-    |-- cryptohash
-    |-- jce
-    |-- sm2
-    |-- zksnark
+|-- crypto/src/main/java/org/tron
+    |-- common
+    |   |-- crypto
+    |       |-- Blake2bfMessageDigest.java
+    |       |-- ECKey.java
+    |       |-- Hash.java
+    |       |-- Rsv.java
+    |       |-- SignInterface.java
+    |       |-- SignUtils.java
+    |       |-- SignatureInterface.java
+    |       |-- cryptohash
+    |       |-- jce
+    |       |-- sm2
+    |       |-- zksnark
+    |-- keystore
+        |-- Credentials.java
+        |-- Wallet.java
+        |-- WalletFile.java
+        |-- WalletUtils.java
 ```
 
-* `sm2`和`jce` - 提供SM2和ECKey加密算法和签名算法
-* `zksnark` - 提供零知识证明算法
+* `common/crypto` - 提供密码学原语及其实现；`ECKey.java` 提供基于 secp256k1 的 ECDSA 实现，`sm2` 提供 SM2 签名实现，`zksnark` 提供零知识证明所用密码学原语的实现
+* `keystore` - 提供密钥库文件管理工具
 
 ### framework
 
@@ -246,7 +255,6 @@ framework是 java-tron 的核心模块，也是节点的入口，framework 模�
     |   |-- services
     |   |-- trie
     |   |-- zen
-    |-- keystore
     |-- program
     |   |-- FullNode.java
 ```
