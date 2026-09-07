@@ -160,7 +160,7 @@ java-tron 使用 GitHub Actions 执行 PR 校验、代码和配置检查、多�
 > **编码规范**
 >
 >- 遵循 [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)
->- 所有 PR 必须基于 `develop` 分支
+>- PR 的目标分支应根据改动类型选择：常规 PR 应以 `develop` 为目标分支；`release_*` 分支中的缺陷修复 PR 应以相应的 `release_*` 分支为目标分支；发布后的紧急修复 PR 应以相应的 `hotfix/*` 分支为目标分支。
 
 ## 分支命名规范
 
@@ -180,7 +180,7 @@ java-tron 使用 GitHub Actions 执行 PR 校验、代码和配置检查、多�
 7. PR 描述不得少于 20 个字符，并说明改动内容及原因
 8. 明确需要反馈的部分
 
-`scope` 是可选的。未知 `scope` 只会产生警告，审查者分配使用另一套独立的 `scope` 映射。详细规则请参阅 [`scope` 校验和审查者分配](workflows.md)。
+`scope` 是可选的。未知 `scope` 只会产生警告，审查者分配使用另一套独立的 `scope` 映射。详细规则请参阅 [`scope` 校验和审查者分配](workflows.md#scope)。
 
 ## Commit 描述规范
 
