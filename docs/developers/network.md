@@ -30,8 +30,6 @@ P2P网络作为TRON的最底层模块，直接决定了整个区块链网络的�
 
 其中**节点发现**与**节点连接**这两部分的底层实现已从 java-tron 仓库抽离为独立的外部依赖 [`io.github.tronprotocol:libp2p`](https://github.com/tronprotocol/libp2p)，由该库负责底层的节点发现（基于 Kademlia 算法）与连接传输，并新增了基于 DNS 的节点发现等能力。其上的 TRON 协议层——包括 P2P_HELLO 握手、P2P_PING/P2P_PONG 保活、peer 业务状态管理、消息分发、同步与广播——仍由 java-tron 的 `core/net` 实现，并通过 `TronNetService` 与 libp2p 对接。底层节点发现与连接的实现细节请参阅 libp2p 仓库，本文不再展开。
 
-从 libp2p v2.2.9 开始，处理异常对等节点握手消息时的日志输出受到限制，以减少日志过度增长和内存占用。
-
 而**区块同步**与**区块和交易广播**仍由 java-tron 的 `core/net` 实现，下面分别介绍这两个功能部分。
 
 ## 对等节点连接管理 { #peer-connection-management }
