@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="zh" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -14,7 +14,7 @@
         <link rel="prev" href="../../architecture/database/">
       
       
-        <link rel="next" href="../metrics/">
+        <link rel="next" href="../logging/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -75,7 +75,7 @@
       
         
         <a href="#tron" class="md-skip">
-          Skip to content
+          跳转至
         </a>
       
     </div>
@@ -89,7 +89,7 @@
   
 
 <header class="md-header md-header--shadow" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="java-tron" class="md-header__button md-logo" aria-label="java-tron" data-md-component="logo">
       
   
@@ -130,16 +130,21 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="查找">
         
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
@@ -152,7 +157,7 @@
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Initializing search
+            正在初始化搜索引擎
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -163,13 +168,13 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/tronprotocol/documentation-zh" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/tronprotocol/documentation-zh" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
-    GitHub
+    tronprotocol/documentation-zh
   </div>
 </a>
       </div>
@@ -197,9 +202,7 @@
 
 
 
-  
-
-<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="java-tron" class="md-nav__button md-logo" aria-label="java-tron" data-md-component="logo">
       
@@ -211,13 +214,13 @@
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/tronprotocol/documentation-zh" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/tronprotocol/documentation-zh" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
-    GitHub
+    tronprotocol/documentation-zh
   </div>
 </a>
     </div>
@@ -252,6 +255,10 @@
   
   
     
+    
+      
+        
+      
     
     
       
@@ -325,6 +332,30 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
       
         
@@ -370,6 +401,28 @@
   
   <span class="md-ellipsis">
     部署
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    节点配置
     
   </span>
   
@@ -531,7 +584,7 @@
       
         
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
@@ -540,7 +593,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -606,7 +659,7 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#_6" class="md-nav__link" >
+  <a href="#_7" class="md-nav__link" >
     <span class="md-ellipsis">
       关闭节点发现
     </span>
@@ -620,7 +673,7 @@
 </li>
       
         <li class="md-nav__item has-children">
-  <a href="#_7" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#_8" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
       节点连接
     </span>
@@ -630,7 +683,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#_8" class="md-nav__link" >
+  <a href="#_9" class="md-nav__link" >
     <span class="md-ellipsis">
       节点连接数量
     </span>
@@ -639,7 +692,7 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#active-peers" class="md-nav__link" >
+  <a href="#active-connection-active-peers" class="md-nav__link" >
     <span class="md-ellipsis">
       主动连接（Active Peers）
     </span>
@@ -648,7 +701,7 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#_9" class="md-nav__link" >
+  <a href="#_10" class="md-nav__link" >
     <span class="md-ellipsis">
       被动连接
     </span>
@@ -662,7 +715,7 @@
 </li>
       
         <li class="md-nav__item has-children">
-  <a href="#_10" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#_11" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
       日志与节点状态验证
     </span>
@@ -672,7 +725,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#_11" class="md-nav__link" >
+  <a href="#_12" class="md-nav__link" >
     <span class="md-ellipsis">
       查看同步日志
     </span>
@@ -681,7 +734,7 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#_12" class="md-nav__link" >
+  <a href="#_13" class="md-nav__link" >
     <span class="md-ellipsis">
       同步中日志示例：
     </span>
@@ -690,7 +743,7 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#_13" class="md-nav__link" >
+  <a href="#_14" class="md-nav__link" >
     <span class="md-ellipsis">
       生产区块日志示例（超级代表节点）：
     </span>
@@ -699,7 +752,7 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#_14" class="md-nav__link" >
+  <a href="#_15" class="md-nav__link" >
     <span class="md-ellipsis">
       查询节点状态
     </span>
@@ -708,7 +761,7 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#_15" class="md-nav__link" >
+  <a href="#_16" class="md-nav__link" >
     <span class="md-ellipsis">
       验证节点同步状态
     </span>
@@ -722,7 +775,7 @@
 </li>
       
         <li class="md-nav__item ">
-  <a href="#_16" class="md-nav__link" >
+  <a href="#_17" class="md-nav__link" >
     <span class="md-ellipsis">
       常见连接问题排查
     </span>
@@ -731,7 +784,7 @@
 </li>
       
         <li class="md-nav__item has-children">
-  <a href="#_17" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#_18" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
       连接私链网络
     </span>
@@ -741,7 +794,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#_18" class="md-nav__link" >
+  <a href="#_19" class="md-nav__link" >
     <span class="md-ellipsis">
       配置要点：
     </span>
@@ -750,7 +803,7 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#_19" class="md-nav__link" >
+  <a href="#_20" class="md-nav__link" >
     <span class="md-ellipsis">
       搭建参考：
     </span>
@@ -767,6 +820,28 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    节点日志
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -831,6 +906,20 @@
   
     
     
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
       
         
@@ -845,8 +934,10 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
-            
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../api/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     API接口
@@ -854,13 +945,149 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             API接口
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../api/http/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    HTTP 接口
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            HTTP 接口
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    账户
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            账户
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -871,11 +1098,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/http/" class="md-nav__link">
+      <a href="../../api/http/account/getaccount/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    HTTP 接口
+    按地址查询账户
     
   </span>
   
@@ -893,8 +1120,2424 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/rpc/" class="md-nav__link">
+      <a href="../../api/http/account/getaccountbalance/" class="md-nav__link">
         
+  
+  <span class="md-ellipsis">
+    查询账户在指定区块的余额
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/account/getaccountnet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询账户带宽资源
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/account/getaccountresource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询账户带宽+能量+TronPower
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/account/createaccount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    链上创建账户
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/account/updateaccount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    修改账户名
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/account/accountpermissionupdate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    配置多签权限
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/account/validateaddress/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    校验地址合法性
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_3" id="__nav_4_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    区块 / 交易查询
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            区块 / 交易查询
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/block-and-tx-query/getnowblock/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当前最新区块
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/block-and-tx-query/getblock/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    通用区块查询
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/block-and-tx-query/getblockbynum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按高度查询区块
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/block-and-tx-query/getblockbyid/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按 hash 查询区块
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/block-and-tx-query/getblockbylimitnext/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按区间查询区块
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/block-and-tx-query/getblockbylatestnum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询最近 N 个区块
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/block-and-tx-query/getblockbalance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询区块的账户余额变更
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/block-and-tx-query/gettransactioncountbyblocknum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    区块内交易数
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/block-and-tx-query/gettransactionbyid/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按 txid 查询交易
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/block-and-tx-query/gettransactioninfobyid/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按 txid 查询交易回执
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/block-and-tx-query/gettransactioninfobyblocknum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按区块查询交易回执
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/block-and-tx-query/getpendingsize/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    待打包交易池大小
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/block-and-tx-query/gettransactionfrompending/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询单条 pending 交易
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/block-and-tx-query/gettransactionlistfrompending/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    全部 pending 交易 ID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_4" id="__nav_4_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    交易构造 / 广播
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            交易构造 / 广播
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/tx-build-and-broadcast/createtransaction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    构造 TRX 转账交易
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/tx-build-and-broadcast/getsignweight/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询多签当前权重
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/tx-build-and-broadcast/getapprovedlist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询多签已签署地址
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/tx-build-and-broadcast/broadcasttransaction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    广播签名后的交易 JSON
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/tx-build-and-broadcast/broadcasthex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    广播签名后的交易 hex
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_5" id="__nav_4_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    TRC10 资产
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            TRC10 资产
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/asset/createassetissue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    发行 TRC10 token
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/asset/updateasset/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    修改 TRC10 描述
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/asset/transferasset/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    转账 TRC10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/asset/participateassetissue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    参与 TRC10 募资
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/asset/unfreezeasset/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    解锁发行方冻结的 TRC10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/asset/getassetissuebyid/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按 id 查询 TRC10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/asset/getassetissuebyname/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按名查询 TRC10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/asset/getassetissuelistbyname/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    同名 TRC10 列表
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/asset/getassetissuebyaccount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    账户发行的 TRC10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/asset/getassetissuelist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    全网 TRC10 列表
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/asset/getpaginatedassetissuelist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分页 TRC10 列表
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_6" id="__nav_4_2_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    智能合约
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            智能合约
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/smart-contract/deploycontract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    部署合约
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/smart-contract/triggersmartcontract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    触发合约写
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/smart-contract/triggerconstantcontract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    只读调用合约
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/smart-contract/estimateenergy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    预估调用能量消耗
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/smart-contract/getcontract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询合约元信息
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/smart-contract/getcontractinfo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询合约完整运行信息
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/smart-contract/clearabi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    清空合约 ABI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/smart-contract/updatesetting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    修改用户能量百分比
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/smart-contract/updateenergylimit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    修改部署者能量上限
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_7" id="__nav_4_2_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    见证人 / 治理
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            见证人 / 治理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/witness-and-governance/createwitness/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    申请成为 SR 候选人
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/witness-and-governance/updatewitness/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    修改 SR URL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/witness-and-governance/listwitnesses/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    所有 SR 候选人列表
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/witness-and-governance/getpaginatednowwitnesslist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分页 SR 列表
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/witness-and-governance/votewitnessaccount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    给 SR 投票
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/witness-and-governance/getBrokerage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SR 当前佣金比例
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/witness-and-governance/updateBrokerage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SR 修改佣金
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/witness-and-governance/getReward/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询可领取分红
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/witness-and-governance/withdrawbalance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    提取出块奖励或分红
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/witness-and-governance/proposalcreate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    创建链参数提案
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/witness-and-governance/proposalapprove/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SR 对提案投票
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/witness-and-governance/proposaldelete/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    撤销自己的提案
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/witness-and-governance/listproposals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    提案列表
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/witness-and-governance/getproposalbyid/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按 ID 查询提案
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/witness-and-governance/getpaginatedproposallist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分页提案列表
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/witness-and-governance/getchainparameters/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    链参数当前值
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/witness-and-governance/getnextmaintenancetime/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    下次维护期时间
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_8" id="__nav_4_2_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    质押 1.0（仅保留解冻与查询）
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            质押 1.0（仅保留解冻与查询）
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/stake-v1/freezebalance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    冻结 TRX 获取资源 V1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/stake-v1/unfreezebalance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    解冻已到期资源 V1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/stake-v1/getdelegatedresource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询代理记录 V1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/stake-v1/getdelegatedresourceaccountindex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询代理对手地址 V1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_9" id="__nav_4_2_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    质押 2.0
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            质押 2.0
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/stake-v2/freezebalancev2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    冻结 TRX 获取资源
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/stake-v2/unfreezebalancev2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    发起解冻
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/stake-v2/withdrawexpireunfreeze/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    提取已到期解冻
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/stake-v2/cancelallunfreezev2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    取消所有未到期解冻
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/stake-v2/delegateresource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    资源代理给他人
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/stake-v2/undelegateresource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    撤销资源代理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/stake-v2/getdelegatedresourcev2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询代理记录
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/stake-v2/getdelegatedresourceaccountindexv2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询代理对手地址
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/stake-v2/getcandelegatedmaxsize/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当前可代理上限
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/stake-v2/getavailableunfreezecount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    剩余可解冻次数
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/stake-v2/getcanwithdrawunfreezeamount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    指定时间可提取金额
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_10" id="__nav_4_2_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    节点 / 价格 / 工具
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            节点 / 价格 / 工具
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/node-and-tools/getnodeinfo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    节点状态
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/node-and-tools/listnodes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    已知对等节点
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/node-and-tools/getenergyprices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    能量历史单价
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/node-and-tools/getbandwidthprices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    带宽历史单价
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/node-and-tools/getburntrx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    累计销毁 TRX
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../api/rpc/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     gRPC 接口
@@ -902,6 +3545,94 @@
   </span>
   
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            gRPC 接口
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_2" id="__nav_4_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    账户
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            账户
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/account/GetAccount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按地址查询账户
+    
+  </span>
+  
+
       </a>
     </li>
   
@@ -915,11 +3646,3571 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/json-rpc/" class="md-nav__link">
+      <a href="../../api/rpc/account/GetAccountBalance/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
+    查询账户在指定区块的余额
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/account/GetAccountNet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询账户带宽资源
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/account/GetAccountResource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询账户带宽+能量+TronPower
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/account/CreateAccount2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    链上创建账户
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/account/UpdateAccount2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    修改账户名
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/account/AccountPermissionUpdate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    配置多签权限
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_3" id="__nav_4_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    区块 / 交易查询
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            区块 / 交易查询
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/block-and-tx-query/GetNowBlock2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当前最新区块
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/block-and-tx-query/GetBlock/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    通用区块查询
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/block-and-tx-query/GetBlockByNum2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按高度查询区块
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/block-and-tx-query/GetBlockById/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按 hash 查询区块
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/block-and-tx-query/GetBlockByLimitNext2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按区间查询区块
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/block-and-tx-query/GetBlockByLatestNum2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询最近 N 个区块
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/block-and-tx-query/GetBlockBalanceTrace/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询区块的账户余额变更
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/block-and-tx-query/GetTransactionCountByBlockNum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    区块内交易数
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/block-and-tx-query/GetTransactionById/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按 txid 查询交易
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/block-and-tx-query/GetTransactionInfoById/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按 txid 查询交易回执
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/block-and-tx-query/GetTransactionInfoByBlockNum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按区块查询交易回执
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/block-and-tx-query/GetPendingSize/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    待打包交易池大小
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/block-and-tx-query/GetTransactionFromPending/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询单条 pending 交易
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/block-and-tx-query/GetTransactionListFromPending/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    全部 pending 交易 ID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_4" id="__nav_4_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    交易构造 / 广播
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            交易构造 / 广播
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/tx-build-and-broadcast/CreateTransaction2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    构造 TRX 转账交易
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/tx-build-and-broadcast/GetTransactionSignWeight/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询多签当前权重
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/tx-build-and-broadcast/GetTransactionApprovedList/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询多签已签署地址
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/tx-build-and-broadcast/BroadcastTransaction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    广播签名后的交易 JSON
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_5" id="__nav_4_3_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    TRC10 资产
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            TRC10 资产
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/asset/CreateAssetIssue2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    发行 TRC10 token
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/asset/UpdateAsset2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    修改 TRC10 描述
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/asset/TransferAsset2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    转账 TRC10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/asset/ParticipateAssetIssue2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    参与 TRC10 募资
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/asset/UnfreezeAsset2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    解锁发行方冻结的 TRC10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/asset/GetAssetIssueById/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按 id 查询 TRC10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/asset/GetAssetIssueByName/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按名查询 TRC10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/asset/GetAssetIssueListByName/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    同名 TRC10 列表
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/asset/GetAssetIssueByAccount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    账户发行的 TRC10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/asset/GetAssetIssueList/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    全网 TRC10 列表
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/asset/GetPaginatedAssetIssueList/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分页 TRC10 列表
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_6" id="__nav_4_3_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    智能合约
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            智能合约
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/smart-contract/DeployContract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    部署合约
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/smart-contract/TriggerContract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    触发合约写
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/smart-contract/TriggerConstantContract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    只读调用合约
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/smart-contract/EstimateEnergy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    预估调用能量消耗
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/smart-contract/GetContract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询合约元信息
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/smart-contract/GetContractInfo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询合约完整运行信息
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/smart-contract/ClearContractABI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    清空合约 ABI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/smart-contract/UpdateSetting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    修改用户能量百分比
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/smart-contract/UpdateEnergyLimit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    修改部署者能量上限
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_7" id="__nav_4_3_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    见证人 / 治理
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            见证人 / 治理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/witness-and-governance/CreateWitness2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    申请成为 SR 候选人
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/witness-and-governance/UpdateWitness2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    修改 SR URL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/witness-and-governance/ListWitnesses/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    所有 SR 候选人列表
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/witness-and-governance/GetPaginatedNowWitnessList/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分页 SR 列表
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/witness-and-governance/VoteWitnessAccount2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    给 SR 投票
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/witness-and-governance/GetBrokerageInfo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SR 当前佣金比例
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/witness-and-governance/UpdateBrokerage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SR 修改佣金
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/witness-and-governance/GetRewardInfo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询可领取分红
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/witness-and-governance/WithdrawBalance2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    提取出块奖励或分红
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/witness-and-governance/ProposalCreate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    创建链参数提案
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/witness-and-governance/ProposalApprove/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SR 对提案投票
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/witness-and-governance/ProposalDelete/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    撤销自己的提案
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/witness-and-governance/ListProposals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    提案列表
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/witness-and-governance/GetProposalById/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按 ID 查询提案
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/witness-and-governance/GetPaginatedProposalList/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分页提案列表
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/witness-and-governance/GetChainParameters/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    链参数当前值
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/witness-and-governance/GetNextMaintenanceTime/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    下次维护期时间
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_8" id="__nav_4_3_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    质押 1.0（仅保留解冻与查询）
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            质押 1.0（仅保留解冻与查询）
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/stake-v1/FreezeBalance2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    冻结 TRX 获取资源 V1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/stake-v1/UnfreezeBalance2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    解冻已到期资源 V1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/stake-v1/GetDelegatedResource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询代理记录 V1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/stake-v1/GetDelegatedResourceAccountIndex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询代理对手地址 V1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_9" id="__nav_4_3_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    质押 2.0
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            质押 2.0
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/stake-v2/FreezeBalanceV2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    冻结 TRX 获取资源
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/stake-v2/UnfreezeBalanceV2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    发起解冻
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/stake-v2/WithdrawExpireUnfreeze/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    提取已到期解冻
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/stake-v2/CancelAllUnfreezeV2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    取消所有未到期解冻
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/stake-v2/DelegateResource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    资源代理给他人
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/stake-v2/UnDelegateResource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    撤销资源代理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/stake-v2/GetDelegatedResourceV2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询代理记录
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/stake-v2/GetDelegatedResourceAccountIndexV2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询代理对手地址
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/stake-v2/GetCanDelegatedMaxSize/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当前可代理上限
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/stake-v2/GetAvailableUnfreezeCount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    剩余可解冻次数
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/stake-v2/GetCanWithdrawUnfreezeAmount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    指定时间可提取金额
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_10" id="__nav_4_3_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    节点 / 价格 / 工具
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_10">
+            <span class="md-nav__icon md-icon"></span>
+            节点 / 价格 / 工具
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/node-and-tools/GetNodeInfo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    节点状态
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/node-and-tools/ListNodes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    已知对等节点
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/node-and-tools/GetEnergyPrices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    能量历史单价
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/node-and-tools/GetBandwidthPrices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    带宽历史单价
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/node-and-tools/GetBurnTrx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    累计销毁 TRX
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../api/json-rpc/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
     jsonRPC 接口
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            jsonRPC 接口
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_2" id="__nav_4_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    节点信息 / 链身份
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            节点信息 / 链身份
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/node/web3_clientVersion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    客户端版本字符串
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/node/web3_sha3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keccak-256 哈希
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/node/net_version/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    网络 ID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/node/net_listening/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    是否在监听 P2P
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/node/net_peerCount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    对等节点数
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/node/eth_chainId/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    链 ID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/node/eth_protocolVersion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    协议版本号
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/node/eth_syncing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    同步状态
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/node/eth_blockNumber/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    最新块高
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/node/eth_gasPrice/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当前 energy 单价
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_3" id="__nav_4_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    区块 / 交易查询
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            区块 / 交易查询
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/block-and-tx-query/eth_getBlockByHash/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按 hash 查询块
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/block-and-tx-query/eth_getBlockByNumber/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按高度/tag 查询块
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/block-and-tx-query/eth_getBlockTransactionCountByHash/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    块内交易数（按 hash）
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/block-and-tx-query/eth_getBlockTransactionCountByNumber/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    块内交易数（按高度）
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/block-and-tx-query/eth_getTransactionByHash/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按 txid 查询交易
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/block-and-tx-query/eth_getTransactionByBlockHashAndIndex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按块 hash + index 查询交易
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/block-and-tx-query/eth_getTransactionByBlockNumberAndIndex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按块高 + index 查询交易
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/block-and-tx-query/eth_getTransactionReceipt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    按 txid 查询回执
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/block-and-tx-query/eth_getBlockReceipts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    整块回执列表
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_4" id="__nav_4_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    账户状态
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            账户状态
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/account/eth_getBalance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    账户 TRX 余额
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/account/eth_getStorageAt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    合约存储槽
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/account/eth_getCode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    合约 runtime 字节码
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_5" id="__nav_4_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    智能合约调用
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            智能合约调用
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/smart-contract/eth_call/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    只读调用合约
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/smart-contract/eth_estimateGas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    估算 energy 消耗
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_6" id="__nav_4_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    日志 / 过滤器
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            日志 / 过滤器
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/filter/eth_getLogs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一次性日志查询
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/filter/eth_newFilter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    注册日志 filter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/filter/eth_newBlockFilter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    注册新块 filter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/filter/eth_uninstallFilter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    卸载 filter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/filter/eth_getFilterChanges/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    拉取并清空 filter 增量
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/filter/eth_getFilterLogs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    拉取 log filter 全量
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_7" id="__nav_4_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    交易构造
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            交易构造
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/tx-build/buildTransaction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    构造未签名交易
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_8" id="__nav_4_4_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    兼容桩方法
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            兼容桩方法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/stub/eth_coinbase/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    etherbase 地址
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/stub/eth_accounts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    节点托管账户列表
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/stub/eth_getWork/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    挖矿任务信息
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/interface-definitions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    机器可读定义
     
   </span>
   
@@ -944,6 +7235,22 @@
   
   
     
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
       
@@ -1117,28 +7424,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mechanism-algorithm/dex/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    去中心化交易所
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../mechanism-algorithm/multi-signatures/" class="md-nav__link">
         
   
@@ -1168,6 +7453,30 @@
   
   
     
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
       
@@ -1231,11 +7540,121 @@
   
   
     <li class="md-nav__item">
-      <a href="../../developers/tips/" class="md-nav__link">
+      <a href="../../developers/workflows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CI 工作流
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/code-structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    核心模块
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/chainbase/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ChainBase 深入解析
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    P2P 网络深入解析
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/tip-workflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     TIPs工作流程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIPs
     
   </span>
   
@@ -1334,28 +7753,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../developers/code-structure/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    核心模块
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1370,6 +7767,10 @@
   
   
     
+    
+      
+        
+      
     
     
       
@@ -1441,6 +7842,10 @@
   
     
     
+      
+        
+      
+    
     
       
         
@@ -1480,9 +7885,33 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../clients/wallet-cli/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../clients/wallet-cli/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     wallet-cli
@@ -1490,7 +7919,411 @@
   </span>
   
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_1" id="__nav_8_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            wallet-cli
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_2" id="__nav_8_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Java CLI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Java CLI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli/java-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    概览
+    
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli/wallet-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    钱包管理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli/accounts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    账户
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli/staking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    质押与资源
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli/transactions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    交易
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli/smart-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    智能合约
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli/trc10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TRC-10 资产
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli/governance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    治理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli/gasfree/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GasFree
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli/query/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查询
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1_3" id="__nav_8_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    TypeScript / npm CLI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            TypeScript / npm CLI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli/typescript-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    概览
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli/typescript-cli-signing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    签名与安全
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1510,6 +8343,14 @@
   
   
     
+    
+      
+        
+      
+        
+      
+        
+      
     
     
       
@@ -1594,9 +8435,93 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../releases/history/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../releases/versions/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     历史版本
@@ -1604,7 +8529,731 @@
   </span>
   
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9_3" id="__nav_9_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_3">
+            <span class="md-nav__icon md-icon"></span>
+            历史版本
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.8.2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.8.2 (Pyrrho)
+    
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.8.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.8.1 (Democritus)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.8.0.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.8.0.1 (Seneca)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.8.0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.8.0 (Kant)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.7.7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.7 (Epicurus)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.7.6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.6 (Anaximander)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.7.5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.5 (Cleobulus)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.7.4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.4 (Bias)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.7.3.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.3.1 (Solon)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.7.3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.3 (Chilon)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.7.2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.2 (Periander)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.7.1.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.1.1 (Pittacus)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.7.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.1 (Sartre)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.7.0.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.7.0.1 (Aristotle)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.6.0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.6.0 (Socrates)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.5.2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.5.2 (Aurelius)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.5.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.5.1 (Tertullian)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.4.6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.4.6 (David)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.4.5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.4.5 (Cicero)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.4.4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.4.4 (Plotinus)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.4.2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.4.2 (Augustinus)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.4.0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.4.0 (Rousseau)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.3.0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.3.0 (Bacon)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.2.2.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.2.2.1 (Epictetus)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.2.2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.2.2 (Lucretius)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.2.0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.2.0 (Plato)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.1.3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.1.3 (Thales)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.1.2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.1.2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.1.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.1.1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v4.0.0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    v4.0.0
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v3.7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Odyssey-v3.7
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/versions/v3.6.5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Odyssey-v3.6.5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1624,6 +9273,10 @@
   
   
     
+    
+      
+        
+      
     
     
       
@@ -1694,6 +9347,251 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item has-children">
+  <a href="#_1" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      基础配置网络
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基础配置网络" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#p2p-id" class="md-nav__link" >
+    <span class="md-ellipsis">
+      网络标识（P2P 网络 ID）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#genesis-block" class="md-nav__link" >
+    <span class="md-ellipsis">
+      创世块（Genesis Block）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#_2" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      节点发现
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="节点发现" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#_3" class="md-nav__link" >
+    <span class="md-ellipsis">
+      启用节点发现
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#_4" class="md-nav__link" >
+    <span class="md-ellipsis">
+      引导节点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#_7" class="md-nav__link" >
+    <span class="md-ellipsis">
+      关闭节点发现
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#_8" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      节点连接
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="节点连接" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#_9" class="md-nav__link" >
+    <span class="md-ellipsis">
+      节点连接数量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#active-connection-active-peers" class="md-nav__link" >
+    <span class="md-ellipsis">
+      主动连接（Active Peers）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#_10" class="md-nav__link" >
+    <span class="md-ellipsis">
+      被动连接
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#_11" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      日志与节点状态验证
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="日志与节点状态验证" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#_12" class="md-nav__link" >
+    <span class="md-ellipsis">
+      查看同步日志
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#_13" class="md-nav__link" >
+    <span class="md-ellipsis">
+      同步中日志示例：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#_14" class="md-nav__link" >
+    <span class="md-ellipsis">
+      生产区块日志示例（超级代表节点）：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#_15" class="md-nav__link" >
+    <span class="md-ellipsis">
+      查询节点状态
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#_16" class="md-nav__link" >
+    <span class="md-ellipsis">
+      验证节点同步状态
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#_17" class="md-nav__link" >
+    <span class="md-ellipsis">
+      常见连接问题排查
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#_18" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      连接私链网络
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="连接私链网络" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#_19" class="md-nav__link" >
+    <span class="md-ellipsis">
+      配置要点：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#_20" class="md-nav__link" >
+    <span class="md-ellipsis">
+      搭建参考：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           
             <div class="md-content" data-md-component="content">
@@ -1703,6 +9601,19 @@
 
 
   
+    <a href="https://github.com/tronprotocol/documentation-zh/edit/master/docs/using_javatron/connecting_to_tron.md" title="编辑此页" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/tronprotocol/documentation-zh/raw/master/docs/using_javatron/connecting_to_tron.md" title="查看本页的源代码" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
   
 
 
@@ -1715,19 +9626,22 @@
 <li><strong>私有链（Private Network）</strong></li>
 </ul>
 <p>本指南将介绍如何配置 java-tron 客户端连接到这些网络，涵盖基础配置网络、节点发现、节点连接，日志与节点状态验证以及如何排查连接问题。</p>
+<blockquote>
+<p>本文是运维配置指南。关于 P2P 网络的内部原理（架构、区块同步与广播协议），请参阅 <a href="../../developers/network/">P2P 网络深入解析</a>。</p>
+</blockquote>
 <h2 id="_1">基础配置网络<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>通过修改 <a href="https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf">配置文件</a> 中的以下关键项，可将 java-tron 节点接入指定网络：</p>
+<p>通过修改当前<a href="https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf">主网配置文件</a>中的以下关键项，可将 java-tron 节点接入指定网络。</p>
 <h3 id="p2p-id">网络标识（P2P 网络 ID）<a class="headerlink" href="#p2p-id" title="Permanent link">&para;</a></h3>
-<p>网络ID(<code>p2p.version</code>): 表示希望加入的网络。相关配置项：
-<div class="highlight"><pre><span></span><code>node {
-  ...
-  p2p {
-    version = 11111
-  }
-  ...
-}
+<p>P2P 网络 ID（<code>node.p2p.version</code>）指定希望加入的网络。主网配置如下：</p>
+<div class="highlight"><pre><span></span><code><span class="na">node</span><span class="w"> </span><span class="s">{</span>
+<span class="w">  </span><span class="na">...</span>
+<span class="w">  </span><span class="na">p2p</span><span class="w"> </span><span class="s">{</span>
+<span class="w">    </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">11111</span>
+<span class="w">  </span><span class="na">}</span>
+<span class="w">  </span><span class="na">...</span>
+<span class="na">}</span>
 </code></pre></div>
-特别的：</p>
+<p>特别的：</p>
 <ul>
 <li>主网：<code>version=11111</code></li>
 <li>Nile 测试网：<code>version = 201910292</code></li>
@@ -1735,330 +9649,349 @@
 <li>私链网络：自定义，设置成其它值</li>
 </ul>
 <h3 id="genesis-block">创世块（Genesis Block）<a class="headerlink" href="#genesis-block" title="Permanent link">&para;</a></h3>
-<p>需保证创世块 <code>genesis.block</code> 的设置与网络中其它节点的相同，否则无法和其他节点建立连接。主网的 <code>genesis.block</code> 配置如下：
-<div class="highlight"><pre><span></span><code>genesis.block = {
-  # Reserve balance
-  assets = [
-    {
-      accountName = &quot;Zion&quot;
-      accountType = &quot;AssetIssue&quot;
-      address = &quot;TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm&quot;
-      balance = &quot;99000000000000000&quot;
-    },
-    {
-      accountName = &quot;Sun&quot;
-      accountType = &quot;AssetIssue&quot;
-      address = &quot;TXmVpin5vq5gdZsciyyjdZgKRUju4st1wM&quot;
-      balance = &quot;0&quot;
-    },
-    {
-      accountName = &quot;Blackhole&quot;
-      accountType = &quot;AssetIssue&quot;
-      address = &quot;TLsV52sRDL79HXGGm9yzwKibb6BeruhUzy&quot;
-      balance = &quot;-9223372036854775808&quot;
-    }
-  ]
-  witnesses = [
-    {
-      address: THKJYuUmMKKARNf7s2VT51g5uPY6KEqnat,
-      url = &quot;http://GR1.com&quot;,
-      voteCount = 100000026
-    },
-    {
-      address: TVDmPWGYxgi5DNeW8hXrzrhY8Y6zgxPNg4,
-      url = &quot;http://GR2.com&quot;,
-      voteCount = 100000025
-    },
-    {
-      address: TWKZN1JJPFydd5rMgMCV5aZTSiwmoksSZv,
-      url = &quot;http://GR3.com&quot;,
-      voteCount = 100000024
-    },
-    {
-      address: TDarXEG2rAD57oa7JTK785Yb2Et32UzY32,
-      url = &quot;http://GR4.com&quot;,
-      voteCount = 100000023
-    },
-    {
-      address: TAmFfS4Tmm8yKeoqZN8x51ASwdQBdnVizt,
-      url = &quot;http://GR5.com&quot;,
-      voteCount = 100000022
-    },
-    {
-      address: TK6V5Pw2UWQWpySnZyCDZaAvu1y48oRgXN,
-      url = &quot;http://GR6.com&quot;,
-      voteCount = 100000021
-    },
-    {
-      address: TGqFJPFiEqdZx52ZR4QcKHz4Zr3QXA24VL,
-      url = &quot;http://GR7.com&quot;,
-      voteCount = 100000020
-    },
-    {
-      address: TC1ZCj9Ne3j5v3TLx5ZCDLD55MU9g3XqQW,
-      url = &quot;http://GR8.com&quot;,
-      voteCount = 100000019
-    },
-    {
-      address: TWm3id3mrQ42guf7c4oVpYExyTYnEGy3JL,
-      url = &quot;http://GR9.com&quot;,
-      voteCount = 100000018
-    },
-    {
-      address: TCvwc3FV3ssq2rD82rMmjhT4PVXYTsFcKV,
-      url = &quot;http://GR10.com&quot;,
-      voteCount = 100000017
-    },
-    {
-      address: TFuC2Qge4GxA2U9abKxk1pw3YZvGM5XRir,
-      url = &quot;http://GR11.com&quot;,
-      voteCount = 100000016
-    },
-    {
-      address: TNGoca1VHC6Y5Jd2B1VFpFEhizVk92Rz85,
-      url = &quot;http://GR12.com&quot;,
-      voteCount = 100000015
-    },
-    {
-      address: TLCjmH6SqGK8twZ9XrBDWpBbfyvEXihhNS,
-      url = &quot;http://GR13.com&quot;,
-      voteCount = 100000014
-    },
-    {
-      address: TEEzguTtCihbRPfjf1CvW8Euxz1kKuvtR9,
-      url = &quot;http://GR14.com&quot;,
-      voteCount = 100000013
-    },
-    {
-      address: TZHvwiw9cehbMxrtTbmAexm9oPo4eFFvLS,
-      url = &quot;http://GR15.com&quot;,
-      voteCount = 100000012
-    },
-    {
-      address: TGK6iAKgBmHeQyp5hn3imB71EDnFPkXiPR,
-      url = &quot;http://GR16.com&quot;,
-      voteCount = 100000011
-    },
-    {
-      address: TLaqfGrxZ3dykAFps7M2B4gETTX1yixPgN,
-      url = &quot;http://GR17.com&quot;,
-      voteCount = 100000010
-    },
-    {
-      address: TX3ZceVew6yLC5hWTXnjrUFtiFfUDGKGty,
-      url = &quot;http://GR18.com&quot;,
-      voteCount = 100000009
-    },
-    {
-      address: TYednHaV9zXpnPchSywVpnseQxY9Pxw4do,
-      url = &quot;http://GR19.com&quot;,
-      voteCount = 100000008
-    },
-    {
-      address: TCf5cqLffPccEY7hcsabiFnMfdipfyryvr,
-      url = &quot;http://GR20.com&quot;,
-      voteCount = 100000007
-    },
-    {
-      address: TAa14iLEKPAetX49mzaxZmH6saRxcX7dT5,
-      url = &quot;http://GR21.com&quot;,
-      voteCount = 100000006
-    },
-    {
-      address: TBYsHxDmFaRmfCF3jZNmgeJE8sDnTNKHbz,
-      url = &quot;http://GR22.com&quot;,
-      voteCount = 100000005
-    },
-    {
-      address: TEVAq8dmSQyTYK7uP1ZnZpa6MBVR83GsV6,
-      url = &quot;http://GR23.com&quot;,
-      voteCount = 100000004
-    },
-    {
-      address: TRKJzrZxN34YyB8aBqqPDt7g4fv6sieemz,
-      url = &quot;http://GR24.com&quot;,
-      voteCount = 100000003
-    },
-    {
-      address: TRMP6SKeFUt5NtMLzJv8kdpYuHRnEGjGfe,
-      url = &quot;http://GR25.com&quot;,
-      voteCount = 100000002
-    },
-    {
-      address: TDbNE1VajxjpgM5p7FyGNDASt3UVoFbiD3,
-      url = &quot;http://GR26.com&quot;,
-      voteCount = 100000001
-    },
-    {
-      address: TLTDZBcPoJ8tZ6TTEeEqEvwYFk2wgotSfD,
-      url = &quot;http://GR27.com&quot;,
-      voteCount = 100000000
-    }
-  ]
-  timestamp = &quot;0&quot; #2017-8-26 12:00:00
-  parentHash = &quot;0xe58f33f9baf9305dc6f82b9f1934ea8f0ade2defb951258d50167028c780351f&quot;
-}
-</code></pre></div></p>
+<p>需保证创世块 <code>genesis.block</code> 的设置与网络中其它节点的相同，否则无法和其他节点建立连接。主网的 <code>genesis.block</code> 配置如下：</p>
+<div class="highlight"><pre><span></span><code><span class="na">genesis.block</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">{</span>
+<span class="w">  </span><span class="c1"># Reserve balance</span>
+<span class="w">  </span><span class="na">assets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">accountName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Zion&quot;</span>
+<span class="w">      </span><span class="na">accountType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;AssetIssue&quot;</span>
+<span class="w">      </span><span class="na">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm&quot;</span>
+<span class="w">      </span><span class="na">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;99000000000000000&quot;</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">accountName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Sun&quot;</span>
+<span class="w">      </span><span class="na">accountType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;AssetIssue&quot;</span>
+<span class="w">      </span><span class="na">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;TXmVpin5vq5gdZsciyyjdZgKRUju4st1wM&quot;</span>
+<span class="w">      </span><span class="na">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;0&quot;</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">accountName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Blackhole&quot;</span>
+<span class="w">      </span><span class="na">accountType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;AssetIssue&quot;</span>
+<span class="w">      </span><span class="na">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;TLsV52sRDL79HXGGm9yzwKibb6BeruhUzy&quot;</span>
+<span class="w">      </span><span class="na">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;-9223372036854775808&quot;</span>
+<span class="w">    </span><span class="na">}</span>
+<span class="w">  </span><span class="na">]</span>
+<span class="w">  </span><span class="na">witnesses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">THKJYuUmMKKARNf7s2VT51g5uPY6KEqnat,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR1.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000026</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TVDmPWGYxgi5DNeW8hXrzrhY8Y6zgxPNg4,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR2.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000025</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TWKZN1JJPFydd5rMgMCV5aZTSiwmoksSZv,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR3.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000024</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TDarXEG2rAD57oa7JTK785Yb2Et32UzY32,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR4.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000023</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TAmFfS4Tmm8yKeoqZN8x51ASwdQBdnVizt,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR5.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000022</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TK6V5Pw2UWQWpySnZyCDZaAvu1y48oRgXN,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR6.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000021</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TGqFJPFiEqdZx52ZR4QcKHz4Zr3QXA24VL,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR7.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000020</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TC1ZCj9Ne3j5v3TLx5ZCDLD55MU9g3XqQW,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR8.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000019</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TWm3id3mrQ42guf7c4oVpYExyTYnEGy3JL,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR9.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000018</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TCvwc3FV3ssq2rD82rMmjhT4PVXYTsFcKV,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR10.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000017</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TFuC2Qge4GxA2U9abKxk1pw3YZvGM5XRir,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR11.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000016</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TNGoca1VHC6Y5Jd2B1VFpFEhizVk92Rz85,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR12.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000015</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TLCjmH6SqGK8twZ9XrBDWpBbfyvEXihhNS,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR13.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000014</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TEEzguTtCihbRPfjf1CvW8Euxz1kKuvtR9,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR14.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000013</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TZHvwiw9cehbMxrtTbmAexm9oPo4eFFvLS,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR15.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000012</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TGK6iAKgBmHeQyp5hn3imB71EDnFPkXiPR,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR16.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000011</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TLaqfGrxZ3dykAFps7M2B4gETTX1yixPgN,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR17.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000010</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TX3ZceVew6yLC5hWTXnjrUFtiFfUDGKGty,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR18.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000009</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TYednHaV9zXpnPchSywVpnseQxY9Pxw4do,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR19.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000008</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TCf5cqLffPccEY7hcsabiFnMfdipfyryvr,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR20.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000007</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TAa14iLEKPAetX49mzaxZmH6saRxcX7dT5,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR21.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000006</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TBYsHxDmFaRmfCF3jZNmgeJE8sDnTNKHbz,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR22.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000005</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TEVAq8dmSQyTYK7uP1ZnZpa6MBVR83GsV6,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR23.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000004</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TRKJzrZxN34YyB8aBqqPDt7g4fv6sieemz,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR24.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000003</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TRMP6SKeFUt5NtMLzJv8kdpYuHRnEGjGfe,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR25.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000002</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TDbNE1VajxjpgM5p7FyGNDASt3UVoFbiD3,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR26.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000001</span>
+<span class="w">    </span><span class="na">},</span>
+<span class="w">    </span><span class="na">{</span>
+<span class="w">      </span><span class="na">address</span><span class="o">:</span><span class="w"> </span><span class="s">TLTDZBcPoJ8tZ6TTEeEqEvwYFk2wgotSfD,</span>
+<span class="w">      </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://GR27.com&quot;,</span>
+<span class="w">      </span><span class="na">voteCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100000000</span>
+<span class="w">    </span><span class="na">}</span>
+<span class="w">  </span><span class="na">]</span>
+<span class="w">  </span><span class="na">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;0&quot; # 创世块时间戳，单位为毫秒</span>
+<span class="w">  </span><span class="na">parentHash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;0xe58f33f9baf9305dc6f82b9f1934ea8f0ade2defb951258d50167028c780351f&quot;</span>
+<span class="na">}</span>
+</code></pre></div>
 <h2 id="_2">节点发现<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <h3 id="_3">启用节点发现<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>节点发现通过配置文件开启和关闭。默认开启，相关配置项如下：
-<div class="highlight"><pre><span></span><code>node.discovery = {
-  ...
-  enable = true
-  ...
-}
-</code></pre></div></p>
-<h3 id="_4">引导节点<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>java-tron 使用 <a href="https://zh.wikipedia.org/wiki/Kademlia">Kademlia</a> 协议发现其他节点。节点发现需要引导节点 (boot 节点)，借助引导节点发现 TRON 网络中的其他节点。引导节点由两部分组成，一部分是种子节点，一部分是配置的主动连接节点，详情见<a href="#active-peers">主动连接</a>。</p>
-<p>种子节点也由两部分组成：</p>
-<h4 id="seednode">配置的 <code>seed.node</code><a class="headerlink" href="#seednode" title="Permanent link">&para;</a></h4>
-<p>使用 <code>seed.node</code> 初始化网络连接。应设置为在线稳定的全节点。</p>
-<p><div class="highlight"><pre><span></span><code>seed.node = {
-  ip.list = [
-    &quot;3.225.171.164:18888&quot;,
-    &quot;52.8.46.215:18888&quot;,
-    ...
-    &quot;18.163.230.203:18888&quot;
-    #&quot;[2a05:d014:1f2f:2600:1b15:921:d60b:4c60]:18888&quot;, // use this if support ipv6
-    #&quot;[2600:1f18:7260:f400:8947:ebf3:78a0:282b]:18888&quot;, // use this if support ipv6
-  ]
-}
+<p>节点发现通过配置文件开启和关闭。默认开启，相关配置项如下：</p>
+<div class="highlight"><pre><span></span><code><span class="na">node.discovery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">{</span>
+<span class="w">  </span><span class="na">...</span>
+<span class="w">  </span><span class="na">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+<span class="w">  </span><span class="na">...</span>
+<span class="na">}</span>
 </code></pre></div>
-对于TRON主网，可以使用 <a href="https://developers.tron.network/docs/networks#public-node">社区公共节点</a> 作为种子节点。如果想要获取最新的<code>seed.node</code>，可以在官方的 <a href="https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf">配置文件</a> 查看。
+<h3 id="_4">引导节点<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>java-tron 使用 <a href="https://zh.wikipedia.org/wiki/Kademlia">Kademlia</a> 协议发现其他节点。节点发现需要引导节点 (boot 节点)，借助引导节点发现 TRON 网络中的其他节点。引导节点由两部分组成，一部分是种子节点，一部分是配置的主动连接节点，详情见<a href="#active-connection-active-peers">主动连接</a>。</p>
+<p>种子节点也由两部分组成：</p>
+<h4 id="seednodeiplist">配置的 <code>seed.node.ip.list</code><a class="headerlink" href="#seednodeiplist" title="Permanent link">&para;</a></h4>
+<p>使用 <code>seed.node.ip.list</code> 初始化网络连接。应设置为在线稳定的全节点。每个条目可以使用 IPv4 地址、带方括号的 IPv6 地址或域名：</p>
+<div class="highlight"><pre><span></span><code><span class="na">seed.node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">{</span>
+<span class="w">  </span><span class="na">ip.list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[</span>
+<span class="w">    </span><span class="na">&quot;3.225.171.164</span><span class="o">:</span><span class="s">18888&quot;,</span>
+<span class="w">    </span><span class="na">&quot;52.8.46.215</span><span class="o">:</span><span class="s">18888&quot;,</span>
+<span class="w">    </span><span class="na">...</span>
+<span class="w">    </span><span class="na">&quot;18.163.230.203</span><span class="o">:</span><span class="s">18888&quot;</span>
+<span class="w">    </span><span class="c1">#&quot;seed.example.com:18888&quot;, // 域名</span>
+<span class="w">    </span><span class="c1">#&quot;[2a05:d014:1f2f:2600:1b15:921:d60b:4c60]:18888&quot;, // use this if support ipv6</span>
+<span class="w">    </span><span class="c1">#&quot;[2600:1f18:7260:f400:8947:ebf3:78a0:282b]:18888&quot;, // use this if support ipv6</span>
+<span class="w">  </span><span class="na">]</span>
+<span class="na">}</span>
+</code></pre></div>
+<p>对于 TRON 主网，可以使用<a href="https://developers.tron.network/docs/networks#public-node">社区公共节点</a>作为种子节点。如果想要获取最新的 <code>seed.node.ip.list</code>，可以在官方的<a href="https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf">配置文件</a>中查看。
 如果网卡支持 ipv6，可以使用上述列表中的 ipv6 地址格式的种子节点，将注释符 <code>#</code> 去掉即可。</p>
-<h4 id="_5">从数据库中读取的持久化节点<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>持久化节点需要开启节点持久化服务。如果开启该功能，<a href="https://zh.wikipedia.org/wiki/Kademlia#%E8%B7%AF%E7%94%B1%E8%A1%A8">路由表</a> 中的节点会被定时任务写入数据库，如果节点启动的时候基于此数据库，会从数据库中读取这些节点作为种子节点使用。相关配置项：
-<div class="highlight"><pre><span></span><code>node.discovery = {
-  ...
-  persist = true
-  ... 
-}
-</code></pre></div></p>
-<p>节点发现基于 UDP 协议 (User Datagram Protocol)，绑定的默认端口是 <code>18888</code>，也可以绑定其他端口。相关配置项：
-<div class="highlight"><pre><span></span><code>node {
-  ...
-  listen.port = 18888
-  ...
-}
-</code></pre></div></p>
-<h3 id="_6">关闭节点发现<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="_5">对等节点配置中的域名<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>从 GreatVoyage-v4.8.2 开始，<code>seed.node.ip.list</code>、<code>node.active</code>、<code>node.passive</code> 和 <code>node.fastForward</code> 除了支持 IP 地址外，还支持使用 <code>hostname:port</code> 格式的域名。这四个配置项中的 IPv6 地址必须使用 <code>[IPv6-address]:port</code> 格式，并且不能包含前导或尾随空白字符。</p>
+<p><code>node.backup.members</code> 同样支持域名和 IP 地址，但其中的条目不能包含端口。该列表中的 IPv6 地址不使用方括号，并且不能包含前导或尾随空白字符。所有备份节点统一使用 <code>node.backup.port</code> 单独配置的端口。完整的备份节点配置和部署示例请参阅<a href="../installing_javatron/#master-slave-mode-for-block-production-fullnodes">主从模式的出块全节点</a>。</p>
+<p>java-tron 在启动时将配置的域名解析为 IP 地址。解析时首先使用操作系统解析器，因此会读取 <code>/etc/hosts</code> 等本地映射；如果解析失败或超时，则回退到内置的公共 DNS 解析器。解析时优先尝试 IPv4，失败后再尝试 IPv6。对于 <code>seed.node.ip.list</code>、<code>node.active</code>、<code>node.passive</code> 和 <code>node.fastForward</code>，同一列表中的域名会并行解析，无法解析的条目会被跳过。<code>node.backup.members</code> 则会逐项校验，其中任一成员无法解析都会导致参数初始化失败，节点无法启动。</p>
+<p>只有 <code>node.backup.members</code> 中的域名会每 60 秒定时刷新，其他对等节点配置项中的域名不会自动刷新。</p>
+<p>这些对等节点配置项中的域名使用普通的 DNS A/AAAA 记录解析，与通过 <code>node.dns.treeUrls</code> 配置的 DNS 树节点发现机制不同。</p>
+<h4 id="_6">从数据库中读取的持久化节点<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>持久化节点需要开启节点持久化服务。如果开启该功能，<a href="https://zh.wikipedia.org/wiki/Kademlia#%E8%B7%AF%E7%94%B1%E8%A1%A8">路由表</a> 中的节点会被定时任务写入数据库，如果节点启动的时候基于此数据库，会从数据库中读取这些节点作为种子节点使用。相关配置项：</p>
+<div class="highlight"><pre><span></span><code><span class="na">node.discovery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">{</span>
+<span class="w">  </span><span class="na">...</span>
+<span class="w">  </span><span class="na">persist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+<span class="w">  </span><span class="na">...</span><span class="w"> </span>
+<span class="na">}</span>
+</code></pre></div>
+<p>节点发现基于 UDP 协议 (User Datagram Protocol)，绑定的默认端口是 <code>18888</code>，也可以绑定其他端口。相关配置项：</p>
+<div class="highlight"><pre><span></span><code><span class="na">node</span><span class="w"> </span><span class="s">{</span>
+<span class="w">  </span><span class="na">...</span>
+<span class="w">  </span><span class="na">listen.port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">18888</span>
+<span class="w">  </span><span class="na">...</span>
+<span class="na">}</span>
+</code></pre></div>
+<h3 id="_7">关闭节点发现<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>在某些情况下，不需要开启节点发现，比如，运行一个本地测试节点或部署一个具有固定的一些节点的测试网络。这时可以通过将配置项设置成 <code>node.discovery.enable = false</code> 来关闭节点发现，也可以通过防火墙关闭 UDP <code>18888</code> 端口来实现。</p>
-<h2 id="_7">节点连接<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<h3 id="_8">节点连接数量<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p><code>node.maxConnections</code>  表示节点与其它节点的最大连接数量，默认值是 30。设置更大的值可以使节点能够建立更多的连接，加入网络的效率更高，同时广播的效率也更高，但是，相对的维护连接需要的带宽也更高，性能消耗也更大，因此，请根据实际情况设置。 
-<div class="highlight"><pre><span></span><code>node {
-  ...
-  maxConnections = 30           # 最大连接数
-  ...
-}
-</code></pre></div></p>
-<h3 id="active-peers">主动连接（Active Peers）<a class="headerlink" href="#active-peers" title="Permanent link">&para;</a></h3>
+<h2 id="_8">节点连接<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="_9">节点连接数量<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>节点的连接数量由以下几个参数共同控制，通常需要配合调优：</p>
+<ul>
+<li><code>node.maxConnections</code>：节点的最大连接数（默认值：30）。当连接数达到该上限后，来自非可信节点的被动连接会被拒绝。可信节点是指 IP 出现在 <code>node.passive</code>、<code>node.active</code> 或 <code>node.fastForward</code> 中的节点（这三处的 IP 都会被加入可信列表）。主动连接不受该限制约束：对 <code>node.active</code> 中配置的节点的主动连接，仅受 <code>node.active</code> 列表大小限制；对通过节点发现协议发现的节点的主动连接，由 <code>minConnections</code> 和 <code>minActiveConnections</code> 驱动（见下文）。</li>
+<li><code>node.minConnections</code>：期望维持的最小总连接数，包含主动连接和被动连接（默认值：8）。当总连接数低于该值时，节点会向已发现的节点发起主动连接以补足。</li>
+<li><code>node.minActiveConnections</code>：期望维持的对已发现节点的最小主动连接数（默认值：3）。即使总连接数已经达到或超过 <code>minConnections</code>，节点仍会持续向已发现的节点发起主动连接，直到该阈值被满足。</li>
+<li><code>node.maxConnectionsWithSameIp</code>：允许来自同一 IP 地址的最大连接数（默认值：2），用于缓解来自单一 IP 的滥用。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="na">node</span><span class="w"> </span><span class="s">{</span>
+<span class="w">  </span><span class="na">...</span>
+<span class="w">  </span><span class="na">maxConnections</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">30</span>
+<span class="w">  </span><span class="na">minConnections</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">8</span>
+<span class="w">  </span><span class="na">minActiveConnections</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3</span>
+<span class="w">  </span><span class="na">maxConnectionsWithSameIp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2</span>
+<span class="w">  </span><span class="na">...</span>
+<span class="na">}</span>
+</code></pre></div>
+<p>注意：<code>minConnections</code> 不能超过 <code>maxConnections</code>，<code>minActiveConnections</code> 不能超过 <code>minConnections</code>，否则节点会在启动时自动将其修正到合法范围内。</p>
+<h3 id="active-connection-active-peers">主动连接（Active Peers）<a class="headerlink" href="#active-connection-active-peers" title="Permanent link">&para;</a></h3>
 <p>主动连接的目标节点来源于三部分：</p>
 <ul>
-<li>配置的主动节点(高优先级)，不依赖于节点发现，即使节点发现没有开启，当前节点也会主动向这些节点发起连接。相关配置项：
-<div class="highlight"><pre><span></span><code>node {
-  ...
-  active = [
-    # Active establish connection in any case
-    # Sample entries:
-    # &quot;ip:port&quot;,
-    # &quot;ip:port&quot;
-  ]
-  ...
- }
-</code></pre></div></li>
-<li>节点发现获取到的可连接节点(中优先级)</li>
-<li>DNS 节点(低优先级)，DNS 树获取的备用节点，需要配置 treeUrls，在前两个来源不足时使用，一般不会使用到。相关配置项(一般不配置)：
-  <div class="highlight"><pre><span></span><code>dns {
-...
-# dns urls to get nodes, url format tree://{pubkey}@{domain}, default empty
-treeUrls = [
-  #&quot;tree://AKMQMNAJJBL73LXWPXDI4I5ZWWIZ4AWO34DWQ636QOBBXNFXH3LQS@main.trondisco.net&quot;,
-]
-...
-}
-</code></pre></div>
-  相比较传统的静态种子节点列表，DNS 树机制在 P2P 网络引导方面具有节点动态更新、不易受攻击等优势。</li>
+<li>配置的主动节点(高优先级)，不依赖于节点发现，即使节点发现没有开启，当前节点也会主动向这些节点发起连接。相关配置项：</li>
 </ul>
+<div class="highlight"><pre><span></span><code><span class="na">node</span><span class="w"> </span><span class="s">{</span>
+<span class="w">  </span><span class="na">...</span>
+<span class="w">  </span><span class="na">active</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[</span>
+<span class="w">    </span><span class="c1"># Active establish connection in any case</span>
+<span class="w">    </span><span class="c1"># Sample entries:</span>
+<span class="w">    </span><span class="c1"># &quot;192.0.2.10:18888&quot;,</span>
+<span class="w">    </span><span class="c1"># &quot;active.example.com:18888&quot;</span>
+<span class="w">  </span><span class="na">]</span>
+<span class="w">  </span><span class="na">...</span>
+<span class="w"> </span><span class="na">}</span>
+</code></pre></div>
+<ul>
+<li>节点发现获取到的可连接节点(中优先级)</li>
+<li>DNS 节点（低优先级），通过 DNS 树获取备用节点，需要配置 <code>node.dns.treeUrls</code>，在前两个来源不足时使用，一般不会使用到：</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="na">node</span><span class="w"> </span><span class="s">{</span>
+<span class="w">  </span><span class="na">dns</span><span class="w"> </span><span class="s">{</span>
+<span class="w">    </span><span class="c1"># 用于获取节点的 DNS URL，格式为 tree://{pubkey}@{domain}，默认为空</span>
+<span class="w">    </span><span class="na">treeUrls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[</span>
+<span class="w">      </span><span class="c1">#&quot;tree://AKMQMNAJJBL73LXWPXDI4I5ZWWIZ4AWO34DWQ636QOBBXNFXH3LQS@main.trondisco.net&quot;,</span>
+<span class="w">    </span><span class="na">]</span>
+<span class="w">  </span><span class="na">}</span>
+<span class="na">}</span>
+</code></pre></div>
+<p>相比较传统的静态种子节点列表，DNS 树机制在 P2P 网络引导方面具有节点动态更新、不易受攻击等优势。</p>
 <p>可以看到，目前主动连接的目标节点来源只有两类，一类是配置的主动节点，一类是节点发现获取到的可连接节点。</p>
-<h3 id="_9">被动连接<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h3 id="_10">被动连接<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>node.passive</code> 配置的节点。当这些节点主动向当前节点发起连接时，当前节点都会无条件的接受。</li>
 </ul>
-<div class="highlight"><pre><span></span><code>node {
-  ...
-  passive = [
-    # Passive accept connection in any case
-    # Sample entries:
-    # &quot;ip:port&quot;,
-    # &quot;ip:port&quot;
-  ]
-  ...
- }
+<div class="highlight"><pre><span></span><code><span class="na">node</span><span class="w"> </span><span class="s">{</span>
+<span class="w">  </span><span class="na">...</span>
+<span class="w">  </span><span class="na">passive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[</span>
+<span class="w">    </span><span class="c1"># Passive accept connection in any case</span>
+<span class="w">    </span><span class="c1"># Sample entries:</span>
+<span class="w">    </span><span class="c1"># &quot;192.0.2.20:18888&quot;,</span>
+<span class="w">    </span><span class="c1"># &quot;passive.example.com:18888&quot;</span>
+<span class="w">  </span><span class="na">]</span>
+<span class="w">  </span><span class="na">...</span>
+<span class="w"> </span><span class="na">}</span>
 </code></pre></div>
 <ul>
 <li>其他节点。节点在发现其他节点的同时也会被其他节点发现，这些节点也有可能向当前节点主动发起连接。</li>
 </ul>
 <p>和节点发现基于 UDP 协议不一样，节点连接基于 TCP 协议 (Transmission Control Protocol)，但是被动连接绑定的端口号和节点发现绑定的端口号是一样的。如果一个节点为了安全起见，不想有被动连接，可以通过防火墙关闭 TCP 18888 端口实现。如果某个节点关闭了被动连接，整个网络拓扑会变成如下图所示：</p>
 <p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/network_topology.png" /></p>
-<h2 id="_10">日志与节点状态验证<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
-<h3 id="_11">查看同步日志<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h2 id="_11">日志与节点状态验证<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<h3 id="_12">查看同步日志<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <p>TRON 节点日志位于 <code>logs/tron.log</code>，可通过如下命令实时查看：</p>
-<div class="highlight"><pre><span></span><code>$ tail -f logs/tron.log
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-f<span class="w"> </span>logs/tron.log
 </code></pre></div>
-<h3 id="_12">同步中日志示例：<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<h3 id="_13">同步中日志示例：<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>pushBlock block number:76, cost/txs:13/0 false
 Success process block Num:76,ID:000000000000004c9e3899ee9952a7f0d9e4f692c7070a48390e6fea8099432f.
 </code></pre></div>
-<h3 id="_13">生产区块日志示例（超级代表节点）：<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h3 id="_14">生产区块日志示例（超级代表节点）：<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>Generate block 79336 begin
 Generate block 79336 success, trxs:0, pendingCount: 0, rePushCount: 0, postponedCount: 0
 </code></pre></div>
-<h3 id="_14">查询节点状态<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h3 id="_15">查询节点状态<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <p>使用 HTTP 接口获取当前节点运行状态：</p>
-<p><div class="highlight"><pre><span></span><code>$ curl http://127.0.0.1:16887/wallet/getnodeinfo
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://127.0.0.1:8090/wallet/getnodeinfo
 </code></pre></div>
-返回示例：
-<div class="highlight"><pre><span></span><code>{
-  &quot;activeConnectCount&quot;: 3,
-    &quot;beginSyncNum&quot;: 42518346,
-    &quot;block&quot;: &quot;Num:42518365,ID:000000000288c75d1967232f1efe606ff90b9dd76660d7de8cc091849be6bf10&quot;,
-    &quot;cheatWitnessInfoMap&quot;: {
-        ...
-    },
-    &quot;configNodeInfo&quot;: {
-        ...
-        &quot;codeVersion&quot;: &quot;4.5.1&quot;,
-        &quot;dbVersion&quot;: 2,
-        &quot;discoverEnable&quot;: true,
-        &quot;listenPort&quot;: 18888,
-        ...
-    },
-    &quot;currentConnectCount&quot;: 18,
-    &quot;machineInfo&quot;: {
-        ...
-    },
-    &quot;passiveConnectCount&quot;: 15,
-    &quot;peerList&quot;: [
-        ...
-    ],
-    &quot;solidityBlock&quot;: &quot;Num:42518347,ID:000000000288c74b723398aef104c585bad1c7cbade7793c5551466bd916feee&quot;,
-    &quot;totalFlow&quot;: 8735314
-}
-</code></pre></div></p>
-<h3 id="_15">验证节点同步状态<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<p>可在 <a href="https://tronscan.org/">TRONSCAN 区块浏览器</a> 查询当前区块高度，并与本地接口返回结果对比：
-<div class="highlight"><pre><span></span><code>curl http://127.0.0.1:16887/wallet/getnowblock
+<p>返回示例：</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;activeConnectCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;beginSyncNum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">42518346</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;block&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Num:42518365,ID:000000000288c75d1967232f1efe606ff90b9dd76660d7de8cc091849be6bf10&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;cheatWitnessInfoMap&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="err">...</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;configNodeInfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="err">...</span>
+<span class="w">        </span><span class="nt">&quot;codeVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4.5.1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;dbVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;discoverEnable&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;listenPort&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18888</span><span class="p">,</span>
+<span class="w">        </span><span class="err">...</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;currentConnectCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;machineInfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="err">...</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;passiveConnectCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;peerList&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="err">...</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;solidityBlock&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Num:42518347,ID:000000000288c74b723398aef104c585bad1c7cbade7793c5551466bd916feee&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;totalFlow&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8735314</span>
+<span class="p">}</span>
 </code></pre></div>
-若区块高度一致，则说明本地节点同步正常。</p>
-<h2 id="_16">常见连接问题排查<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<h3 id="_16">验证节点同步状态<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>可在 <a href="https://tronscan.org/">TRONSCAN 区块浏览器</a> 查询当前区块高度，并与本地接口返回结果对比：</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://127.0.0.1:8090/wallet/getnowblock
+</code></pre></div>
+<p>若区块高度一致，则说明本地节点同步正常。</p>
+<h2 id="_17">常见连接问题排查<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
 <p>遇到节点无法连接网络时，可参考以下问题排查：</p>
 <ul>
 <li>
 <p><strong>本地时钟偏差</strong></p>
-<p>使用以下命令同步系统时间：
-<div class="highlight"><pre><span></span><code>sudo ntpdate -s time.nist.gov
-</code></pre></div></p>
+<p>使用以下命令同步系统时间：</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>ntpdate<span class="w"> </span>-s<span class="w"> </span>time.nist.gov
+</code></pre></div>
 </li>
 <li>
 <p><strong>UDP 被防火墙阻挡</strong></p>
@@ -2072,15 +10005,15 @@ Generate block 79336 success, trxs:0, pendingCount: 0, rePushCount: 0, postponed
 <p><strong>Shasta 测试网不支持新节点加入</strong>，请选择 Nile 测试网。</p>
 </li>
 </ul>
-<h2 id="_17">连接私链网络<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
+<h2 id="_18">连接私链网络<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
 <p>开发者可通过搭建私有 TRON 网络，获得更大的测试灵活性和控制能力。</p>
-<h3 id="_18">配置要点：<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<h3 id="_19">配置要点：<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <ul>
 <li>使用私有的 <code>node.p2p.version</code> 值，确保不会与主网或测试网冲突</li>
 </ul>
-<h3 id="_19">搭建参考：<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<h3 id="_20">搭建参考：<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
 <ul>
-<li>请参考文档 <a href="https://tronprotocol.github.io/documentation-zh/using_javatron/private_network/">私链网络</a> 获取完整的私链部署说明。</li>
+<li>请参考文档 <a href="../private_network/">私链网络</a> 获取完整的私链部署说明。</li>
 </ul>
 
 
@@ -2089,6 +10022,27 @@ Generate block 79336 success, trxs:0, pendingCount: 0, rePushCount: 0, postponed
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年7月30日 03:06:43 UTC">2026年7月30日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -2099,17 +10053,17 @@ Generate block 79336 success, trxs:0, pendingCount: 0, rePushCount: 0, postponed
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../../architecture/database/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 数据库配置">
+          <a href="../../architecture/database/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 数据库配置">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
-                Previous
+                上一页
               </span>
               <div class="md-ellipsis">
                 数据库配置
@@ -2119,13 +10073,13 @@ Generate block 79336 success, trxs:0, pendingCount: 0, rePushCount: 0, postponed
         
         
           
-          <a href="../metrics/" class="md-footer__link md-footer__link--next" aria-label="Next: 节点监控">
+          <a href="../logging/" class="md-footer__link md-footer__link--next" aria-label="下一页: 节点日志">
             <div class="md-footer__title">
               <span class="md-footer__direction">
-                Next
+                下一页
               </span>
               <div class="md-ellipsis">
-                节点监控
+                节点日志
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2167,16 +10121,14 @@ Generate block 79336 success, trxs:0, pendingCount: 0, rePushCount: 0, postponed
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.annotate", "content.tooltips"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.indexes", "navigation.footer", "navigation.tracking", "toc.follow", "search.highlight", "search.suggest", "search.share", "content.code.annotate", "content.code.copy", "content.tooltips", "content.action.edit", "content.action.view"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
         <script src="../../javascripts/toc.js"></script>
       
-        <script src="../../javascripts/nav-toc.js"></script>
-      
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+        <script src="../../javascripts/mathjax-sri.js"></script>
       
     
   </body>
