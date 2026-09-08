@@ -35,9 +35,9 @@ TRON 网络上有两种主要类型的帐户:
 
 > **关于 `wallet-cli`**
 > 
->`wallet-cli` 是一个支持 TRON 网络的交互式命令行工具。它通过封装节点的 gRPC 接口，将复杂的操作转换成对开发者更友好的命令，用于在安全的本地环境中签名和广播交易，也可以获取链上数据。
+>`wallet-cli` 提供 Java 和 TypeScript 两种实现：Java 版采用交互式命令行，通过 gRPC 连接节点；TypeScript 版通过 npm 安装，面向脚本和自动化，通过 FullNode HTTP 接口访问节点。两者都可以在本地管理钱包、签名和广播交易，以及查询链上数据。本指南使用 Java 版。
 >
-> 在继续之前，请务必完成 `wallet-cli` 的下载与编译。本指南仅引用 `wallet-cli` 的几个基础命令作为示例，更多信息请参考其 [GitHub 官方文档](https://github.com/tronprotocol/wallet-cli)。
+> 在继续之前，请务必完成 `wallet-cli` 的下载与编译。本指南仅引用 `wallet-cli` 的几个基础命令作为示例，完整说明参见 [Java CLI 环境准备](../clients/wallet-cli/java/index.md#setup)。
 
 
 现在，请按顺序完成以下三个准备步骤。
