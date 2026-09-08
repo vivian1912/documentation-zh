@@ -148,6 +148,8 @@ storage {
 - `node.jsonrpc.maxMessageSize` 控制 JSON-RPC 请求体大小。
 - `node.jsonrpc.maxBatchSize`、`maxResponseSize` 和 filter 限制用于约束 JSON-RPC 工作负载。
 
+`node.rpc.maxConcurrentCallsPerConnection` 用于限制单个连接上的 gRPC 并发调用数。默认值为 `100`，设置为 `0` 时同样使用 `100`。如果客户端需要在单个连接上发起超过 100 个并发调用，请将该值配置为大于 `100` 的正整数。
+
 使用 `node.disabledApi` 可以禁用指定的 HTTP、gRPC 或 PBFT 方法，但它不会禁用 JSON-RPC 方法；要禁用 JSON-RPC 服务，请使用对应的 `node.jsonrpc.*Enable` 开关。
 
 不要将管理类接口或交易构造接口直接暴露给不受信任的网络。应通过主机或网络控制限制访问，并在需要时将公共服务置于配置适当的网关之后。有关各协议的具体行为，请参阅 [HTTP API](../api/http/index.md) 和 [JSON-RPC API](../api/json-rpc/index.md) 指南。
