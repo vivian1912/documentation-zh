@@ -264,6 +264,7 @@ nav:
         - 账户权限管理: mechanism-algorithm/multi-signatures.md
     - java-tron开发: 
         - 开发者指南: developers/java-tron.md
+        - CI 工作流: developers/workflows.md
         - 核心模块: developers/code-structure.md
         - ChainBase 深入解析: developers/chainbase.md
         - P2P 网络深入解析: developers/network.md
