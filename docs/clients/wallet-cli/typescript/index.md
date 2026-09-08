@@ -34,17 +34,17 @@ TypeScript 版面向脚本、CI 和 AI 智能体调用：每条命令都有稳�
 
 ## 支持的链 {#supported-chains}
 
-内置支持两个链家族、共七个网络。每个网络都由规范的 [CAIP-2](https://chainagnostic.org/CAIPs/caip-2) `namespace:reference` id 标识——TRON 使用 `tron`，EVM 使用 `eip155`。**别名**是可代替 id 输入的简称；它只在选择网络时解析，不会出现在输出中：
+内置支持七个网络。网络使用规范的 [CAIP-2](https://chainagnostic.org/CAIPs/caip-2) `namespace:reference` id 标识。**namespace 不等于链家族**：`eip155` 是 CAIP-2 为 EVM 链定义的 namespace，而本 CLI 用于分支判断的家族名是 `evm`。**别名**是可代替 id 输入的简称；它只在选择网络时解析，不会出现在输出中：
 
 | 网络 id | 别名 | 说明 | 原生币价值 |
 |---|---|---|---|
 | `tron:728126428` | `tron` | TRON 生产主网 | **真实资金** |
 | `tron:3448148188` | `nile` | 主要的 TRON 测试网（水龙头在 nileex.io） | 无——可自由使用 |
 | `tron:2494104990` | `shasta` | 备用的 TRON 测试网 | 无 |
-| `eip155:1` | `ethereum` | 以太坊主网 | **真实资金** |
-| `eip155:11155111` | `sepolia` | 以太坊测试网 | 无 |
-| `eip155:56` | `bsc` | BNB Smart Chain | **真实资金** |
-| `eip155:97` | `bsc-testnet` | BNB Smart Chain 测试网 | 无 |
+| `eip155:1` | `ethereum` | 以太坊主网（ETH） | **真实资金** |
+| `eip155:11155111` | `sepolia` | 以太坊测试网（ETH） | 无 |
+| `eip155:56` | `bsc` | BNB Smart Chain（BNB） | **真实资金** |
+| `eip155:97` | `bsc-testnet` | BNB Smart Chain 测试网（BNB） | 无 |
 
 在同一个家族内部，你的地址在每个网络上都相同（TRON 上是 base58 的 `T…`，EVM 上是 `0x…`——两个家族由同一份种子派生出的是**不同**的地址），而余额、token 和交易按网络隔离。费用跟随家族：TRON 的 `tron-resource` 模型（带宽 + 能量），或者 EVM 的 gas——参见[网络](concepts/networks.md)和[能量与带宽](concepts/energy-bandwidth.md)。
 
