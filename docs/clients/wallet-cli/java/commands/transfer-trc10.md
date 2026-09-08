@@ -158,7 +158,7 @@ TRC10 token 转账。
 - `OwnerAddress`（可选）——发起交易的账户地址。默认：登录账户的地址。
 - `ToAddress`——TRC10 发行方的账户地址。
 - `AssetID`——TRC10 token ID。示例：1000001。
-- `Amount`——要转移的 TRC10 token 数量。
+- `Amount`——**要支付的 TRX 数量**，单位 SUN。这是你付出的金额，而不是你会收到的 token 数量：token 按发行时设定的固定汇率发放，向下取整到整数单位，而你支付的 TRX 会被全额转出——截断产生的零头不予退还。
 
 该操作必须在 TRC10 token 的发行期内完成，否则会报错。
 

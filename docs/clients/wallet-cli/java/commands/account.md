@@ -5,12 +5,15 @@
 ## 如何创建账户 {#how-to-create-account}
 
 你可以通过向不存在的账户转账来创建账户，也可以用 **CreateAccount** 命令发起一笔交易来创建账户。
-向不存在的账户转账有 **1 TRX** 的最低金额限制。通过 `CreateAccount` 命令创建账户同样会燃烧
-**1 TRX**。
+两种方式都会燃烧一笔由链参数 `getCreateNewAccountFeeInSystemContract` 决定的**账户激活费**。
+除此之外，创建账户还会消耗**带宽**，而且只能使用质押获得或他人代理的带宽——每日免费带宽不能用于
+创建账户。这类带宽不足时，会改为按链参数 `getCreateAccountFee` 燃烧 TRX 来抵扣；带宽充足时则不会
+燃烧这一笔。两个参数都可以通过治理提案修改，因此请用
+[`GetChainParameters`](chain-data.md#getchainparameters) 查询当前值，不要按固定数额估算。
 
 ## CreateAccount
 
-用一个未激活的地址创建新账户，为此燃烧 1 TRX 的手续费。
+用一个未激活的地址创建新账户，为此燃烧上述账户创建费。
 
 ```console
 > CreateAccount [OwnerAddress] Address

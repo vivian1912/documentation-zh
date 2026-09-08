@@ -53,7 +53,7 @@
 - `OwnerAddress`（可选）——发起交易的账户地址。默认：登录账户的地址。
 - `exchange_id`——交易对的 ID。
 - `token_id`、`quant`——被兑换 token 的 ID 和数量，相当于卖出。
-- `expected`——期望获得的另一种 token 的数量。`expected` 必须小于 `quant`，否则会报错。
+- `expected`——你愿意接受的、另一种 token 的最低到手数量。它是一个下限，而不是预测值：如果这笔兑换的实际返还低于该值，交易就会失败。它以另一种 token 计价，因此不能与 `quant` 比较大小。
 
 示例：
 
