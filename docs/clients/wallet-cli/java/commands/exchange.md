@@ -1,7 +1,6 @@
 # 交易所（Bancor）
 
-内置的链上交易所。交易对的交易和价格波动遵循 Bancor 协议，相关内容可参见 TRON 的
-[相关文档](../../../../mechanism-algorithm/dex.md)。
+内置的链上交易所。交易对的交易和由此产生的价格波动遵循 Bancor 协议。
 
 ## ExchangeCreate
 

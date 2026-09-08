@@ -222,7 +222,6 @@ v1 版本内仍可能新增条目。`invalid_value` 和 `aborted` 可能根据�
 | `gasfree_credentials_missing` / `tronlink_credentials_missing` | 未配置所需的服务凭据（用 `config` 设置） |
 | `unknown_parameter` | 不存在该名称或 id 的链参数（`proposal create --set`） |
 | `invalid_asset_name` | TRC10 名称或缩写不在 1–32 个可见 ASCII 字符范围内 |
-| `migration_required` | 持久化的钱包数据需要升级，但本次调用无法完成——参见[启动时的钱包数据升级](#startup-wallet-data-upgrades) |
 | `ambiguous_account` | `--account <address>` 匹配到多个账户，且这些账户在当前链家族中无法归并为同一个等效签名者；`error.details` 中包含候选项——参见 [`error.details.matches`](#errordetailsmatches) |
 
 退出码 **1**（执行——运行时失败）下的常见错误码：

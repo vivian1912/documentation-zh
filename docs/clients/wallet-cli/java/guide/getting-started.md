@@ -29,8 +29,8 @@ $ java -jar wallet-cli.jar
 ## 如何创建账户
 
 你可以通过向不存在的账户转账来创建账户，也可以用 **CreateAccount** 命令发起一笔交易来创建账户。
-向不存在的账户转账有 **1 TRX** 的最低金额限制。通过 `CreateAccount` 命令创建账户同样会燃烧
-**1 TRX**。
+两种方式都会燃烧一笔账户激活费并消耗带宽；这两项都由链参数决定、可经治理提案修改，并不是固定数额
+——具体规则见 [commands/account](../commands/account.md#how-to-create-account)。
 
 完整的 `CreateAccount` 示例见 [commands/account](../commands/account.md)。
 
