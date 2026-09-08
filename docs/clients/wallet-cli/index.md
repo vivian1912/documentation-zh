@@ -9,7 +9,7 @@ TypeScript 版面向脚本和自动化集成。
 - **[TypeScript](typescript/index.md)**——面向自动化的重写版本，采用标准子命令，并提供稳定的
   JSON 输出，适合脚本、CI 和 AI 智能体调用。
 
-两者管理同一类钱包；在 TRON 网络上，同一助记词通过两种实现派生出的地址完全相同。它们支持的 TRON 功能基本一致，
+两者管理同一类钱包，但**各自的账户存储并不通用**。同一助记词只有*第一个*账户的地址相同：再往后两者走的 BIP44 路径就不一样了——Java 递增的是地址索引（`m/44'/195'/0'/0/i`），TypeScript 递增的是 account 层级（`m/44'/195'/i'/0/0`）。因此在另一个 CLI 中恢复钱包会看到不同的地址，这并不是资金丢失。在两者之间迁移前，请先核对账户所记录的 BIP44 路径。它们支持的 TRON 功能基本一致，
 主要区别在于安装方式和操作方式——此外 TypeScript 版还支持 **EVM 网络**（以太坊、BNB Smart Chain 及其测试网），
 Java 版则不支持。选定其一后，请阅读对应文档了解详细用法；本页概述两者的特点，帮助你选择。
 
@@ -35,9 +35,9 @@ Java 版仅支持交互式操作。完成构建并启动命令行后，在提示
 
 ```console
 $ git clone https://github.com/tronprotocol/wallet-cli.git
-$ cd wallet-cli && ./gradlew build && cd build/libs
+$ cd wallet-cli/java && ./gradlew build && cd build/libs
 $ java -jar wallet-cli.jar        # 打开交互式提示符
-> RegisterWallet 123456           # 创建 keystore（密码 123456）
+> RegisterWallet                  # 先两次提示输入密码，再询问助记词长度
 > Login                           # 解锁
 > GetAddress                      # 你的 TRON 地址
 > GetBalance                      # TRX 余额

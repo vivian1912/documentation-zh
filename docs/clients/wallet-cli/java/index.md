@@ -49,14 +49,14 @@ fullnode = {
 - **编译并运行**：
 
     ```console
-    $ cd wallet-cli
+    $ cd wallet-cli/java
     $ ./gradlew build
     $ cd build/libs
     $ java -jar wallet-cli.jar
     ```
 
 wallet-cli 通过 gRPC 协议连接 java-tron，节点可以部署在本地或远程。在
-`src/main/resources/config.conf` 中配置 java-tron 节点的 IP 和端口，或使用 `SwitchNetwork` 在
+`java/src/main/resources/config.conf` 中配置 java-tron 节点的 IP 和端口，或使用 `SwitchNetwork` 在
 主网、测试网（Nile 和 Shasta）以及自定义网络之间切换。
 
 ## 快速上手 {#quickstart}
@@ -66,13 +66,13 @@ wallet-cli 通过 gRPC 协议连接 java-tron，节点可以部署在本地或�
 ```console
 # 1. 构建
 $ git clone https://github.com/tronprotocol/wallet-cli.git
-$ cd wallet-cli && ./gradlew build && cd build/libs
+$ cd wallet-cli/java && ./gradlew build && cd build/libs
 
 # 2. 启动交互式钱包
 $ java -jar wallet-cli.jar
 
 # 3. 在钱包提示符下：创建账户（或使用 ImportWallet）、解锁并查看
-> RegisterWallet 123456      # 创建密码为 123456 的 keystore
+> RegisterWallet             # 先两次提示输入密码，再询问助记词长度
 > Login                      # 解锁账户
 > GetAddress                 # 显示你的地址
 > GetBalance                 # TRX 余额
