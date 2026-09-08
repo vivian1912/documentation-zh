@@ -157,7 +157,39 @@ text 模式会为同一页数据添加标题（`Assets (limit 50, offset 0)`、`
 wallet-cli --json-schema | jq '.errorCodes'
 ```
 
-这份索引是本版本暴露出来的机器可读目录。请把它当作能力发现的辅助手段，而不是一个封闭枚举：有少数代码路径会在运行时动态选择错误码字符串，因此实际响应中仍可能出现 `errorCodes` 里没有的 code。下面的表格是高频子集，便于阅读。v1 内仍可能新增 code；少数字符串（如 `invalid_value`、`aborted`、`not_found`、`token_metadata_unavailable`）也可能出现在两种退出码下，具体取决于错误发生阶段——所以请始终兼容未知错误码，并回退到对应的退出码类别。
+每个条目都是对象，而不是单独的字符串：
+
+```json
+{ "rpc_error": { "exit": 1, "retry": "same", "meaning": "the node answered with an error" } }
+```
+
+`exit` 是该错误码退出状态的权威定义。下表由人工维护，并通过测试与索引核对：表中每个错误码的退出
+状态必须与索引中的 `exit` 一致；测试不检查表里的含义说明，也不要求表格覆盖索引中的所有错误码。
+少数错误码的 `exit` 为 `"either"`，表示两种退出状态都有可能，具体以进程实际返回值为准。
+
+`retry` 表示建议的重试策略：
+
+- `same`——可以立即重试同一条命令，通常适用于节点或服务的偶发故障；
+- `later`——请求本身无须修改，但要等待一段时间后再试，例如等待锁定期、提现间隔或限流结束；
+- `changed`——必须修改请求后再试，例如提高手续费，或使用新的 nonce 重新构建交易；
+- `never`——原样重试不会成功，需要先改变命令之外的条件。
+
+按照定义，退出码为 `2` 的错误，其 `retry` 均为 `never`。
+
+`retry` 描述的是**错误类型通常采用的处理方式**，并不保证整条命令可以安全重试。`timeout` 和
+`rpc_error` 被标记为 `same`，是因为大多数读取类请求在这两种情况下可以直接重试。但交易提交命令
+（包括 `tx send`）可能在**节点已经接收交易、但响应尚未返回**时发生 `timeout` 或 `rpc_error`。
+此时交易结果是未知，而不是已失败；再次执行命令会重新构建并签名一笔**新交易**，在 TRON 上可能形成
+第二笔独立转账。
+
+因此，解析网络 ID 或读取余额时可以按照 `retry: "same"` 直接重试，但它不代表可以盲目重新广播交易。
+提交结果不确定时，应先通过 [`tx status`](#script-safety-never-mistake-submitted-for-confirmed) 核对链上
+状态，再决定是否重试。这也符合下文的四状态模型。
+
+该索引是当前版本提供的机器可读错误码目录，可用于能力发现，但不应视为封闭枚举。少数代码路径会在
+运行时动态选择错误码，因此实际响应中仍可能出现 `errorCodes` 未列出的值。下表仅收录常见错误码，
+v1 版本内仍可能新增条目。`invalid_value` 和 `aborted` 可能根据错误发生阶段对应两种不同的退出码；
+调用方应兼容未知错误码，并在无法识别时按退出码类别处理。
 
 退出码 **2**（用法——修正调用方式）下的常见错误码：
 
@@ -190,13 +222,15 @@ wallet-cli --json-schema | jq '.errorCodes'
 | `gasfree_credentials_missing` / `tronlink_credentials_missing` | 未配置所需的服务凭据（用 `config` 设置） |
 | `unknown_parameter` | 不存在该名称或 id 的链参数（`proposal create --set`） |
 | `invalid_asset_name` | TRC10 名称或缩写不在 1–32 个可见 ASCII 字符范围内 |
+| `migration_required` | 持久化的钱包数据需要升级，但本次调用无法完成——参见[启动时的钱包数据升级](#startup-wallet-data-upgrades) |
+| `ambiguous_account` | `--account <address>` 匹配到多个账户，且这些账户在当前链家族中无法归并为同一个等效签名者；`error.details` 中包含候选项——参见 [`error.details.matches`](#errordetailsmatches) |
 
 退出码 **1**（执行——运行时失败）下的常见错误码：
 
 | 错误码 | 含义 |
 |---|---|
 | `rpc_error` | 节点拒绝了请求或请求执行失败——可能是一次 TRON API 调用，也可能是 `eth_estimateGas` 之类的 JSON-RPC 方法 |
-| `invalid_node_response` | 节点的应答与请求或协议相矛盾：TRC10/exchange 记录的 id 并非请求的值、`precision` 超出 0..6，或汇率对不是正的 int32。这些值会影响签名金额，因此命令会直接停止，不会继续使用异常数据。列表读取则会丢弃有问题的记录并保留该页 |
+| `invalid_node_response` | 节点响应与请求或协议不一致：TRC10/exchange 记录的 ID 不是请求值、`precision` 超出 0..6、汇率参数不是正 int32、EVM JSON-RPC 响应同时缺少 `result` 和 `error`，或最新区块查询没有返回区块。由于这些数据会影响签名金额，命令会停止执行，不会继续使用异常值；列表查询则丢弃异常记录并保留本页其他结果 |
 | `timeout` | 等待网络或设备时被中止（超过 `--timeout`） |
 | `auth_required` | 所需的凭据不可用——软件账户的 master password，或者 Ledger app / 设备未就绪 |
 | `auth_failed` | master password 错误（解密失败） |
@@ -213,8 +247,8 @@ wallet-cli --json-schema | jq '.errorCodes'
 | `chain_id_mismatch` | 该 EVM 交易是为另一条链构建的，与所选网络不符 |
 | `nonce_too_low` | 该 EVM 交易的 nonce 已经被一笔已入块的交易用掉了 |
 | `history_not_supported` | 该端点不支持 TronGrid 历史查询（`account history`，TRON） |
-| `not_found` | 所寻址的对象不存在——例如未激活的账户、交易、区块，或 GasFree / TronLink 资源。有些命令级别的查询会把同一个字符串作为用法错误抛出；请先按退出码分支 |
-| `proposal_not_found` / `contract_not_found` / `asset_not_found` / `exchange_not_found` | 链上没有该提案 id、合约地址、TRC10 引用或交易对 id 对应的对象 |
+| `not_found` | 所寻址的对象不存在——例如未激活的账户、交易、区块，或 GasFree / TronLink 资源 |
+| `proposal_not_found` / `contract_not_found` / `asset_not_found` / `exchange_not_found` | 链上不存在与该提案 ID、合约地址、TRC10 引用或交易对 ID 对应的对象 |
 | `ambiguous_asset_name` | 某个 TRC10 名称匹配到多个 token；`error.details` 中带有候选项——见 [`error.details.matches`](#errordetailsmatches) |
 | `ledger_unsupported` | 所选的 Ledger app 无法为该交易类型签名——请求会在访问设备前被拒绝（TRON 的账户激活、账户 id、asset 写操作、合约部署/治理、witness 写操作，以及 cancel-unfreeze） |
 | `not_a_witness` / `already_witness` / `not_proposal_owner` | 治理身份不满足该操作的规则 |
@@ -228,11 +262,12 @@ wallet-cli --json-schema | jq '.errorCodes'
 | `insufficient_reserve` | `exchange withdraw`：撤出量超过交易对对应一侧的储备 |
 | `precision_loss` / `slippage_exceeded` / `exchange_trading_disabled` | 根据有限白名单识别出的节点拒绝原因——金额无法按储备比例精确换算、回报低于下限，或该网络不接受 Bancor 交易 |
 | `not_exportable` | 该账户不持有可导出的密钥材料（仅观察或 Ledger）——`backup` |
-| `account_exists` / `wrong_keystore_password` | `import keystore`：该地址已在钱包中，或文件自身的密码不对（区别于 `auth_failed`，后者指的是 master password）。`mac` 缺失或不是 hex 的文件属于 `invalid_keystore`，而不是密码错误——hex 不区分大小写 |
+| `wrong_keystore_password` | `import keystore`：文件自身的密码不对（区别于 `auth_failed`，后者指的是 master password）。`mac` 缺失或不是 hex 的文件属于 `invalid_keystore`，而不是密码错误——hex 不区分大小写 |
 | `internal_error` | 预期之外的内部失败；消息刻意保持通用 |
 
 预期之外的异常会先经过**脱敏处理**，再以 `internal_error` 和通用消息返回，避免第三方库回显的敏感信息
-进入响应。上面两张表只是便于阅读的辅助；`--json-schema` 的 `errorCodes` 才是持续维护的能力发现索引——它并不是一份保证解析器已穷举全部错误码的清单。
+进入响应。上面两张表仅用于方便阅读；持续维护的能力发现索引是 `--json-schema` 返回的 `errorCodes`，
+但该索引也不保证列出解析器可能返回的所有错误码。
 
 ### `error.details.matches` {#errordetailsmatches}
 
@@ -241,6 +276,13 @@ wallet-cli --json-schema | jq '.errorCodes'
 
 ```json
 {"code":"ambiguous_asset_name","message":"2 TRC10 tokens are named MyToken; re-run with the id","details":{"name":"MyToken","assetIds":["1000123","1000488"],"matches":[{"assetId":"1000123","issuerAddress":"TQkXm4vN...","totalSupply":"1000000000000000","precision":6},{"assetId":"1000488","issuerAddress":"TZx9kP2m...","totalSupply":"5000000000","precision":2}]}}
+```
+
+`ambiguous_account` 是另一种使用该候选项结构的常见错误。当 `--account <address>` 在当前链家族中
+匹配多个账户记录，且这些记录无法视为同一个等效签名者时，会返回此错误：
+
+```json
+{"code":"ambiguous_account","message":"address T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb matches 2 accounts; address it by accountId","details":{"address":"T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb","accountIds":["wlt_a1b2c.0","wlt_d3e4f.0"],"matches":[{"accountId":"wlt_a1b2c.0","label":"main","type":"seed","index":0},{"accountId":"wlt_d3e4f.0","label":"cold","type":"watch","index":null}]}}
 ```
 
 `matches` 是通用字段，并不限定于某个错误码。任何带有该字段的错误都应按相同方式处理。text 模式会在

@@ -112,9 +112,11 @@ tronlink = {
 
 ## 连接 Java-tron
 
-wallet-cli 通过 gRPC 连接 Java-tron。启动时使用的网络是**推断**出来的：把 `fullnode.ip.list` 和
-`soliditynode.ip.list` 与内置的主网、Nile、Shasta 端点做比对，其他端点组合会被识别为 `CUSTOM`。
-因此，`net.type = mainnet` 配上 Nile 端点，启动后仍然连的是 Nile。转账前请直接核对端点本身。
+wallet-cli 通过 gRPC 连接 Java-tron。启动时，程序会将配置中实际提供的 `fullnode.ip.list`、
+`soliditynode.ip.list` 或两者，与内置的主网、Nile 和 Shasta 端点进行比较，据此**推断**所用网络。
+未配置的端点类型不参与比较。例如，只配置 Nile FullNode 时，程序仍会识别为 Nile；无法匹配任何内置
+网络的端点组合则会识别为 `CUSTOM`。`net.type = mainnet` 并不覆盖该判断，因此配合 Nile 端点时仍会
+连接 Nile。发送资产前，请直接核对实际端点。
 
 若想在不重新打包 JAR 的前提下覆盖内置配置，把 `config.conf` 放到运行 `java -jar` 时的工作目录即可。
 你也可以在运行时使用 `SwitchNetwork` 在主网、Nile、Shasta 以及自定义端点之间切换——参见

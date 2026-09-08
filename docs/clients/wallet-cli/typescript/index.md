@@ -192,8 +192,7 @@ Token 与合约操作、资源质押、投票奖励、消息签名，以及权�
 
 每条命令都支持 `-o json`，并在 stdout 上输出**恰好一个完整的 JSON 对象**，schema 为
 [`wallet-cli.result.v1`](machine-interface.md#the-result-envelope)。退出码是固定的：`0` 成功、
-`1` 执行失败、`2` 用法错误。敏感信息（密码、助记词、私钥）绝不接受通过命令行参数传入，也不会从专用的敏感信息环境变量读取。密码可以通过 stdin 标志或交互式 TTY 提示进入；助记词/私钥导入和 `change-password` 只能交互执行（完全没有 stdin 路径）。完整规范：[machine-interface.md](machine-interface.md)；从 AI 智能体调用请参见
-[Agent skill](https://github.com/tronprotocol/wallet-cli/blob/develop/ts/skills/wallet-cli/SKILL.md)。
+`1` 执行失败、`2` 用法错误。敏感信息（密码、助记词、私钥）绝不接受通过命令行参数传入，也不会从专用的敏感信息环境变量读取。密码可以通过 stdin 标志或交互式 TTY 提示进入；助记词/私钥导入和 `change-password` 只能交互执行（完全没有 stdin 路径）。完整规范：[machine-interface.md](machine-interface.md)。
 
 ## 理解 TRON 机制 {#understanding-tron-mechanics}
 

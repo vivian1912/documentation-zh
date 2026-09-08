@@ -48,7 +48,7 @@ wallet-cli tx sign (--hex <hex> | --file <path> | --transaction <json>) [--offli
 | `--file <path>` | **必填**（三选一）。包含交易 hex 的文件（hex 较长时建议用它） |
 | `--transaction <json>` | **必填**（三选一）。**仅限 TRON。** 未签名的 TRON 交易 JSON；兼容路径，从不做联网校验 |
 | `--offline` | 在本地签名而不访问节点；跳过签名者权限检查和批准权重检查。只有在 TRON 上才有意义——EVM 签名本来就不访问节点 |
-| `--out <path>` | **仅用于 TRON 产物路径。** 把联署后的 protobuf hex 原子地写入一个权限 0644 的文件，而不是输出到 stdout。EVM 上请不要使用：当前的 EVM 绑定接受该选项但会忽略它 |
+| `--out <path>` | 将已签名交易以原子方式写入权限为 0644 的文件——TRON 写入联署后的 protobuf hex，EVM 写入已签名的 RLP。该选项只额外生成文件，同一 hex 仍保留在结果中；只需摘要的调用方应自行忽略该字段。不能与 `--transaction` 同用 |
 
 此外还有[全局选项](../index.md#global-options-every-command)，以及供软件账户使用的 `--password-stdin`。
 
@@ -142,9 +142,9 @@ EVM 上对产物签名的结果则是单签形态：
 | `transaction` | object | 本地解码出的摘要：`txId`、`contractType`、`operation`、`from`、`to`、`rawAmount`、`permissionId`（只是一个标量——不含权限组名称和阈值）、`expiration`、`expired`、`signatures`（数量） |
 | `signerWeight` | number | 该签名者在权限组中的权重。仅 TRON，且仅当 `checked` 为 `true` 时才有 |
 | `approval` | object | 联网获取的权威批准状态，结构与 [`tx approvals`](approvals.md) 的 `data` 相同。仅 TRON，且仅当 `checked` 为 `true` 时才有 |
-| `out` | string | 已签名 hex 写入的路径。仅在给出 `--out` 时才有 |
+| `out` | string | 已签名 hex 的写入路径。仅在指定 `--out` 时出现；生成文件不会移除结果中的 hex |
 
-EVM 使用单签结果结构：`kind: "sign"`、`mode: "sign-only"`、`signed`（`{raw, hash}`）、`address` 和 `txId`。顶层不含 `hex`，已签名的原始交易位于 `signed.raw`。当前 EVM 实现会接受但忽略 `--out`，因此需要由调用方自行保存 `data.signed.raw`，或者省略该参数。
+EVM 使用单签结果结构：`kind: "sign"`、`mode: "sign-only"`、`signed`（`{raw, hash}`）、`address` 和 `txId`。顶层不含 `hex`，已签名的原始交易位于 `signed.raw`。指定 `--out` 时，该字符串会原样写入文件，并继续保留在结果中。
 
 对于 TRON 的 `--hex` / `--file` 结果，`transaction` 在联网和离线两种模式下都存在，因此使用方可以无条件读取；而在访问 `approval` 之前，请先检查 `checked`。EVM 的结果里不含 `transaction` 和 `checked`。
 

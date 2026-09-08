@@ -21,7 +21,10 @@ CLI 会先读取文件并完成结构检查，再依次提示输入这两个密�
 
 没有 TTY 时，命令会以 `tty_required` 失败，退出码为 `2`，而且这项检查**最先**执行，排在读文件之前。在非交互环境中，无论路径正确与否，每次调用都会以同样的方式失败；上面"先读文件再要密码"的顺序只在你有终端时才成立。
 
-如果本地已存在相同地址的账户，导入会被**拒绝**，不会覆盖现有记录。直接替换可能破坏现有账户与 seed 备份之间的关联。如需替换，请先删除已有账户。
+导入操作**绝不会覆盖**已有账户。重复导入同一把密钥是幂等操作：命令返回 `status: "existing"`，并将
+已有账户设为当前账户。如果该地址已由**其他类型**的账户持有，例如 HD 种子派生账户、仅观察账户或
+Ledger 账户，命令会为同一地址新增一个独立的 `privateKey` 账户，不会替换原账户。keystore 解密完成
+后的处理逻辑与 [`import private-key`](private-key.md) 相同。
 
 ## 选项
 
@@ -67,8 +70,8 @@ wallet-cli import keystore ./tronlink-export.json --label imported -o json
 
 | 字段 | 类型 | 含义 |
 |---|---|---|
-| `status` | string | `"created"` |
-| `accountId` | string | 稳定的账户 id |
+| `status` | string | `"created"`；若同一把密钥已存在，则为 `"existing"`，并将已有账户设为当前账户 |
+| `accountId` | string | 稳定的账户 ID |
 | `label` | string | 账户标签 |
 | `type` | string | `"privateKey"`（独立私钥，没有 seed） |
 | `index` | number \| null | 非 HD 账户，恒为 `null` |
@@ -78,7 +81,7 @@ wallet-cli import keystore ./tronlink-export.json --label imported -o json
 
 ## 退出码
 
-`0` 导入成功 · `1` 执行失败（`wrong_keystore_password`；`account_exists`——该地址已在钱包中；`auth_failed`；`io_error`） · `2` 用法错误（`tty_required`——没有可用于交互输入的 TTY，此项先于其他一切检查；`keystore_not_found`——文件不存在；`invalid_keystore`——不是合法的 keystore JSON；`invalid_value`——标签重复或非法）。
+`0` 导入成功 · `1` 执行失败（`wrong_keystore_password`；`auth_failed`；`io_error`） · `2` 用法错误（`tty_required`——没有可用于交互输入的 TTY，此项先于其他一切检查；`keystore_not_found`——文件不存在；`invalid_keystore`——不是合法的 keystore JSON；`invalid_value`——标签重复或非法）。
 
 ## 另请参见
 

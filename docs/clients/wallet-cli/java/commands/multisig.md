@@ -49,19 +49,19 @@ TNhXo1GbRNCuorvYu5JFWN3m2NYr9QQpVR 和 TKwhcDup8L2PH5r6hxp5CQvQzZqJLmKvZP。acti
 > SendCoin TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW 10000000000000000
 ```
 
-将会提示 "Please confirm and input your permission id, if input y/Y means default 0, other
-non-numeric characters will cancel transaction."
+命令会显示以下提示：
 
-这需要 active 访问的转账授权。输入：2
+`Please confirm and input your permission id, if input y/Y means default 0, other non-numeric characters will cancel transaction.`
 
-然后选择账户并输入本地密码，即 TNhXo1GbRNCuorvYu5JFWN3m2NYr9QQpVR 需要
-TNhXo1GbRNCuorvYu5JFWN3m2NYr9QQpVR 的私钥来签名交易。
+该转账需要 active 权限授权，此处输入权限 ID `2`。
 
-再选择另一个账户并输入本地密码，即 TKwhcDup8L2PH5r6hxp5CQvQzZqJLmKvZP 需要
-TKwhcDup8L2PH5r6hxp5CQvQzZqJLmKvZP 的私钥来签名交易。
+然后选择账户并输入本地密码，使用 TNhXo1GbRNCuorvYu5JFWN3m2NYr9QQpVR 对应的私钥签名。
 
-每个账户的权重为 1，访问阈值为 2。当条件满足时，用户会收到提示
-"Send 10000000000000000 Sun to TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW  successful !!"。
+再选择另一个账户并输入本地密码，使用 TKwhcDup8L2PH5r6hxp5CQvQzZqJLmKvZP 对应的私钥签名。
+
+每个账户的权重为 1，权限阈值为 2。两个签名收集完成后，命令会显示：
+
+`Send 10000000000000000 Sun to TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW  successful !!`
 
 以上流程适用于在同一个 CLI 中使用多个账户完成多重签名。如果签名账户分布在不同的 CLI 实例中，
 请传递交易的十六进制字符串，并使用 `addTransactionSign` 依次添加签名。收集完成后，需要手动广播

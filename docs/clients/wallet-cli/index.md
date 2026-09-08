@@ -65,7 +65,6 @@ $ wallet-cli account balance -o json           # 输出符合 wallet-cli.result.
 - [快速上手](typescript/guide/getting-started.md)——创建钱包并发送第一笔交易
 - [命令参考](typescript/commands/index.md)——全部命令，A–Z
 - [机器接口](typescript/machine-interface.md)——JSON 响应结构、退出码、脚本安全
-- [Agent skill](https://github.com/tronprotocol/wallet-cli/blob/develop/ts/skills/wallet-cli/SKILL.md)——面向 AI 智能体
 
 ## 我该用哪一个？
 
