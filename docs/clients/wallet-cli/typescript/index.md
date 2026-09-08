@@ -1,7 +1,8 @@
 # wallet-cli —— TypeScript 实现
 
 TypeScript 版面向脚本、CI 和 AI 智能体调用：每条命令都有稳定的 JSON 响应结构、确定的退出码和
-可查询的 schema；只有输入敏感信息时（import / backup / delete）才保留交互式提示。关于 wallet-cli 以及
+可查询的 schema；交互式提示被限制在一份很短的白名单内——`create`、各个 `import` 子命令、`backup`、
+`change-password` 和 `delete`——除此之外，凭据缺失一律直接报错，绝不弹出提示。关于 wallet-cli 以及
 两种实现的对比，参见[仓库总览](../index.md)；关于最早的实现，参见 [Java 实现](../java/index.md)。
 
 ## 主要特性
@@ -50,7 +51,7 @@ TypeScript 版面向脚本、CI 和 AI 智能体调用：每条命令都有稳�
 ## 安装 {#install}
 
 **前置条件**：[Node.js](https://nodejs.org) **20 或更高版本**（用 `node --version` 检查）。Ledger
-签名还需要一台安装了 TRON app 的受支持 Ledger 设备——参见 [Ledger 指南](guide/ledger.md)。
+签名还需要一台受支持的 Ledger 设备，并安装与所选家族对应的 app——TRON 账户用 TRON app，EVM 账户用 Ethereum app。参见 [Ledger 指南](guide/ledger.md)。
 
 ```bash
 npm install -g @tron-walletcli/wallet-cli
@@ -92,8 +93,13 @@ wallet-cli create --label main
 ```console
 ✅ Created wallet "main"
   Account ID    wlt_2dbv24de.0
+  Type          HD
   TRON address  TTVdGTBXY5mmY3nJFGUp7Vo898kUJ6gtFQ
+  EVM address   0x5c8e1b04A7f39d62C0B3e85A1d47F9028b6ce713
   Active        yes
+
+⚠️ Recovery phrase is encrypted locally and was not printed.
+⚠️ Run `backup` soon and store the file offline.
 ```
 
 ```bash
@@ -207,5 +213,7 @@ TRON 在费用、账户和密钥权限方面与 EVM 链有较大差异，建议�
 
 命令报错或行为异常？常见问题及诊断方法见 [troubleshooting.md](troubleshooting.md)。
 
-> 本文档中所有可复制粘贴的示例都在 **Nile 测试网**（`--network tron:3448148188`）上运行。主网命令会动用
-> 真实资金；文档中的主网命令仅作为带注释的说明，不应直接复制执行。
+> 凡是会花钱的可复制示例都指向测试网——TRON 上是 **Nile**（`--network tron:3448148188`），EVM 上是
+> **Sepolia**（`--network eip155:11155111`）。主网 id（`tron:728126428`、`eip155:1`）也会出现：用在只读示例中，
+> 例如 token 地址簿列表和配置路径，以及少数几处主网 token 合约的示意。最后这类示例带的是占位收款方
+> （`T...` / `0x...`），照抄是跑不通的。

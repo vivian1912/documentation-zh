@@ -23,7 +23,7 @@ git clone https://github.com/tronprotocol/wallet-cli.git
 
 ### 配置
 
-一份最小的 `config.conf` 只需要网络类型和一个可连接的 FullNode：
+一份最小的 `config.conf` 只需要一个 FullNode 端点。`net.type` **并不决定连接哪个网络**，它只控制是否应用 `grpc.mainnet.apiKey`；启动时使用的网络是根据所配置的节点端点推断出来的。
 
 ```
 net {
@@ -55,9 +55,8 @@ fullnode = {
     $ java -jar wallet-cli.jar
     ```
 
-wallet-cli 通过 gRPC 协议连接 java-tron，节点可以部署在本地或远程。在
-`java/src/main/resources/config.conf` 中配置 java-tron 节点的 IP 和端口，或使用 `SwitchNetwork` 在
-主网、测试网（Nile 和 Shasta）以及自定义网络之间切换。
+wallet-cli 通过 gRPC 连接 java-tron。启动时它会先在当前工作目录查找 `config.conf`，找不到才回退到 JAR 内置的
+classpath 资源。可使用 `SwitchNetwork` 在主网、测试网（Nile 和 Shasta）以及自定义网络之间切换。
 
 ## 快速上手 {#quickstart}
 
@@ -90,7 +89,8 @@ $ java -jar wallet-cli.jar
 ## 命令 {#commands}
 
 每条命令都记录在[命令](commands/index.md)下的分类页面中。**[命令索引](commands/index.md)**提供
-完整的 A–Z 列表，把每条命令链接到它所在的章节；在钱包中输入任意命令即可看到内置的用法提示。
+完整的 A–Z 列表，把每条命令链接到它所在的章节；在钱包中执行 `help <command>` 可看到该命令的内置用法提示
+（单独执行 `help` 会打印完整命令表）。
 
 ### 钱包与账户
 
